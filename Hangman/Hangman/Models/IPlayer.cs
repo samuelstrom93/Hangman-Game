@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hangman.Models
 {
-    interface IPerson
+    interface IPlayer
     {
         public string Name { get; set; }
     }
