@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Hangman.Models
 {
-    class Person : IPerson
+    class Player
     {
-        public string Name { get; set; }
     }
 }
