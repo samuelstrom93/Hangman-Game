@@ -4,9 +4,7 @@ using System.Text;
 
 namespace Hangman.Models
 {
-    class Player : IPlayer
+    class Word
     {
-        public string Name { get ; set; }
-        public string Id { get; set; }
     }
 }
