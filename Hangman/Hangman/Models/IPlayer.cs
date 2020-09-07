@@ -7,6 +7,6 @@ namespace Hangman.Models
     interface IPlayer
     {
         public string Name { get; set; }
-        public string Id { get; set; }
+        public int Id { get; set; }
     }
 }
