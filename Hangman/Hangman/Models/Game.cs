@@ -13,5 +13,8 @@ namespace Hangman.Models
         public int NumberOfTries { get; set; }        
         public bool IsWon { get; set; }
 
+        public int PlayerId { get; set; }
+        public int WordId { get; set; }
+
     }
 }
