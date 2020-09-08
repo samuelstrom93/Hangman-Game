@@ -22,5 +22,11 @@ namespace Hangman.Views
         {
             InitializeComponent();
         }
+
+        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var w = new HelpWindow();
+            w.Show();
+        }
     }
 }

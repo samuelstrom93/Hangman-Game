@@ -9,5 +9,7 @@
     <Grid>
 
         <Frame x:Name="Main"></Frame>
+        <Button Content="Okej, förstått!" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="140" Background="White" Margin="20,20,20,20" Click="Button_Click"/>
+
     </Grid>
 </Window>

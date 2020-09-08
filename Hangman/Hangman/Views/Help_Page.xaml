@@ -12,7 +12,6 @@
     <Grid>
         <Label Content="Game Guide"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="273" FontSize="48"/>
         <TextBlock Padding="20" Background="#FFEAEAEA" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="253" Width="394"><Run Text="Spelet baseras på det klassiska spelet Hänga Gubbe där användaren ställs inför utmaningen att gissa vilket ord som slumpats fram och genom detta rädda vår huvudkaraktär innan maxantalet felgissningar har uppnåtts och möjligheten att rädda honom från hängning försvinner. "/><LineBreak/><Run/><LineBreak/><Run Text="Genom att klicka på en bokstav i taget gissar spelaren på ordet. "/><Run Text=" "/><Run Text="Finns bokstaven i ordet så fylls ordet med den valda bokstaven och den blir grönmarkerad/tonas ut för att visa att bokstaven är vald."/><LineBreak/><Run/><LineBreak/><Run Text="Vid val av en bokstav som inte finns i ordet kommer bokstaven att bli rödmarkerad för att visa att bokstaven inte finns i ordet."/></TextBlock>
-        <Button Content="Okej, förstått!" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="140" Background="White" Margin="20,20,20,20"/>
 
     </Grid>
 </Page>

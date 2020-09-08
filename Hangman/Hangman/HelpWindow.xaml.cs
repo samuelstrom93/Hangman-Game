@@ -23,5 +23,10 @@ namespace Hangman
             InitializeComponent();
             Main.Content = new Help_Page();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
