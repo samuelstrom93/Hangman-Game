@@ -23,6 +23,7 @@ namespace Hangman
         public MainWindow()
         {
             InitializeComponent();
+            //Main.Content =
         }
     }
 }

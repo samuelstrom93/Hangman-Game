@@ -5,7 +5,8 @@ create table player (
 
 create table word (
 	id SERIAL PRIMARY KEY,
-	name varchar(255) UNIQUE NOT NULL
+	name varchar(255) UNIQUE NOT NULL,
+	description varchar(255) NOT NULL
 );
 
 create table game (
