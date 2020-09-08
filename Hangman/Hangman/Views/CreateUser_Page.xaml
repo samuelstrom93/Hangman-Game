@@ -10,15 +10,15 @@
 
 
     <Grid Background="Black">
-        <Button Content="Registrera" HorizontalAlignment="Center" Margin="0,299,0,0" VerticalAlignment="Top" Width="152"/>
+        <Button Click="Button_Click_2" Content="Registrera" HorizontalAlignment="Center" Margin="0,299,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Vad heter du?:" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Foreground="White"/>
 
         <Label Content="Hänga Gubbe" HorizontalAlignment="Left" Margin="171,76,0,0" VerticalAlignment="Top" Height="115" Width="464" FontSize="72" Foreground="White"/>
-        <Button  HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Width="168" Background="{x:Null}" Content="Inte första gången?" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button Click="Button_Click_3" HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Width="168" Background="{x:Null}" Content="Inte första gången?" BorderBrush="{x:Null}" Foreground="White"/>
         <Border BorderThickness="1" BorderBrush="White" Margin="334,387,340,62"/>
         <TextBox HorizontalAlignment="Center" Margin="0,276,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
         <Label Foreground="Red" Content="Detta namn har använt redan :(" HorizontalAlignment="Left" Margin="484,276,0,0" VerticalAlignment="Top"/>
-        <Button Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Left" Margin="675,420,0,0" VerticalAlignment="Top" Width="115"/>
+        <Button Click="Button_Click_1" Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Left" Margin="675,420,0,0" VerticalAlignment="Top" Width="115"/>
 
 
     </Grid>

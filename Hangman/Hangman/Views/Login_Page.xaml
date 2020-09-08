@@ -9,14 +9,14 @@
       Title="Login">
 
     <Grid Background="Black">
-        <Button Content="Logga in" HorizontalAlignment="Center" Margin="0,299,0,0" VerticalAlignment="Top" Width="152"/>
+        <Button Click="Button_Click" Content="Logga in" HorizontalAlignment="Center" Margin="0,299,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Vem är du?:" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Foreground="White"/>
 
         <Label Content="Hänga Gubbe" HorizontalAlignment="Left" Margin="171,76,0,0" VerticalAlignment="Top" Height="115" Width="464" FontSize="72" Foreground="White"/>
         <ComboBox HorizontalAlignment="Center" Margin="0,271,0,0" VerticalAlignment="Top" Width="152"/>
-        <Button  HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Width="168" Background="{x:Null}" Content="Är du en ny spelare?" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button Click="Button_Click_2" HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Width="168" Background="{x:Null}" Content="Är du en ny spelare?" BorderBrush="{x:Null}" Foreground="White"/>
         <Border BorderThickness="1" BorderBrush="White" Margin="334,387,340,62"/>
-        <Button Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Left" Margin="675,420,0,0" VerticalAlignment="Top" Width="115"/>
+        <Button Click="Button_Click_1" Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Left" Margin="675,420,0,0" VerticalAlignment="Top" Width="115"/>
 
 
     </Grid>

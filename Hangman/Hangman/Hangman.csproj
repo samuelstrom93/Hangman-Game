@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\hänggubbe1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\hänggubbe1.png" />
   </ItemGroup>
 
 </Project>
