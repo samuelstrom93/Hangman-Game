@@ -5,20 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="CreateUser_Page">
+      d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
+      Title="CreateUser_Page" Background="Black">
 
 
-    <Grid Background="Black">
-        <Button Click="Button_Click_2" Content="Registrera" HorizontalAlignment="Center" Margin="0,299,0,0" VerticalAlignment="Top" Width="152"/>
-        <Label Content="Vad heter du?:" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Foreground="White"/>
+    <Grid >
 
-        <Label Content="Hänga Gubbe" HorizontalAlignment="Left" Margin="171,76,0,0" VerticalAlignment="Top" Height="115" Width="464" FontSize="72" Foreground="White"/>
-        <Button Click="Button_Click_3" HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Width="168" Background="{x:Null}" Content="Inte första gången?" BorderBrush="{x:Null}" Foreground="White"/>
-        <Border BorderThickness="1" BorderBrush="White" Margin="334,387,340,62"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,276,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-        <Label Foreground="Red" Content="Detta namn har använt redan :(" HorizontalAlignment="Left" Margin="484,276,0,0" VerticalAlignment="Top"/>
-        <Button Click="Button_Click_1" Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Left" Margin="675,420,0,0" VerticalAlignment="Top" Width="115"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="170,120,0,0">
+            <Label Content="Vad heter du?:" Foreground="White" HorizontalAlignment="Left" Margin="30,0,0,0"/>
+            <StackPanel  Orientation="Horizontal">
+                <TextBox HorizontalAlignment="Center" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+                <Label Foreground="Red" Content="Detta namn har använt redan :(" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </StackPanel>
+            <Button Click="Button_Click_2" Content="Registrera" Width="152" Height="20" HorizontalAlignment="Left"/>
+
+
+        </StackPanel>
+
+        <Label Content="Hänga Gubbe" HorizontalAlignment="Center" VerticalAlignment="Top" Height="115" Width="464" FontSize="72" Foreground="White" Margin="0,70,0,0"/>
+        <Button Click="Button_Click_3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="168" Background="{x:Null}" Content="Inte första gången?" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,0,20"/>
+        <Button Click="Button_Click_1" Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="20" Width="115"/>
 
 
     </Grid>
