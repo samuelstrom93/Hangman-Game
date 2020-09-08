@@ -9,6 +9,9 @@
       Title="Help_Page">
 
     <Grid>
-        
+        <Label Content="Game Guide"  HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="344" FontSize="48"/>
+        <TextBlock Padding="20" Background="#FFEAEAEA" HorizontalAlignment="Left" Margin="178,119,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="253" Width="394" FontSize="14"/>
+        <Button Content="Okej, förstått!" HorizontalAlignment="Left" Margin="432,392,0,0" VerticalAlignment="Top" Width="140" Background="White"/>
+
     </Grid>
 </Page>
