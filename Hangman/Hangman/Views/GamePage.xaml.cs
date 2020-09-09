@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hangman.Models;
+using Hangman.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,10 +25,19 @@ namespace Hangman.Views
             InitializeComponent();
         }
 
+
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var w = new HelpWindow();
             w.Show();
+        }
+
+        private void StartaSpel_click(object sender, RoutedEventArgs e)
+        {
+            Random random = new Random();
+            // id för orden i databasen är just mellan dessa siffror för tillfället
+            int randNum = random.Next(46, 50);
+            Word word = Word_Repository.GetRandomWord(randNum);
         }
     }
 }
