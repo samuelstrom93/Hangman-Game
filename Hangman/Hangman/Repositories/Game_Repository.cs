@@ -12,9 +12,9 @@ namespace Hangman.Repositories
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region CREATE
-        public static void CreateGame(Game game)
+        public static int CreateGame(Game game)
         {
-            string stmt = "INSERT INTO game(id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id) values(@id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id) returning id";
+            string stmt = "INSERT INTO game(is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id) values(@is_won ,@number_of_tries, @start_time, @end_time,@number_of_incorrect_tries, @player_id, @word_id) returning id";
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
@@ -38,7 +38,7 @@ namespace Hangman.Repositories
                             int id = (int)command.ExecuteScalar();
                             trans.Commit();
                             game.Id = id;
-                            //return id;
+                            return id;
                         }
                         catch (PostgresException)
                         {
