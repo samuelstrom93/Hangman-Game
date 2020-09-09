@@ -9,7 +9,7 @@ namespace Hangman.Repositories
 {
     public static class HighscoresRepository
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
+        private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         /// <summary>
         /// Hämtar topplistan för spel
@@ -21,14 +21,14 @@ namespace Hangman.Repositories
         {
             var result = new List<HighscoreGame>();
             var queryString = "select number_of_tries, number_of_incorrect_tries, player.name as player_name, word.name as word_name, (select end_time - start_time as game_time) from game"
-                + "\nleft join player on player.id = player_id"
-                + "\nleft join word on word.id = word_id"
+                + "\ninner join player on player.id = player_id"
+                + "\ninner join word on word.id = word_id"
                 + "\nwhere is_won is true"
-                + $"{(playerId.HasValue ? $"\nwhere player_id=@playerid" : string.Empty)}"
+                + $"{(playerId.HasValue ? $" and player_id=@playerid" : string.Empty)}"
                 + "\norder by number_of_incorrect_tries, game_time"
                 + $"\nlimit {numHighscores}";
 
-            using (var conn = new NpgsqlConnection(connectionString))
+            using (var conn = new NpgsqlConnection(_connectionString))
             {
                 conn.Open();
                 using (var command = new NpgsqlCommand(queryString, conn))
@@ -68,9 +68,37 @@ namespace Hangman.Repositories
         /// Hämta mest frekventa spelarna
         /// </summary>
         /// <returns>Dictionary med spelarnamn som nyckel och antal spelade spel som värde.</returns>
-        public static IDictionary<string, int> GetTopDiligent(int numPlayers = 10)
+        public static IDictionary<string, long> GetTopDiligentPlayers(int numPlayers = 10)
         {
-            return null;
+            var result = new Dictionary<string, long>();
+            var queryString = "select player.name as player_name, (select count(game)) as count from game"
+                + "\ninner join player on player.id = player_id"
+                + "\nwhere is_won is true"
+                + "\ngroup by player_name"
+                + "\norder by count desc"
+                + $"\nlimit {numPlayers}";
+
+            using (var conn = new NpgsqlConnection(_connectionString))
+            {
+                conn.Open();
+                using (var command = new NpgsqlCommand(queryString, conn))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            return null;
+                        }
+
+                        while (reader.Read())
+                        {
+                            result.Add((string)reader["player_name"], (long)reader["count"]);
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
