@@ -16,9 +16,9 @@ namespace Hangman.Views
     /// <summary>
     /// Gameover_Page.xaml の相互作用ロジック
     /// </summary>
-    public partial class Gameover_Page : Page
+    public partial class GameEnd_Page : Page
     {
-        public Gameover_Page()
+        public GameEnd_Page()
         {
             InitializeComponent();
         }
