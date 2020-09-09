@@ -4,15 +4,12 @@ using System.Text;
 
 namespace Hangman.Models
 {
-    public class HighscoreGame : IGame
+    public class HighscoreGame
     {
         public string PlayerName { get; set; }
         public string Word { get; set; }
-
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
         public int NumberOfIncorrectTries { get; set; }
         public int NumberOfTries { get; set; }
-        public bool IsWon { get; set; }
+        public TimeSpan GameTime { get; set; }
     }
 }
