@@ -12,7 +12,7 @@ namespace Hangman.Repositories
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region CREATE
-        public static int CreateGame(Game game)
+        public static int AddGame(Game game)
         {
             string stmt = "INSERT INTO game(is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id) values(@is_won ,@number_of_tries, @start_time, @end_time,@number_of_incorrect_tries, @player_id, @word_id) returning id";
 
@@ -52,7 +52,7 @@ namespace Hangman.Repositories
         #endregion
 
         #region READ
-        public static Game ReadGameFromGameID(int id)
+        public static Game GetGameFromID(int id)
         {
             string stmt = "select id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id from game where id = @id";
 
@@ -86,7 +86,7 @@ namespace Hangman.Repositories
             }
         }
 
-        public static Game ReadGameFromPlayerID(int id)
+        public static Game GetGameFromPlayerID(int id)
         {
             string stmt = "select id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id from game where id = @player_id";
 
@@ -120,7 +120,7 @@ namespace Hangman.Repositories
             }
         }
 
-        public static Game ReadGameFromWordID(int id)
+        public static Game GetGameFromWordID(int id)
         {
             string stmt = "select id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id from game where id = @word_id";
 
