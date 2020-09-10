@@ -34,10 +34,7 @@ namespace Hangman.Views
 
         private void StartaSpel_click(object sender, RoutedEventArgs e)
         {
-            Random random = new Random();
-            // id för orden i databasen är just mellan dessa siffror för tillfället
-            int randNum = random.Next(46, 56);
-            Word word = Word_Repository.GetRandomWord(randNum);
+            Word word = Word_Repository.GetRandomWord();
         }
     }
 }
