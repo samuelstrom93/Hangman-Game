@@ -17,9 +17,41 @@ namespace Hangman.ViewModels
 
         public ICommand GameStartCommand { get; set; }
         public ICommand StopWatchHideCommand { get; set; }
-        public ICommand GameJudgeCommand { get; set; }
+        
 
 
+        #endregion
+
+        #region CommandsForKeys
+        public ICommand SelectedKeyCommandA { get; set; }
+        public ICommand SelectedKeyCommandB { get; set; }
+        public ICommand SelectedKeyCommandC { get; set; }
+        public ICommand SelectedKeyCommandD { get; set; }
+        public ICommand SelectedKeyCommandE { get; set; }
+        public ICommand SelectedKeyCommandF { get; set; }
+        public ICommand SelectedKeyCommandG { get; set; }
+        public ICommand SelectedKeyCommandH { get; set; }
+        public ICommand SelectedKeyCommandI { get; set; }
+        public ICommand SelectedKeyCommandJ { get; set; }
+        public ICommand SelectedKeyCommandK { get; set; }
+        public ICommand SelectedKeyCommandL { get; set; }
+        public ICommand SelectedKeyCommandM { get; set; }
+        public ICommand SelectedKeyCommandN { get; set; }
+        public ICommand SelectedKeyCommandO { get; set; }
+        public ICommand SelectedKeyCommandP { get; set; }
+        public ICommand SelectedKeyCommandQ { get; set; }
+        public ICommand SelectedKeyCommandR { get; set; }
+        public ICommand SelectedKeyCommandS { get; set; }
+        public ICommand SelectedKeyCommandT { get; set; }
+        public ICommand SelectedKeyCommandU { get; set; }
+        public ICommand SelectedKeyCommandV { get; set; }
+        public ICommand SelectedKeyCommandW { get; set; }
+        public ICommand SelectedKeyCommandX { get; set; }
+        public ICommand SelectedKeyCommandY { get; set; }
+        public ICommand SelectedKeyCommandZ { get; set; }
+        public ICommand SelectedKeyCommandOO { get; set; }
+        public ICommand SelectedKeyCommandAA { get; set; }
+        public ICommand SelectedKeyCommandAE { get; set; }
         #endregion
 
         #region StopWatch
@@ -43,6 +75,8 @@ namespace Hangman.ViewModels
         private int numberOfTriesMAX;   // 0 =GAME OVER
         private int numberOfTies;
         private int numberOfIncorrectTries;
+        private string selectedKey;
+        private string upperWord;
 
 
         public GamePageViewModel()
@@ -50,9 +84,28 @@ namespace Hangman.ViewModels
             MakeDemoPlayer(); //TA BORT SENARE
 
             GameStartCommand = new RelayCommand(StartGame);
-            IsStopWatchView = true;
+            MakeCommandsForKeys();
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+
+            IsStopWatchView = true;
             MakeStopWatch();
+        }
+
+        
+        private void JudgeGame()
+        {
+
+            if (numberOfTriesMAX == 0)
+            {
+                EndGame();
+            }
+            
+        }
+
+        private void EndGame()
+        {
+            game.EndTime = DateTime.Now;
+            StopStopWatch();
         }
 
         private void MakeDemoPlayer()
@@ -103,6 +156,7 @@ namespace Hangman.ViewModels
         private void MakeWord()
         {
             word = GetRandomWord();
+            upperWord = word.Name.ToUpper();
         }
 
         private void MakeGame()
@@ -138,5 +192,187 @@ namespace Hangman.ViewModels
             stopWatch.Reset();
             Timer = "00:00:00";
         }
+
+        #region MethodsForKeys
+        private void MakeCommandsForKeys()
+        {
+            SelectedKeyCommandA = new RelayCommand(SelectKeyA);
+            SelectedKeyCommandB = new RelayCommand(SelectKeyB);
+            SelectedKeyCommandC = new RelayCommand(SelectKeyC);
+            SelectedKeyCommandD = new RelayCommand(SelectKeyD);
+            SelectedKeyCommandE = new RelayCommand(SelectKeyE);
+            SelectedKeyCommandF = new RelayCommand(SelectKeyF);
+            SelectedKeyCommandG = new RelayCommand(SelectKeyG);
+            SelectedKeyCommandH = new RelayCommand(SelectKeyH);
+            SelectedKeyCommandI = new RelayCommand(SelectKeyI);
+            SelectedKeyCommandJ = new RelayCommand(SelectKeyJ);
+            SelectedKeyCommandK = new RelayCommand(SelectKeyK);
+            SelectedKeyCommandL = new RelayCommand(SelectKeyL);
+            SelectedKeyCommandM = new RelayCommand(SelectKeyM);
+            SelectedKeyCommandN = new RelayCommand(SelectKeyN);
+            SelectedKeyCommandO = new RelayCommand(SelectKeyO);
+            SelectedKeyCommandP = new RelayCommand(SelectKeyP);
+            SelectedKeyCommandQ = new RelayCommand(SelectKeyQ);
+            SelectedKeyCommandR = new RelayCommand(SelectKeyR);
+            SelectedKeyCommandS = new RelayCommand(SelecKeyS);
+            SelectedKeyCommandT = new RelayCommand(SelectKeyT);
+            SelectedKeyCommandU = new RelayCommand(SelectKeyU);
+            SelectedKeyCommandV = new RelayCommand(SelectKeyV);
+            SelectedKeyCommandW = new RelayCommand(SelectKeyW);
+            SelectedKeyCommandX = new RelayCommand(SelectKeyX);
+            SelectedKeyCommandY = new RelayCommand(SelectKeyY);
+            SelectedKeyCommandZ = new RelayCommand(SelectKeyZ);
+            SelectedKeyCommandAA = new RelayCommand(SelectKeyAA);
+            SelectedKeyCommandAE = new RelayCommand(SelectKeyAE);
+            SelectedKeyCommandOO = new RelayCommand(SelectKeyOO);
+        }
+
+        private void SelectKeyA()
+        {
+            selectedKey ="A";
+        }
+
+        private void SelectKeyB()
+        {
+            selectedKey = "B";
+        }
+
+        private void SelectKeyC()
+        {
+            selectedKey = "C";
+        }
+
+        private void SelectKeyD()
+        {
+            selectedKey = "D";
+        }
+
+        private void SelectKeyE()
+        {
+            selectedKey = "E";
+        }
+
+        private void SelectKeyF()
+        {
+            selectedKey = "F";
+        }
+
+        private void SelectKeyG()
+        {
+            selectedKey = "G";
+        }
+
+        private void SelectKeyH()
+        {
+            selectedKey = "H";
+        }
+
+        private void SelectKeyI()
+        {
+            selectedKey = "I";
+        }
+
+        private void SelectKeyJ()
+        {
+            selectedKey = "J";
+        }
+
+        private void SelectKeyK()
+        {
+            selectedKey = "K";
+        }
+
+        private void SelectKeyL()
+        {
+            selectedKey = "L";
+        }
+
+        private void SelectKeyM()
+        {
+            selectedKey = "M";
+        }
+
+        private void SelectKeyN()
+        {
+            selectedKey = "N";
+        }
+
+        private void SelectKeyO()
+        {
+            selectedKey = "O";
+        }
+
+        private void SelectKeyQ()
+        {
+            selectedKey = "Q";
+        }
+
+        private void SelectKeyP()
+        {
+            selectedKey = "P";
+        }
+
+        private void SelectKeyR()
+        {
+            selectedKey = "R";
+        }
+
+        private void SelecKeyS()
+        {
+            selectedKey = "S";
+        }
+
+        private void SelectKeyT()
+        {
+            selectedKey = "T";
+        }
+
+        private void SelectKeyU()
+        {
+            selectedKey = "U";
+        }
+
+        private void SelectKeyV()
+        {
+            selectedKey = "V";
+        }
+
+        private void SelectKeyW()
+        {
+            selectedKey = "W";
+        }
+
+        private void SelectKeyX()
+        {
+            selectedKey = "X";
+        }
+
+        private void SelectKeyY()
+        {
+            selectedKey = "Y";
+        }
+
+        private void SelectKeyZ()
+        {
+            selectedKey = "Z";
+        }
+
+        private void SelectKeyAA()
+        {
+            selectedKey = "AA";
+        }
+
+        private void SelectKeyAE()
+        {
+            selectedKey = "AE";
+        }
+
+        private void SelectKeyOO()
+        {
+            selectedKey = "OO";
+        }
+
+
+        #endregion
     }
 }
