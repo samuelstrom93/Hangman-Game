@@ -12,10 +12,9 @@ namespace Hangman.Repositories
 
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
         // randomId måste vara mellan 46-50 för att få en träff i databasen
-        public static Word GetRandomWord(int randomId)
+        public static Word GetRandomWord()
         {
-            string stmt = $"SELECT name, description FROM word WHERE id = {randomId}";
-
+            string stmt = $"SELECT id, name, hint FROM word ORDER BY RANDOM() LIMIT 1";
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 Word word;
@@ -29,9 +28,9 @@ namespace Hangman.Repositories
                         {
                             word = new Word
                             {
-                                Id = randomId,
+                                Id = (int)reader["id"],
                                 Name = (string)reader["name"],
-                                Description = (string)reader["description"],
+                                Hint = (string)reader["hint"],
                             };
                             return word;
                         }
