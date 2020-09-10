@@ -20,9 +20,13 @@
                     <Border.Background>
                         <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
                     </Border.Background>
-                    <Border BorderBrush="Gray" BorderThickness="1" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                        <TextBlock Padding="4">00:01:29</TextBlock>
-                    </Border>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
+                        <Button Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding StopWatchHideCommand}">
+                            <Image Source="/Assets/Images/timer.png"></Image>
+                        </Button>
+                        <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility} }" ></TextBlock>
+                    </WrapPanel>
+
                 </Border>
                 <Border BorderThickness="1" Background="#EEF0F2" Width="400" Height="60">
                     <Grid>
@@ -46,9 +50,9 @@
                 </Border>
                 <Border BorderThickness="1" Background="#ECEBE4" Height="200" Width="400">
                     <WrapPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Name="btnA" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="btnA_Click">A</Button>
-                        <Button Name ="btnB" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="btnB_Click">B</Button>
-                        <Button Name ="btnC" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="btnC_Click">C</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">A</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">B</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">C</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">D</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">E</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">F</Button>
@@ -77,26 +81,15 @@
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ö</Button>
                     </WrapPanel>
                 </Border>
-                <StackPanel Orientation="Horizontal">
-                    <Button Background="#ECEBE4" Padding="35,8,35,8" Margin="0,5,0,5" Content="Ledtråd" Click="Hint_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Button Background="#ECEBE4" Padding="35,8,35,8" Margin="180,5,0,5" Click="StartaSpel_click">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </Button.Resources>
-                        START
-                    </Button>
-                </StackPanel>
-                    <TextBlock HorizontalAlignment="Right" TextDecorations="Underline" Margin="0,0,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
-                <Label Name="lblHint" FontStyle="Italic" HorizontalAlignment="Left"></Label>
-                
+                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click" Command="{Binding GameStartCommand}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    START
+                </Button>
+                <TextBlock HorizontalAlignment="Right" TextDecorations="Underline" Margin="0,0,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
             </StackPanel>
         </Grid>
     </Border>
