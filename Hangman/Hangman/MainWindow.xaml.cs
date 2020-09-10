@@ -29,6 +29,13 @@ namespace Hangman
 
             Main.Content = new Login();
             this.SizeToContent = SizeToContent.Height;
+
+            ViewGameEnd();
+        }
+
+        private void ViewGameEnd()
+        {
+            Main.Content = new GameEnd_Page();
         }
     }
 }
