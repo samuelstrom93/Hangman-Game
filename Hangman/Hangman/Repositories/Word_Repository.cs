@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace Hangman.Repositories
 {
-    class Word_Repository
+    public class Word_Repository
     {
 
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
@@ -40,7 +40,54 @@ namespace Hangman.Repositories
             return null;
         }
 
+        public static bool TryAddWord(string word, string hint, out Word addedWord)
+        {
+            addedWord = null;
+            if (string.IsNullOrWhiteSpace(word) || string.IsNullOrWhiteSpace(hint))
+            {
+                return false;
+            }
 
+            string query = "INSERT INTO word(name, hint) VALUES (@word, @hint) returning id";
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                conn.Open();
+
+                try
+                {
+                    using (var command = new NpgsqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("word", word);
+                        command.Parameters.AddWithValue("hint", hint);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+
+                            int id = (int)reader["id"];
+                            if (id < 1)
+                            {
+                                return false;
+                            }
+
+                            addedWord = new Word
+                            {
+                                Id = id,
+                                Name = word,
+                                Hint = hint,
+                            };
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    // TODO
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
     }
 }
