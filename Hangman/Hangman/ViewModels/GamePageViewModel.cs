@@ -1,4 +1,6 @@
-﻿using Hangman.ViewModels.Base;
+﻿using Hangman.Models;
+using Hangman.Repositories;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,7 +19,33 @@ namespace Hangman.ViewModels
 
         private DispatcherTimer dispatcherTimer;
         private Stopwatch stopWatch;
+
+
+        // hint
+
+        private IWord word;
+
+        public string Hint { get; set; }
+        //public string Hint { get
+        //    {
+        //        if (word.Hint == null)
+        //        {
+        //            word.Hint = "ingen hint"
+        //        }
+        //        return word.Hint;
+        //    }
+        //    ; set
+        //        ; }
+
+        public ICommand ShowHintCommand { get; set; }
+
         
+
+        public void ShowHint()
+        {
+            Hint = word.Hint:
+        }
+
 
 
         public GamePageViewModel()
@@ -26,6 +54,8 @@ namespace Hangman.ViewModels
             IsStopWatchView = true;
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             MakeStopWatch();
+
+            ShowHintCommand = new RelayCommand(ShowHint);
         }
 
         private void HideOrViewStopWatch()
@@ -60,9 +90,12 @@ namespace Hangman.ViewModels
             }
         }
 
+        //this.word = word;
+        //    IWord word
         private void StartGame()
         {
             StartStopWatch();
+            word = Word_Repository.GetRandomWord();
         }
 
         private void StartStopWatch()

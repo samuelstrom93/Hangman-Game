@@ -81,7 +81,15 @@
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ö</Button>
                     </WrapPanel>
                 </Border>
-                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click" Command="{Binding GameStartCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources> Ledtråd
+                    </Button>
+                    <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="208,5,0,5" Command="{Binding GameStartCommand}">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -89,7 +97,9 @@
                     </Button.Resources>
                     START
                 </Button>
+                </StackPanel>
                 <TextBlock HorizontalAlignment="Right" TextDecorations="Underline" Margin="0,0,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
+                <TextBlock FontStyle="Italic" Text="{Binding Hint}"  HorizontalAlignment="Left"></TextBlock>
             </StackPanel>
         </Grid>
     </Border>

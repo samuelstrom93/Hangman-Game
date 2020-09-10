@@ -28,75 +28,11 @@ namespace Hangman.Views
         }
         Word word;
 
-        private void TryWordContainsLetter(string s)
-        {
-            try
-            {
-                if (word.Name.Contains(s.ToLower()) || word.Name.Contains(s.ToUpper()))
-                {
-                    btnA.Background = Brushes.Green;
-                }
-                else
-                {
-                    btnA.Background = Brushes.Red;
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-        }
-
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var w = new HelpWindow();
             w.Show();
         }
-
-        private void StartaSpel_click(object sender, RoutedEventArgs e)
-        {
-            word = Word_Repository.GetRandomWord();
-            // Gör en metod för att konverta/resetta tillbaka knappar till originalfärg?
-
-        }
-
-        private void Hint_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                lblHint.Content = word.Hint;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            
-        }
-
-
-
-        #region Knappar A-Ö
-        private void btnA_Click(object sender, RoutedEventArgs e)
-        {
-            TryWordContainsLetter(btnA.Content.ToString());
-        }
-
-        private void btnB_Click(object sender, RoutedEventArgs e)
-        {
-            TryWordContainsLetter(btnB.Content.ToString());
-        }
-
-        private void btnC_Click(object sender, RoutedEventArgs e)
-        {
-            TryWordContainsLetter(btnC.Content.ToString());
-        }
-
-
-
-        #endregion
 
 
     }
