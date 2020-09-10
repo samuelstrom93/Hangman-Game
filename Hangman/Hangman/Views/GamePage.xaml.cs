@@ -36,7 +36,7 @@ namespace Hangman.Views
         {
             Random random = new Random();
             // id för orden i databasen är just mellan dessa siffror för tillfället
-            int randNum = random.Next(46, 50);
+            int randNum = random.Next(46, 56);
             Word word = Word_Repository.GetRandomWord(randNum);
         }
     }

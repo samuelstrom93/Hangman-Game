@@ -9,6 +9,7 @@ namespace Hangman.Repositories
 {
     class Word_Repository
     {
+
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
         // randomId måste vara mellan 46-50 för att få en träff i databasen
         public static Word GetRandomWord(int randomId)
