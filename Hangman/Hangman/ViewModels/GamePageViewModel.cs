@@ -1,4 +1,6 @@
-﻿using Hangman.ViewModels.Base;
+﻿using Hangman.Models;
+using Hangman.ViewModels.Base;
+using static Hangman.Repositories.Player_Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,15 +19,26 @@ namespace Hangman.ViewModels
 
         private DispatcherTimer dispatcherTimer;
         private Stopwatch stopWatch;
+
+        private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         
 
 
         public GamePageViewModel()
         {
+            MakeDemoPlayer(); //TA BORT SENARE
+
             GameStartCommand = new RelayCommand(StartGame);
             IsStopWatchView = true;
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             MakeStopWatch();
+        }
+
+        private void MakeDemoPlayer()
+        {
+            string testPlayerName = "TestMan";
+            CreatePlayer(testPlayerName);
+            playerTEST = GetPlayer(testPlayerName);
         }
 
         private void HideOrViewStopWatch()
@@ -63,6 +76,7 @@ namespace Hangman.ViewModels
         private void StartGame()
         {
             StartStopWatch();
+
         }
 
         private void StartStopWatch()
