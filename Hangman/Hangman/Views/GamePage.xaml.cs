@@ -26,7 +26,6 @@ namespace Hangman.Views
             InitializeComponent();
             DataContext = new GamePageViewModel();
         }
-        Word word;
 
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {

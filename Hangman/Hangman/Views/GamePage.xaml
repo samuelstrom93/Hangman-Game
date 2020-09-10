@@ -99,7 +99,7 @@
                 </Button>
                 </StackPanel>
                 <TextBlock HorizontalAlignment="Right" TextDecorations="Underline" Margin="0,0,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
-                <TextBlock FontStyle="Italic" Text="{Binding Hint}"  HorizontalAlignment="Left"></TextBlock>
+                <TextBlock FontStyle="Italic" Text="{Binding Word.Hint}"  HorizontalAlignment="Left"></TextBlock>
             </StackPanel>
         </Grid>
     </Border>
