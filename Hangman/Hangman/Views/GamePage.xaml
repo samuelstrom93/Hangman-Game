@@ -46,9 +46,9 @@
                 </Border>
                 <Border BorderThickness="1" Background="#ECEBE4" Height="200" Width="400">
                     <WrapPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">A</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">B</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">C</Button>
+                        <Button Name="btnA" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="btnA_Click">A</Button>
+                        <Button Name ="btnB" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="btnB_Click">B</Button>
+                        <Button Name ="btnC" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="btnC_Click">C</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">D</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">E</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">F</Button>
@@ -77,15 +77,26 @@
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ö</Button>
                     </WrapPanel>
                 </Border>
-                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
-                    START
-                </Button>
-                <TextBlock HorizontalAlignment="Right" TextDecorations="Underline" Margin="0,0,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Button Background="#ECEBE4" Padding="35,8,35,8" Margin="0,5,0,5" Content="Ledtråd" Click="Hint_Click">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Background="#ECEBE4" Padding="35,8,35,8" Margin="180,5,0,5" Click="StartaSpel_click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        START
+                    </Button>
+                </StackPanel>
+                    <TextBlock HorizontalAlignment="Right" TextDecorations="Underline" Margin="0,0,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
+                <Label Name="lblHint" FontStyle="Italic" HorizontalAlignment="Left"></Label>
+                
             </StackPanel>
         </Grid>
     </Border>
