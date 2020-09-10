@@ -1,5 +1,6 @@
 ﻿using Hangman.Models;
 using Hangman.Repositories;
+using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Hangman.Views
         public GamePage()
         {
             InitializeComponent();
+            DataContext = new GamePageViewModel();
         }
 
 
