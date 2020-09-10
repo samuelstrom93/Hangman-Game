@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Hangman"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
          
     </Application.Resources>
 </Application>
