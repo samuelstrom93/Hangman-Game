@@ -50,35 +50,35 @@
                 </Border>
                 <Border BorderThickness="1" Background="#ECEBE4" Height="200" Width="400">
                     <WrapPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">A</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">B</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">C</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">D</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">E</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">F</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">G</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">H</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">I</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">J</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">K</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">L</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">M</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">N</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">O</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">P</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Q</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">R</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">S</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">T</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">U</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">V</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">W</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">X</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Y</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Z</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Å</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ä</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ö</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Command="{Binding GameJudgeCommand}" >A</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">B</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">C</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">D</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">E</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">F</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">G</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">H</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">I</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">J</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">K</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">L</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">M</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">N</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">O</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">P</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">Q</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">R</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">S</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">T</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">U</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">V</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">W</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">X</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">Y</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">Z</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">Å</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">Ä</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding GameJudgeCommand}">Ö</Button>
                     </WrapPanel>
                 </Border>
                 <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click" Command="{Binding GameStartCommand}">

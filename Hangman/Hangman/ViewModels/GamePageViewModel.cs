@@ -1,6 +1,7 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels.Base;
 using static Hangman.Repositories.Player_Repository;
+using static Hangman.Repositories.Word_Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,16 +13,36 @@ namespace Hangman.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
+        #region Commands
+
         public ICommand GameStartCommand { get; set; }
         public ICommand StopWatchHideCommand { get; set; }
+        public ICommand GameJudgeCommand { get; set; }
+
+
+        #endregion
+
+        #region StopWatch
+
         public string Timer { get; set; }
         public bool IsStopWatchView { get; private set; }
 
         private DispatcherTimer dispatcherTimer;
         private Stopwatch stopWatch;
 
+        #endregion
+
+        #region PropertiesForGameStart
+
         private IPlayer playerTEST { get; set; }    //TA BORT SENARE
-        
+        private IGame game { get; set; }
+        private Word word { get; set; }
+
+        #endregion
+
+        private int numberOfTriesMAX;   // 0 =GAME OVER
+        private int numberOfTies;
+        private int numberOfIncorrectTries;
 
 
         public GamePageViewModel()
@@ -37,7 +58,7 @@ namespace Hangman.ViewModels
         private void MakeDemoPlayer()
         {
             string testPlayerName = "TestMan";
-            CreatePlayer(testPlayerName);
+            //CreatePlayer(testPlayerName);
             playerTEST = GetPlayer(testPlayerName);
         }
 
@@ -51,7 +72,6 @@ namespace Hangman.ViewModels
             {
                 IsStopWatchView = true;
             }
-
         }
 
         private void MakeStopWatch()
@@ -76,7 +96,29 @@ namespace Hangman.ViewModels
         private void StartGame()
         {
             StartStopWatch();
+            MakeWord();
+            MakeGame();
+        }
 
+        private void MakeWord()
+        {
+            word = GetRandomWord();
+        }
+
+        private void MakeGame()
+        {
+            game = new Game
+            {
+                IsWon = false,
+                NumberOfIncorrectTries = 0,
+                NumberOfTries = 0,
+                StartTime = DateTime.Now,
+                PlayerId = playerTEST.Id,
+                WordId = word.Id
+
+            };
+
+            numberOfTriesMAX = 11;
         }
 
         private void StartStopWatch()
