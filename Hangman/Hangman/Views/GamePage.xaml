@@ -77,7 +77,7 @@
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ö</Button>
                     </WrapPanel>
                 </Border>
-                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5">
+                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
