@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Hangman.Repositories
 {
-    public static class HighscoresRepository
+    public static class HighscoreRepository
     {
         private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
