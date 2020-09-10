@@ -1,4 +1,5 @@
-﻿using Hangman.Views;
+﻿using Hangman.Repositories;
+using Hangman.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace Hangman
         public MainWindow()
         {
             InitializeComponent();
-            
+
             Main.Content = new Login();
             this.SizeToContent = SizeToContent.Height;
         }
