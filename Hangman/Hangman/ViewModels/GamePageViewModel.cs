@@ -67,8 +67,9 @@ namespace Hangman.ViewModels
         #region PropertiesForGameStart
 
         private IPlayer playerTEST { get; set; }    //TA BORT SENARE
-        private Game game { get; set; }
-        private Word word { get; set; }
+        private Game Game { get; set; }
+        private Word Word { get; set; }
+        private bool IsGameStart { get; set; }
 
         #endregion
 
@@ -97,7 +98,8 @@ namespace Hangman.ViewModels
             MakeStopWatch();
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             IsStopWatchView = true;
-            
+
+            IsGameStart = false;
         }
 
         private void MakeDemoPlayer() //TESTKOD. TA BORT SENARE
@@ -118,20 +120,20 @@ namespace Hangman.ViewModels
 
         private void MakeWord()
         {
-            word = GetRandomWord();
-            upperWord = word.Name.ToUpper();
+            Word = GetRandomWord();
+            upperWord = Word.Name.ToUpper();
         }
 
         private void MakeGame()
         {
-            game = new Game
+            Game = new Game
             {
                 IsWon = false,
                 NumberOfIncorrectTries = 0,
                 NumberOfTries = 0,
                 StartTime = DateTime.Now,
                 PlayerId = playerTEST.Id,
-                WordId = word.Id
+                WordId = Word.Id
 
             };
 
@@ -144,6 +146,7 @@ namespace Hangman.ViewModels
             numberOfIncorrectTries = 0;
             numberOfcorrectTries = 0;
             isWon = false;
+            IsGameStart = true;
         }
 
         private void JudgeGame()
@@ -174,18 +177,19 @@ namespace Hangman.ViewModels
 
         private void EndGame()
         {
-            game.EndTime = DateTime.Now;
+            Game.EndTime = DateTime.Now;
             StopStopWatch();
             SaveGameScore();
+            IsGameStart = false;
         }
 
         private void SaveGameScore()
         {
-            game.NumberOfIncorrectTries = numberOfIncorrectTries;
-            game.NumberOfTries = numberOfTies;
-            game.IsWon = isWon;
+            Game.NumberOfIncorrectTries = numberOfIncorrectTries;
+            Game.NumberOfTries = numberOfTies;
+            Game.IsWon = isWon;
 
-            AddGame(game);
+            AddGame(Game);
         }
 
         #endregion
@@ -279,175 +283,266 @@ namespace Hangman.ViewModels
         private void SelectKeyA()
         {
             selectedKey ="A";
-            JudgeGame();
+
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
+            
         }
 
         private void SelectKeyB()
         {
             selectedKey = "B";
-            JudgeGame();
+
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyC()
         {
             selectedKey = "C";
-            JudgeGame();
+
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyD()
         {
             selectedKey = "D";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyE()
         {
             selectedKey = "E";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyF()
         {
             selectedKey = "F";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyG()
         {
             selectedKey = "G";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyH()
         {
             selectedKey = "H";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyI()
         {
             selectedKey = "I";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyJ()
         {
             selectedKey = "J";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyK()
         {
             selectedKey = "K";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyL()
         {
             selectedKey = "L";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyM()
         {
             selectedKey = "M";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyN()
         {
             selectedKey = "N";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyO()
         {
             selectedKey = "O";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyQ()
         {
             selectedKey = "Q";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyP()
         {
             selectedKey = "P";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyR()
         {
             selectedKey = "R";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelecKeyS()
         {
             selectedKey = "S";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyT()
         {
             selectedKey = "T";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyU()
         {
             selectedKey = "U";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyV()
         {
             selectedKey = "V";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyW()
         {
             selectedKey = "W";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyX()
         {
             selectedKey = "X";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyY()
         {
             selectedKey = "Y";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyZ()
         {
             selectedKey = "Z";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyAA()
         {
             selectedKey = "AA";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyAE()
         {
             selectedKey = "AE";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
         private void SelectKeyOO()
         {
             selectedKey = "OO";
-            JudgeGame();
+            if (IsGameStart == true)
+            {
+                JudgeGame();
+            }
         }
 
 
