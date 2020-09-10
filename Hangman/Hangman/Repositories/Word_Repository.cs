@@ -29,7 +29,7 @@ namespace Hangman.Repositories
                             word = new Word
                             {
                                 Id = randomId,
-                                Name = (string)reader["id"],
+                                Name = (string)reader["name"],
                                 Description = (string)reader["description"],
                             };
                             return word;
