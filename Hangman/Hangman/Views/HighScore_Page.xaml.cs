@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Hangman.Repositories;
+using Hangman.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +24,15 @@ namespace Hangman.Views
         public HighScore_Page()
         {
             InitializeComponent();
+
+            var vm = new HighscoresViewModel
+            {
+                TopHighscores = HighscoreRepository.GetTopGames().ToList(),
+                TopCurrentPlayerHighscores = HighscoreRepository.GetTopGames(1).ToList(),
+                TopDiligentPlayers = (Dictionary<string, long>)HighscoreRepository.GetTopDiligentPlayers()
+            };
+
+            DataContext = vm;
         }
     }
 }

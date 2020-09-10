@@ -11,43 +11,117 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="300" />
+            <RowDefinition Height="350" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="210" />
-            <ColumnDefinition Width="210" />
-            <ColumnDefinition Width="210" />
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="220" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Margin="10" Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label HorizontalAlignment="Center">Dina bästa spel</Label>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Left">Ord</Label>
+                <Label HorizontalAlignment="Center" Grid.Column="1">Gissningar</Label>
+                <Label HorizontalAlignment="Right" Grid.Column="2">Tid</Label>
+            </Grid>
+            <ListBox HorizontalContentAlignment="Stretch" Grid.Row="2" ItemsSource="{Binding TopCurrentPlayerHighscores}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Left" Text="{Binding Path=Word}" />
+                            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=NumberOfIncorrectTries}" />
+                            <TextBlock HorizontalAlignment="Right" Grid.Column="2" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="2">
+        <Grid Margin="10" Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label HorizontalAlignment="Center">Top 10 bästa spel</Label>
+            <Label HorizontalAlignment="Center">Top 10 bästa spelen</Label>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Left">Namn</Label>
+                <Label HorizontalAlignment="Center" Grid.Column="1">Ord</Label>
+                <Label HorizontalAlignment="Center" Grid.Column="2">Gissningar</Label>
+                <Label HorizontalAlignment="Right" Grid.Column="3">Tid</Label>
+            </Grid>
+            <ListBox HorizontalContentAlignment="Stretch" Grid.Row="2" ItemsSource="{Binding TopHighscores}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Left" Text="{Binding Path=PlayerName}" />
+                            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=Word}" />
+                            <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=NumberOfIncorrectTries}" />
+                            <TextBlock HorizontalAlignment="Right" Grid.Column="3" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="3">
+        <Grid Margin="10" Grid.Row="1" Grid.Column="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label HorizontalAlignment="Center">Flitigaste spelarna</Label>
+            <Label HorizontalAlignment="Center">Dina bästa spel</Label>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Left">Namn</Label>
+                <Label HorizontalAlignment="Center" Grid.Column="1">Antal spel</Label>
+            </Grid>
+            <ListBox HorizontalContentAlignment="Stretch" Grid.Row="2" ItemsSource="{Binding TopDiligentPlayers}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Left" Text="{Binding Path=Key}" />
+                            <TextBlock HorizontalAlignment="Right" Grid.Column="2" Text="{Binding Path=Value}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
-        <Label Content="Din Topp3" HorizontalAlignment="Left" Margin="141,124,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.701,1.007" Height="31" Width="74"/>
-        <Label Content="Flest rundor" HorizontalAlignment="Left" Margin="350,127,0,0" VerticalAlignment="Top"/>
-        <ListBox Height="200" Margin="83,154,527,96"/>
-        <ListBox Height="200" Margin="287,155,314,95"/>
-        <ListBox Height="200" Margin="504,155,97,95"/>
-        <Label Content="Topplistan" HorizontalAlignment="Left" Margin="571,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.484,0.693"/>
-
     </Grid>
 </Page>
