@@ -11,15 +11,34 @@ namespace Hangman.ViewModels
     class GamePageViewModel : BaseViewModel
     {
         public ICommand GameStartCommand { get; set; }
+        public ICommand StopWatchHideCommand { get; set; }
         public string Timer { get; set; }
+        public bool IsStopWatchView { get; private set; }
 
         private DispatcherTimer dispatcherTimer;
         private Stopwatch stopWatch;
+        
+
 
         public GamePageViewModel()
         {
             GameStartCommand = new RelayCommand(StartGame);
+            IsStopWatchView = true;
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             MakeStopWatch();
+        }
+
+        private void HideOrViewStopWatch()
+        {
+            if (IsStopWatchView == true)
+            {
+                IsStopWatchView = false;
+            }
+            else
+            {
+                IsStopWatchView = true;
+            }
+
         }
 
         private void MakeStopWatch()

@@ -20,9 +20,13 @@
                     <Border.Background>
                         <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
                     </Border.Background>
-                    <Border BorderBrush="Gray" BorderThickness="1" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                        <TextBlock Padding="4" Text="{Binding Timer, FallbackValue=00:00:00}"></TextBlock>
-                    </Border>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
+                        <Button Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding StopWatchHideCommand}">
+                            <Image Source="/Assets/Images/timer.png"></Image>
+                        </Button>
+                        <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility} }" ></TextBlock>
+                    </WrapPanel>
+
                 </Border>
                 <Border BorderThickness="1" Background="#EEF0F2" Width="400" Height="60">
                     <Grid>
