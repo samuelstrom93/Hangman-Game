@@ -21,7 +21,7 @@
                         <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
                     </Border.Background>
                     <Border BorderBrush="Gray" BorderThickness="1" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                        <TextBlock Padding="4">00:01:29</TextBlock>
+                        <TextBlock Padding="4" Text="{Binding Timer, FallbackValue=00:00:00}"></TextBlock>
                     </Border>
                 </Border>
                 <Border BorderThickness="1" Background="#EEF0F2" Width="400" Height="60">
@@ -77,7 +77,7 @@
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ö</Button>
                     </WrapPanel>
                 </Border>
-                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click">
+                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click" Command="{Binding GameStartCommand}">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
