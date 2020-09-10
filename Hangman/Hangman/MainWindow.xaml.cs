@@ -30,10 +30,5 @@ namespace Hangman
             Main.Content = new HighScore_Page();
             this.SizeToContent = SizeToContent.Height;
         }
-
-        private void ViewGameEnd()
-        {
-            Main.Content = new GameEnd_Page();
-        }
     }
 }
