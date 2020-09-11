@@ -89,7 +89,7 @@ namespace Hangman.ViewModels
         private string selectedKey;
         private string upperWord;
 
-        public bool IsLetterClicked { get; set; } = true;
+        public bool IsGuessCorrect { get; set; }
 
         #endregion
 
@@ -189,6 +189,7 @@ namespace Hangman.ViewModels
                 numberOfTies++;
                 numberOfCorrectTries++;
                 numberOfCorrectTries_text = numberOfCorrectTries.ToString();
+                IsGuessCorrect = true;
             }
             else //Gissade fel
             {
@@ -196,6 +197,7 @@ namespace Hangman.ViewModels
                 numberOfLife = numberOfLife-1;
                 numberOfIncorrectTries++;
                 numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+                IsGuessCorrect = false;
             }
             if (numberOfCorrectTries == 6)  //Spelaren vann
             {
@@ -321,9 +323,6 @@ namespace Hangman.ViewModels
         {
             selectedKey ="A";
 
-            IsLetterClicked = false;
-
-
             if (IsGameStart == true)
             {
                 JudgeGame();
@@ -334,7 +333,6 @@ namespace Hangman.ViewModels
         private void SelectKeyB()
         {
             selectedKey = "B";
-            IsLetterClicked = false;
 
             if (IsGameStart == true)
             {
