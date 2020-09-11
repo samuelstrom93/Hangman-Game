@@ -40,6 +40,7 @@ namespace Hangman.Repositories
             }
             return null;
         }
+        #endregion
 
         public static bool TryAddWord(string word, string hint, out Word addedWord)
         {
