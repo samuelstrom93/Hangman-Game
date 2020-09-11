@@ -29,7 +29,6 @@ namespace Hangman
 
             Main.Content = new Login();
             this.SizeToContent = SizeToContent.Height;
-            
         }
     }
 }
