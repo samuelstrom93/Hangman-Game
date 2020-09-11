@@ -39,21 +39,31 @@ namespace Hangman.Views
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
+            ChangeBtnStyle((Button)sender);
+            ((Button)sender).IsEnabled = false;
+
+        }
+
+        private void ChangeBtnStyle(Button sender)
+        {
             if (gamePageViewModel.IsGuessCorrect)
             {
                 //((Button)sender).Background = Brushes.Green;
-                ((Button)sender).Foreground = Brushes.Green;
-
+                sender.Opacity = 0.5;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Green;
             }
             else
             {
                 //((Button)sender).Background = Brushes.Red;
-                ((Button)sender).Foreground = Brushes.Red;
+                sender.Opacity = 0.5;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Red;
+
             }
 
-            ((Button)sender).IsEnabled = false;
-
         }
-       
     }
 }
