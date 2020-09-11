@@ -89,7 +89,7 @@ namespace Hangman.ViewModels
         private string selectedKey;
         private string upperWord;
 
-        public bool IsLetterClicked { get; set; }
+        public bool IsLetterClicked { get; set; } = true;
 
         #endregion
 
@@ -321,6 +321,9 @@ namespace Hangman.ViewModels
         {
             selectedKey ="A";
 
+            IsLetterClicked = false;
+
+
             if (IsGameStart == true)
             {
                 JudgeGame();
@@ -331,6 +334,7 @@ namespace Hangman.ViewModels
         private void SelectKeyB()
         {
             selectedKey = "B";
+            IsLetterClicked = false;
 
             if (IsGameStart == true)
             {

@@ -35,7 +35,7 @@ namespace Hangman.Views
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
-
+            sender.is
         }
     }
 }

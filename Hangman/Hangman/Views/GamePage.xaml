@@ -53,8 +53,8 @@
                 <Border BorderThickness="1" Background="#ECEBE4" Height="200" Width="400">
                     <WrapPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Command="{Binding SelectedKeyCommandA}" Click="Letter_Click" >A</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandB}" Click="Letter_Click" >B</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Command="{Binding SelectedKeyCommandA}" IsEnabled="{Binding IsLetterClicked, FallbackValue=true}"  Click="Letter_Click" >A</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandB}" IsEnabled="{Binding IsLetterClicked, FallbackValue=true}" Click="Letter_Click" >B</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandC}" Click="Letter_Click" >C</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandD}" Click="Letter_Click">D</Button>
                         <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandE}" Click="Letter_Click">E</Button>
