@@ -27,7 +27,7 @@ namespace Hangman
         {
             InitializeComponent();
 
-            Main.Content = new HighScore_Page();
+            Main.Content = new Login();
             this.SizeToContent = SizeToContent.Height;
         }
     }
