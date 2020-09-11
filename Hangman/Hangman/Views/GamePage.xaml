@@ -50,38 +50,42 @@
                 </Border>
                 <Border BorderThickness="1" Background="#ECEBE4" Height="200" Width="400">
                     <WrapPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">A</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">B</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">C</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">D</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">E</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">F</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">G</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">H</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">I</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">J</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">K</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">L</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">M</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">N</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">O</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">P</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Q</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">R</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">S</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">T</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">U</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">V</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">W</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">X</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Y</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Z</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Å</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ä</Button>
-                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5">Ö</Button>
+
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Command="{Binding SelectedKeyCommandA}" >A</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandB}">B</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandC}">C</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandD}">D</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandE}">E</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandF}">F</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandG}">G</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandH}">H</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandI}">I</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandJ}">J</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandK}">K</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandL}">L</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandM}">M</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandN}">N</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandO}">O</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandP}">P</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandQ}">Q</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandR}">R</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandS}">S</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandT}">T</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandU}">U</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandV}">V</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandW}">W</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandX}">X</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandY}">Y</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandZ}">Z</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandOO}">Å</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandAA}">Ä</Button>
+                        <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Command="{Binding SelectedKeyCommandAE}">Ö</Button>
+
                     </WrapPanel>
+                    
                 </Border>
-                <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="35,8,35,8" Margin="0,5,0,5" Click="StartaSpel_click" Command="{Binding GameStartCommand}">
+                <StackPanel Orientation="Horizontal">
+                <Button Background="#ECEBE4" HorizontalAlignment="Left" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -89,7 +93,22 @@
                     </Button.Resources>
                     START
                 </Button>
-                <TextBlock HorizontalAlignment="Right" TextDecorations="Underline" Margin="0,0,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
+                    <TextBlock HorizontalAlignment="Right"  TextDecorations="Underline" Margin="215,5,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
+                </StackPanel>
+                <WrapPanel Orientation="Vertical">
+                    
+                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources> Ledtråd
+                    </Button>
+                    <TextBlock Margin="5, 5, 5, 5" FontWeight="Bold" Text="{Binding Word.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
+                </WrapPanel>
+                
+                
+                
             </StackPanel>
         </Grid>
     </Border>

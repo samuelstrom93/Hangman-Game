@@ -27,16 +27,12 @@ namespace Hangman.Views
             DataContext = new GamePageViewModel();
         }
 
-
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var w = new HelpWindow();
             w.Show();
         }
 
-        private void StartaSpel_click(object sender, RoutedEventArgs e)
-        {
-            Word word = Word_Repository.GetRandomWord();
-        }
+
     }
 }
