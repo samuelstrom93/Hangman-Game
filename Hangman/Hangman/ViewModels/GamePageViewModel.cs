@@ -1,4 +1,4 @@
-﻿using Hangman.Models;
+using Hangman.Models;
 using Hangman.ViewModels.Base;
 using static Hangman.Repositories.Player_Repository;
 using static Hangman.Repositories.Word_Repository;
@@ -68,7 +68,7 @@ namespace Hangman.ViewModels
 
         private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         private Game Game { get; set; }
-        private Word Word { get; set; }
+        public Word Word { get; set; }
         private bool IsGameStart { get; set; }
 
         #endregion
@@ -87,6 +87,27 @@ namespace Hangman.ViewModels
         #endregion
 
 
+        #region Hint
+        //public IWord IWord { get; set; }
+
+        public ICommand ShowHintCommand { get; set; }
+
+        public bool IsHintShown { get; set; }
+
+        public void ShowHint()
+        {
+            if (IsHintShown == true)
+            {
+                IsHintShown = false;
+            }
+            else
+            {
+                IsHintShown = true;
+            }
+            
+        }
+
+        #endregion Hint
 
         public GamePageViewModel()
         {
@@ -96,10 +117,16 @@ namespace Hangman.ViewModels
             MakeCommandsForKeys();
 
             MakeStopWatch();
+
+
+            ShowHintCommand = new RelayCommand(ShowHint);
+
+
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             IsStopWatchView = true;
 
             IsGameStart = false;
+
         }
 
         private void MakeDemoPlayer() //TESTKOD. TA BORT SENARE
@@ -116,11 +143,13 @@ namespace Hangman.ViewModels
             MakeGame();
             RefreshGame();
             StartStopWatch();
+            IsHintShown = false;
         }
 
         private void MakeWord()
         {
             Word = GetRandomWord();
+           // IWord.Name = Word.Name;
             upperWord = Word.Name.ToUpper();
         }
 
@@ -137,6 +166,7 @@ namespace Hangman.ViewModels
 
             };
 
+           
         }
 
         private void RefreshGame()
@@ -226,6 +256,9 @@ namespace Hangman.ViewModels
                 ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
             }
         }
+
+
+
 
         private void StartStopWatch()
         {
