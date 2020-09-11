@@ -104,7 +104,7 @@
                             </Style>
                         </Button.Resources> Ledtråd
                     </Button>
-                    <TextBlock Margin="5, 5, 5, 5" FontWeight="Bold" Text="{Binding Word.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock Margin="5, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
                 </WrapPanel>
                 
                 
