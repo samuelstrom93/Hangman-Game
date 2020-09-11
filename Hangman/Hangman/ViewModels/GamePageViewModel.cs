@@ -68,7 +68,7 @@ namespace Hangman.ViewModels
 
         private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         private Game Game { get; set; }
-        private Word Word { get; set; }
+        public Word Word { get; set; }
         private bool IsGameStart { get; set; }
 
         #endregion
@@ -88,7 +88,7 @@ namespace Hangman.ViewModels
 
 
         #region Hint
-        public IWord IWord { get; set; }
+        //public IWord IWord { get; set; }
 
         public ICommand ShowHintCommand { get; set; }
 
@@ -149,7 +149,7 @@ namespace Hangman.ViewModels
         private void MakeWord()
         {
             Word = GetRandomWord();
-            IWord.Name = Word.Name;
+           // IWord.Name = Word.Name;
             upperWord = Word.Name.ToUpper();
         }
 
