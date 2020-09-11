@@ -88,7 +88,7 @@ namespace Hangman.ViewModels
 
 
         #region Hint
-        public IWord Word { get; set; }
+        public IWord IWord { get; set; }
 
         public ICommand ShowHintCommand { get; set; }
 
@@ -143,11 +143,13 @@ namespace Hangman.ViewModels
             MakeGame();
             RefreshGame();
             StartStopWatch();
+            IsHintShown = false;
         }
 
         private void MakeWord()
         {
             Word = GetRandomWord();
+            IWord.Name = Word.Name;
             upperWord = Word.Name.ToUpper();
         }
 
@@ -164,6 +166,7 @@ namespace Hangman.ViewModels
 
             };
 
+           
         }
 
         private void RefreshGame()
@@ -255,12 +258,6 @@ namespace Hangman.ViewModels
         }
 
 
-        private void StartGame()
-        {
-            Word = Word_Repository.GetRandomWord();
-            StartStopWatch();
-            IsHintShown = false;
-        }
 
 
         private void StartStopWatch()
