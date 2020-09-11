@@ -35,10 +35,16 @@
                             <ColumnDefinition Width="250"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
-                            <TextBlock Foreground="Green">Antal rätt:</TextBlock>
-                            <TextBlock Text="{Binding numberOfCorrectTries_text}"></TextBlock>
-                            <TextBlock Foreground="Red">Antal fel</TextBlock>
-                            <TextBlock Text="{Binding numberOfIncorrectTries_text}"></TextBlock>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Green">Antal rätt:</TextBlock>
+                                <TextBlock Foreground="Green" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0"></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Red">Antal fel:</TextBlock>
+                                <TextBlock Foreground="Red" Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0"></TextBlock>
+                            </WrapPanel>
+
+
                         </StackPanel>
                         <WrapPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Label FontSize="35" Padding="10,0,10,5">_</Label>
@@ -97,16 +103,16 @@
                 </Button>
                     <TextBlock HorizontalAlignment="Right"  TextDecorations="Underline" Margin="215,5,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
                 </StackPanel>
-                <WrapPanel Orientation="Vertical">
+                <WrapPanel Orientation="Horizontal">
                     
-                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}">
+                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
                             </Style>
                         </Button.Resources> Ledtråd
                     </Button>
-                    <TextBlock Margin="5, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
                 </WrapPanel>
                 
                 
