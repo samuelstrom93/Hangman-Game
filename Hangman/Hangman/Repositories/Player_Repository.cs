@@ -96,18 +96,23 @@ namespace Hangman.Repositories
 
                 using (var command = new NpgsqlCommand(stmt, conn))
                 {
-                    command.Parameters.AddWithValue("name");
+                    command.Parameters.AddWithValue("name", name);
 
                     using (var reader = command.ExecuteReader())
                     {
-                        player = new Player
+                        while (reader.Read())
                         {
-                            Id = (int)reader["id"],
-                            Name = name
-                        };
+                            player = new Player
+                            {
+                                Id = (int)reader["id"],
+                                Name = (string)reader["name"],
+
+                            };
+                        }
                     }
+                    return player;
                 }
-                return player;
+               
             }
         }
         #endregion
