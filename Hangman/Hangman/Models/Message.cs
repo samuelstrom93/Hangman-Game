@@ -14,7 +14,7 @@ namespace Hangman.Models
         public int SenderId { get; set; }
         public string SenderName { get; set; }
         public DateTime SentAt { get; set; }
-        public DateTime ReadAt { get; set; }
+        public DateTime? ReadAt { get; set; }
 
     }
 }

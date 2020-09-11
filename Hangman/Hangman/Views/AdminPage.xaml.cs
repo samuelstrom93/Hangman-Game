@@ -26,6 +26,8 @@ namespace Hangman.Views
 
             _vm = new AdminViewModel();
             DataContext = new AdminViewModel();
+
+            MessageView.Content = new MessageBoardUC();
         }
 
         private void TextBoxWord_GotFocus(object sender, RoutedEventArgs e)

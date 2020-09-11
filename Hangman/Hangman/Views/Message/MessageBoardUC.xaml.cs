@@ -1,11 +1,7 @@
-﻿using Hangman.Repositories;
-using Hangman.Views;
+﻿using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,19 +12,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hangman
+namespace Hangman.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MessageBoardUC.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MessageBoardUC : UserControl
     {
-        public MainWindow()
+        public MessageBoardUC()
         {
             InitializeComponent();
 
-            Main.Content = new AdminPage();
-            this.SizeToContent = SizeToContent.Height;
+            DataContext = new MessagesViewModel(1);
         }
     }
 }

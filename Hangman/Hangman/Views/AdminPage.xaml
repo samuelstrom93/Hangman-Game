@@ -60,7 +60,7 @@
                 </Grid>
             </Border>
             <Border Grid.Column="3" Grid.Row="1" Background="#EEF0F2" BorderThickness="2" BorderBrush="LightGray">
-
+                <Frame x:Name="MessageView"></Frame>
             </Border>
         </Grid>
     </Border>

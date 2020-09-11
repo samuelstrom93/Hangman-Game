@@ -13,7 +13,7 @@ namespace Hangman.Repositories
         private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region READ
-        public static IEnumerable<Message> GetMessages(int? senderId, int? recieverId)
+        public static IEnumerable<Message> GetMessages(int? recieverId = null, int? senderId = null)
         {
             string query = "select message.id, topic, content, sender_id, sender.name as sender_name, reciever_id, reciever.name as reciever_name, sent_at, read_at from message" +
                 "\ninner join player sender on sender.id=sender_id" +
@@ -55,7 +55,7 @@ namespace Hangman.Repositories
                                 SenderName = (string)reader["sender_name"],
                                 RecieverName = (string)reader["reciever_name"],
                                 SentAt = (DateTime)reader["sent_at"],
-                                ReadAt = (DateTime)reader["read_at"],
+                                ReadAt = reader["read_at"] == DBNull.Value ? null : (DateTime?)reader["read_at"]
                             };
 
                             result.Add(row);
