@@ -21,14 +21,15 @@ namespace Hangman.Views
     /// </summary>
     public partial class GamePage : Page
     {
+        private GamePageViewModel gamePageViewModel;
+
         public GamePage()
         {
             InitializeComponent();
-            //DataContext = new GamePageViewModel();
+            gamePageViewModel = new GamePageViewModel();
             DataContext = gamePageViewModel;
         
         }
-        private GamePageViewModel gamePageViewModel = new GamePageViewModel();
 
 
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -41,6 +42,11 @@ namespace Hangman.Views
         {
             if (gamePageViewModel.IsGameStart)
             {
+                string selectedKey = ((Button)sender).Content.ToString();
+
+                gamePageViewModel.TakeSelectedKey(selectedKey);
+                gamePageViewModel.JudgeGame();
+
                 ChangeBtnStyle((Button)sender);
                 ((Button)sender).IsEnabled = false;
             }
@@ -67,6 +73,7 @@ namespace Hangman.Views
                 sender.Foreground = Brushes.Red;
 
             }
+            sender.IsEnabled = false;
 
         }
     }
