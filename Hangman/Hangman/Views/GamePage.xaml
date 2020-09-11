@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="800"
+      
       Title="GamePage">
 
     <Border Background="#DADDD8">
@@ -34,18 +35,24 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="250"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Foreground="Green">Antal rätt:</TextBlock>
-                                <TextBlock Foreground="Green" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0"></TextBlock>
-                            </WrapPanel>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Foreground="Red">Antal fel:</TextBlock>
-                                <TextBlock Foreground="Red" Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0"></TextBlock>
-                            </WrapPanel>
+                        <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0">Antal rätt:</TextBlock>
+                            <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0"></TextBlock>
+                            <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0">Antal fel:</TextBlock>
+                            <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0"></TextBlock>
 
 
-                        </StackPanel>
+                        </Grid>
+
                         <WrapPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Label FontSize="35" Padding="10,0,10,5">_</Label>
                             <Label FontSize="35" Padding="10,0,10,5">_</Label>

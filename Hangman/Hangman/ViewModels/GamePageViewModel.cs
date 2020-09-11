@@ -68,8 +68,7 @@ namespace Hangman.ViewModels
 
         private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         private Game Game { get; set; }
-        //private Word Word { get; set; }
-        private bool IsGameStart { get; set; }
+        public bool IsGameStart { get; set; }
 
         #endregion
 
@@ -178,6 +177,8 @@ namespace Hangman.ViewModels
             numberOfTies = 0;
             numberOfIncorrectTries = 0;
             numberOfCorrectTries = 0;
+            numberOfCorrectTries_text = numberOfCorrectTries.ToString();
+            numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
             isWon = false;
             IsGameStart = true;
         }
@@ -559,7 +560,7 @@ namespace Hangman.ViewModels
 
         private void SelectKeyAA()
         {
-            selectedKey = "AA";
+            selectedKey = "Ä";
             if (IsGameStart == true)
             {
                 JudgeGame();
@@ -568,7 +569,7 @@ namespace Hangman.ViewModels
 
         private void SelectKeyAE()
         {
-            selectedKey = "AE";
+            selectedKey = "Ö";
             if (IsGameStart == true)
             {
                 JudgeGame();
@@ -577,7 +578,7 @@ namespace Hangman.ViewModels
 
         private void SelectKeyOO()
         {
-            selectedKey = "OO";
+            selectedKey = "Å";
             if (IsGameStart == true)
             {
                 JudgeGame();

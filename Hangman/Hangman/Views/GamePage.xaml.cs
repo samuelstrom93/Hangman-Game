@@ -39,8 +39,12 @@ namespace Hangman.Views
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
-            ChangeBtnStyle((Button)sender);
-            ((Button)sender).IsEnabled = false;
+            if (gamePageViewModel.IsGameStart)
+            {
+                ChangeBtnStyle((Button)sender);
+                ((Button)sender).IsEnabled = false;
+            }
+
 
         }
 
