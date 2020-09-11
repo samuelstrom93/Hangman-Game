@@ -11,7 +11,8 @@ namespace Hangman.Repositories
     {
 
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
-        // randomId måste vara mellan 46-50 för att få en träff i databasen
+
+        #region READ
         public static Word GetRandomWord()
         {
             string stmt = $"SELECT id, name, hint FROM word ORDER BY RANDOM() LIMIT 1";
@@ -40,7 +41,7 @@ namespace Hangman.Repositories
             return null;
         }
 
-
+        #endregion
 
     }
 }
