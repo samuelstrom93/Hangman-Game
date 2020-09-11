@@ -21,17 +21,28 @@ namespace Hangman.ViewModels
         private Stopwatch stopWatch;
 
 
+
+        #region Hint
         public IWord Word { get; set; }
 
-        //public ICommand ShowHintCommand { get; set; }
+        public ICommand ShowHintCommand { get; set; }
 
+        public bool IsHintShown { get; set; }
 
-            // Denna metod för att visa och dölja ledtråden?
-        //public void ShowHint()
-        //{
-        //    Hint = Word.Hint;
-        //}
+        public void ShowHint()
+        {
+            if (IsHintShown == true)
+            {
+                IsHintShown = false;
+            }
+            else
+            {
+                IsHintShown = true;
+            }
+            
+        }
 
+        #endregion Hint
 
         public GamePageViewModel()
         {
@@ -40,7 +51,8 @@ namespace Hangman.ViewModels
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             MakeStopWatch();
 
-            //ShowHintCommand = new RelayCommand(ShowHint);
+            ShowHintCommand = new RelayCommand(ShowHint);
+
         }
 
         private void HideOrViewStopWatch()
@@ -79,6 +91,7 @@ namespace Hangman.ViewModels
         {
             Word = Word_Repository.GetRandomWord();
             StartStopWatch();
+            IsHintShown = false;
         }
 
         private void StartStopWatch()
