@@ -33,6 +33,9 @@ namespace Hangman.Views
             w.Show();
         }
 
+        private void Letter_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

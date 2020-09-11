@@ -74,16 +74,23 @@ namespace Hangman.ViewModels
         #endregion
 
         #region ForGameScore
-        private int numberOfLife;   // 0 =GAME OVER
-        private int numberOfTies;
+        public int numberOfLife;   // 0 =GAME OVER
+        public int numberOfTies;
         private int numberOfIncorrectTries;
-        private int numberOfcorrectTries;
-        private bool isWon;
+        private int numberOfCorrectTries;
+        public bool isWon;
+
+        public string numberOfCorrectTries_text { get; set; }
+        public string numberOfIncorrectTries_text { get; set; }
+
         #endregion
 
         #region ForJudgeGame
         private string selectedKey;
         private string upperWord;
+
+        public bool IsLetterClicked { get; set; }
+
         #endregion
 
 
@@ -162,7 +169,6 @@ namespace Hangman.ViewModels
                 WordId = IWord.Id
 
             };
-
            
         }
 
@@ -171,7 +177,7 @@ namespace Hangman.ViewModels
             numberOfLife = 10;
             numberOfTies = 0;
             numberOfIncorrectTries = 0;
-            numberOfcorrectTries = 0;
+            numberOfCorrectTries = 0;
             isWon = false;
             IsGameStart = true;
         }
@@ -181,16 +187,17 @@ namespace Hangman.ViewModels
             if (upperWord.Contains(selectedKey))    //Gissade rätt
             {
                 numberOfTies++;
-                numberOfcorrectTries++;
+                numberOfCorrectTries++;
+                numberOfCorrectTries_text = numberOfCorrectTries.ToString();
             }
             else //Gissade fel
             {
                 numberOfTies++;
                 numberOfLife = numberOfLife-1;
                 numberOfIncorrectTries++;
-
+                numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
             }
-            if (numberOfcorrectTries == 6)  //Spelaren vann
+            if (numberOfCorrectTries == 6)  //Spelaren vann
             {
                 isWon = true;
                 EndGame();
