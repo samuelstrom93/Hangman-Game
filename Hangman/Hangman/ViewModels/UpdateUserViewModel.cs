@@ -44,6 +44,7 @@ class UpdateUserViewModel : BaseViewModel
             {
                 Player_Repository.UpdateNameOnPlayer(wantedName, PlayerEngine.ActivePlayer.Id);
                 PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(wantedName);
+                PlayerName = PlayerEngine.ActivePlayer.Name;
                 UppdateUserCommand = new RelayCommand(UpdateButton);
                 Message = "Ditt användarnamn är nu bytt till " + wantedName;
             }
@@ -67,8 +68,13 @@ class UpdateUserViewModel : BaseViewModel
             Message = "Du måste ange ett nytt namn";
         }
 
-        else
+        else if (wantedName=="")
             Message = "Du måste ange ett namn";
+
+        else
+        {
+            Message = "Något gick fel";
+        }
     }
     #endregion
 }

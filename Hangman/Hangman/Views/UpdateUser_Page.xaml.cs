@@ -42,8 +42,6 @@ namespace Hangman.Views
             //Uppdatera Player Engine
             model.UpdateUser(PlayerEngine.ActivePlayer, name);
 
-            PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
-
             //Byter namn på menyn också (Buggsäkra om användaren skriver in "")
             model.PlayerName = PlayerEngine.ActivePlayer.Name;
 
