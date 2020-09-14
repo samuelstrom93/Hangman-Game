@@ -21,13 +21,16 @@ namespace Hangman.Views
     /// </summary>
     public partial class GamePage : Page
     {
+        private GamePageViewModel gamePageViewModel;
+
         public GamePage()
         {
             InitializeComponent();
+            gamePageViewModel = new GamePageViewModel();
             DataContext = gamePageViewModel;
+        
         }
 
-        private GamePageViewModel gamePageViewModel = new GamePageViewModel();
 
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -37,23 +40,41 @@ namespace Hangman.Views
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
+            if (gamePageViewModel.IsGameStart)
+            {
+                string selectedKey = ((Button)sender).Content.ToString();
+
+                gamePageViewModel.TakeSelectedKey(selectedKey);
+                gamePageViewModel.JudgeGame();
+
+                ChangeBtnStyle((Button)sender);
+                ((Button)sender).IsEnabled = false;
+            }
+
+
+        }
+
+        private void ChangeBtnStyle(Button sender)
+        {
             if (gamePageViewModel.IsGuessCorrect)
             {
-                ((Button)sender).Opacity = Brushes.Green;
-                ((Button)sender).Background = Brushes.Green;
-                //((Button)sender).Foreground = Brushes.Green;
+                //((Button)sender).Background = Brushes.Green;
+                sender.Opacity = 0.5;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Green;
             }
             else
             {
-                ((Button)sender).Opacity = 0.2;
-                ((Button)sender).Background = Brushes.Red;
-                
-                //((Button)sender).Foreground = Brushes.Red;
-            }
+                //((Button)sender).Background = Brushes.Red;
+                sender.Opacity = 0.5;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Red;
 
-            ((Button)sender).IsEnabled = false;
+            }
+            sender.IsEnabled = false;
 
         }
-       
     }
 }
