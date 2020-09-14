@@ -24,6 +24,7 @@ namespace Hangman.Views
 
         public IPlayer Player;
         #region private field
+        private GamePageViewModel gamePageViewModel;
         #endregion
 
         public GamePage()
@@ -36,10 +37,12 @@ namespace Hangman.Views
 
             InitializeComponent();
             Player = player;
-            DataContext = new GamePageViewModel(player);
+            gamePageViewModel = new GamePageViewModel();
+            DataContext = gamePageViewModel;
 
         }
 
+        #region MnuMethods
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var w = new HelpWindow();
@@ -61,6 +64,45 @@ namespace Hangman.Views
         {
             this.NavigationService.Content = new UpdateUserPage(Player);
         }
+        #endregion
 
+        private void Letter_Click(object sender, RoutedEventArgs e)
+        {
+            if (gamePageViewModel.IsGameStart)
+            {
+                string selectedKey = ((Button)sender).Content.ToString();
+
+                gamePageViewModel.TakeSelectedKey(selectedKey);
+                gamePageViewModel.JudgeGame();
+
+                ChangeBtnStyle((Button)sender);
+                ((Button)sender).IsEnabled = false;
+            }
+
+
+        }
+
+        private void ChangeBtnStyle(Button sender)
+        {
+            if (gamePageViewModel.IsGuessCorrect)
+            {
+                //((Button)sender).Background = Brushes.Green;
+                sender.Opacity = 0.5;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Green;
+            }
+            else
+            {
+                //((Button)sender).Background = Brushes.Red;
+                sender.Opacity = 0.5;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Red;
+
+            }
+            sender.IsEnabled = false;
+
+        }
     }
 }
