@@ -23,9 +23,9 @@ namespace Hangman.Views
             InitializeComponent();
         }
 
-        private void NextPage_Click(object sender, RoutedEventArgs e)
+        private void GameMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            // ska skickas iväg till GameStartPage innan  för att kunna välja ett spel därifrån. 
         }
     }
 }
