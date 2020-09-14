@@ -5,26 +5,42 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="GameIntroPage2">
 
-    <Grid Background="#DADDD8" Height="500">
-        <TextBlock Margin="0,20,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="30">Spelintroduktion</TextBlock>
+    <Grid Background="#DADDD8" Height="600" Width="800">
         <StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" Margin="0,75,0,0" Height="300" Width="225">
+            <TextBlock Margin="0,15,0,20" TextAlignment="Center" FontWeight="Bold" FontSize="30">Spelintroduktion</TextBlock>
+            <Grid Height="30" Width="450">
+                <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                    <TextBlock Margin="0,0,100,0" FontStyle="Italic" FontWeight="DemiBold" FontSize="20">Exempelbild</TextBlock>
+                    <TextBlock Margin="100,0,0,0" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Right">Information</TextBlock>
+
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,15,0,0">
+                <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" Margin="0,90,0,0" Height="350" Width="275">
                     <Border.Background>
-                        <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GamePageIntro_picture.png"/>
+                        <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GamePageIntroPicture.png"/>
                     </Border.Background>
                 </Border>
-                <TextBlock Margin="0,78,0,0" Padding="20" VerticalAlignment="Top" Background="AliceBlue" TextWrapping="Wrap" Height="300" Width="300"><Run Text="Genom att klicka på en bokstav i taget gissar spelaren på ordet. Finns bokstaven i ordet så fylls ordet med den valda bokstaven och tonas ut för att markera att bokstaven är vald och inte kan väljas igen."/>
-                    <LineBreak/><Run/><LineBreak/>
-                    <Run Text="Vid val av en bokstav som inte finns i ordet kommer bokstaven att bli rödmarkerad för att visa att bokstaven inte finns i ordet."/></TextBlock>
-            
+                <TextBlock></TextBlock>
+                <TextBlock Margin="3,90,0,0" Padding="10" VerticalAlignment="Top" Background="AliceBlue" TextWrapping="Wrap" Height="350" Width="350">
+                <Bold>Tid:</Bold><LineBreak></LineBreak> När du startar ett spel startas ett tidtagarur igång som visar det nuvarande spelets tidsåtgång. På exempelbilden kan du se att det gått 18 sekunder.
+                    <LineBreak></LineBreak><LineBreak></LineBreak>
+                    <Bold>Välj bokstav:</Bold><LineBreak></LineBreak>
+                    Du väljer vilken bokstav du vill gissa på genom att klicka på knappen för respektive bokstav. På exempelbilden ser du att användaren gissade på "V" eftersom knappen har tonats ut. 
+                    Bokstaven fanns inte i ordet och därför har <Italic>Antal fel</Italic> ökat till ett. Skulle användaren ha valt en bokstav som finns i ordet ökar <Italic>Antal rätt</Italic> och bokstaven skrivs ut över de streckade linjerna under gubben på exempelbilden.
+                    <LineBreak></LineBreak><LineBreak></LineBreak>
+                    <Bold>Ledtråd:</Bold><LineBreak></LineBreak>
+                    Nere till vänster kan man genom att klicka på knappen "Ledtråd" få en beskrivning över det gömda ordet. Vid start av spelet är lådtråden gömd men vill du visa den klickar du på knappen.
+                    Klickar du igen på "Ledtråd" så döljs beskrivningen.
+                </TextBlock>
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Margin="0,8,15,0" FontWeight="DemiBold" FontSize="15">Sida 2/3</TextBlock>
+            <StackPanel Margin="0,15" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Margin="0,8,15,0" FontWeight="DemiBold" FontSize="15">Sida 2/2</TextBlock>
                 <Button Background="#D3D3D3" Content="Nästa sida" Margin="85,8,0,0" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="NextPage_Click"></Button>
             </StackPanel>
         </StackPanel>
