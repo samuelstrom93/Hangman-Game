@@ -7,18 +7,34 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Images\hänggubbe1.png" />
+    <None Remove="Assets\Images\hänggubbe0.png" />
     <None Remove="Assets\Images\timer.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="4.1.4" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\hänggubbe1.png" />
+    <Resource Include="Assets\Images\hänggubbe0.png" />
     <Resource Include="Assets\Images\timer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

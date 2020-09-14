@@ -13,6 +13,10 @@ using Hangman.Views;
 using Hangman.GameLogics;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Resources;
+using System.IO;
+using System.Drawing;
 
 namespace Hangman.ViewModels
 {
@@ -127,6 +131,7 @@ namespace Hangman.ViewModels
             MakeGame();
             MakeWordArray();
             RefreshGame();
+            ViewGameStage();
             StartStopWatch();
             IsHintShown = false;
         }
@@ -183,6 +188,7 @@ namespace Hangman.ViewModels
             numberOfCorrectTries = 0;
             numberOfCorrectTries_text = numberOfCorrectTries.ToString();
             numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+            gameStage = 0;
             isWon = false;
             IsGameStart = true;
         }
@@ -260,13 +266,19 @@ namespace Hangman.ViewModels
                 numberOfIncorrectTries++;
                 numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
-                ProceedGameStage();
+                gameStage++;
+                ViewGameStage();
             }
         }
         private int gameStage;
-        private void ProceedGameStage()
+        public ImageBrush ImageForGameStage { get; set; }
+        private void ViewGameStage()
         {
-            throw new NotImplementedException();
+            string imageAdress;
+            imageAdress = $"/Assets/Images/hänggubbe{gameStage}.png";
+            //Uri uri = new Uri(Properties.Resources.hänggubbe0);
+            Bitmap image = Properties.Resources.hänggubbe0;
+            ImageForGameStage.ImageSource = new Bitmap(image);
         }
 
         private void SwitchGameStatus()
