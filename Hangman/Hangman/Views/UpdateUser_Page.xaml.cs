@@ -1,7 +1,4 @@
-﻿using Hangman.Models;
-using Hangman.Repositories;
-using Hangman.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,37 +10,45 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hangman;
+using Hangman.ViewModels;
+using Hangman.Repositories;
+using Hangman.Models;
+using Hangman.GameLogics;
 
 namespace Hangman.Views
+
 {
     /// <summary>
-    /// Interaction logic for GamePage.xaml
+    /// Interaction logic for UpdateUserPage.xaml
     /// </summary>
-    public partial class GamePage : Page
+    public partial class UpdateUserPage : Page
     {
-
+        private UpdateUserViewModel model;
         public IPlayer Player;
-        #region private field
-        #endregion
 
-        public GamePage()
+        public UpdateUserPage(IPlayer player)
         {
-            InitializeComponent();
-        }
-
-        public GamePage(IPlayer player)
-        {
-
             InitializeComponent();
             Player = player;
-            DataContext = new GamePageViewModel(player);
-
+            model = new UpdateUserViewModel(player);
+            DataContext = model;
         }
 
-        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var w = new HelpWindow();
-            w.Show();
+            string name = txtBoxInsertName.Text;
+
+            //Uppdatera Player Engine
+            model.UpdateUser(PlayerEngine.ActivePlayer, name);
+
+            PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
+
+            //Byter namn på menyn också (Buggsäkra om användaren skriver in "")
+            model.PlayerName = PlayerEngine.ActivePlayer.Name;
+
+            txtBoxInsertName.Clear();
+            DataContext = model;
         }
 
         private void mnuLogOut(object sender, RoutedEventArgs e)
@@ -61,6 +66,5 @@ namespace Hangman.Views
         {
             this.NavigationService.Content = new UpdateUserPage(Player);
         }
-
     }
 }
