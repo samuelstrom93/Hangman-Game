@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Resources;
 using System.IO;
 using System.Drawing;
+using System.Reflection;
 
 namespace Hangman.ViewModels
 {
@@ -271,14 +272,14 @@ namespace Hangman.ViewModels
             }
         }
         private int gameStage;
-        public ImageBrush ImageForGameStage { get; set; }
+        public BitmapImage ImageForGameStage { get; set; }
         private void ViewGameStage()
         {
             string imageAdress;
-            imageAdress = $"/Assets/Images/hänggubbe{gameStage}.png";
-            //Uri uri = new Uri(Properties.Resources.hänggubbe0);
-            Bitmap image = Properties.Resources.hänggubbe0;
-            ImageForGameStage.ImageSource = new Bitmap(image);
+            imageAdress = $"../../../Assets/Images/hänggubbe{gameStage}.png";
+
+            string currentPath = Environment.CurrentDirectory;
+            ImageForGameStage = new BitmapImage( new Uri( System.IO.Path.Combine(currentPath, imageAdress)));
         }
 
         private void SwitchGameStatus()
