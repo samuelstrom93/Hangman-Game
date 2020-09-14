@@ -24,6 +24,7 @@ namespace Hangman.Views
 
         public IPlayer Player;
         #region private field
+        private GamePageViewModel gamePageViewModel;
         #endregion
 
         public GamePage()
@@ -36,7 +37,8 @@ namespace Hangman.Views
 
             InitializeComponent();
             Player = player;
-            DataContext = new GamePageViewModel(player);
+            gamePageViewModel = new GamePageViewModel();
+            DataContext = gamePageViewModel;
 
         }
 
