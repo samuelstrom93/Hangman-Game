@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Hangman">
+    <Style x:Key="StandardButton" TargetType="Button">
+        <Setter Property="Background" Value="#FFEDE1"/>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="Helvetica" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="2" BorderBrush="#C2A83E">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="StandardBorder" TargetType="Border">
+        <Setter Property="Background" Value="#605C4E" />
+        <Setter Property="BorderBrush" Value="#C2A83E" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="5" />
+    </Style>
+</ResourceDictionary>

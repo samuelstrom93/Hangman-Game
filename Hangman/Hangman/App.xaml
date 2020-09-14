@@ -4,23 +4,11 @@
              xmlns:local="clr-namespace:Hangman"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
-
         <ResourceDictionary>
-            <Style x:Key="ButtonRoundedCorner" TargetType="Button">
-                <Setter Property="Background" Value="Silver"/>
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="25" Background="{TemplateBinding Background}" BorderThickness="2">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-                                </ContentPresenter>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StyleDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
