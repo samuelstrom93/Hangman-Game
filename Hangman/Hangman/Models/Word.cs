@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hangman.Models
 {
-    class Word : BaseViewModel, IWord
+    public class Word : BaseViewModel, IWord
     {
         public int Id { get; set; }
         public string Name { get; set; }

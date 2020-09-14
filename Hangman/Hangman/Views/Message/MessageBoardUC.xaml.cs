@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangman.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -14,13 +15,15 @@ using System.Windows.Shapes;
 namespace Hangman.Views
 {
     /// <summary>
-    /// HighScore_Page.xaml の相互作用ロジック
+    /// Interaction logic for MessageBoardUC.xaml
     /// </summary>
-    public partial class HighScore_Page : Page
+    public partial class MessageBoardUC : UserControl
     {
-        public HighScore_Page()
+        public MessageBoardUC()
         {
             InitializeComponent();
+
+            DataContext = new MessagesViewModel(1);
         }
     }
 }

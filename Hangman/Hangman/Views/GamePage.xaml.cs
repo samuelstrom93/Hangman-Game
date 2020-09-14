@@ -21,14 +21,23 @@ namespace Hangman.Views
     /// </summary>
     public partial class GamePage : Page
     {
-        private GamePageViewModel gamePageViewModel;
+
+        public IPlayer Player;
+        #region private field
+        #endregion
 
         public GamePage()
         {
             InitializeComponent();
-            gamePageViewModel = new GamePageViewModel();
-            DataContext = gamePageViewModel;
-        
+        }
+
+        public GamePage(IPlayer player)
+        {
+
+            InitializeComponent();
+            Player = player;
+            DataContext = new GamePageViewModel(player);
+
         }
 
 

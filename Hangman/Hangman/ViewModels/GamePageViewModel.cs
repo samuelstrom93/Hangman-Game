@@ -10,7 +10,7 @@ using System.Text;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Hangman.Views;
-using System.Windows.Controls;
+using Hangman.GameLogics;
 using System.Windows;
 using System.Windows.Media;
 
@@ -36,7 +36,8 @@ namespace Hangman.ViewModels
         #endregion
 
         #region PropertiesForGameStart
-
+        public string PlayerName { get; set; }
+        public IPlayer Player { get; set; }
         private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         private Game Game { get; set; }
         public bool IsGameStart { get; set; }
@@ -84,9 +85,9 @@ namespace Hangman.ViewModels
 
         #endregion Hint
 
-
-        public GamePageViewModel()
+        public GamePageViewModel(IPlayer player)
         {
+            PlayerName = PlayerEngine.ActivePlayer.Name;
             MakeDemoPlayer(); //TA BORT SENARE
 
             GameStartCommand = new RelayCommand(StartGame);
