@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\GamePageIntro_picture.png" />
     <None Remove="Assets\Images\hänggubbe1.png" />
     <None Remove="Assets\Images\timer.png" />
   </ItemGroup>
@@ -17,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\GamePageIntro_picture.png" />
     <Resource Include="Assets\Images\hänggubbe1.png" />
     <Resource Include="Assets\Images\timer.png" />
   </ItemGroup>
