@@ -45,8 +45,8 @@ namespace Hangman.ViewModels
         #endregion
 
         #region ForGameScore
-        public int numberOfLife;   // 0 =GAME OVER
-        public int numberOfTies;
+        public int numberOfLives;   // 0 =GAME OVER
+        public int numberOfTries;
         private int numberOfIncorrectTries;
         private int numberOfCorrectTries;
         public bool isWon;
@@ -117,13 +117,15 @@ namespace Hangman.ViewModels
             string testPlayerName = "TestMan";
             //CreatePlayer(testPlayerName);
             playerTEST = GetPlayer(testPlayerName);
-        }  
+        }
 
-        #region Methods:GameStart-End
+        #region Methods: GameStart
+
         private void StartGame()
         {
             MakeWord();
             MakeGame();
+            MakeWordArray();
             RefreshGame();
             StartStopWatch();
             IsHintShown = false;
@@ -133,6 +135,8 @@ namespace Hangman.ViewModels
         {
             IWord = GetRandomWord();
             upperWord = IWord.Name.ToUpper();
+            ShowingWordArray = new char[upperWord.Length];
+            wordCheckerArray = new int[upperWord.Length];
         }
 
         private void MakeGame()
@@ -145,14 +149,25 @@ namespace Hangman.ViewModels
                 StartTime = DateTime.Now,
                 PlayerId = IPlayer.Id,
                 WordId = IWord.Id
-
             };
+        }
+
+        private char[] wordArray;
+        private void MakeWordArray()
+        {
+            wordArray = new char[upperWord.Length];
+            for (int i = 0; i < upperWord.Length; i++)
+            {
+                char oneOfWord = upperWord[i];
+                wordArray[i] = oneOfWord;
+            }
+
         }
 
         private void RefreshGame()
         {
-            numberOfLife = 10;
-            numberOfTies = 0;
+            numberOfLives = 11;
+            numberOfTries = 0;
             numberOfIncorrectTries = 0;
             numberOfCorrectTries = 0;
             numberOfCorrectTries_text = numberOfCorrectTries.ToString();
@@ -160,36 +175,87 @@ namespace Hangman.ViewModels
             isWon = false;
             IsGameStart = true;
         }
+        #endregion
 
+        #region Methods: JudgeGame-End
         public void JudgeGame()
         {
+            CompareWordAndSelectedKey();
+            WorkCounters();
+            ConvertShownWord();
+            SwitchGameStatus();
+        }
+
+        private int[] wordCheckerArray; // int[] =0 →FEL, int[] =1 →RÄTT
+        public void CompareWordAndSelectedKey()
+        {
+            for (int i = 0; i < wordArray.Length; i++)
+            {
+                char oneOfWord = wordArray[i];
+                char selectedKeyChar = selectedKey[0];
+
+                if (oneOfWord == selectedKeyChar)   //Gissade rätt
+                {
+                    wordCheckerArray[i] = 1;
+                }
+
+            }
+        }
+
+        public char[] ShowingWordArray { get; set; }
+        private char[] ConvertShownWord()
+        {
+            for (int i = 0; i < wordArray.Length; i++)
+            {
+
+                if (wordCheckerArray[i] == 1)
+                {
+                    ShowingWordArray[i] = wordArray[i];
+                }
+                if (wordCheckerArray[i] == 0)
+                {
+                    ShowingWordArray[i] = '_';
+                }
+            }
+            return ShowingWordArray;
+        }
+
+        public void WorkCounters()
+        {
+
             if (upperWord.Contains(selectedKey))    //Gissade rätt
             {
-                numberOfTies++;
+                numberOfTries++;
                 numberOfCorrectTries++;
                 numberOfCorrectTries_text = numberOfCorrectTries.ToString();
                 IsGuessCorrect = true;
             }
             else //Gissade fel
             {
-                numberOfTies++;
-                numberOfLife = numberOfLife-1;
+                numberOfTries++;
+                numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
                 numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
             }
+        }
 
-            if (numberOfCorrectTries == 6)  //Spelaren vann
+        public string Answer { get; set; }
+        private void SwitchGameStatus()
+        {
+            string answer = new string(ShowingWordArray);
+
+            if (answer == upperWord) //Spelaren vann
             {
                 isWon = true;
                 EndGame();
             }
 
-            if (numberOfLife == 0)  //Game over
+            if (numberOfLives == 0)  //Game over
             {
                 EndGame();
             }
-            
+            Answer = answer;
         }
 
         private void EndGame()
@@ -203,7 +269,7 @@ namespace Hangman.ViewModels
         private void SaveGameScore()
         {
             Game.NumberOfIncorrectTries = numberOfIncorrectTries;
-            Game.NumberOfTries = numberOfTies;
+            Game.NumberOfTries = numberOfTries;
             Game.IsWon = isWon;
 
             AddGame(Game);
