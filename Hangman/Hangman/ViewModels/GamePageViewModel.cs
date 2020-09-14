@@ -94,34 +94,19 @@ namespace Hangman.ViewModels
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
             IPlayer = player;
-            //MakeDemoPlayer(); //TA BORT SENARE
+
+            RefreshGame();
+            ViewGameStage();
 
             GameStartCommand = new RelayCommand(StartGame);
-            //BtnStyleChangeCommand = new RelayCommand(JudgeBtnStyle);
-            //MakeSelectedBtn();
-
-            //MakeCommandsForKeys();
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
 
             MakeStopWatch();
 
-
-            ShowHintCommand = new RelayCommand(ShowHint);
-
-
-            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             IsStopWatchView = true;
-
             IsGameStart = false;
 
-        }
-
-        
-
-        private void MakeDemoPlayer() //TESTKOD. TA BORT SENARE
-        {
-            string testPlayerName = "TestMan";
-            //CreatePlayer(testPlayerName);
-            playerTEST = GetPlayer(testPlayerName);
         }
 
         #region Methods: GameStart
@@ -131,10 +116,9 @@ namespace Hangman.ViewModels
             MakeWord();
             MakeGame();
             MakeWordArray();
-            RefreshGame();
-            ViewGameStage();
             StartStopWatch();
             IsHintShown = false;
+            IsGameStart = true;
         }
 
         private void MakeWord()
@@ -191,7 +175,6 @@ namespace Hangman.ViewModels
             numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
             gameStage = 0;
             isWon = false;
-            IsGameStart = true;
         }
         #endregion
 
@@ -271,6 +254,7 @@ namespace Hangman.ViewModels
                 ViewGameStage();
             }
         }
+
         private int gameStage;
         public BitmapImage ImageForGameStage { get; set; }
         private void ViewGameStage()
