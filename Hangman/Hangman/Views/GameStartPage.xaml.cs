@@ -23,8 +23,6 @@ namespace Hangman.Views
         {
             InitializeComponent();
 
-            //this.Visibility = Visibility.Hidden;
-
             var player = PlayerEngine.ActivePlayer;
             if (player == null)
             {
@@ -34,6 +32,11 @@ namespace Hangman.Views
             {
                 YourTopGames.Content = new TopGamesUC(player.Id);
             }
+        }
+
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
         }
     }
 }
