@@ -43,9 +43,9 @@ namespace Hangman.ViewModels
         #region PropertiesForGameStart
         public string PlayerName { get; set; }
         public IPlayer IPlayer { get; set; }
-        private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         private Game Game { get; set; }
         public bool IsGameStart { get; set; }
+        public bool IsStartBtnClickable { get; set; }
 
         #endregion
 
@@ -68,7 +68,6 @@ namespace Hangman.ViewModels
         public bool IsGuessCorrect { get; set; }
 
         #endregion
-
 
         #region Hint
         public IWord IWord { get; set; }
@@ -106,6 +105,7 @@ namespace Hangman.ViewModels
 
             IsStopWatchView = true;
             IsGameStart = false;
+            IsStartBtnClickable = true;
 
         }
 
@@ -288,6 +288,7 @@ namespace Hangman.ViewModels
             StopStopWatch();
             SaveGameScore();
             IsGameStart = false;
+            IsStartBtnClickable = false;
         }
 
         private void SaveGameScore()
@@ -332,9 +333,6 @@ namespace Hangman.ViewModels
                 ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
             }
         }
-
-
-
 
         private void StartStopWatch()
         {

@@ -115,7 +115,7 @@
                     
                 </Border>
                 <StackPanel Orientation="Horizontal">
-                <Button Background="#ECEBE4" HorizontalAlignment="Left" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}">
+                    <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="#ECEBE4" HorizontalAlignment="Left" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
