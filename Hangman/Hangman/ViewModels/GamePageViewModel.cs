@@ -137,6 +137,17 @@ namespace Hangman.ViewModels
             upperWord = IWord.Name.ToUpper();
             ShowingWordArray = new char[upperWord.Length];
             wordCheckerArray = new int[upperWord.Length];
+            MakeFirstAnswerForPlayer();
+            LinkAnswerForPlayer();
+        }
+
+        private void MakeFirstAnswerForPlayer()
+        {
+            for (int i = 0; i < ShowingWordArray.Length; i++) 
+            {
+                ShowingWordArray[i] = '_';
+            } 
+            
         }
 
         private void MakeGame()
@@ -183,6 +194,7 @@ namespace Hangman.ViewModels
             CompareWordAndSelectedKey();
             WorkCounters();
             ConvertShownWord();
+            LinkAnswerForPlayer();
             SwitchGameStatus();
         }
 
@@ -220,6 +232,17 @@ namespace Hangman.ViewModels
             return ShowingWordArray;
         }
 
+        public string AnswerForPlayer { get; set; } //Binding i GamePage.xml
+        public void LinkAnswerForPlayer()
+        {
+            AnswerForPlayer ="";
+            for(int i = 0; i<ShowingWordArray.Length; i++)
+            {
+                AnswerForPlayer += $"{ShowingWordArray[i]}  ";
+            }
+
+        }
+
         public void WorkCounters()
         {
 
@@ -240,7 +263,6 @@ namespace Hangman.ViewModels
             }
         }
 
-        public string Answer { get; set; }
         private void SwitchGameStatus()
         {
             string answer = new string(ShowingWordArray);
@@ -255,7 +277,6 @@ namespace Hangman.ViewModels
             {
                 EndGame();
             }
-            Answer = answer;
         }
 
         private void EndGame()
