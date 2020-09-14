@@ -30,7 +30,7 @@ namespace Hangman.Views
 
         private void GameMenu_Click(object sender, RoutedEventArgs e)
         {
-            // ska skickas iväg till GamePage_overlay innan  för att kunna välja ett spel därifrån. 
+            // ska skickas iväg till GameStartPage innan  för att kunna välja ett spel därifrån. 
         }
     }
 }
