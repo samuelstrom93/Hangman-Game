@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangman.GameLogics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,6 +24,16 @@ namespace Hangman.Views
             InitializeComponent();
 
             //this.Visibility = Visibility.Hidden;
+
+            var player = PlayerEngine.ActivePlayer;
+            if (player == null)
+            {
+                YourTopGames.Content = new TopGamesUC();
+            }
+            else
+            {
+                YourTopGames.Content = new TopGamesUC(player.Id);
+            }
         }
     }
 }
