@@ -13,7 +13,6 @@
         <StackPanel HorizontalAlignment="Center" Margin="0,120,0,0" Orientation="Vertical" VerticalAlignment="Center">
             <Label Content="Vem är du?" Foreground="White" HorizontalAlignment="Center"/>
             <TextBox Name="txtBoxUserInput"></TextBox>
-            <ComboBox x:Name="cboBoxPlayers" Width="140"/>
             <Button Content="Logga in" Click ="Button_Click" Height="20" Width="152"/>
         </StackPanel>
 

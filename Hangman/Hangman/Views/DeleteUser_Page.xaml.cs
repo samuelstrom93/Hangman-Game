@@ -35,6 +35,7 @@ namespace Hangman.Views
         {
             string name = txtBoxInsertUser.Text;
 
+            //AHAA - satte här
             if (PlayerEngine.IsNameUsed(name) && name == PlayerEngine.ActivePlayer.Name)
             {
                 model.DeleteUser(PlayerEngine.ActivePlayer.Name);

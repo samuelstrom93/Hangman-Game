@@ -34,13 +34,10 @@ namespace Hangman.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //CBOBOX
-            //     PlayerEngine.ActivePlayer = cboBoxPlayers.SelectedItem as Player;
-
             //INPUT
             if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
             {
-                PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(txtBoxUserInput.Text);
+                PlayerEngine.SetActiveUser(txtBoxUserInput.Text);
                 this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
             }
             else

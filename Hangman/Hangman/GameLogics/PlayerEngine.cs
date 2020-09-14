@@ -26,7 +26,6 @@ namespace Hangman.GameLogics
 
             if (player != null)
             {
-                PlayerEngine.ActivePlayer = player;
                 return true;
             }
 
@@ -34,6 +33,10 @@ namespace Hangman.GameLogics
                 return false;
         }
 
+        public static void SetActiveUser(string name)
+        {
+            PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
+        }
         #endregion
     }
 
