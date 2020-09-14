@@ -9,7 +9,7 @@
 
     <StackPanel Margin="0, 0, 0, 0" Grid.Column="0">
         <Border
-            Background="White"
+
             Width="300"
             MinHeight="100"
             CornerRadius="5"
@@ -18,9 +18,8 @@
             VerticalAlignment="Center">
 
             <Grid>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
-                            Background="AliceBlue">
-                    <TextBlock ><Run Text="Vill du byta namn på din användare?"/><LineBreak/><Run Text=" Skriv in önskat nytt namn"/></TextBlock>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock ><Run Text="Skriv in önskat nytt namn:"/></TextBlock>
                     <TextBox x:Name="txtBoxInsertName"/>
                     <Button Content="Byt Namn!" Click="Button_Click"/>
                     <TextBlock x:Name="txtBlockErrorMessage" Text="{Binding Message}"/>

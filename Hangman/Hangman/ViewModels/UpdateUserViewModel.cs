@@ -22,8 +22,11 @@ class UpdateUserViewModel : BaseViewModel
 
     public UpdateUserViewModel(IPlayer player)
     {
+        if(PlayerEngine.ActivePlayer.Name!= null)
+        {
+            PlayerName = PlayerEngine.ActivePlayer.Name;
 
-        PlayerName = PlayerEngine.ActivePlayer.Name;
+        }
     }
 
     public void UpdateButton()
@@ -63,6 +66,7 @@ class UpdateUserViewModel : BaseViewModel
                 }
             }
         }
+
         else if (wantedName == PlayerEngine.ActivePlayer.Name)
         {
             Message = "Du måste ange ett nytt namn";

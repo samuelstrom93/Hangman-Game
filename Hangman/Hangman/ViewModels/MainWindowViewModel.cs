@@ -4,15 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Hangman.Views
+namespace Hangman.Views 
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public string PlayerName { get; set; }
+        public string PlayerName { get; set; } = "Demo Player";
 
         public MainWindowViewModel()
         {
-            if(PlayerEngine.ActivePlayer !=null)
+
+            if (PlayerEngine.ActivePlayer !=null)
                 PlayerName = PlayerEngine.ActivePlayer.Name;
         }
 

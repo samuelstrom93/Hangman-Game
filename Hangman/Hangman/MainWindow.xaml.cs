@@ -41,22 +41,18 @@ namespace Hangman
             
         }
 
+        private void mnuPlay(object sender, RoutedEventArgs e)
+        {
+            //leder tillbaka användaren till LoginSkärmen
+            Main.Content = new GamePage();
+
+        }
 
         private void mnuUserSettings(object sender, RoutedEventArgs e)
         {
             Main.Content = new UserSettingsPage();
         }
-       /*
-        private void mnuDeleteUser(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new DeleteUserPage(PlayerEngine.ActivePlayer);
 
-        }
-
-        private void mnuUpdateUser(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new UpdateUserPage(PlayerEngine.ActivePlayer);
-        }*/
     }
 }
 

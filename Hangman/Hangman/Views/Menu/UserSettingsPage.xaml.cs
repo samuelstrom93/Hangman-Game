@@ -24,6 +24,7 @@ namespace Hangman.Views
             InitializeComponent();
             ChangeUserFrame.Content = new UpdateUserUC();
             DeleteUserFrame.Content = new DeleteUserUC();
+            
         }
     }
 }
