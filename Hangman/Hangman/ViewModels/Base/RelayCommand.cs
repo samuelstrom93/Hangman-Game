@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace Hangman.ViewModels.Base
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action action;
 
