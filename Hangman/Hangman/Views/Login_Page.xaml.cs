@@ -10,22 +10,45 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hangman.GameLogics;
+using Hangman.Models;
+using Hangman.Repositories;
+using Hangman.ViewModels;
 
 namespace Hangman.Views
 {
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class LoginPage : Page
     {
-        public Login()
+        private LoginPageViewModel model;
+
+        public LoginPage()
         {
             InitializeComponent();
+            cboBoxPlayers.ItemsSource = Player_Repository.GetPlayers();
+            model = new LoginPageViewModel();
+            DataContext = model;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Content = new GamePage();
+            //CBOBOX
+            //     PlayerEngine.ActivePlayer = cboBoxPlayers.SelectedItem as Player;
+
+            //INPUT
+            if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
+            {
+                PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(txtBoxUserInput.Text);
+                this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
+            }
+            else
+            {
+                MessageBox.Show("Din användare finns inte!");
+            }
+
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

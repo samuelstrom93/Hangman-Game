@@ -19,6 +19,7 @@ namespace Hangman.Repositories
         public static void CreatePlayer(string name)
         {
             string stmt = "INSERT INTO player (name) values(@name) returning id";
+            Player player = new Player();
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
@@ -27,6 +28,7 @@ namespace Hangman.Repositories
                 {
                     try
                     {
+
                         using (var command = new NpgsqlCommand())
                         {
                             command.Parameters.AddWithValue("name", name);
@@ -35,8 +37,10 @@ namespace Hangman.Repositories
                             command.Prepare();
                             int id = (int)command.ExecuteScalar();
                             command.Parameters.Clear();
+
                         }
                         trans.Commit();
+
                     }
                     //SQL state för redan existerande namn: 23505
                     catch (PostgresException)
@@ -45,6 +49,7 @@ namespace Hangman.Repositories
                         throw;
                     }
                 }
+
             }
         }
 
@@ -53,7 +58,7 @@ namespace Hangman.Repositories
         #region READ
 
         //Metod för att läsa in alla användare 
-        public static IEnumerable<Player> GetPlayers()
+        public static List<Player> GetPlayers()
         {
             string stmt = "SELECT name, id FROM player ORDER BY name";
 
@@ -112,7 +117,7 @@ namespace Hangman.Repositories
                     }
                     return player;
                 }
-               
+
             }
         }
         #endregion
@@ -144,7 +149,7 @@ namespace Hangman.Repositories
         #endregion
 
         #region UPDATE
-        public static void UpdateNameOnPlayer(int id, string name)
+        public static void UpdateNameOnPlayer(string name, int id)
         {
             string stmt = "UPDATE player SET name = @name WHERE id=@id";
 
