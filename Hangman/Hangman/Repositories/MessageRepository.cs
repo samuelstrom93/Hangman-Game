@@ -10,7 +10,7 @@ namespace Hangman.Repositories
 {
     public static class MessageRepository
     {
-        private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
+        private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["dbTest"].ConnectionString;
 
         #region READ
         public static IEnumerable<Message> GetMessages(int? recieverId = null, int? senderId = null)
