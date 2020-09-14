@@ -24,12 +24,10 @@ namespace Hangman.Views
         public GamePage()
         {
             InitializeComponent();
-            //DataContext = new GamePageViewModel();
             DataContext = gamePageViewModel;
-        
         }
-        private GamePageViewModel gamePageViewModel = new GamePageViewModel();
 
+        private GamePageViewModel gamePageViewModel = new GamePageViewModel();
 
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -41,14 +39,16 @@ namespace Hangman.Views
         {
             if (gamePageViewModel.IsGuessCorrect)
             {
-                //((Button)sender).Background = Brushes.Green;
-                ((Button)sender).Foreground = Brushes.Green;
-
+                ((Button)sender).Opacity = Brushes.Green;
+                ((Button)sender).Background = Brushes.Green;
+                //((Button)sender).Foreground = Brushes.Green;
             }
             else
             {
-                //((Button)sender).Background = Brushes.Red;
-                ((Button)sender).Foreground = Brushes.Red;
+                ((Button)sender).Opacity = 0.2;
+                ((Button)sender).Background = Brushes.Red;
+                
+                //((Button)sender).Foreground = Brushes.Red;
             }
 
             ((Button)sender).IsEnabled = false;
