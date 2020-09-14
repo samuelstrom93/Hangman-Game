@@ -1,4 +1,5 @@
-﻿using Hangman.Repositories;
+﻿using Hangman.GameLogics;
+using Hangman.Repositories;
 using Hangman.Views;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,39 @@ namespace Hangman
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel model;
         public MainWindow()
         {
             InitializeComponent();
-
+            model = new MainWindowViewModel();
             Main.Content = new LoginPage();
             this.SizeToContent = SizeToContent.Height;
         }
+
+
+        private void mnuLogOut(object sender, RoutedEventArgs e)
+        {
+            //leder tillbaka användaren till LoginSkärmen
+            Main.Content = new LoginPage();        
+            
+        }
+
+
+        private void mnuUserSettings(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new UserSettingsPage();
+        }
+       /*
+        private void mnuDeleteUser(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new DeleteUserPage(PlayerEngine.ActivePlayer);
+
+        }
+
+        private void mnuUpdateUser(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new UpdateUserPage(PlayerEngine.ActivePlayer);
+        }*/
     }
 }
+

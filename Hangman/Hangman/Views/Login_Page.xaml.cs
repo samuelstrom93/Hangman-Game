@@ -23,12 +23,13 @@ namespace Hangman.Views
     public partial class LoginPage : Page
     {
         private LoginPageViewModel model;
+        private MainWindowViewModel MWmodel;
 
         public LoginPage()
         {
             InitializeComponent();
-            cboBoxPlayers.ItemsSource = Player_Repository.GetPlayers();
             model = new LoginPageViewModel();
+            MWmodel = new MainWindowViewModel();
             DataContext = model;
         }
 
@@ -37,7 +38,7 @@ namespace Hangman.Views
             //INPUT
             if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
             {
-                PlayerEngine.SetActiveUser(txtBoxUserInput.Text);
+                PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
                 this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
             }
             else

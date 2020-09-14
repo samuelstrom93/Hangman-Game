@@ -7,7 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Frame x:Name="Main">
-        </Frame>
+        <StackPanel Margin="0, 0, 0, 0" >
+            <Border >
+                <DockPanel>
+                    <Menu DockPanel.Dock="Top" Grid.Row="0">
+                        <MenuItem Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=Din_Användare}">
+                            <MenuItem Header="Spela" />
+                            <MenuItem Header="Användarinställningar" Click="mnuUserSettings" />
+                            <Separator />
+                            <MenuItem Header="Logga ut" Click="mnuLogOut" />
+                        </MenuItem>
+                    </Menu>
+                </DockPanel>
+            </Border>
+            
+            <Border>
+                <Grid Margin="0" Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Här tar vi bort Navigationsmöjligheten, vill vi ha det i alla?-->
+                    <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </Border>
+
+        </StackPanel>
     </Grid>
 </Window>

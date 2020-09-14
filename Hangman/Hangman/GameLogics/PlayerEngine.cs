@@ -33,7 +33,11 @@ namespace Hangman.GameLogics
                 return false;
         }
 
-        public static void SetActiveUser(string name)
+        /// <summary>
+        /// En metod för att tilldela ActiveUser en Player
+        /// </summary>
+        /// <param name="name"></param>
+        public static void SetActivePlayer(string name)
         {
             PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
         }
