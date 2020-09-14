@@ -27,9 +27,8 @@ namespace Hangman
         {
             InitializeComponent();
 
-            Main.Content = new Login();
+            Main.Content = new LoginPage();
             this.SizeToContent = SizeToContent.Height;
-            
         }
     }
 }

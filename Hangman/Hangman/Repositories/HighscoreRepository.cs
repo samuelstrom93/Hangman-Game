@@ -41,7 +41,7 @@ namespace Hangman.Repositories
                     {
                         if (!reader.HasRows)
                         {
-                            return null;
+                            return result;
                         }
 
                         while (reader.Read())
@@ -87,7 +87,7 @@ namespace Hangman.Repositories
                     {
                         if (!reader.HasRows)
                         {
-                            return null;
+                            return result;
                         }
 
                         while (reader.Read())
