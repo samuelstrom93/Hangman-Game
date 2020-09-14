@@ -177,7 +177,7 @@ namespace Hangman.ViewModels
 
         private void RefreshGame()
         {
-            numberOfLives = 11;
+            numberOfLives = 10;
             numberOfTries = 0;
             numberOfIncorrectTries = 0;
             numberOfCorrectTries = 0;
@@ -260,7 +260,13 @@ namespace Hangman.ViewModels
                 numberOfIncorrectTries++;
                 numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
+                ProceedGameStage();
             }
+        }
+        private int gameStage;
+        private void ProceedGameStage()
+        {
+            throw new NotImplementedException();
         }
 
         private void SwitchGameStatus()
