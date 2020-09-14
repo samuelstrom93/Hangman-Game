@@ -37,7 +37,7 @@ namespace Hangman.Views
 
             InitializeComponent();
             Player = player;
-            gamePageViewModel = new GamePageViewModel();
+            gamePageViewModel = new GamePageViewModel(player);
             DataContext = gamePageViewModel;
 
         }

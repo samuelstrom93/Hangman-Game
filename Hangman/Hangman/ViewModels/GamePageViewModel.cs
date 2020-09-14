@@ -37,7 +37,7 @@ namespace Hangman.ViewModels
 
         #region PropertiesForGameStart
         public string PlayerName { get; set; }
-        public IPlayer Player { get; set; }
+        public IPlayer IPlayer { get; set; }
         private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         private Game Game { get; set; }
         public bool IsGameStart { get; set; }
@@ -88,7 +88,8 @@ namespace Hangman.ViewModels
         public GamePageViewModel(IPlayer player)
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
-            MakeDemoPlayer(); //TA BORT SENARE
+            IPlayer = player;
+            //MakeDemoPlayer(); //TA BORT SENARE
 
             GameStartCommand = new RelayCommand(StartGame);
             //BtnStyleChangeCommand = new RelayCommand(JudgeBtnStyle);
@@ -142,7 +143,7 @@ namespace Hangman.ViewModels
                 NumberOfIncorrectTries = 0,
                 NumberOfTries = 0,
                 StartTime = DateTime.Now,
-                PlayerId = playerTEST.Id,
+                PlayerId = IPlayer.Id,
                 WordId = IWord.Id
 
             };
