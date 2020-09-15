@@ -11,6 +11,13 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using Hangman.Views;
 using Hangman.GameLogics;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Resources;
+using System.IO;
+using System.Drawing;
+using System.Reflection;
 
 namespace Hangman.ViewModels
 {
@@ -21,38 +28,6 @@ namespace Hangman.ViewModels
         public ICommand GameStartCommand { get; set; }
         public ICommand StopWatchHideCommand { get; set; }
 
-        #endregion
-
-        #region CommandsForKeys
-        public ICommand SelectedKeyCommandA { get; set; }
-        public ICommand SelectedKeyCommandB { get; set; }
-        public ICommand SelectedKeyCommandC { get; set; }
-        public ICommand SelectedKeyCommandD { get; set; }
-        public ICommand SelectedKeyCommandE { get; set; }
-        public ICommand SelectedKeyCommandF { get; set; }
-        public ICommand SelectedKeyCommandG { get; set; }
-        public ICommand SelectedKeyCommandH { get; set; }
-        public ICommand SelectedKeyCommandI { get; set; }
-        public ICommand SelectedKeyCommandJ { get; set; }
-        public ICommand SelectedKeyCommandK { get; set; }
-        public ICommand SelectedKeyCommandL { get; set; }
-        public ICommand SelectedKeyCommandM { get; set; }
-        public ICommand SelectedKeyCommandN { get; set; }
-        public ICommand SelectedKeyCommandO { get; set; }
-        public ICommand SelectedKeyCommandP { get; set; }
-        public ICommand SelectedKeyCommandQ { get; set; }
-        public ICommand SelectedKeyCommandR { get; set; }
-        public ICommand SelectedKeyCommandS { get; set; }
-        public ICommand SelectedKeyCommandT { get; set; }
-        public ICommand SelectedKeyCommandU { get; set; }
-        public ICommand SelectedKeyCommandV { get; set; }
-        public ICommand SelectedKeyCommandW { get; set; }
-        public ICommand SelectedKeyCommandX { get; set; }
-        public ICommand SelectedKeyCommandY { get; set; }
-        public ICommand SelectedKeyCommandZ { get; set; }
-        public ICommand SelectedKeyCommandOO { get; set; }
-        public ICommand SelectedKeyCommandAA { get; set; }
-        public ICommand SelectedKeyCommandAE { get; set; }
         #endregion
 
         #region StopWatch
@@ -67,27 +42,33 @@ namespace Hangman.ViewModels
 
         #region PropertiesForGameStart
         public string PlayerName { get; set; }
-        public IPlayer Player { get; set; }
-        private IPlayer playerTEST { get; set; }    //TA BORT SENARE
+        public IPlayer IPlayer { get; set; }
         private Game Game { get; set; }
-        //private Word Word { get; set; }
-        private bool IsGameStart { get; set; }
+
+        public bool IsGameStart { get; set; }
+        public bool IsStartBtnClickable { get; set; }
 
         #endregion
 
         #region ForGameScore
-        private int numberOfLife;   // 0 =GAME OVER
-        private int numberOfTies;
+        public int numberOfLives;   // 0 =GAME OVER
+        public int numberOfTries;
         private int numberOfIncorrectTries;
-        private int numberOfcorrectTries;
-        private bool isWon;
+        private int numberOfCorrectTries;
+        public bool isWon;
+
+        public string numberOfCorrectTries_text { get; set; }
+        public string numberOfIncorrectTries_text { get; set; }
+
         #endregion
 
         #region ForJudgeGame
         private string selectedKey;
         private string upperWord;
-        #endregion
 
+        public bool IsGuessCorrect { get; set; }
+
+        #endregion
 
         #region Hint
         public IWord IWord { get; set; }
@@ -108,51 +89,98 @@ namespace Hangman.ViewModels
         }
 
         #endregion Hint
+        public GamePageViewModel()
+        {
+            PlayerName = "Spela utan användare";
+
+            RefreshGame();
+            ViewGameStage();
+
+            GameStartCommand = new RelayCommand(StartGameWithoutPlayer);
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+
+            MakeStopWatch();
+
+            IsStopWatchView = true;
+            IsGameStart = false;
+            IsStartBtnClickable = true;
+
+        }
+
 
         public GamePageViewModel(IPlayer player)
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
-            MakeDemoPlayer(); //TA BORT SENARE
+            IPlayer = player;
+
+            RefreshGame();
+            ViewGameStage();
 
             GameStartCommand = new RelayCommand(StartGame);
-            MakeCommandsForKeys();
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
 
             MakeStopWatch();
 
-
-            ShowHintCommand = new RelayCommand(ShowHint);
-
-
-            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             IsStopWatchView = true;
-
             IsGameStart = false;
+            IsStartBtnClickable = true;
 
         }
 
-        private void MakeDemoPlayer() //TESTKOD. TA BORT SENARE
-        {
-            string testPlayerName = "TestMan";
-            //CreatePlayer(testPlayerName);
-            playerTEST = GetPlayer(testPlayerName);
-        }  
+        #region Methods: GameStart
 
-        #region Methods:GameStart-End
         private void StartGame()
         {
             MakeWord();
             MakeGame();
-            RefreshGame();
+            MakeWordArray();
             StartStopWatch();
             IsHintShown = false;
+            IsGameStart = true;
+        }
+
+        private void StartGameWithoutPlayer()
+        {
+            MakeWord();
+            MakeGameWithoutPlayer();
+            MakeWordArray();
+            StartStopWatch();
+            IsHintShown = false;
+            IsGameStart = true;
         }
 
         private void MakeWord()
         {
             IWord = GetRandomWord();
             upperWord = IWord.Name.ToUpper();
+            ShowingWordArray = new char[upperWord.Length];
+            wordCheckerArray = new int[upperWord.Length];
+            MakeFirstAnswerForPlayer();
+            LinkAnswerForPlayer();
         }
 
+        private void MakeFirstAnswerForPlayer()
+        {
+            for (int i = 0; i < ShowingWordArray.Length; i++) 
+            {
+                ShowingWordArray[i] = '_';
+            } 
+            
+        }
+
+        private void MakeGameWithoutPlayer()
+        {
+            Game = new Game
+            {
+                IsWon = false,
+                NumberOfIncorrectTries = 0,
+                NumberOfTries = 0,
+                StartTime = DateTime.Now,
+                WordId = IWord.Id
+            };
+        }
         private void MakeGame()
         {
             Game = new Game
@@ -161,48 +189,138 @@ namespace Hangman.ViewModels
                 NumberOfIncorrectTries = 0,
                 NumberOfTries = 0,
                 StartTime = DateTime.Now,
-                PlayerId = playerTEST.Id,
+                PlayerId = IPlayer.Id,
                 WordId = IWord.Id
-
             };
+        }
 
-           
+        private char[] wordArray;
+        private void MakeWordArray()
+        {
+            wordArray = new char[upperWord.Length];
+            for (int i = 0; i < upperWord.Length; i++)
+            {
+                char oneOfWord = upperWord[i];
+                wordArray[i] = oneOfWord;
+            }
+
         }
 
         private void RefreshGame()
         {
-            numberOfLife = 10;
-            numberOfTies = 0;
+            numberOfLives = 10;
+            numberOfTries = 0;
             numberOfIncorrectTries = 0;
-            numberOfcorrectTries = 0;
+            numberOfCorrectTries = 0;
+            numberOfCorrectTries_text = numberOfCorrectTries.ToString();
+            numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+            gameStage = 0;
             isWon = false;
-            IsGameStart = true;
+        }
+        #endregion
+
+        #region Methods: JudgeGame-End
+        public void JudgeGame()
+        {
+            CompareWordAndSelectedKey();
+            WorkCounters();
+            ConvertShownWord();
+            LinkAnswerForPlayer();
+            SwitchGameStatus();
         }
 
-        private void JudgeGame()
+        private int[] wordCheckerArray; // int[] =0 →FEL, int[] =1 →RÄTT
+        public void CompareWordAndSelectedKey()
         {
+            for (int i = 0; i < wordArray.Length; i++)
+            {
+                char oneOfWord = wordArray[i];
+                char selectedKeyChar = selectedKey[0];
+
+                if (oneOfWord == selectedKeyChar)   //Gissade rätt
+                {
+                    wordCheckerArray[i] = 1;
+                }
+
+            }
+        }
+
+        public char[] ShowingWordArray { get; set; }
+        private char[] ConvertShownWord()
+        {
+            for (int i = 0; i < wordArray.Length; i++)
+            {
+
+                if (wordCheckerArray[i] == 1)
+                {
+                    ShowingWordArray[i] = wordArray[i];
+                }
+                if (wordCheckerArray[i] == 0)
+                {
+                    ShowingWordArray[i] = '_';
+                }
+            }
+            return ShowingWordArray;
+        }
+
+        public string AnswerForPlayer { get; set; } //Binding i GamePage.xml
+        public void LinkAnswerForPlayer()
+        {
+            AnswerForPlayer ="";
+            for(int i = 0; i<ShowingWordArray.Length; i++)
+            {
+                AnswerForPlayer += $"{ShowingWordArray[i]}  ";
+            }
+
+        }
+
+        public void WorkCounters()
+        {
+
             if (upperWord.Contains(selectedKey))    //Gissade rätt
             {
-                numberOfTies++;
-                numberOfcorrectTries++;
+                numberOfTries++;
+                numberOfCorrectTries++;
+                numberOfCorrectTries_text = numberOfCorrectTries.ToString();
+                IsGuessCorrect = true;
             }
             else //Gissade fel
             {
-                numberOfTies++;
-                numberOfLife = numberOfLife-1;
+                numberOfTries++;
+                numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-
+                numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+                IsGuessCorrect = false;
+                gameStage++;
+                ViewGameStage();
             }
-            if (numberOfcorrectTries == 6)  //Spelaren vann
+        }
+
+        private int gameStage;
+        public BitmapImage ImageForGameStage { get; set; }
+        private void ViewGameStage()
+        {
+            string imageAdress;
+            imageAdress = $"../../../Assets/Images/hänggubbe{gameStage}.png";
+
+            string currentPath = Environment.CurrentDirectory;
+            ImageForGameStage = new BitmapImage( new Uri( System.IO.Path.Combine(currentPath, imageAdress)));
+        }
+
+        private void SwitchGameStatus()
+        {
+            string answer = new string(ShowingWordArray);
+
+            if (answer == upperWord) //Spelaren vann
             {
                 isWon = true;
                 EndGame();
             }
-            if (numberOfLife == 0)  //Game over
+
+            if (numberOfLives == 0)  //Game over
             {
                 EndGame();
             }
-            
         }
 
         private void EndGame()
@@ -211,21 +329,27 @@ namespace Hangman.ViewModels
             StopStopWatch();
             SaveGameScore();
             IsGameStart = false;
+            IsStartBtnClickable = false;
         }
 
         private void SaveGameScore()
         {
             Game.NumberOfIncorrectTries = numberOfIncorrectTries;
-            Game.NumberOfTries = numberOfTies;
+            Game.NumberOfTries = numberOfTries;
             Game.IsWon = isWon;
 
-            AddGame(Game);
+            /*if(PlayerEngine.ActivePlayer!=null)
+            AddGame(Game);*/ // Vi kan flytta på dem till sidan för att visa slutresultat, för #35
+        }
+
+        public Game GetGameScore()
+        {
+            return Game;
         }
 
         #endregion
 
-
-        #region MethodsForStopWatch
+        #region Methods:StopWatch
         private void MakeStopWatch()
         {
             Timer = "00:00:00";
@@ -257,9 +381,6 @@ namespace Hangman.ViewModels
             }
         }
 
-
-
-
         private void StartStopWatch()
         {
             stopWatch.Start();
@@ -279,306 +400,12 @@ namespace Hangman.ViewModels
         }
         #endregion
 
-        #region MethodsForKeys
-        private void MakeCommandsForKeys()
+        #region MethodForSelectedBtn
+        public void TakeSelectedKey(string selectedkey)
         {
-            SelectedKeyCommandA = new RelayCommand(SelectKeyA);
-            SelectedKeyCommandB = new RelayCommand(SelectKeyB);
-            SelectedKeyCommandC = new RelayCommand(SelectKeyC);
-            SelectedKeyCommandD = new RelayCommand(SelectKeyD);
-            SelectedKeyCommandE = new RelayCommand(SelectKeyE);
-            SelectedKeyCommandF = new RelayCommand(SelectKeyF);
-            SelectedKeyCommandG = new RelayCommand(SelectKeyG);
-            SelectedKeyCommandH = new RelayCommand(SelectKeyH);
-            SelectedKeyCommandI = new RelayCommand(SelectKeyI);
-            SelectedKeyCommandJ = new RelayCommand(SelectKeyJ);
-            SelectedKeyCommandK = new RelayCommand(SelectKeyK);
-            SelectedKeyCommandL = new RelayCommand(SelectKeyL);
-            SelectedKeyCommandM = new RelayCommand(SelectKeyM);
-            SelectedKeyCommandN = new RelayCommand(SelectKeyN);
-            SelectedKeyCommandO = new RelayCommand(SelectKeyO);
-            SelectedKeyCommandP = new RelayCommand(SelectKeyP);
-            SelectedKeyCommandQ = new RelayCommand(SelectKeyQ);
-            SelectedKeyCommandR = new RelayCommand(SelectKeyR);
-            SelectedKeyCommandS = new RelayCommand(SelecKeyS);
-            SelectedKeyCommandT = new RelayCommand(SelectKeyT);
-            SelectedKeyCommandU = new RelayCommand(SelectKeyU);
-            SelectedKeyCommandV = new RelayCommand(SelectKeyV);
-            SelectedKeyCommandW = new RelayCommand(SelectKeyW);
-            SelectedKeyCommandX = new RelayCommand(SelectKeyX);
-            SelectedKeyCommandY = new RelayCommand(SelectKeyY);
-            SelectedKeyCommandZ = new RelayCommand(SelectKeyZ);
-            SelectedKeyCommandAA = new RelayCommand(SelectKeyAA);
-            SelectedKeyCommandAE = new RelayCommand(SelectKeyAE);
-            SelectedKeyCommandOO = new RelayCommand(SelectKeyOO);
+            selectedKey = selectedkey;
         }
-
-        private void SelectKeyA()
-        {
-            selectedKey ="A";
-
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-            
-        }
-
-        private void SelectKeyB()
-        {
-            selectedKey = "B";
-
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyC()
-        {
-            selectedKey = "C";
-
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyD()
-        {
-            selectedKey = "D";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyE()
-        {
-            selectedKey = "E";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyF()
-        {
-            selectedKey = "F";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyG()
-        {
-            selectedKey = "G";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyH()
-        {
-            selectedKey = "H";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyI()
-        {
-            selectedKey = "I";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyJ()
-        {
-            selectedKey = "J";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyK()
-        {
-            selectedKey = "K";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyL()
-        {
-            selectedKey = "L";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyM()
-        {
-            selectedKey = "M";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyN()
-        {
-            selectedKey = "N";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyO()
-        {
-            selectedKey = "O";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyQ()
-        {
-            selectedKey = "Q";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyP()
-        {
-            selectedKey = "P";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyR()
-        {
-            selectedKey = "R";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelecKeyS()
-        {
-            selectedKey = "S";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyT()
-        {
-            selectedKey = "T";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyU()
-        {
-            selectedKey = "U";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyV()
-        {
-            selectedKey = "V";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyW()
-        {
-            selectedKey = "W";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyX()
-        {
-            selectedKey = "X";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyY()
-        {
-            selectedKey = "Y";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyZ()
-        {
-            selectedKey = "Z";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyAA()
-        {
-            selectedKey = "AA";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyAE()
-        {
-            selectedKey = "AE";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-        private void SelectKeyOO()
-        {
-            selectedKey = "OO";
-            if (IsGameStart == true)
-            {
-                JudgeGame();
-            }
-        }
-
-
+      
         #endregion
     }
 }
