@@ -1,13 +1,13 @@
-﻿<Page x:Class="Hangman.Views.GameEnd_Page"
+﻿<Page x:Class="Hangman.Views.GameSuccess_Page"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="800"
       Background="#4CD3D3D3"
-      Title="Gameover_Page">
+      Title="GameSuccess_Page">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,15 +25,16 @@
                     <TextBlock Text="{Binding Timer}" Padding="4" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </WrapPanel>
                 <TextBlock Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0" FontSize="24">Antal rätt:</TextBlock>
-                <TextBlock FontSize="20" VerticalAlignment="Center" Text="{Binding NumberOfCorrectTries}"></TextBlock>
+                <TextBlock Text="{Binding NumberOfCorrectTries}"></TextBlock>
                 <TextBlock Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0" FontSize="24">Antal fel</TextBlock>
-                <TextBlock FontSize="20" VerticalAlignment="Center" Text="{Binding NumberOfIncorrectTries}"></TextBlock>
+                <TextBlock Text="{Binding NumberOfIncorrectTries}"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Foreground="Green" FontSize="24">Svaret var:</Label>
                     <Label Content="{Binding Word.Name}" Foreground="#FF338F08" FontSize="24"></Label>
                 </WrapPanel>
+                <Frame Background="AliceBlue" Width="400" Height="300" x:Name="YourTopGames"></Frame>
             </StackPanel>
 
         </StackPanel>
@@ -41,3 +42,4 @@
         <Button Grid.Row="2" Height="25" Width="100" Background="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="Button_Click">Spela igen?</Button>
     </Grid>
 </Page>
+

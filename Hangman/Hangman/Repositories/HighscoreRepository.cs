@@ -100,5 +100,55 @@ namespace Hangman.Repositories
 
             return result;
         }
+
+        // Hämtar tiden utifrån valt gameId
+        public static double GetGameTime(double gameId)
+        {
+            string stmt = $"SELECT EXTRACT(EPOCH FROM (end_time - start_time)) FROM game WHERE id = {gameId}";
+
+            using (var conn = new NpgsqlConnection(_connectionString))
+            {
+                double gameTime;
+                using (var command = new NpgsqlCommand())
+                {
+                    conn.Open();
+                    command.Connection = conn;
+                    command.CommandText = stmt;
+                    gameTime = (double)command.ExecuteScalar();
+                    return gameTime;
+                }
+            }
+        }
+
+        public static IEnumerable<HighscoreGame> GetGamesFromTime()
+        {
+            string stmt = $"SELECT EXTRACT(EPOCH FROM (end_time -start_time)), game.id FROM game ORDER BY date_part ASC";
+            var gameDiffTime = new List<HighscoreGame>();
+
+            using (var conn = new NpgsqlConnection(_connectionString))
+            {
+                conn.Open();
+                using (var command = new NpgsqlCommand(_connectionString, conn))
+                {
+                    
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var row = new HighscoreGame
+                            {
+                                PlayerName = (string)reader["player_name"],
+                                Word = (string)reader["word_name"],
+                                NumberOfTries = (int)reader["number_of_tries"],
+                                NumberOfIncorrectTries = (int)reader["number_of_incorrect_tries"],
+                                GameTime = (TimeSpan)reader["game_time"]
+                            };
+                            gameDiffTime.Add(row);
+                        }
+                    }
+                }
+            }
+            return gameDiffTime;
+        }
     }
 }

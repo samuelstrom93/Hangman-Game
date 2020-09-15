@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangman.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,12 @@ namespace Hangman.Views
     /// </summary>
     public partial class GameEnd_Page : Page
     {
+        private GameEndPageViewModel gameEndPageViewModel;
         public GameEnd_Page()
         {
             InitializeComponent();
+            gameEndPageViewModel = new GameEndPageViewModel();
+            DataContext = gameEndPageViewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

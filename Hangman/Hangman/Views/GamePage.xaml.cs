@@ -110,5 +110,10 @@ namespace Hangman.Views
             sender.IsEnabled = false;
 
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameSuccess_Page();
+        }
     }
 }

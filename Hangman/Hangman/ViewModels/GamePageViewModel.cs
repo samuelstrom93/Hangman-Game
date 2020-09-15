@@ -43,7 +43,7 @@ namespace Hangman.ViewModels
         #region PropertiesForGameStart
         public string PlayerName { get; set; }
         public IPlayer IPlayer { get; set; }
-        private Game Game { get; set; }
+        public static Game Game { get; set; }
         public bool IsGameStart { get; set; }
         public bool IsStartBtnClickable { get; set; }
 
@@ -70,7 +70,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Hint
-        public IWord IWord { get; set; }
+        public static IWord IWord { get; set; }
         public ICommand ShowHintCommand { get; set; }
         public bool IsHintShown { get; set; }
 
@@ -335,6 +335,7 @@ namespace Hangman.ViewModels
             {
                 EndGame();
             }
+            
         }
 
         private void EndGame()
