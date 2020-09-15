@@ -37,10 +37,10 @@ namespace Hangman
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth);
             }
 
-        private void NotifyIconClickReset(object sender, RoutedEventArgs e)
-        {
-            MenuShowName.Header = "Name";
-        }
+        //private void NotifyIconClickReset(object sender, RoutedEventArgs e)
+        //{
+        //    MenuShowName.Header = "Name";
+        //}
 
         
     }
