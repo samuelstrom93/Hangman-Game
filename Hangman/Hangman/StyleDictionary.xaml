@@ -6,7 +6,6 @@
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontFamily" Value="Helvetica" />
-        <Setter Property="FontSize" Value="25" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -23,5 +22,9 @@
         <Setter Property="BorderBrush" Value="#C2A83E" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="5" />
+    </Style>
+    <Style x:Key="BackgroundBorder" TargetType="Border">
+        <Setter Property="Background" Value="#605C4E" />
     </Style>
 </ResourceDictionary>
