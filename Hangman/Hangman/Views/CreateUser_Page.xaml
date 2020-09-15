@@ -12,16 +12,13 @@
     <Grid >
 
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+            <Label Content="Hänga Gubbe" HorizontalAlignment="Center" VerticalAlignment="Center" Height="115" Width="464" FontSize="72" Foreground="White" Margin="0,0,0,0"/>
             <Label Content="Välj ditt användarnamn:" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,0"/>
-            <StackPanel  Orientation="Horizontal">
-                <TextBox Name="txtBoxWantedName" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-            </StackPanel>
-            <Button Click="Button_CreateUser_Click" Content="Registrera" Width="152" Height="20" HorizontalAlignment="Left"/>
+            <TextBox Margin="5, 5, 5, 5" Name="txtBoxWantedName" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+            <Button Click="Button_CreateUser_Click" Content="Registrera" Width="152" Height="20" HorizontalAlignment="Center"/>
 
 
         </StackPanel>
-
-        <Label Content="Hänga Gubbe" HorizontalAlignment="Center" VerticalAlignment="Top" Height="115" Width="464" FontSize="72" Foreground="White" Margin="0,70,0,0"/>
         <Button Click="Button_BackToLogin_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="168" Background="{x:Null}" Content="Inte första gången?" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,0,20"/>
         <Button Click="Button_Help_Click" Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="20" Width="115"/>
 
