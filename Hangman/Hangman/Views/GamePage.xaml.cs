@@ -31,6 +31,8 @@ namespace Hangman.Views
         public GamePage()
         {
             InitializeComponent();
+            gamePageViewModel = new GamePageViewModel();
+            DataContext = gamePageViewModel;
         }
 
         public GamePage(IPlayer player)

@@ -89,6 +89,22 @@ namespace Hangman.ViewModels
 
         #endregion Hint
 
+        public GamePageViewModel()
+        {
+            RefreshGame();
+            ViewGameStage();
+
+            GameStartCommand = new RelayCommand(StartGame);
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+
+            MakeStopWatch();
+
+            IsStopWatchView = true;
+            IsGameStart = false;
+            IsStartBtnClickable = true;
+        }
+
         public GamePageViewModel(IPlayer player)
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
