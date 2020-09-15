@@ -8,19 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="0, 0, 0, 0" >
-            <Border >
-                <DockPanel>
-                    <Menu DockPanel.Dock="Top" Grid.Row="0">
-                        <MenuItem Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=Meny}">
-                            <MenuItem Header="Spela" Click="mnuClick" />
-                            <MenuItem Header="Användarinställningar" Click="mnuClick" />
-                            <Separator />
-                            <MenuItem Header="Logga ut" Click="mnuClick" />
-                        </MenuItem>
-                    </Menu>
-                </DockPanel>
-            </Border>
-            
+            <Frame x:Name="TopMenu" />
+
             <Border>
                 <Grid Margin="0" Grid.Row="1" Grid.Column="0">
                     <Grid.RowDefinitions>

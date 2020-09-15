@@ -42,30 +42,11 @@ namespace Hangman.Views
             DataContext = gamePageViewModel;
 
         }
-
-        #region MnuMethods
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var w = new HelpWindow();
             w.Show();
         }
-
-        private void mnuLogOut(object sender, RoutedEventArgs e)
-        {
-            //leder tillbaka användaren till LoginSkärmen
-            this.NavigationService.Content = new LoginPage();
-        }
-
-        private void mnuDeleteUser(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new DeleteUserPage(Player);
-        }
-
-        private void mnuUpdateUser(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new UpdateUserPage(Player);
-        }
-        #endregion
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
