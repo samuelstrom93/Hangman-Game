@@ -31,6 +31,7 @@ namespace Hangman.Views
             model = new LoginPageViewModel();
             MWmodel = new MainWindowViewModel();
             DataContext = model;
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

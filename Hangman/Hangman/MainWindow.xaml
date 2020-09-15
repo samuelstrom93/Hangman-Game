@@ -10,8 +10,8 @@
         <StackPanel Margin="0, 0, 0, 0" >
             <Border >
                 <DockPanel>
-                    <Menu DockPanel.Dock="Top" Grid.Row="0">
-                        <MenuItem Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=Meny}">
+                    <Menu Name="MainMenu" DockPanel.Dock="Top" Grid.Row="0">
+                        <MenuItem FontSize="16" Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=Meny}" Click="NotifyIconClickReset">
                             <MenuItem Header="Spela" Click="mnuClick" />
                             <MenuItem Header="Användarinställningar" Click="mnuClick" />
                             <Separator />
