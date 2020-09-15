@@ -117,13 +117,22 @@
 
                     </Border>
                     <StackPanel Orientation="Horizontal">
-                    <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="#ECEBE4" HorizontalAlignment="Left" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}">
+                        <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="#ECEBE4" HorizontalAlignment="Left" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            START
+                        </Button>
+                        <Button Background="#ECEBE4" Padding="20,3,20,3" Margin="242,2,0,2" HorizontalAlignment="Left" Click="GameIntroPage_Click" Content="Hjälp">
                             <Button.Resources>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="CornerRadius" Value="5"/>
                                 </Style>
                             </Button.Resources>
                         </Button>
+                            
                     </StackPanel>
                     <WrapPanel Orientation="Horizontal">
 
@@ -138,7 +147,7 @@
                     </WrapPanel>
                 </StackPanel>
             </Grid>
-            <Frame x:Name="GameStart" />
+            <Frame x:Name="GameStart"/>
         </Grid>
     </Border>
 </Page>

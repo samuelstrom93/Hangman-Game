@@ -111,5 +111,10 @@ namespace Hangman.Views
         {
             this.NavigationService.Content = new GameIntroPage();
         }
+
+        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
     }
 }
