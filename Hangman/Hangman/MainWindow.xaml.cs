@@ -34,25 +34,30 @@ namespace Hangman
         }
 
 
-        private void mnuLogOut(object sender, RoutedEventArgs e)
+        private void mnuClick(object sender, RoutedEventArgs e)
         {
-            //leder tillbaka användaren till LoginSkärmen
-            Main.Content = new LoginPage();        
-            
+            string selectedMnu = ((MenuItem)sender).Header.ToString();
+            model.TakeSelectedMenu(selectedMnu);
+
+            switch (selectedMnu)
+            {
+                case "Spela":
+                    Main.Content = new GamePage();
+                    break;
+
+                case "Användarinställningar":
+
+                    if (PlayerEngine.ActivePlayer != null)
+                        Main.Content = new UserSettingsPage();
+                    else
+                        MessageBox.Show("Ingen användare är inloggad");
+                    break;
+
+                case "Logga ut":
+                        Main.Content = new LoginPage();
+                    break;
+            }  
         }
-
-        private void mnuPlay(object sender, RoutedEventArgs e)
-        {
-            //leder tillbaka användaren till LoginSkärmen
-            Main.Content = new GamePage();
-
-        }
-
-        private void mnuUserSettings(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new UserSettingsPage();
-        }
-
     }
 }
 
