@@ -11,7 +11,7 @@
             <Border >
                 <DockPanel>
                     <Menu DockPanel.Dock="Top" Grid.Row="0">
-                        <MenuItem Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=Din_Användare}">
+                        <MenuItem Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=Meny}">
                             <MenuItem Header="Spela" Click="mnuClick" />
                             <MenuItem Header="Användarinställningar" Click="mnuClick" />
                             <Separator />

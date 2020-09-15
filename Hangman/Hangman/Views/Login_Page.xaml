@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <StackPanel HorizontalAlignment="Center" Margin="0,120,0,0" Orientation="Vertical" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
             <Label Content="Vem är du?" Foreground="White" HorizontalAlignment="Center"/>
             <TextBox Name="txtBoxUserInput"></TextBox>
             <Button Content="Logga in" Click ="Button_Click" Height="20" Width="152"/>

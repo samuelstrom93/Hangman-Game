@@ -19,6 +19,7 @@ namespace Hangman.Views
     /// </summary>
     public partial class UserSettingsPage : Page
     {
+       
         public UserSettingsPage()
         {
             InitializeComponent();

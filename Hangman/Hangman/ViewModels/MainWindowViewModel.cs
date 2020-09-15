@@ -1,4 +1,5 @@
 ﻿using Hangman.GameLogics;
+using Hangman.Models;
 using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,17 @@ namespace Hangman.Views
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public string PlayerName { get; set; } = "Demo Player";
+        public string PlayerName { get; set; } 
         private string selectedMenu ;
 
         public MainWindowViewModel()
         {
 
-            if (PlayerEngine.ActivePlayer != null)
-                PlayerName = PlayerEngine.ActivePlayer.Name;
         }
 
         public void UpdateActivePlayer()
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
-
         }
 
         public void TakeSelectedMenu(string SelectedMenu)

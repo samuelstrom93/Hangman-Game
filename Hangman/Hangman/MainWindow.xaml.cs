@@ -42,7 +42,7 @@ namespace Hangman
             switch (selectedMnu)
             {
                 case "Spela":
-                    Main.Content = new GamePage();
+                    Main.Content = new GamePage(PlayerEngine.ActivePlayer);
                     break;
 
                 case "Användarinställningar":
