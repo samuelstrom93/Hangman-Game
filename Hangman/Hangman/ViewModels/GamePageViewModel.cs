@@ -106,7 +106,7 @@ namespace Hangman.ViewModels
             IsStartBtnClickable = true;
 
         }
-
+        /*
         public GamePageViewModel()
         {
             RefreshGame();
@@ -122,7 +122,7 @@ namespace Hangman.ViewModels
             IsGameStart = false;
             IsStartBtnClickable = true;
         }
-
+        */
         public GamePageViewModel(IPlayer player)
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
