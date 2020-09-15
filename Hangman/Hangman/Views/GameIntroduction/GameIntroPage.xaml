@@ -33,7 +33,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Margin="0,15,0,0" Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center" Margin="0,8,15,0" FontWeight="DemiBold" FontSize="15">Sida 1/2</TextBlock>
+                <TextBlock FontFamily="courier new" VerticalAlignment="Center" Margin="0,8,15,0" FontWeight="DemiBold" FontSize="15">Sida 1/2</TextBlock>
                 <Button Background="#D3D3D3" Content="Nästa sida" Margin="85,8,0,0" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="NextPage_Click"></Button>
             </StackPanel>
         </StackPanel>
