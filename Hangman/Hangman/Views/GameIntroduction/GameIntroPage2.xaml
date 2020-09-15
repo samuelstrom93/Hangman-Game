@@ -11,7 +11,7 @@
     <Grid Background="#DADDD8" Height="600" Width="800">
         <StackPanel>
             <TextBlock Margin="0,15,0,20" TextAlignment="Center" FontWeight="Bold" FontSize="30">Spelintroduktion</TextBlock>
-            <Grid Height="30" Width="450">
+            <Grid Height="25" Width="475">
                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
                     <TextBlock Margin="0,0,100,0" FontStyle="Italic" FontWeight="DemiBold" FontSize="20">Exempelbild</TextBlock>
                     <TextBlock Margin="100,0,0,0" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Right">Information</TextBlock>
@@ -40,7 +40,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Margin="0,15" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Margin="0,8,15,0" FontWeight="DemiBold" FontSize="15">Sida 2/2</TextBlock>
+                <TextBlock Margin="0,8,15,0"  FontWeight="DemiBold" FontSize="15">Sida 2/2</TextBlock>
                 <Button Background="#D3D3D3" Content="Gå till spelmenyn" Margin="85,8,0,0" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="GameMenu_Click"></Button>
             </StackPanel>
         </StackPanel>
