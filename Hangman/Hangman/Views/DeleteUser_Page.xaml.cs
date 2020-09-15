@@ -50,7 +50,7 @@ namespace Hangman.Views
             DataContext = model;
 
         }
-
+        
         private void mnuLogOut(object sender, RoutedEventArgs e)
         {
             //leder tillbaka användaren till LoginSkärmen

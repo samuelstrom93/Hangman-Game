@@ -13,6 +13,11 @@ using Hangman.Views;
 using Hangman.GameLogics;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Resources;
+using System.IO;
+using System.Drawing;
+using System.Reflection;
 
 namespace Hangman.ViewModels
 {
@@ -38,9 +43,9 @@ namespace Hangman.ViewModels
         #region PropertiesForGameStart
         public string PlayerName { get; set; }
         public IPlayer IPlayer { get; set; }
-        private IPlayer playerTEST { get; set; }    //TA BORT SENARE
         private Game Game { get; set; }
         public bool IsGameStart { get; set; }
+        public bool IsStartBtnClickable { get; set; }
 
         #endregion
 
@@ -64,7 +69,6 @@ namespace Hangman.ViewModels
 
         #endregion
 
-
         #region Hint
         public IWord IWord { get; set; }
         public ICommand ShowHintCommand { get; set; }
@@ -84,39 +88,59 @@ namespace Hangman.ViewModels
         }
 
         #endregion Hint
+        public GamePageViewModel()
+        {
+            PlayerName = "Spela utan användare";
 
+            RefreshGame();
+            ViewGameStage();
+
+            GameStartCommand = new RelayCommand(StartGameWithoutPlayer);
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+
+            MakeStopWatch();
+
+            IsStopWatchView = true;
+            IsGameStart = false;
+            IsStartBtnClickable = true;
+
+        }
+        /*
+        public GamePageViewModel()
+        {
+            RefreshGame();
+            ViewGameStage();
+
+            GameStartCommand = new RelayCommand(StartGame);
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+
+            MakeStopWatch();
+
+            IsStopWatchView = true;
+            IsGameStart = false;
+            IsStartBtnClickable = true;
+        }
+        */
         public GamePageViewModel(IPlayer player)
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
             IPlayer = player;
-            //MakeDemoPlayer(); //TA BORT SENARE
+
+            RefreshGame();
+            ViewGameStage();
 
             GameStartCommand = new RelayCommand(StartGame);
-            //BtnStyleChangeCommand = new RelayCommand(JudgeBtnStyle);
-            //MakeSelectedBtn();
-
-            //MakeCommandsForKeys();
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
 
             MakeStopWatch();
 
-
-            ShowHintCommand = new RelayCommand(ShowHint);
-
-
-            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
             IsStopWatchView = true;
-
             IsGameStart = false;
+            IsStartBtnClickable = true;
 
-        }
-
-        
-
-        private void MakeDemoPlayer() //TESTKOD. TA BORT SENARE
-        {
-            string testPlayerName = "TestMan";
-            //CreatePlayer(testPlayerName);
-            playerTEST = GetPlayer(testPlayerName);
         }
 
         #region Methods: GameStart
@@ -126,9 +150,19 @@ namespace Hangman.ViewModels
             MakeWord();
             MakeGame();
             MakeWordArray();
-            RefreshGame();
             StartStopWatch();
             IsHintShown = false;
+            IsGameStart = true;
+        }
+
+        private void StartGameWithoutPlayer()
+        {
+            MakeWord();
+            MakeGameWithoutPlayer();
+            MakeWordArray();
+            StartStopWatch();
+            IsHintShown = false;
+            IsGameStart = true;
         }
 
         private void MakeWord()
@@ -137,8 +171,30 @@ namespace Hangman.ViewModels
             upperWord = IWord.Name.ToUpper();
             ShowingWordArray = new char[upperWord.Length];
             wordCheckerArray = new int[upperWord.Length];
+            MakeFirstAnswerForPlayer();
+            LinkAnswerForPlayer();
         }
 
+        private void MakeFirstAnswerForPlayer()
+        {
+            for (int i = 0; i < ShowingWordArray.Length; i++) 
+            {
+                ShowingWordArray[i] = '_';
+            } 
+            
+        }
+
+        private void MakeGameWithoutPlayer()
+        {
+            Game = new Game
+            {
+                IsWon = false,
+                NumberOfIncorrectTries = 0,
+                NumberOfTries = 0,
+                StartTime = DateTime.Now,
+                WordId = IWord.Id
+            };
+        }
         private void MakeGame()
         {
             Game = new Game
@@ -172,8 +228,8 @@ namespace Hangman.ViewModels
             numberOfCorrectTries = 0;
             numberOfCorrectTries_text = numberOfCorrectTries.ToString();
             numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+            gameStage = 0;
             isWon = false;
-            IsGameStart = true;
         }
         #endregion
 
@@ -183,6 +239,7 @@ namespace Hangman.ViewModels
             CompareWordAndSelectedKey();
             WorkCounters();
             ConvertShownWord();
+            LinkAnswerForPlayer();
             SwitchGameStatus();
         }
 
@@ -220,6 +277,17 @@ namespace Hangman.ViewModels
             return ShowingWordArray;
         }
 
+        public string AnswerForPlayer { get; set; } //Binding i GamePage.xml
+        public void LinkAnswerForPlayer()
+        {
+            AnswerForPlayer ="";
+            for(int i = 0; i<ShowingWordArray.Length; i++)
+            {
+                AnswerForPlayer += $"{ShowingWordArray[i]}  ";
+            }
+
+        }
+
         public void WorkCounters()
         {
 
@@ -237,10 +305,22 @@ namespace Hangman.ViewModels
                 numberOfIncorrectTries++;
                 numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
+                gameStage++;
+                ViewGameStage();
             }
         }
 
-        public string Answer { get; set; }
+        private int gameStage;
+        public BitmapImage ImageForGameStage { get; set; }
+        private void ViewGameStage()
+        {
+            string imageAdress;
+            imageAdress = $"../../../Assets/Images/hänggubbe{gameStage}.png";
+
+            string currentPath = Environment.CurrentDirectory;
+            ImageForGameStage = new BitmapImage( new Uri( System.IO.Path.Combine(currentPath, imageAdress)));
+        }
+
         private void SwitchGameStatus()
         {
             string answer = new string(ShowingWordArray);
@@ -255,7 +335,6 @@ namespace Hangman.ViewModels
             {
                 EndGame();
             }
-            Answer = answer;
         }
 
         private void EndGame()
@@ -264,6 +343,7 @@ namespace Hangman.ViewModels
             StopStopWatch();
             SaveGameScore();
             IsGameStart = false;
+            IsStartBtnClickable = false;
         }
 
         private void SaveGameScore()
@@ -272,6 +352,7 @@ namespace Hangman.ViewModels
             Game.NumberOfTries = numberOfTries;
             Game.IsWon = isWon;
 
+            if(PlayerEngine.ActivePlayer!=null)
             AddGame(Game);
         }
 
@@ -308,9 +389,6 @@ namespace Hangman.ViewModels
                 ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
             }
         }
-
-
-
 
         private void StartStopWatch()
         {

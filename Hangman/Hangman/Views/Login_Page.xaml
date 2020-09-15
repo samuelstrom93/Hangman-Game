@@ -9,18 +9,20 @@
       Title="LoginPage"  Background="Black">
 
     <Grid>
+        
+        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 10, 10" Content="Hänga Gubbe"  Height="115" Width="464" FontSize="72" Foreground="White"/>
 
-        <StackPanel HorizontalAlignment="Center" Margin="0,120,0,0" Orientation="Vertical" VerticalAlignment="Center">
             <Label Content="Vem är du?" Foreground="White" HorizontalAlignment="Center"/>
-            <TextBox Name="txtBoxUserInput"></TextBox>
-            <ComboBox x:Name="cboBoxPlayers" Width="140"/>
-            <Button Content="Logga in" Click ="Button_Click" Height="20" Width="152"/>
-        </StackPanel>
+            <TextBox Width="152" Name="txtBoxUserInput"></TextBox>
+            <Button Margin="10,10,10,10" Content="Logga in" Click ="Button_Click" Height="20" Width="152"/>
 
-        <Label Content="Hänga Gubbe" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="115" Width="464" FontSize="72" Foreground="White" Margin="0,70,0,0"/>
+            <Label HorizontalAlignment="Center" Foreground ="White" Content="Vill du spela utan användare?"></Label>
+            <Button Width="152" Margin="10, 10, 10, 10" Content="Spela Direkt" Click="PlayWithoutUser_Click" Background="Green"></Button>
+        </StackPanel>
+        
         <Button Click="Button_Click_2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="168" Background="{x:Null}" Content="Är du en ny spelare?" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,0,20"/>
         <Button Click="Button_Click_1" Content="Behöver du hjälp?" Foreground="White" Background="{x:Null}" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="20" Width="115"/>
-
-
+        
     </Grid>
 </Page>

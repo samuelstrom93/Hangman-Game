@@ -40,7 +40,8 @@
                 <StackPanel Margin="0,20,0,0" Grid.Column="1">
                     <Border BorderThickness="1" Height="200" Width="400">
                         <Border.Background>
-                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
+
+                        <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding ImageForGameStage}"/>
                         </Border.Background>
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
                             <Button Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding StopWatchHideCommand}">
@@ -74,13 +75,8 @@
 
                             </Grid>
 
-                            <WrapPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <Label FontSize="35" Padding="10,0,10,5" Content="_"/>
-                                <Label FontSize="35" Padding="10,0,10,5" Content="_"/>
-                                <Label FontSize="35" Padding="10,0,10,5" Content="_"/>
-                                <Label FontSize="35" Padding="10,0,10,5" Content="_"/>
-                                <Label FontSize="35" Padding="10,0,10,5" Content="_"/>
-                                <Label FontSize="35" Padding="10,0,10,5" Content="_"/>
+                        <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding AnswerForPlayer}" FontSize="24"/>
                             </WrapPanel>
                         </Grid>
                     </Border>
@@ -121,14 +117,7 @@
 
                     </Border>
                     <StackPanel Orientation="Horizontal">
-                        <Button Background="#ECEBE4" HorizontalAlignment="Left" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}" Content="START">
-                            <Button.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="5"/>
-                                </Style>
-                            </Button.Resources>
-                        </Button>
-                        <Button Background="#ECEBE4" HorizontalAlignment="Right" Padding="20,0,20,0" Margin="242,5,5,5" BorderBrush="{x:Null}" Content="Hjälp" Click="Help_Click">
+                    <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="#ECEBE4" HorizontalAlignment="Left" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}">
                             <Button.Resources>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="CornerRadius" Value="5"/>
