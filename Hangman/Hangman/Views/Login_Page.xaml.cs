@@ -56,11 +56,6 @@ namespace Hangman.Views
             this.NavigationService.Content = new CreateUser_Page();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void PlayWithoutUser_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Content = new GamePage();
