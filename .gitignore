@@ -357,3 +357,5 @@ MigrationBackup/
 .ionide/
 /Hangman/Hangman/Views/TestPage_DELETELATER.xaml
 /Hangman/Hangman/Views/TestPage_DELETELATER.xaml.cs
+/Hangman/Hangman/Properties
+/Hangman/Hangman/Resources

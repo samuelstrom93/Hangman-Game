@@ -31,6 +31,7 @@ namespace Hangman.Views
             model = new LoginPageViewModel();
             MWmodel = new MainWindowViewModel();
             DataContext = model;
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -56,6 +57,11 @@ namespace Hangman.Views
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Content = new CreateUser_Page();
+        }
+
+        private void PlayWithoutUser_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GamePage();
         }
     }
 }

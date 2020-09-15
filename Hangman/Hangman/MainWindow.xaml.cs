@@ -32,9 +32,15 @@ namespace Hangman
             model = new MainWindowViewModel();
             TopMenu.Content = PlayerEngine._menu;
             Main.Content = new LoginPage();
-            this.SizeToContent = SizeToContent.Height;
-        }
+            //this.SizeToContent = SizeToContent.Height;
+            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight);
+            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth);
+            }
 
+        private void NotifyIconClickReset(object sender, RoutedEventArgs e)
+        {
+            MenuShowName.Header = "Name";
+        }
 
         
     }
