@@ -3,6 +3,7 @@ using Hangman.Repositories;
 using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,6 +41,7 @@ namespace Hangman.Views
             gamePageViewModel = new GamePageViewModel(player);
             DataContext = gamePageViewModel;
 
+            GameStart.Content = new GameStartPage();
         }
 
         #region MnuMethods
