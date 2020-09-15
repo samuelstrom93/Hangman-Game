@@ -44,6 +44,7 @@ namespace Hangman.ViewModels
         public string PlayerName { get; set; }
         public IPlayer IPlayer { get; set; }
         private Game Game { get; set; }
+
         public bool IsGameStart { get; set; }
         public bool IsStartBtnClickable { get; set; }
 
@@ -106,23 +107,8 @@ namespace Hangman.ViewModels
             IsStartBtnClickable = true;
 
         }
-        /*
-        public GamePageViewModel()
-        {
-            RefreshGame();
-            ViewGameStage();
 
-            GameStartCommand = new RelayCommand(StartGame);
-            ShowHintCommand = new RelayCommand(ShowHint);
-            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
 
-            MakeStopWatch();
-
-            IsStopWatchView = true;
-            IsGameStart = false;
-            IsStartBtnClickable = true;
-        }
-        */
         public GamePageViewModel(IPlayer player)
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
@@ -352,8 +338,13 @@ namespace Hangman.ViewModels
             Game.NumberOfTries = numberOfTries;
             Game.IsWon = isWon;
 
-            if(PlayerEngine.ActivePlayer!=null)
-            AddGame(Game);
+            /*if(PlayerEngine.ActivePlayer!=null)
+            AddGame(Game);*/ // Vi kan flytta på dem till sidan för att visa slutresultat, för #35
+        }
+
+        public Game GetGameScore()
+        {
+            return Game;
         }
 
         #endregion
