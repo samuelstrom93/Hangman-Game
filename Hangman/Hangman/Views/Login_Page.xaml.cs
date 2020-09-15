@@ -27,28 +27,22 @@ namespace Hangman.Views
         public LoginPage()
         {
             InitializeComponent();
-            cboBoxPlayers.ItemsSource = Player_Repository.GetPlayers();
             model = new LoginPageViewModel();
             DataContext = model;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //CBOBOX
-            //     PlayerEngine.ActivePlayer = cboBoxPlayers.SelectedItem as Player;
-
             //INPUT
             if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
             {
-                PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(txtBoxUserInput.Text);
+                PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
                 this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
             }
             else
             {
                 MessageBox.Show("Din användare finns inte!");
             }
-
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -60,6 +54,16 @@ namespace Hangman.Views
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Content = new CreateUser_Page();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PlayWithoutUser_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GamePage();
         }
     }
 }
