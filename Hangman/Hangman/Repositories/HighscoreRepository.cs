@@ -122,6 +122,13 @@ namespace Hangman.Repositories
 
         public static IEnumerable<HighscoreGame> GetGamesFromTime()
         {
+
+            // SQL-query för att få fram id och tiddifferens
+//            SELECT EXTRACT(EPOCH FROM (end_time -start_time)), game.id
+//FROM game
+//ORDER BY date_part ASC;
+
+
             string stmt = $"SELECT EXTRACT(EPOCH FROM (end_time -start_time)), game.id FROM game ORDER BY date_part ASC";
             var gameDiffTime = new List<HighscoreGame>();
 
