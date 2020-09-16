@@ -28,20 +28,20 @@ namespace Hangman.Views
             DataContext = gameSucessPage;
 
 
-            var player = PlayerEngine.ActivePlayer;
-            if (player == null)
-            {
-                //YourTopGames.Content = new TopGamesUC();
-                YourTopGames.Content = HighscoreRepository.GetGameTime(66);
+            //var player = PlayerEngine.ActivePlayer;
+            //if (player == null)
+            //{
+            //    //YourTopGames.Content = new TopGamesUC();
+            //    YourTopGames.Content = HighscoreRepository.GetGameTime(66);
 
-            }
-            else
-            {
-                YourTopGames.Content = HighscoreRepository.GetGameTime(66);
-                //YourTopGames.Content = HighscoreRepository.GetGamesFromTime();
-                //YourTopGames.Content = new TopGamesUC(player.Id);
+            //}
+            //else
+            //{
+            //    YourTopGames.Content = HighscoreRepository.GetGameTime(66);
+            //    //YourTopGames.Content = HighscoreRepository.GetGamesFromTime();
+            //    //YourTopGames.Content = new TopGamesUC(player.Id);
 
-            }
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

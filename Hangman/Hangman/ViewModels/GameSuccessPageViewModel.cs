@@ -7,13 +7,10 @@ namespace Hangman.ViewModels
 {
     class GameSuccessPageViewModel
     {
-        public TimeSpan Timer { get; set; } = GamePageViewModel.Game.EndTime - GamePageViewModel.Game.StartTime;
-        public string NumberOfCorrectTries { get; set; }
-
-        public string NumberOfIncorrectTries { get; set; } = GamePageViewModel.Game.NumberOfIncorrectTries.ToString();
-
         public IWord Word { get; set; } = GamePageViewModel.IWord;
 
+        //public IGame Game { get; set; } = GamePageViewModel.GetGameHighscore();
+ 
         //public int Ranking { get; set; }
 
 
@@ -21,9 +18,6 @@ namespace Hangman.ViewModels
 
         public GameSuccessPageViewModel()
         {
-            int nmbrTries = GamePageViewModel.Game.NumberOfTries - GamePageViewModel.Game.NumberOfIncorrectTries;
-            NumberOfCorrectTries = nmbrTries.ToString();
-
         }
     }
 }
