@@ -36,8 +36,17 @@ namespace Hangman.Views
             //INPUT
             if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
             {
-                PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
-                this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
+                if (txtBoxUserInput.Text == "Admin")
+                {
+                    this.NavigationService.Content = new AdminPage();
+                }
+
+                else
+                {
+                    PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
+                    this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
+                }
+
             }
             else
             {
