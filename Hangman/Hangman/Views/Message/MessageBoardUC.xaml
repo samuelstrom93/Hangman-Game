@@ -6,20 +6,22 @@
              xmlns:local="clr-namespace:Hangman.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Border Background="AliceBlue" Padding="10">
-        <ListBox HorizontalContentAlignment="Stretch" ItemsSource="{Binding Messages}">
+    <Border Style="{StaticResource StandardBorder}">
+        <ListBox BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Messages}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Path=SentAt, StringFormat=g, ConverterCulture=sv-SE}" />
-                        <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=SenderName}" />
-                        <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Topic}" />
-                    </Grid>
+                    <Border Padding="10" Margin="2" Style="{StaticResource ClickableBorder}" BorderThickness="1">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Path=SentAt, StringFormat=g, ConverterCulture=sv-SE}" />
+                            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=SenderName}" />
+                            <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Topic}" />
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
