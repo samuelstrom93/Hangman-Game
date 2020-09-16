@@ -71,7 +71,10 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Hint
-        public static IWord IWord { get; set; }
+        public IWord IWord { get; set; }
+
+        
+            
         public ICommand ShowHintCommand { get; set; }
         public bool IsHintShown { get; set; }
 
@@ -87,6 +90,17 @@ namespace Hangman.ViewModels
             }
             
         }
+
+        public Word GetWord()
+        {
+            Word word = new Word
+            {
+                Id = IWord.Id,
+                Name = IWord.Name,
+                Hint = IWord.Hint
+            };
+            return word;
+            }
 
         #endregion Hint
         public GamePageViewModel()

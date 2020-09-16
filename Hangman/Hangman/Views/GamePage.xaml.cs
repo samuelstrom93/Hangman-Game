@@ -121,5 +121,11 @@ namespace Hangman.Views
             }
             
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+            this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+        }
     }
 }

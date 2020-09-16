@@ -9,37 +9,37 @@
       Background="#4CD3D3D3"
       Title="GameSuccess_Page">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Label Grid.Row="0" Content="Game over..." FontSize="48" HorizontalAlignment="Center" Margin="0,21,0,0" Foreground="Red"></Label>
-        <Button Grid.Row="0" Height="20" Width="100" Background="White" BorderBrush="White" Foreground="Red" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="Button_Click_1">Logga ut</Button>
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,30">
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,27,0">
-                    <Image Source="/Assets/Images/timer.png" Height="42" Width="31" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <TextBlock Text="{Binding Timer}" Padding="4" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+    <Border Style="{StaticResource StandardBorder}">
+        <Grid>
+            <StackPanel>
+                <Button Style="{StaticResource StandardButton}" Grid.Row="0" Height="20" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="Button_Click_1">Logga ut
+                </Button>
+                <TextBlock Grid.Row="0" Text="Du vann!" FontSize="45" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="DemiBold"></TextBlock>
+                <WrapPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
+                    <TextBlock Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,15,0,0" FontSize="24">Antal rätt:</TextBlock>
+                    <TextBlock Text="{Binding NumberOfCorrectTries}" Margin="10,0,0,0" FontWeight="Bold" VerticalAlignment="Bottom" FontSize="24"/>
                 </WrapPanel>
-                <TextBlock Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0" FontSize="24">Antal rätt:</TextBlock>
-                <TextBlock Text="{Binding NumberOfCorrectTries}"></TextBlock>
-                <TextBlock Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0" FontSize="24">Antal fel</TextBlock>
-                <TextBlock Text="{Binding NumberOfIncorrectTries}"></TextBlock>
-            </StackPanel>
-            <StackPanel Grid.Row="1">
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Foreground="Green" FontSize="24">Svaret var:</Label>
-                    <Label Content="{Binding Word.Name}" Foreground="#FF338F08" FontSize="24"></Label>
+                <WrapPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
+                    <TextBlock Foreground="Red" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,0,0" FontSize="24">Antal fel:</TextBlock>
+                    <TextBlock FontSize="24" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold" Text="{Binding Game.NumberOfIncorrectTries}"></TextBlock>
                 </WrapPanel>
-                <Frame Background="AliceBlue" Width="400" Height="300" x:Name="YourTopGames"></Frame>
-            </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <WrapPanel Margin="0,15,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock FontSize="24" FontWeight="Bold">
+                            Svaret var:</TextBlock>
+                        <TextBlock Text="{Binding Word.Name}" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="24"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Margin="0,50,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock FontSize="20" FontWeight="DemiBold">
+                            Du kom på plats:
+                        </TextBlock>
+                        <TextBlock Text="{Binding ranking}" Margin="10,0,0,0" FontSize="20"></TextBlock>
+                    </WrapPanel>
 
-        </StackPanel>
-        <TextBlock Text="{Binding tid.ToString()}"></TextBlock>
-        <Button Grid.Row="2" Height="25" Width="100" Background="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="Button_Click">Spela igen?</Button>
-    </Grid>
+                </StackPanel>
+            </StackPanel>
+            <Button Grid.Row="2" Height="25" Width="100" Style="{StaticResource StandardButton}"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="Button_Click">Spela igen?</Button>
+        </Grid>
+    </Border>
 </Page>
 

@@ -7,13 +7,25 @@ namespace Hangman.ViewModels
 {
     class GameSuccessPageViewModel
     {
-        public IWord Word { get; set; } = GamePageViewModel.IWord;
+        public void SetGame(Game game)
+        {
+            Game = game;
+        }
 
-        //public IGame Game { get; set; } = GamePageViewModel.GetGameHighscore();
- 
-        //public int Ranking { get; set; }
+        public void GetWord(Word word)
+        {
+            Word = word;
+        }
 
+        public void SetNumberOfCorrectTries()
+        {
+            NumberOfCorrectTries = Game.NumberOfTries - Game.NumberOfIncorrectTries;
+        }
 
+        public IGame Game { get; set; }
+        public IWord Word { get; set; }
+
+        public int NumberOfCorrectTries { get; set; }
 
 
         public GameSuccessPageViewModel()

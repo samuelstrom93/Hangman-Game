@@ -1,4 +1,5 @@
-﻿using Hangman.ViewModels;
+﻿using Hangman.Models;
+using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,11 +21,15 @@ namespace Hangman.Views
     public partial class GameEnd_Page : Page
     {
         private GameEndPageViewModel gameEndPageViewModel;
-        public GameEnd_Page()
+        public GameEnd_Page(Game game, Word word)
         {
             InitializeComponent();
             gameEndPageViewModel = new GameEndPageViewModel();
             DataContext = gameEndPageViewModel;
+
+            gameEndPageViewModel.SetGame(game);
+            gameEndPageViewModel.SetNumberOfCorrectTries();
+            gameEndPageViewModel.GetWord(word);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

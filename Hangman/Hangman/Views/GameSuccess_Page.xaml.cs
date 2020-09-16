@@ -1,5 +1,7 @@
 ﻿using Hangman.GameLogics;
+using Hangman.Models;
 using Hangman.Repositories;
+using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,28 +22,16 @@ namespace Hangman.Views
     /// </summary>
     public partial class GameSuccess_Page : Page
     {
-        private GameSuccess_Page gameSucessPage;
-        public GameSuccess_Page()
+        private GameSuccessPageViewModel gameSuccessPageViewModel;
+        public GameSuccess_Page(Game game, Word word)
         {
             InitializeComponent();
-            gameSucessPage = new GameSuccess_Page();
-            DataContext = gameSucessPage;
+            gameSuccessPageViewModel = new GameSuccessPageViewModel();
+            DataContext = gameSuccessPageViewModel;
 
-
-            //var player = PlayerEngine.ActivePlayer;
-            //if (player == null)
-            //{
-            //    //YourTopGames.Content = new TopGamesUC();
-            //    YourTopGames.Content = HighscoreRepository.GetGameTime(66);
-
-            //}
-            //else
-            //{
-            //    YourTopGames.Content = HighscoreRepository.GetGameTime(66);
-            //    //YourTopGames.Content = HighscoreRepository.GetGamesFromTime();
-            //    //YourTopGames.Content = new TopGamesUC(player.Id);
-
-            //}
+            gameSuccessPageViewModel.SetGame(game);
+            gameSuccessPageViewModel.SetNumberOfCorrectTries();
+            gameSuccessPageViewModel.GetWord(word);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

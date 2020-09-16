@@ -9,20 +9,30 @@ namespace Hangman.ViewModels
 {
     class GameEndPageViewModel : BaseViewModel
     {
-        public TimeSpan Timer { get; set; } = GamePageViewModel.Game.EndTime - GamePageViewModel.Game.StartTime;
-        public string NumberOfCorrectTries { get; set; }
+        public void SetGame(Game game)
+        {
+            Game = game;
+        }
 
-        public string NumberOfIncorrectTries { get; set; } = GamePageViewModel.Game.NumberOfIncorrectTries.ToString();
+        public void GetWord(Word word)
+        {
+            Word = word;
+        }
 
-        public IWord Word { get; set; } = GamePageViewModel.IWord;
+        
 
+        public void SetNumberOfCorrectTries()
+        {
+            NumberOfCorrectTries = Game.NumberOfTries - Game.NumberOfIncorrectTries;
+        }
 
+        public IGame Game { get; set; } 
+        public IWord Word { get; set; }  
 
+        public int NumberOfCorrectTries { get; set; } 
 
         public GameEndPageViewModel()
         {
-            int nmbrTries = GamePageViewModel.Game.NumberOfTries - GamePageViewModel.Game.NumberOfIncorrectTries;
-            NumberOfCorrectTries = nmbrTries.ToString();
         }
     }
 }
