@@ -49,4 +49,27 @@
     <Style x:Key="OverlayBorder" TargetType="Border">
         <Setter Property="Background" Value="#CCe3e4ea" />
     </Style>
+    <Style x:Key="ListItemBorder" TargetType="Border">
+        <Setter Property="Background" Value="#a3cac9" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderBrush" Value="#CCe3e4ea" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="1" />
+    </Style>
+    <Style x:Key="StandardListBoxItem" TargetType="ListBoxItem">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
