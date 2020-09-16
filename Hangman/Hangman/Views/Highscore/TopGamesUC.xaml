@@ -8,36 +8,49 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="2" />
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <TextBlock FontSize="22pt" FontWeight="Bold" Text="{Binding Title}" HorizontalAlignment="Center"></TextBlock>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Left">Namn</Label>
+            <Label HorizontalAlignment="Center">Namn</Label>
             <Label HorizontalAlignment="Center" Grid.Column="1">Ord</Label>
             <Label HorizontalAlignment="Center" Grid.Column="2">Gissningar</Label>
-            <Label HorizontalAlignment="Right" Grid.Column="3">Tid</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="3">Tid</Label>
         </Grid>
-        <ListBox HorizontalContentAlignment="Stretch" Grid.Row="1" ItemsSource="{Binding TopHighscores}">
+        <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopHighscores}">
+            <ListBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+            </ListBox.Resources>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Left" Text="{Binding Path=PlayerName}" />
-                        <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=Word}" />
-                        <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=NumberOfIncorrectTries}" />
-                        <TextBlock HorizontalAlignment="Right" Grid.Column="3" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss}" />
-                    </Grid>
+                    <Border Style="{StaticResource ListItemBorder}">
+                        <ListBoxItem Style="{StaticResource StandardListBoxItem}">
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock HorizontalAlignment="Left" Text="{Binding Path=PlayerName}" />
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=Word}" />
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=NumberOfIncorrectTries}" />
+                                <TextBlock HorizontalAlignment="Right" Grid.Column="3" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss}" />
+                            </Grid>
+                        </ListBoxItem>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
