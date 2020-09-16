@@ -2,6 +2,7 @@
 using Hangman.Repositories;
 using Hangman.Views;
 using Hangman.Views.Menu;
+using Hangman.Views.PlayerStats;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,11 +29,13 @@ namespace Hangman
         public MainWindowViewModel model;
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             model = new MainWindowViewModel();
             TopMenu.Content = PlayerEngine._menu;
+            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.5);
+            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.5);
+
             Main.Content = new LoginPage();
-            //this.SizeToContent = SizeToContent.Height;
             this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight);
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth);
             }
