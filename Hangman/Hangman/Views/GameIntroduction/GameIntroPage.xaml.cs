@@ -25,7 +25,7 @@ namespace Hangman.Views
 
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Content = new GameIntroPage2();
+            this.NavigationService.GoBack();
         }
 
         
