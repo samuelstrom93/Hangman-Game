@@ -1,6 +1,7 @@
 ﻿using Hangman.GameLogics;
 using Hangman.Repositories;
 using Hangman.Views;
+using Hangman.Views.Menu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,41 +30,19 @@ namespace Hangman
         {
             InitializeComponent();
             model = new MainWindowViewModel();
+            TopMenu.Content = PlayerEngine._menu;
             Main.Content = new LoginPage();
             //this.SizeToContent = SizeToContent.Height;
             this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight);
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth);
             }
 
-        private void NotifyIconClickReset(object sender, RoutedEventArgs e)
-        {
-            MenuShowName.Header = "Name";
-        }
+        //private void NotifyIconClickReset(object sender, RoutedEventArgs e)
+        //{
+        //    MenuShowName.Header = "Name";
+        //}
 
-        private void mnuClick(object sender, RoutedEventArgs e)
-        {
-            string selectedMnu = ((MenuItem)sender).Header.ToString();
-            model.TakeSelectedMenu(selectedMnu);
-
-            switch (selectedMnu)
-            {
-                case "Spela":
-                    Main.Content = new GamePage(PlayerEngine.ActivePlayer);
-                    break;
-
-                case "Användarinställningar":
-
-                    if (PlayerEngine.ActivePlayer != null)
-                        Main.Content = new UserSettingsPage();
-                    else
-                        MessageBox.Show("Ingen användare är inloggad");
-                    break;
-
-                case "Logga ut":
-                        Main.Content = new LoginPage();
-                    break;
-            }  
-        }
+        
     }
 }
 
