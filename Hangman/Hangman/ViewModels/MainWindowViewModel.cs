@@ -5,13 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows;
 
 namespace Hangman.Views 
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public string PlayerName { get; set; } 
-        private string selectedMenu ;
+        public string PlayerName { get; set; }
+        public Visibility Visibility { get; set; } = Visibility.Collapsed;
 
         public MainWindowViewModel()
         {
@@ -21,11 +22,6 @@ namespace Hangman.Views
         public void UpdateActivePlayer()
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
-        }
-
-        public void TakeSelectedMenu(string SelectedMenu)
-        {
-            selectedMenu = SelectedMenu;
         }
     }
 }

@@ -4,17 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman.Views.Menu"
-             mc:Ignorable="d" d:DesignWidth="800">
-    <Grid>
-        <Border>
+             mc:Ignorable="d" d:DesignWidth="800"
+             Visibility="{Binding Visibility}">
+    <Grid Visibility="{Binding Visibility}" Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Style="{StaticResource StandardBorder}" BorderThickness="0,0,0,1" Padding="0" Background="Transparent">
             <DockPanel>
-                <Menu DockPanel.Dock="Top">
-                    <MenuItem Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=UserName}">
+                <Menu DockPanel.Dock="Top" Padding="5" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <MenuItem Padding="5" Margin="20,0,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=UserName}">
                         <MenuItem Header="Logga ut" Click="mnuLogOut" />
                         <MenuItem Header="Ta bort min användare" Click="mnuDeleteUser"/>
                         <MenuItem Header="Byt användarnamn" Click="mnuUpdateUser" />
                         <Separator />
-                        <MenuItem Header="Spela" />
+                        <MenuItem Header="Spela" Click="mnuPlay"/>
                     </MenuItem>
                 </Menu>
             </DockPanel>

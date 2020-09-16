@@ -47,6 +47,14 @@ namespace Hangman.Views.Menu
         public void PlayerStatusChanged(IPlayer player)
         {
             _vm.PlayerName = player?.Name;
+            if (player != null)
+            {
+                _vm.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _vm.Visibility = Visibility.Collapsed;
+            }
         }
 
         #region MnuMethods
@@ -71,6 +79,10 @@ namespace Hangman.Views.Menu
         private void mnuUpdateUser(object sender, RoutedEventArgs e)
         {
             ParentWindow.Main.Content = new UpdateUserPage(PlayerEngine.ActivePlayer);
+        }
+        private void mnuPlay(object sender, RoutedEventArgs e)
+        {
+            ParentWindow.Main.Content = new GamePage();
         }
         #endregion
     }

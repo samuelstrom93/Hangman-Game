@@ -51,21 +51,5 @@ namespace Hangman.Views
             DataContext = model;
 
         }
-        
-        private void mnuLogOut(object sender, RoutedEventArgs e)
-        {
-            //leder tillbaka användaren till LoginSkärmen
-            this.NavigationService.Content = new LoginPage();
-        }
-
-        private void mnuDeleteUser(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new DeleteUserPage(Player);
-        }
-
-        private void mnuUpdateUser(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new UpdateUserPage(Player);
-        }
     }
 }

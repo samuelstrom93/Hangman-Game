@@ -10,15 +10,6 @@
       Title="UpdateUserPage">
 
     <StackPanel Margin="0, 0, 0, 0" Grid.Column="0" Grid.ColumnSpan="100">
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="{Binding PlayerName, FallbackValue=DinAnvändare}">
-                    <MenuItem Header="Logga ut" Click="mnuLogOut" />
-                    <MenuItem Header="Ta bort min användare" Click="mnuDeleteUser"/>
-                    <MenuItem Header="Byt användarnamn" Click="mnuUpdateUser" />
-                </MenuItem>
-            </Menu>
-        </DockPanel>
         <Border
             Background="White"
             Width="600"
