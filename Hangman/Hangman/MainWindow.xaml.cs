@@ -1,5 +1,6 @@
 ﻿using Hangman.Repositories;
 using Hangman.Views;
+using Hangman.Views.PlayerStats;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

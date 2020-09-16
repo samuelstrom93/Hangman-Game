@@ -19,6 +19,8 @@
     <None Remove="Assets\Images\hänggubbe8.png" />
     <None Remove="Assets\Images\hänggubbe9.png" />
     <None Remove="Assets\Images\timer.png" />
+    <None Remove="Assets\Images\YoureAmazing.jpg" />
+    <None Remove="Assets\Images\YouSuck.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\YoureAmazing.jpg" />
     <Resource Include="Assets\Images\hänggubbe0.png" />
     <Resource Include="Assets\Images\hänggubbe1.png" />
     <Resource Include="Assets\Images\hänggubbe10.png" />
@@ -40,6 +43,7 @@
     <Resource Include="Assets\Images\hänggubbe8.png" />
     <Resource Include="Assets\Images\hänggubbe9.png" />
     <Resource Include="Assets\Images\timer.png" />
+    <Resource Include="Assets\Images\YouSuck.jpg" />
   </ItemGroup>
 
   <ItemGroup>

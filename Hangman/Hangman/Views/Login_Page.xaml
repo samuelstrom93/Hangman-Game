@@ -9,10 +9,8 @@
       Title="LoginPage"  Background="Black">
 
     <Grid>
-        
         <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
             <Label VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 10, 10" Content="Hänga Gubbe"  Height="115" Width="464" FontSize="72" Foreground="White"/>
-
             <Label Content="Vem är du?" Foreground="White" HorizontalAlignment="Center"/>
             <TextBox Width="152" Name="txtBoxUserInput"></TextBox>
             <Button Margin="10,10,10,10" Content="Logga in" Click ="Button_Click" Height="20" Width="152"/>
