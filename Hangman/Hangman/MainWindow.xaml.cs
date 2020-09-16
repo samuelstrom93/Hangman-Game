@@ -25,10 +25,12 @@ namespace Hangman
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+
+            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.5);
+            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.5);
 
             Main.Content = new LoginPage();
-            this.SizeToContent = SizeToContent.Height;
         }
     }
 }

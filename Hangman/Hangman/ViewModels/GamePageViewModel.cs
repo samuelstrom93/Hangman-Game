@@ -44,6 +44,7 @@ namespace Hangman.ViewModels
         public string PlayerName { get; set; }
         public IPlayer IPlayer { get; set; }
         private Game Game { get; set; }
+
         public bool IsGameStart { get; set; }
         public bool IsStartBtnClickable { get; set; }
 
@@ -88,6 +89,25 @@ namespace Hangman.ViewModels
         }
 
         #endregion Hint
+        public GamePageViewModel()
+        {
+            PlayerName = "Spela utan användare";
+
+            RefreshGame();
+            ViewGameStage();
+
+            GameStartCommand = new RelayCommand(StartGameWithoutPlayer);
+            ShowHintCommand = new RelayCommand(ShowHint);
+            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+
+            MakeStopWatch();
+
+            IsStopWatchView = true;
+            IsGameStart = false;
+            IsStartBtnClickable = true;
+
+        }
+
 
         public GamePageViewModel(IPlayer player)
         {
@@ -121,6 +141,16 @@ namespace Hangman.ViewModels
             IsGameStart = true;
         }
 
+        private void StartGameWithoutPlayer()
+        {
+            MakeWord();
+            MakeGameWithoutPlayer();
+            MakeWordArray();
+            StartStopWatch();
+            IsHintShown = false;
+            IsGameStart = true;
+        }
+
         private void MakeWord()
         {
             IWord = GetRandomWord();
@@ -140,6 +170,17 @@ namespace Hangman.ViewModels
             
         }
 
+        private void MakeGameWithoutPlayer()
+        {
+            Game = new Game
+            {
+                IsWon = false,
+                NumberOfIncorrectTries = 0,
+                NumberOfTries = 0,
+                StartTime = DateTime.Now,
+                WordId = IWord.Id
+            };
+        }
         private void MakeGame()
         {
             Game = new Game
@@ -297,7 +338,13 @@ namespace Hangman.ViewModels
             Game.NumberOfTries = numberOfTries;
             Game.IsWon = isWon;
 
-            AddGame(Game);
+            /*if(PlayerEngine.ActivePlayer!=null)
+            AddGame(Game);*/ // Vi kan flytta på dem till sidan för att visa slutresultat, för #35
+        }
+
+        public Game GetGameScore()
+        {
+            return Game;
         }
 
         #endregion
