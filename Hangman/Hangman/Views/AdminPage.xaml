@@ -36,7 +36,7 @@
                         <ColumnDefinition Width="4*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StandardBorder}" Background="#FFEDE1">
+                    <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StandardBorder}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="0.2*" />
@@ -54,7 +54,7 @@
                             <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">Lägg till ett ord</TextBlock>
                             <TextBox Text="{Binding Word}" x:Name="TextBoxWord" GotFocus="TextBoxWord_GotFocus" LostFocus="TextBoxWord_LostFocus"  Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Right" Padding="10,2,10,0" Margin="2"></TextBox>
                             <TextBox Text="{Binding Description}" x:Name="TextBoxDescription" GotFocus="TextBoxDescription_GotFocus" LostFocus="TextBoxDescription_LostFocus" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Right" Padding="10,2,10,0" Margin="2"></TextBox>
-                            <Button Grid.Row="4" Grid.Column="1" Margin="2" Command="{Binding TryAddWordCommand}">Lägg till</Button>
+                            <Button Grid.Row="4" Grid.Column="1" Margin="2" Command="{Binding TryAddWordCommand}" Style="{StaticResource StandardButton}">Lägg till</Button>
                         </Grid>
                     </Border>
                 </Grid>

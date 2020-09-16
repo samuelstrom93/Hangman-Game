@@ -10,7 +10,7 @@
         <ListBox BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Messages}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="10" Margin="2" Style="{StaticResource StandardBorder}" BorderThickness="1" Background="#FFEDE1">
+                    <Border Padding="10" Margin="2" Style="{StaticResource ClickableBorder}" BorderThickness="1">
                         <Grid HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
