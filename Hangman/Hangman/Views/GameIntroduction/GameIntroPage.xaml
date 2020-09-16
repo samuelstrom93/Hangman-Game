@@ -5,27 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="1920" d:DesignWidth="1080"
       Title="GameIntroPage">
 
 
 
-    <Grid Background="#DADDD8" Width="800" Height="600">
+    <Grid Background="#DADDD8" Width="1080" Height="1920">
         <StackPanel>
             <TextBlock Margin="0,20,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="30" FontFamily="Courier New">Spelintroduktion</TextBlock>
             <TextBlock Margin="0,10,0,0" TextAlignment="Center" FontWeight="SemiBold" FontSize="20" FontStyle="Italic" FontFamily="Courier New" >Rädda Gubben</TextBlock>
-            <TextBlock FontFamily="Courier New" Padding="15" Margin="0,5,0,0" Background="AliceBlue" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="450">
+            <TextBlock FontFamily="Courier New" Padding="15" Margin="0,25,0,0" Background="AliceBlue" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="600">
              <Bold>Spelidé:</Bold><LineBreak></LineBreak>
               Spelet baseras på det klassiska spelet <Italic>Hänga Gubbe</Italic> där användaren ställs inför utmaningen att gissa vilket ord som slumpats fram och rädda vår huvudkaraktär innan man har tio felaktiga gissningar på bokstäver i ordet har uppnåtts och möjligheten att rädda honom från att hängas ifrån stången.
                 
             </TextBlock>
             <StackPanel Orientation="Horizontal">
-                <Border BorderThickness="1" HorizontalAlignment="Left"  Margin="175,2,0,0" Height="220" Width="225">
+                <Border BorderThickness="1" HorizontalAlignment="Center"  Margin="175,2,0,0" Height="220" Width="225">
                     <Border.Background>
                         <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
                     </Border.Background>
                 </Border>
-                <TextBlock Margin="2,3,0,0" Padding="15" Background="AliceBlue" TextWrapping="Wrap" Width="222" FontFamily="Courier New">
+                <TextBlock Margin="75,3,0,0" Padding="15" HorizontalAlignment="Center" Background="AliceBlue" TextWrapping="Wrap" Width="222" FontFamily="Courier New">
                 <Bold>Regler:</Bold> <LineBreak></LineBreak>
                     I detta spel hänger gubben ifrån en stång och för varje fel gissning så tappar gubben greppet med ett finger i taget. Därav spelets namn <Italic>Rädda gubben</Italic>. 
                     Vid varje fel gissning tappar gubben greppet med ett finger i taget. På så sätt har du koll på när spelet tar slut.
