@@ -82,7 +82,7 @@ namespace Hangman.Views
                 gamePageViewModel.JudgeGame();
 
                 ChangeBtnStyle((Button)sender);
-                ((Button)sender).IsEnabled = false;
+                //((Button)sender).IsEnabled = false;
             }
 
 
@@ -111,9 +111,15 @@ namespace Hangman.Views
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Content = new GameSuccess_Page();
+            if (gamePageViewModel.IsGameStart)
+            {
+                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
+                gamePageViewModel.GuessDirectly();
+                gamePageViewModel.SwitchGameStatus();
+            }
+            
         }
     }
 }

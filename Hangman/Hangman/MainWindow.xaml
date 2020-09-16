@@ -6,8 +6,6 @@
         xmlns:local="clr-namespace:Hangman"
         mc:Ignorable="d"
         Title="MainWindow"
-        MinHeight="{x:Static SystemParameters.PrimaryScreenHeight}" 
-        Width="{x:Static SystemParameters.PrimaryScreenWidth}"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Frame x:Name="Main">
