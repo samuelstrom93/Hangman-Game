@@ -11,8 +11,8 @@ namespace Hangman.Views
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public string PlayerName { get; set; }
-        public Visibility Visibility { get; set; } = Visibility.Collapsed;
+        public string PlayerName { get; set; } = "Meny";
+        public Visibility Visibility { get; set; }
 
         public MainWindowViewModel()
         {
