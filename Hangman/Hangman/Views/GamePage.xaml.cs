@@ -63,13 +63,9 @@ namespace Hangman.Views
 
         private void mnuDeleteUser(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Content = new DeleteUserPage(Player);
+            this.NavigationService.Content = new UserSettingsPage();
         }
 
-        private void mnuUpdateUser(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new UpdateUserPage(Player);
-        }
         #endregion
 
         private void Letter_Click(object sender, RoutedEventArgs e)
@@ -121,5 +117,6 @@ namespace Hangman.Views
             }
             
         }
+
     }
 }

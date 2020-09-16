@@ -21,6 +21,11 @@
     <None Remove="Assets\Images\timer.png" />
     <None Remove="Assets\Images\YoureAmazing.jpg" />
     <None Remove="Assets\Images\YouSuck.jpg" />
+    <None Remove="Resources\Darkline.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Darkline.ttf" />
   </ItemGroup>
 
   <ItemGroup>
