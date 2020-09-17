@@ -27,6 +27,7 @@
 
     <Border BorderThickness="0" Style="{StaticResource StandardBorder}">
         <Grid>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -43,7 +44,7 @@
                         <DockPanel Width="auto" HorizontalAlignment="Left">
                         <Border BorderThickness="1" Style="{StaticResource ClickableBorder}" Cursor="Hand">
                             <Menu DockPanel.Dock="Top">
-                                <MenuItem Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=UserName}">
+                                <MenuItem x:Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=UserName}">
                                     <MenuItem Header="Logga ut" Click="mnuLogOut" />
                                     <MenuItem Header="Ta bort min användare" Click="mnuDeleteUser"/>
                                     <MenuItem Header="Byt användarnamn" Click="mnuUpdateUser" />
@@ -66,38 +67,38 @@
                         </Border.Background>
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
                             <Button Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding StopWatchHideCommand}">
-                                <Image Source="/Assets/Images/timer.png"></Image>
+                                <Image Source="/Assets/Images/timer.png"/>
                             </Button>
-                            <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility} }" ></TextBlock>
+                            <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility}}" />
                         </WrapPanel>
 
                     </Border>
                     <Border BorderThickness="1" Style="{StaticResource BackgroundBorder}" Width="400" Height="60">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="250"></ColumnDefinition>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="250"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0">Antal rätt:</TextBlock>
-                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0">Antal fel:</TextBlock>
-                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0"><Run Text="Antal rätt:"/></TextBlock>
+                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0"><Run Text="Antal fel:"/></TextBlock>
+                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 
                             </Grid>
 
-                        <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding AnswerForPlayer}" FontSize="24"/>
+                            <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding AnswerForPlayer}" FontSize="24"/>
                             </WrapPanel>
                         </Grid>
                     </Border>
@@ -167,6 +168,24 @@
                             </Button.Resources> Ledtråd
                         </Button>
                     </WrapPanel>
+                        <WrapPanel Orientation="Horizontal">
+                            <Button  Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources> Ledtråd
+                            </Button>
+                            <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
+                        </WrapPanel>
+                        <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Left" Click="GameIntroPage_Click" Content="Hjälp">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
             <Frame x:Name="GameStart" Margin="0,4,0,0" />

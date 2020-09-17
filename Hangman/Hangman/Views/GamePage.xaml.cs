@@ -49,11 +49,7 @@ namespace Hangman.Views
         }
 
         #region MnuMethods
-        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var w = new HelpWindow();
-            w.Show();
-        }
+        
 
         private void mnuLogOut(object sender, RoutedEventArgs e)
         {
@@ -118,6 +114,16 @@ namespace Hangman.Views
             }
             sender.IsEnabled = false;
 
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
+
+        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
         }
 
         private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
