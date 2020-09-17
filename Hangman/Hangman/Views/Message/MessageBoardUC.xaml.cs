@@ -1,4 +1,5 @@
-﻿using Hangman.ViewModels;
+﻿using Hangman.GameLogics;
+using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,7 +24,7 @@ namespace Hangman.Views
         {
             InitializeComponent();
 
-            DataContext = new MessagesViewModel(1);
+            DataContext = new MessagesViewModel(64);
         }
     }
 }

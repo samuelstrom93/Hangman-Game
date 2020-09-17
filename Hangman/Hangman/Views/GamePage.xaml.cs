@@ -48,11 +48,7 @@ namespace Hangman.Views
 
             GameStart.Content = new GameStartPage();
         }
-        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var w = new HelpWindow();
-            w.Show();
-        }
+        
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
@@ -65,6 +61,15 @@ namespace Hangman.Views
 
                 ChangeBtnStyle((Button)sender);
                 //((Button)sender).IsEnabled = false;
+            }
+
+            if (gamePageViewModel.isWon)
+            {
+                this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+            }
+            if (gamePageViewModel.isLost)
+            {
+                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
             }
 
 
@@ -93,6 +98,16 @@ namespace Hangman.Views
 
         }
 
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
+
+        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
+
         private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
         {
             if (gamePageViewModel.IsGameStart)
@@ -103,5 +118,6 @@ namespace Hangman.Views
             }
             
         }
+
     }
 }

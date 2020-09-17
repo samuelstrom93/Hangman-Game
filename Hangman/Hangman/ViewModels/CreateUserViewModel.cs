@@ -18,8 +18,9 @@ namespace Hangman.ViewModels
         /// <summary>
         /// En metod för att kontrollera om användarmnamnet redan finns i databasen
         /// </summary>   
-        public void CreatePlayer(string name)
+        public string CreatePlayer(string name)
         {
+            string Message; 
 
             if(name!= "")
             {
@@ -41,13 +42,14 @@ namespace Hangman.ViewModels
                         Message = "Något gick fel - försök igen";
                     }
                 }
+                
             }
 
             else
             {
                 Message = "Du måste skriva något.";
             }
-
+            return Message;
         }
         #endregion;
     }

@@ -8,100 +8,122 @@
       d:DesignHeight="700" d:DesignWidth="800"
       
       Title="GamePage">
+    <Page.Resources>
+        <Style x:Key="KeyButton" TargetType="Button">
+            <Setter Property="BorderBrush" Value="#186b61" />
+            <Setter Property="Background" Value="#cccedb"/>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Helvetica" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4e8895"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
-    <Border Background="#DADDD8">
+    <Border BorderThickness="0" Style="{StaticResource StandardBorder}">
         <Grid>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="400" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <StackPanel Margin="0,20,0,0" Grid.Column="1">
-                    <Border BorderThickness="1" Height="200" Width="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="600"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource ClickableBorder}" Cursor="Hand">
+                    </DockPanel>
+                    
+                <StackPanel Margin="0,20,0,0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    
+                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="200" Width="400">
                         <Border.Background>
-
                         <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding ImageForGameStage}"/>
                         </Border.Background>
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
                             <Button Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding StopWatchHideCommand}">
-                                <Image Source="/Assets/Images/timer.png"></Image>
+                                <Image Source="/Assets/Images/timer.png"/>
                             </Button>
-                            <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility} }" ></TextBlock>
+                            <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility}}" />
                         </WrapPanel>
 
                     </Border>
-                    <Border BorderThickness="1" Background="#EEF0F2" Width="400" Height="60">
+                    <Border BorderThickness="1" Style="{StaticResource BackgroundBorder}" Width="400" Height="60">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="250"></ColumnDefinition>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="250"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0">Antal rätt:</TextBlock>
-                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0">Antal fel:</TextBlock>
-                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0"><Run Text="Antal rätt:"/></TextBlock>
+                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0"><Run Text="Antal fel:"/></TextBlock>
+                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 
                             </Grid>
 
-                        <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding AnswerForPlayer}" FontSize="24"/>
+                            <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding AnswerForPlayer}" FontSize="24"/>
                             </WrapPanel>
                         </Grid>
                     </Border>
-                    <Border BorderThickness="1" Background="#ECEBE4" Height="200" Width="400">
+                    <Border BorderThickness="1" Style="{StaticResource BackgroundBorder}" Height="200" Width="400">
                         <WrapPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                            <Button HorizontalAlignment="Center" MinWidth="25"  Margin="7" Padding="5" Click="Letter_Click" >A</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="Letter_Click" >B</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="Letter_Click" >C</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">D</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">E</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">F</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">G</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">H</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">I</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">J</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">K</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">L</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">M</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">N</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">O</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">P</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Q</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">R</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">S</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">T</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">U</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">V</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">W</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">X</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Y</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Z</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Å</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Ä</Button>
-                            <Button HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Ö</Button>
+                            <Button Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25"  Margin="7" Padding="5" Click="Letter_Click" FontWeight="Normal" Cursor="Hand" >A</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="Letter_Click" >B</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5" Click="Letter_Click" >C</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">D</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">E</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">F</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">G</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">H</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">I</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">J</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">K</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">L</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">M</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">N</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">O</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">P</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Q</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">R</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"  Click="Letter_Click">S</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">T</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">U</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">V</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">W</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">X</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Y</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Z</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Å</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Ä</Button>
+                            <Button  Style="{StaticResource KeyButton}" HorizontalAlignment="Center" MinWidth="25" Margin="7" Padding="5"   Click="Letter_Click">Ö</Button>
 
                         </WrapPanel>
 
                     </Border>
-                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBox x:Name="guessingWordText" Width="150"></TextBox>
-                        <Button Click="GuessDirectlyBtn_Click" Content="Gissa direkt" Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" BorderBrush="{x:Null}" ></Button>
-                    </WrapPanel>
-                    <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                    <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="Green" HorizontalAlignment="Center" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}" Foreground="White" BorderBrush="{x:Null}">
+
+                    <StackPanel Orientation="Vertical" Margin="0,10,0,11">
+
+                        <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="Green" HorizontalAlignment="Center" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}" Foreground="White" BorderBrush="{x:Null}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
@@ -109,23 +131,45 @@
                             </Button.Resources>
                             START
                         </Button>
-                        <WrapPanel Orientation="Horizontal">
-                            <Button  Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="5"/>
-                                    </Style>
-                                </Button.Resources> Ledtråd
-                            </Button>
-                            <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
-                        </WrapPanel>
-                        <TextBlock HorizontalAlignment="Left"  TextDecorations="Underline" Margin="0,5,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
+
+                        <TextBlock HorizontalAlignment="Center"  TextDecorations="Underline" Margin="0,5,5,5">Behöver du hjälp?</TextBlock>
                     </StackPanel>
-
-
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <TextBox x:Name="guessingWordText" Width="150"></TextBox>
+                        <Button Style="{StaticResource StandardButton}" Click="GuessDirectlyBtn_Click" Content="Gissa direkt" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" BorderBrush="{x:Null}" FontWeight="Normal" Width="100" Height="25" ></Button>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                        <Button  Style="{StaticResource StandardButton}" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}" FontWeight="Normal" Width="100" Height="25">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources> Ledtråd
+                        </Button>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <Button  Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources> Ledtråd
+                        </Button>
+                        <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
+                    </WrapPanel>
+                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Left" Click="GameIntroPage_Click" Content="Hjälp">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                 </StackPanel>
             </Grid>
-            <Frame x:Name="GameStart" ></Frame>
+            <Frame x:Name="GameStart" Margin="0,4,0,0" />
         </Grid>
     </Border>
 </Page>

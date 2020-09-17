@@ -41,7 +41,7 @@ namespace Hangman.Views.Menu
             {
                 model.DeleteUser(PlayerEngine.ActivePlayer.Name);
                 MessageBox.Show("Din användare är nu raderad - du loggas nu ut");
-              //  this.NavigationService.Content = new LoginPage();
+                //  this.NavigationService.Content = new LoginPage();
             }
 
             else if (name != PlayerEngine.ActivePlayer.Name)

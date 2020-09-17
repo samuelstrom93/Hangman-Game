@@ -19,13 +19,13 @@ namespace Hangman.Views
     /// </summary>
     public partial class UserSettingsPage : Page
     {
-       
+
         public UserSettingsPage()
         {
             InitializeComponent();
             ChangeUserFrame.Content = new UpdateUserUC();
             DeleteUserFrame.Content = new DeleteUserUC();
-            
+
         }
     }
 }

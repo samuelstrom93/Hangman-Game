@@ -1,5 +1,4 @@
-﻿using Hangman.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,24 +8,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hangman
+namespace Hangman.Views
 {
     /// <summary>
-    /// Interaction logic for HelpWindow.xaml
+    /// Interaction logic for GameIntroPage.xaml
     /// </summary>
-    public partial class HelpWindow : Window
+    public partial class GameIntroPage : Page
     {
-        public HelpWindow()
+        public GameIntroPage()
         {
             InitializeComponent();
-            Main.Content = new Help_Page();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.NavigationService.GoBack();
         }
+
+        
     }
 }
