@@ -16,7 +16,7 @@
         <Grid>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
                             >
-                <TextBlock FontFamily="Calibri Light" TextAlignment="Center"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
+                <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
                 <TextBox Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertUser" />
                     <Button Style="{StaticResource StandardButton}"  Content="Ta bort mig." Click="Button_Click"/>
                     <TextBlock x:Name="txtBlockErrorMessage" Text="{Binding Message}"/>

@@ -18,7 +18,7 @@
             Height="100"
             Width="300">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock FontFamily="Calibri Light" HorizontalAlignment="Center" >Skriv in önskat nytt namn</TextBlock>
+                <TextBlock Style="{StaticResource StandardFontTextBlock}" >Skriv in önskat nytt namn</TextBlock>
                 <TextBox  Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertName"/>
                 <Button Style="{DynamicResource StandardButton}"  Content="Byt Namn!" Click="Button_Click"/>
                 <TextBlock x:Name="txtBlockErrorMessage" Text="{Binding Message}"/>
