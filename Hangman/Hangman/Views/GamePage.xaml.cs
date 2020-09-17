@@ -116,7 +116,15 @@ namespace Hangman.Views
                 gamePageViewModel.GuessDirectly();
                 gamePageViewModel.SwitchGameStatus();
             }
-            
+            if (gamePageViewModel.isWon)
+            {
+                this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+            }
+            if (gamePageViewModel.isLost)
+            {
+                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+            }
+
         }
 
     }
