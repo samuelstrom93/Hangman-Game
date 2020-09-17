@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hangman.ViewModels;
 using Hangman.Views.Menu;
 
 namespace Hangman.Views
@@ -19,13 +20,18 @@ namespace Hangman.Views
     /// </summary>
     public partial class UserSettingsPage : Page
     {
+        private UserSettingsViewModel usVM;
 
         public UserSettingsPage()
         {
             InitializeComponent();
+
             ChangeUserFrame.Content = new UpdateUserUC();
             DeleteUserFrame.Content = new DeleteUserUC();
+            UserStatsFrame.Content = new PlayerStatsUC();
 
+            usVM = new UserSettingsViewModel();
+            DataContext = usVM;
         }
     }
 }

@@ -48,16 +48,8 @@
                 <Frame x:Name="ChangeUserFrame" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
             </Grid>
 
-            <Grid Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Margin="10, 10, 10, 10">
+            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Margin="10, 10, 10, 10">
                 <Border>
-                    <Image Source="/Assets/Images/YoureAmazing.jpg"></Image>
-                </Border>
-                <Frame x:Name="UserImage" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
-            </Grid>
-            
-            <Grid Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Margin="10, 10, 10, 10">
-                <Border>
-                    <TextBlock TextAlignment="Center" HorizontalAlignment="Center"><Run Text="Här kan vi visa profilbild"/><Run Text=" om vi vill"/><LineBreak/><Run Text="användaren@sinmail.com"/><LineBreak/><Run Text="Inställningar för tema"/></TextBlock>
                 </Border>
                 <Frame x:Name="UserStatsFrame" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
             </Grid>
@@ -65,8 +57,7 @@
             <Grid Grid.Row="4" Grid.Column="0" Margin="10, 10, 10, 10">
                 <Border></Border>
                 <Frame x:Name="DeleteUserFrame" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
+            </Grid>
         </Grid>
-        
-    </Grid>
     </Border>
 </Page>

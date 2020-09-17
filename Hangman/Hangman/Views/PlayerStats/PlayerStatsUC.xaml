@@ -38,28 +38,26 @@
                 <Grid>
                     <StackPanel>
                         <TextBlock HorizontalAlignment="Center" >Totalt antal spel:</TextBlock>
-                        <TextBlock TextAlignment="Center" Width="120" Name="txtBoxTotalGamesPlayed" Background="white"></TextBlock>
+                        <TextBlock TextAlignment="Center" Width="120" Name="txtBoxTotalGamesPlayed" Text="{Binding GamesPlayed}" Background="white"></TextBlock>
                         <Label HorizontalAlignment="Center">Antal vunna spel:</Label>
-                        <TextBlock TextAlignment="Center" Width="120" Name="txtBlockGamesWon" Background="white"></TextBlock>
+                        <TextBlock TextAlignment="Center" Width="120" Name="txtBlockGamesWon" Text="{Binding GamesWon}" Background="white"></TextBlock>
                         <Label HorizontalAlignment="Center">Vinstprocent:</Label>
-                        <Label Name="lblWinRate" HorizontalAlignment="Center" FontSize="20">PROCENT</Label>
+                        <Label Name="lblWinRate" Foreground="{Binding LabelColor}" HorizontalAlignment="Center" FontSize="20"  Content="{Binding WinRateString}"/>
                     </StackPanel>
                     <Frame Name ="PlayerStats" Grid.ColumnSpan="2"></Frame>
                 </Grid>
             </Grid>
 
-            <Grid Name="GridNay" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Margin="10, 10, 10, 10">
-                <Grid.Background>
-                    <ImageBrush ImageSource="/Assets/Images/YouSuck.jpg" />
-                </Grid.Background>
+            <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" Margin="10, 10, 10, 10">
+                <Grid>
+                    <Border>
+                    <Border.Background>
+                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding ImageForGameStage}"/>
+                    </Border.Background>
+                    </Border>
+                </Grid>
             </Grid>
-
-            <Grid Name="GridYay" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Margin="10, 10, 10, 10">
-                <Grid.Background>
-                    <ImageBrush ImageSource="/Assets/Images/YoureAmazing.jpg" />
-                </Grid.Background>
-            </Grid>
-
+            
         </Grid>
     </Border>
 </UserControl>

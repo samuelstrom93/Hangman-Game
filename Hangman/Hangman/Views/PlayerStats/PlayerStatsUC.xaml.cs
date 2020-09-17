@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using Hangman.GameLogics;
 using Hangman.Repositories;
 using Hangman;
+using Hangman.ViewModels;
 
 namespace Hangman.Views
 {
@@ -21,64 +22,14 @@ namespace Hangman.Views
     /// </summary>
     public partial class PlayerStatsUC : UserControl
     {
-        public BitmapImage ImageForPlayersSkills { get; set; }
-        private double winRate;
+
+        private UserSettingsViewModel model;
 
         public PlayerStatsUC()
         {
             InitializeComponent();
-            txtBoxTotalGamesPlayed.Text = PlayerStatsRepository.GetGamesPlayed(PlayerEngine.ActivePlayer).ToString();
-            txtBlockGamesWon.Text = PlayerStatsRepository.GetGamesWon(PlayerEngine.ActivePlayer).ToString();
-            winRate = CalculateWinRate();
-            AreYouAGoodPlayer(winRate);
-
-            lblWinRate.Content = winRate + "%";
+            model = new UserSettingsViewModel();
+            DataContext = model;             
         }
-
-
-        //Lägga det här i VM?
-        public double CalculateWinRate()
-        {
-            double winRate;
-
-            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(PlayerEngine.ActivePlayer);
-            double gamesWon= PlayerStatsRepository.GetGamesWon(PlayerEngine.ActivePlayer);
-
-            if (gamesPlayed == 0)
-            {
-                winRate = 0;
-            }
-            else
-            {
-                double dec = (gamesWon/gamesPlayed)*100;
-                winRate = Math.Round(dec, 2);
-            }
-
-
-            return winRate;
-        }
-
-        public void AreYouAGoodPlayer(double winRate)
-        {
-            if (winRate >= 50)
-            {
-                lblWinRate.Foreground = Brushes.Green;
-                GridYay.Visibility = Visibility.Visible;
-
-            }
-
-            else if (winRate < 50)
-            {
-                lblWinRate.Foreground = Brushes.Red;
-                GridNay.Visibility = Visibility.Visible;
-            }
-
-            if (winRate == 0)
-            {
-
-            }
-        }
-
-
     }
 }
