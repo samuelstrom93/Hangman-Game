@@ -39,7 +39,7 @@
                             <TextBlock Text="{Binding ranking}" Margin="10,0,0,0" FontSize="20"></TextBlock>
 
                         </WrapPanel>
-                        <Button Visibility="{Binding IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" x:Name="gameScoreSaveBtn" Command="{Binding SaveGameScoreCommand}" Style="{StaticResource StandardButton}" Cursor="Hand" Click="Button_Click_2" Width="200" Height="27" Margin="0,10,0,10">Kasta bort min spelpoäng!</Button>
+                        <Button Visibility="{Binding IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" x:Name="gameScoreSaveBtn" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Cursor="Hand" Click="Button_Click_2" Width="200" Height="27" Margin="0,10,0,10">Kasta bort min spelpoäng!</Button>
 
                     </StackPanel>
                 </StackPanel>

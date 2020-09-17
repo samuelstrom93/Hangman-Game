@@ -52,7 +52,6 @@ namespace Hangman.Views
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             ChangeStyleForGameScoreSaveBtn();
-
         }
 
         private void ChangeStyleForGameScoreSaveBtn()
