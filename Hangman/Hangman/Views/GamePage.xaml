@@ -150,7 +150,7 @@
                             START
                         </Button>
 
-                        <TextBlock HorizontalAlignment="Center"  TextDecorations="Underline" Margin="0,5,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
+                        <TextBlock HorizontalAlignment="Center"  TextDecorations="Underline" Margin="0,5,5,5">Behöver du hjälp?</TextBlock>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
@@ -168,24 +168,23 @@
                             </Button.Resources> Ledtråd
                         </Button>
                     </WrapPanel>
-                        <WrapPanel Orientation="Horizontal">
-                            <Button  Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="5"/>
-                                    </Style>
-                                </Button.Resources> Ledtråd
-                            </Button>
-                            <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
-                        </WrapPanel>
-                        <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Left" Click="GameIntroPage_Click" Content="Hjälp">
+                    <WrapPanel Orientation="Horizontal">
+                        <Button  Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}">
                             <Button.Resources>
-                                <Style TargetType="{x:Type Border}">
+                                <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
                                 </Style>
-                            </Button.Resources>
+                            </Button.Resources> Ledtråd
                         </Button>
-                    </StackPanel>
+                        <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
+                    </WrapPanel>
+                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Left" Click="GameIntroPage_Click" Content="Hjälp">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                 </StackPanel>
             </Grid>
             <Frame x:Name="GameStart" Margin="0,4,0,0" />
