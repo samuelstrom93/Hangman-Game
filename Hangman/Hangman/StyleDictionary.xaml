@@ -83,7 +83,7 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="65"/>
         <Setter Property="Padding" Value="5" />
-        <Setter Property="FontFamily" Value="Darkline" />
+        <Setter Property="FontFamily" Value="Arial" />
     </Style>
 
     <Style x:Key="StandardLabel" TargetType="Label">
