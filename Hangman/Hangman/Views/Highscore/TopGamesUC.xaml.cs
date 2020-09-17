@@ -16,7 +16,8 @@ namespace Hangman.Views
 
             HighscoresViewModel vm = new HighscoresViewModel()
             {
-                TopHighscores = HighscoreRepository.GetTopGames(playerId).ToList()
+                TopHighscores = HighscoreRepository.GetTopGames(playerId).ToList(),
+                Title = playerId.HasValue ? "Dina toppspel" : "Topplistan"
             };
 
             DataContext = vm;

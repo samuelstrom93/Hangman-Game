@@ -10,5 +10,7 @@ namespace Hangman.ViewModels
         public List<HighscoreGame> TopHighscores { get; set; }
         public List<HighscoreGame> TopCurrentPlayerHighscores { get; set; }
         public Dictionary<string, long> TopDiligentPlayers { get; set; }
+
+        public string Title { get; set; }
     }
 }

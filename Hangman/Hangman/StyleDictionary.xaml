@@ -23,6 +23,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style x:Key="StandardBorder" TargetType="Border">
         <Setter Property="Background" Value="#cccedb" />
         <Setter Property="BorderBrush" Value="#186b61" />
@@ -30,6 +31,7 @@
         <Setter Property="CornerRadius" Value="5" />
         <Setter Property="Padding" Value="5" />
     </Style>
+    
     <Style x:Key="ClickableBorder" TargetType="Border">
         <Setter Property="Background" Value="#a3cac9" />
         <Setter Property="BorderBrush" Value="#186b61" />
@@ -43,10 +45,73 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style x:Key="BackgroundBorder" TargetType="Border">
         <Setter Property="Background" Value="#e3e4ea" />
     </Style>
+    
     <Style x:Key="OverlayBorder" TargetType="Border">
         <Setter Property="Background" Value="#CCe3e4ea" />
     </Style>
+    <Style x:Key="ListItemBorder" TargetType="Border">
+        <Setter Property="Background" Value="#a3cac9" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderBrush" Value="#CCe3e4ea" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="1" />
+    </Style>
+    <Style x:Key="StandardListBoxItem" TargetType="ListBoxItem">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="StandardHeader" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="65"/>
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="FontFamily" Value="Arial" />
+    </Style>
+
+    <Style x:Key="StandardLabel" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="FontFamily" Value="Arial" />
+    </Style>
+
+    <Style x:Key="PageTitleLabel" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="FontFamily" Value="Arial" />
+    </Style>
+
+    <Style x:Key="UserInputTxtBox" TargetType="TextBox">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Margin" Value="5, 5, 5, 5"/>
+    </Style>
+
+    <Style x:Key="StandardFontTextBlock" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Calibri Light"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
 </ResourceDictionary>

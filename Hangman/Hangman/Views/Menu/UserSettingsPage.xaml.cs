@@ -1,6 +1,4 @@
-﻿using Hangman.GameLogics;
-using Hangman.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,19 +10,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hangman.Views.Menu;
 
 namespace Hangman.Views
 {
     /// <summary>
-    /// Interaction logic for MessageBoardUC.xaml
+    /// Interaction logic for UserSettingsPage.xaml
     /// </summary>
-    public partial class MessageBoardUC : UserControl
+    public partial class UserSettingsPage : Page
     {
-        public MessageBoardUC()
+
+        public UserSettingsPage()
         {
             InitializeComponent();
+            ChangeUserFrame.Content = new UpdateUserUC();
+            DeleteUserFrame.Content = new DeleteUserUC();
 
-            DataContext = new MessagesViewModel(64);
         }
     }
 }

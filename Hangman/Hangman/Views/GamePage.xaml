@@ -46,8 +46,7 @@
                             <Menu DockPanel.Dock="Top">
                                 <MenuItem x:Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=UserName}">
                                     <MenuItem Header="Logga ut" Click="mnuLogOut" />
-                                    <MenuItem Header="Ta bort min användare" Click="mnuDeleteUser"/>
-                                    <MenuItem Header="Byt användarnamn" Click="mnuUpdateUser" />
+                                    <MenuItem Header="Användarinställningar" Click="mnuDeleteUser"/>
                                     <Separator />
                                     <MenuItem Header="Spela" />
                                 </MenuItem>
