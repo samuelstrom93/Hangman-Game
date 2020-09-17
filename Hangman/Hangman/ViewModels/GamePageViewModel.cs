@@ -452,6 +452,10 @@ namespace Hangman.ViewModels
         {
             if (playersGuessingAnswer == upperWord) //Spelaren vann
             {
+                numberOfTries++;
+                numberOfCorrectTries++;
+                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
+
                 IsWon = true;
                 EndGame();
             }
