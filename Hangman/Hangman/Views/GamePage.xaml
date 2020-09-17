@@ -140,12 +140,9 @@
                         </WrapPanel>
                         <TextBlock HorizontalAlignment="Left"  TextDecorations="Underline" Margin="0,5,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
                     </StackPanel>
-
-
                 </StackPanel>
             </Grid>
             <Frame x:Name="GameStart" ></Frame>
-            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="464,598,0,0" VerticalAlignment="Top" Click="button_Click"/>
         </Grid>
     </Border>
 </Page>

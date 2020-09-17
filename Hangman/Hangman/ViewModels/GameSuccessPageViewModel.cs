@@ -7,6 +7,16 @@ namespace Hangman.ViewModels
 {
     class GameSuccessPageViewModel
     {
+        public IGame Game { get; set; }
+        public IWord Word { get; set; }
+
+        public int NumberOfCorrectTries { get; set; }
+
+        public GameSuccessPageViewModel()
+        {
+        }
+
+        #region Metoder
         public void SetGame(Game game)
         {
             Game = game;
@@ -21,15 +31,6 @@ namespace Hangman.ViewModels
         {
             NumberOfCorrectTries = Game.NumberOfTries - Game.NumberOfIncorrectTries;
         }
-
-        public IGame Game { get; set; }
-        public IWord Word { get; set; }
-
-        public int NumberOfCorrectTries { get; set; }
-
-
-        public GameSuccessPageViewModel()
-        {
-        }
+        #endregion
     }
 }

@@ -57,6 +57,8 @@ namespace Hangman.ViewModels
         private int numberOfCorrectTries;
         public bool isWon;
 
+
+        public bool isLost;
         public string numberOfCorrectTries_text { get; set; }
         public string numberOfIncorrectTries_text { get; set; }
 
@@ -336,6 +338,7 @@ namespace Hangman.ViewModels
             if (numberOfLives == 0)  //Game over
             {
                 EndGame();
+                isLost = true;
             }
             
         }
