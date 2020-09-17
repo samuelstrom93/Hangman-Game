@@ -46,4 +46,7 @@
     <Style x:Key="BackgroundBorder" TargetType="Border">
         <Setter Property="Background" Value="#e3e4ea" />
     </Style>
+    <Style x:Key="OverlayBorder" TargetType="Border">
+        <Setter Property="Background" Value="#CCe3e4ea" />
+    </Style>
 </ResourceDictionary>
