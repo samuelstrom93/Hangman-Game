@@ -72,9 +72,9 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0"><Run Text="Antal rätt:"/></TextBlock>
-                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding numberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding NumberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0"><Run Text="Antal fel:"/></TextBlock>
-                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding numberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding NumberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 
                             </Grid>

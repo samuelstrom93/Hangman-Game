@@ -41,9 +41,10 @@ namespace Hangman.ViewModels
         #endregion
 
         #region PropertiesForGameStart
-        public string PlayerName { get; set; }
+
+        public string PlayerName { get; set; }  // = PlayerEngine.ActivePlayer.Name
         public IPlayer IPlayer { get; set; }
-        private Game Game { get; set; }
+        private Game game { get; set; }
 
         public bool IsGameStart { get; set; }
         public bool IsStartBtnClickable { get; set; }
@@ -51,16 +52,16 @@ namespace Hangman.ViewModels
         #endregion
 
         #region ForGameScore
-        public int numberOfLives;   // 0 =GAME OVER
-        public int numberOfTries;
+
+        private int numberOfLives;   // 0 =GAME OVER
+        private int numberOfTries;
         private int numberOfIncorrectTries;
         private int numberOfCorrectTries;
-        public bool isWon;
 
-
-        public bool isLost;
-        public string numberOfCorrectTries_text { get; set; }
-        public string numberOfIncorrectTries_text { get; set; }
+        public bool IsWon;
+        public bool IsLost;
+        public string NumberOfCorrectTries_text { get; set; }
+        public string NumberOfIncorrectTries_text { get; set; }
 
         #endregion
 
@@ -73,9 +74,8 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Hint
-        public IWord IWord { get; set; }
 
-        
+        public IWord IWord { get; set; }
             
         public ICommand ShowHintCommand { get; set; }
         public bool IsHintShown { get; set; }
@@ -90,8 +90,11 @@ namespace Hangman.ViewModels
             {
                 IsHintShown = true;
             }
-            
         }
+
+        #endregion Hint
+
+        #region GetWord + Game
 
         public Word GetWord()
         {
@@ -102,19 +105,19 @@ namespace Hangman.ViewModels
                 Hint = IWord.Hint
             };
             return word;
-            }
+        }
 
-        #endregion Hint
-        public GamePageViewModel()
+        #endregion
+
+        public GamePageViewModel()  // UTAN inloggning
         {
             PlayerName = "Spela utan användare";
+            SetPlayerWithoutLoggIn();
 
             RefreshGame();
             ViewGameStage();
 
-            GameStartCommand = new RelayCommand(StartGameWithoutPlayer);
-            ShowHintCommand = new RelayCommand(ShowHint);
-            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+            SetCommands();
 
             MakeStopWatch();
 
@@ -125,25 +128,51 @@ namespace Hangman.ViewModels
         }
 
 
-        public GamePageViewModel(IPlayer player)
+        public GamePageViewModel(IPlayer player)    // MED inloggning
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
-            IPlayer = player;
+            SetPlayer(player);
 
             RefreshGame();
             ViewGameStage();
 
+            SetCommands();
+
+            MakeStopWatch();
+
+            IsStopWatchView = true;
+            IsGameStart = false;
+            IsStartBtnClickable = true;
+
+        }
+
+        #region SetMethods
+        private Player Player { get; set; }
+        private void SetPlayer(IPlayer iplayer)
+        {
+            Player = new Player() 
+            {
+                Id = iplayer.Id,
+                Name = iplayer.Name
+            };
+        }
+        private void SetPlayerWithoutLoggIn()
+        {
+            Player = new Player()
+            {
+                Id = 0
+            };
+            //IPlayer.Id = playerWithoutLoggIn.Id;
+        }
+
+        private void SetCommands()
+        {
             GameStartCommand = new RelayCommand(StartGame);
             ShowHintCommand = new RelayCommand(ShowHint);
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
-
-            MakeStopWatch();
-
-            IsStopWatchView = true;
-            IsGameStart = false;
-            IsStartBtnClickable = true;
-
         }
+
+        #endregion
 
         #region Methods: GameStart
 
@@ -151,18 +180,16 @@ namespace Hangman.ViewModels
         {
             IsStartBtnClickable = false;
             MakeWord();
-            MakeGame();
-            MakeWordArray();
-            StartStopWatch();
-            IsHintShown = false;
-            IsGameStart = true;
-        }
 
-        private void StartGameWithoutPlayer()
-        {
-            IsStartBtnClickable = false;
-            MakeWord();
-            MakeGameWithoutPlayer();
+            if (Player.Id == 0)     // För spelaren UTAN inloggning
+            {
+                MakeGameWithoutPlayer();
+            }
+            else
+            {
+                MakeGame();
+            }
+
             MakeWordArray();
             StartStopWatch();
             IsHintShown = false;
@@ -190,7 +217,7 @@ namespace Hangman.ViewModels
 
         private void MakeGameWithoutPlayer()
         {
-            Game = new Game
+            game = new Game
             {
                 IsWon = false,
                 NumberOfIncorrectTries = 0,
@@ -201,13 +228,13 @@ namespace Hangman.ViewModels
         }
         private void MakeGame()
         {
-            Game = new Game
+            game = new Game
             {
                 IsWon = false,
                 NumberOfIncorrectTries = 0,
                 NumberOfTries = 0,
                 StartTime = DateTime.Now,
-                PlayerId = IPlayer.Id,
+                PlayerId = Player.Id,
                 WordId = IWord.Id
             };
         }
@@ -230,10 +257,10 @@ namespace Hangman.ViewModels
             numberOfTries = 0;
             numberOfIncorrectTries = 0;
             numberOfCorrectTries = 0;
-            numberOfCorrectTries_text = numberOfCorrectTries.ToString();
-            numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+            NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
+            NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
             gameStage = 0;
-            isWon = false;
+            IsWon = false;
         }
         #endregion
 
@@ -299,7 +326,7 @@ namespace Hangman.ViewModels
             {
                 numberOfTries++;
                 numberOfCorrectTries++;
-                numberOfCorrectTries_text = numberOfCorrectTries.ToString();
+                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
                 IsGuessCorrect = true;
             }
             else //Gissade fel
@@ -307,7 +334,7 @@ namespace Hangman.ViewModels
                 numberOfTries++;
                 numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-                numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
                 ViewGameStage();
@@ -331,21 +358,21 @@ namespace Hangman.ViewModels
 
             if (answer == upperWord) //Spelaren vann
             {
-                isWon = true;
+                IsWon = true;
                 EndGame();
             }
 
             if (numberOfLives == 0)  //Game over
             {
                 EndGame();
-                isLost = true;
+                IsLost = true;
             }
             
         }
 
         private void EndGame()
         {
-            Game.EndTime = DateTime.Now;
+            game.EndTime = DateTime.Now;
             StopStopWatch();
             SaveGameScore();
             IsGameStart = false;
@@ -353,9 +380,9 @@ namespace Hangman.ViewModels
 
         private void SaveGameScore()
         {
-            Game.NumberOfIncorrectTries = numberOfIncorrectTries;
-            Game.NumberOfTries = numberOfTries;
-            Game.IsWon = isWon;
+            game.NumberOfIncorrectTries = numberOfIncorrectTries;
+            game.NumberOfTries = numberOfTries;
+            game.IsWon = IsWon;
 
             /*if(PlayerEngine.ActivePlayer!=null)
             AddGame(Game);*/ // Vi kan flytta på dem till sidan för att visa slutresultat, för #35
@@ -363,7 +390,7 @@ namespace Hangman.ViewModels
 
         public Game GetGameScore()
         {
-            return Game;
+            return game;
         }
 
         #endregion
@@ -435,7 +462,7 @@ namespace Hangman.ViewModels
         {
             if (playersGuessingAnswer == upperWord) //Spelaren vann
             {
-                isWon = true;
+                IsWon = true;
                 EndGame();
             }
             else //Gissade fel
@@ -443,7 +470,7 @@ namespace Hangman.ViewModels
                 numberOfTries++;
                 numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-                numberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
                 ViewGameStage();

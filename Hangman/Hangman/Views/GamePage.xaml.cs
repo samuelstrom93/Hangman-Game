@@ -23,8 +23,10 @@ namespace Hangman.Views
     /// </summary>
     public partial class GamePage : Page
     {
-
+        #region public field
         public IPlayer Player;
+
+        #endregion
         #region private field
         private GamePageViewModel gamePageViewModel;
         #endregion
@@ -32,6 +34,7 @@ namespace Hangman.Views
         public GamePage()
         {
             InitializeComponent();
+
             gamePageViewModel = new GamePageViewModel();
             DataContext = gamePageViewModel;
 
@@ -43,12 +46,12 @@ namespace Hangman.Views
 
             InitializeComponent();
             Player = player;
+
             gamePageViewModel = new GamePageViewModel(player);
             DataContext = gamePageViewModel;
 
             GameStart.Content = new GameStartPage();
         }
-        
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
@@ -63,15 +66,44 @@ namespace Hangman.Views
                 //((Button)sender).IsEnabled = false;
             }
 
-            if (gamePageViewModel.isWon)
+            if (gamePageViewModel.IsWon)
             {
                 this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
             }
-            if (gamePageViewModel.isLost)
+            if (gamePageViewModel.IsLost)
             {
                 this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
             }
 
+
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
+
+        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
+
+        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (gamePageViewModel.IsGameStart)
+            {
+                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
+                gamePageViewModel.GuessDirectly();
+                gamePageViewModel.SwitchGameStatus();
+            }
+            if (gamePageViewModel.IsWon)
+            {
+                this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+            }
+            if (gamePageViewModel.IsLost)
+            {
+                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+            }
 
         }
 
@@ -98,34 +130,6 @@ namespace Hangman.Views
 
         }
 
-        private void Help_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
-        }
-
-        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
-        }
-
-        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (gamePageViewModel.IsGameStart)
-            {
-                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
-                gamePageViewModel.GuessDirectly();
-                gamePageViewModel.SwitchGameStatus();
-            }
-            if (gamePageViewModel.isWon)
-            {
-                this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-            }
-            if (gamePageViewModel.isLost)
-            {
-                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-            }
-
-        }
 
     }
 }
