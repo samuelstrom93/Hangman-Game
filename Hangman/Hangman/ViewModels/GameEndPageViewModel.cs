@@ -1,51 +1,70 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels.Base;
+using static Hangman.Repositories.Game_Repository;
 using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 
 namespace Hangman.ViewModels
 {
     class GameEndPageViewModel : BaseViewModel
     {
-        public IGame Game { get; set; } 
-        public IWord Word { get; set; }  
+        public ICommand SaveGameScoreCommand { get; set; }
+        public IGame IGame { get; set; } 
+        public IWord IWord { get; set; }  
 
         public int NumberOfCorrectTries { get; set; } //Binding i GameEnd_Page
         public string GameStatus { get; set; }  //Binding i GameEnd_Page
 
         public bool IsRankingShown { get; set; }
 
+        
         public GameEndPageViewModel(Game game, Word word)
         {
+            SetIGame(game);
             SetGame(game);
-            SetWord(word);
+            SetIWord(word);
             SetNumberOfCorrectTries();
             SetGameStatus();
             SwitchRanking();
+
+            SaveGameScoreCommand = new RelayCommand(SaveGameScore);
+        }
+
+        private Game game { get; set; }
+        private void SetGame(Game playersGameScore)
+        {
+            game = playersGameScore;
+        }
+
+
+        private void SaveGameScore()
+        {
+            AddGame(game);
         }
 
 
         #region Metoder
-        public void SetGame(Game game)
+        public void SetIGame(Game game)
         {
-            Game = game;
+            IGame = game;
         }
 
-        public void SetWord(Word word)
+        public void SetIWord(Word word)
         {
-            Word = word;
+            IWord = word;
         }
 
         public void SetNumberOfCorrectTries()
         {
-            NumberOfCorrectTries = Game.NumberOfTries - Game.NumberOfIncorrectTries;
+            NumberOfCorrectTries = IGame.NumberOfTries - IGame.NumberOfIncorrectTries;
         }
 
         public void SetGameStatus()
         {
-            if (Game.IsWon == true)
+            if (IGame.IsWon == true)
             {
                 GameStatus = "Du vann!";
             }
@@ -57,7 +76,7 @@ namespace Hangman.ViewModels
 
         private void SwitchRanking()
         {
-            if (Game.IsWon == true)
+            if ((IGame.IsWon == true)&&(game.PlayerId != 0))
             {
                 IsRankingShown = true;
             }
