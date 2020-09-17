@@ -60,15 +60,13 @@ namespace Hangman.Views.Menu
             {
                 itemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
                 itemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
-                itemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("DeleteUserItem")));
-                itemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("UpdateUserItem")));
+                itemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
             }
             else
             {
                 itemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
                 itemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
-                itemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("DeleteUserItem")));
-                itemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("UpdateUserItem")));
+                itemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
             }
         }
 
@@ -92,21 +90,13 @@ namespace Hangman.Views.Menu
             logoutItem.Click += mnuLogOut;
             _menuItems.Add(logoutItem);
 
-            var deleteUserItem = new MenuItem
+            var userSettingsPage = new MenuItem
             {
-                Name = "DeleteUserItem",
-                Header = "Ta bort min användare"
+                Name = "UserSettingsItem",
+                Header = "Användarinställningar"
             };
-            deleteUserItem.Click += mnuDeleteUser;
-            _menuItems.Add(deleteUserItem);
-
-            var updateUserItem = new MenuItem
-            {
-                Name = "UpdateUserItem",
-                Header = "Byt användarnamn"
-            };
-            updateUserItem.Click += mnuUpdateUser;
-            _menuItems.Add(updateUserItem);
+            userSettingsPage.Click += mnuUserSettings;
+            _menuItems.Add(userSettingsPage);
 
             var playItem = new MenuItem
             {
@@ -120,11 +110,6 @@ namespace Hangman.Views.Menu
             itemsToShow.Add(new Separator());
             itemsToShow.Add(playItem);
         }
-        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var w = new HelpWindow();
-            w.Show();
-        }
 
         private void mnuLogOut(object sender, RoutedEventArgs e)
         {
@@ -133,14 +118,9 @@ namespace Hangman.Views.Menu
             PlayerStatusChanged(null);
         }
 
-        private void mnuDeleteUser(object sender, RoutedEventArgs e)
+        private void mnuUserSettings(object sender, RoutedEventArgs e)
         {
-            ParentWindow.Main.Content = new DeleteUserPage(PlayerEngine.ActivePlayer);
-        }
-
-        private void mnuUpdateUser(object sender, RoutedEventArgs e)
-        {
-            ParentWindow.Main.Content = new UpdateUserPage(PlayerEngine.ActivePlayer);
+            ParentWindow.Main.Content = new UserSettingsPage();
         }
         private void mnuPlay(object sender, RoutedEventArgs e)
         {
