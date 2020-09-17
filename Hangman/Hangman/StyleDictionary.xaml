@@ -45,9 +45,11 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style x:Key="BackgroundBorder" TargetType="Border">
         <Setter Property="Background" Value="#e3e4ea" />
     </Style>
+    
     <Style x:Key="OverlayBorder" TargetType="Border">
         <Setter Property="Background" Value="#CCe3e4ea" />
     </Style>
@@ -88,9 +90,24 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="5" />
         <Setter Property="FontFamily" Value="Arial" />
+    </Style>
+
+    <Style x:Key="PageTitleLabel" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="FontFamily" Value="Arial" />
+        
+    </Style>
+
+    <Style x:Key="UserInputTxtBox" TargetType="TextBox">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Margin" Value="5, 5, 5, 5"/>
     </Style>
 
 </ResourceDictionary>

@@ -24,6 +24,7 @@ namespace Hangman.Views
     public partial class CreateUser_Page : Page
     {
         private CreateUserViewModel model;
+        private string message;
 
         public CreateUser_Page()
         {
@@ -41,15 +42,17 @@ namespace Hangman.Views
 
             if (PlayerEngine.IsNameUsed(name) == false)
             {
-                model.CreatePlayer(name);
+                message = model.CreatePlayer(name);
                 PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
                 this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
             }
 
             else
             {
-                model.CreatePlayer(name);
+                message = model.CreatePlayer(name);
             }
+
+            MessageBox.Show(message);
         }
 
         private void Button_Help_Click(object sender, RoutedEventArgs e)

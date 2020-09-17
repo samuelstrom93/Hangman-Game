@@ -13,31 +13,31 @@
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="110"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <Label Style="{StaticResource StandardHeader}" Content="Hänga Gubbe" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-            
-            <Grid Grid.Row="1">
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top">
-                    <Label Style="{StaticResource StandardLabel}" Content="Välj ditt användarnamn:"/>
-            <TextBox Margin="5, 5, 5, 5" Name="txtBoxWantedName" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-                <Button Style="{StaticResource StandardButton}"  Click="Button_CreateUser_Click" Content="Registrera" Width="152" Height="20" HorizontalAlignment="Center"/>
-            </StackPanel>
+                <Label Style="{StaticResource StandardHeader}" Content="Hänga Gubbe" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             </Grid>
 
-            <Grid Grid.Row="2" Margin="10, 10, 10, 10" Width="800">
+            <Border Grid.Row="1" Width="220" Height="100" Background="#cccedb" CornerRadius="10" VerticalAlignment="Top">
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top">
+                    <Label Style="{StaticResource StandardLabel}" Content="Välj ditt användarnamn:"/>
+                    <TextBox Style="{StaticResource UserInputTxtBox}"  Name="txtBoxWantedName" VerticalAlignment="Top" />
+                    <Button Width="100" Height="20" Style="{StaticResource StandardButton}"  Click="Button_CreateUser_Click" Content="Registrera" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Row="2" Margin="10, 10, 10, 0" Width="600">
                 <Label Style="{StaticResource StandardLabel}" HorizontalAlignment="Left">Har du redan en användare?</Label>
             </Grid>
 
-            <Grid Grid.Row="3" Width="800">
-                <Button Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Content="Inte första gången?" />
-                <Button Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Behöver du hjälp?"  HorizontalAlignment="Right"  VerticalAlignment="Top" Width="115"/>
+            <Grid Grid.Row="3" Margin="10, 0, 10, 10" Width="600">
+                <Button Width="120" Height="20" Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Content="Logga in" />
+                <Button Width="120" Height="20"  Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Behöver du hjälp?"  HorizontalAlignment="Right"  VerticalAlignment="Top" />
             </Grid>
 
            

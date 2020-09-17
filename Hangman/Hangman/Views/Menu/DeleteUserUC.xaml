@@ -5,23 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman.Views.Menu"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="400">
+             d:DesignHeight="100" d:DesignWidth="300">
 
 
     <Border
-        Style="{DynamicResource ListItemBorder}">
-        <Border>
-            <Grid>
+        Style="{DynamicResource ListItemBorder}"
+                    Height="100"
+                    Width="300"
+                    CornerRadius="10">
+        <Grid>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
                             >
-                    <Label Content="Skriv in ditt användarnamn för att ta bort din användare:"/>
-                    <TextBox x:Name="txtBoxInsertUser" Width="200"/>
-                    <Button Style="{StaticResource StandardButton}" Width="200" Margin="5, 5, 5, 5" Content="Ta bort mig." Click="Button_Click"/>
+                <TextBlock FontFamily="Calibri Light" TextAlignment="Center"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
+                <TextBox Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertUser" />
+                    <Button Style="{StaticResource StandardButton}"  Content="Ta bort mig." Click="Button_Click"/>
                     <TextBlock x:Name="txtBlockErrorMessage" Text="{Binding Message}"/>
                 </StackPanel>
             </Grid>
 
         </Border>
-    </Border>
-
 </UserControl>

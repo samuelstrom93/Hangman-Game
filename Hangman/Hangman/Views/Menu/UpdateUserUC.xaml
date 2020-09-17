@@ -5,16 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman.Views.Menu"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="400">
+             d:DesignHeight="100" d:DesignWidth="300">
 
     <Border
-            Style="{DynamicResource ListItemBorder}">
+            Style="{DynamicResource ListItemBorder}"
+            Height="100"
+            Width="300"
+            CornerRadius="10"
+        >
 
-        <Grid>
+        <Grid
+            Height="100"
+            Width="300">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label HorizontalAlignment="Center">Skriv in önskat nytt namn</Label>
-                <TextBox  Width="200" x:Name="txtBoxInsertName"/>
-                <Button Style="{DynamicResource StandardButton}" Margin="5, 5, 5, 5" Content="Byt Namn!" Click="Button_Click"/>
+                <TextBlock FontFamily="Calibri Light" HorizontalAlignment="Center" >Skriv in önskat nytt namn</TextBlock>
+                <TextBox  Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertName"/>
+                <Button Style="{DynamicResource StandardButton}"  Content="Byt Namn!" Click="Button_Click"/>
                 <TextBlock x:Name="txtBlockErrorMessage" Text="{Binding Message}"/>
             </StackPanel>
         </Grid>
