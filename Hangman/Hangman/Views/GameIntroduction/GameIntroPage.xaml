@@ -1,0 +1,62 @@
+﻿<Page x:Class="Hangman.Views.GameIntroPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Hangman.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="1920" d:DesignWidth="1500"
+      Title="GameIntroPage">
+
+
+    <Grid Background="#cccedb" Width="1500" Height="1920">
+        <StackPanel>
+            <TextBlock Margin="0,20,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="30">Spelintroduktion</TextBlock>
+            <TextBlock Margin="0,10,0,0" TextAlignment="Center" FontWeight="SemiBold" FontSize="25" FontStyle="Italic" >Rädda Gubben</TextBlock>
+            <TextBlock Padding="15" Margin="0,25,0,30" Background="AliceBlue" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="600">
+             <Bold>Spelidé:</Bold><LineBreak></LineBreak>
+              Spelet baseras på det klassiska spelet <Italic>Hänga Gubbe</Italic> där användaren ställs inför utmaningen att gissa vilket ord som slumpats fram och rädda vår huvudkaraktär innan man har tio felaktiga gissningar på bokstäver i ordet har uppnåtts och möjligheten att rädda honom från att hängas ifrån stången.
+
+            </TextBlock>
+            <StackPanel Margin="525,0,0,0" Orientation="Horizontal">
+                <TextBlock Margin="0,0,100,0" FontStyle="Italic" FontWeight="DemiBold" FontSize="20">Exempelbild</TextBlock>
+                <TextBlock Margin="160,0,0,0" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Right">Information</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+                <Border BorderThickness="1" HorizontalAlignment="Left"  Margin="390,2,0,0" Height="300" Width="350">
+                    <Border.Background>
+                        <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
+                    </Border.Background>
+                </Border>
+                <TextBlock Margin="50,3,0,0" Padding="15" HorizontalAlignment="Center" Background="AliceBlue" TextWrapping="Wrap" Width="350">
+                <Bold>Regler:</Bold> <LineBreak></LineBreak>
+                    I detta spel hänger gubben ifrån en stång och för varje fel gissning så tappar gubben greppet med ett finger i taget. Därav spelets namn <Italic>Rädda gubben</Italic>. 
+                    Vid varje fel gissning tappar gubben greppet med ett finger i taget. På så sätt har du koll på när spelet tar slut.
+                </TextBlock>
+            </StackPanel>
+             
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,55">
+                <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" Margin="35,10,25,0" Height="430" Width="350">
+                    <Border.Background>
+                        <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
+                    </Border.Background>
+                </Border>
+                <TextBlock Margin="25,10,0,0" Padding="10" VerticalAlignment="Top" Background="AliceBlue" TextWrapping="Wrap" Height="430" Width="350">
+                <Bold>Tid:</Bold><LineBreak></LineBreak> När du startar ett spel startas ett tidtagarur igång som visar det nuvarande spelets tidsåtgång. På exempelbilden kan du se att det gått 18 sekunder.
+                    <LineBreak></LineBreak><LineBreak></LineBreak>
+                    <Bold>Välj bokstav:</Bold><LineBreak></LineBreak>
+                    Du väljer vilken bokstav du vill gissa på genom att klicka på knappen för respektive bokstav. På exempelbilden ser du att användaren gissade på "V" eftersom knappen har tonats ut. 
+                    Bokstaven fanns inte i ordet och därför har <Italic>Antal fel</Italic> ökat till ett. Skulle användaren ha valt en bokstav som finns i ordet ökar <Italic>Antal rätt</Italic> och bokstaven skrivs ut över de streckade linjerna under gubben på exempelbilden.
+                    <LineBreak></LineBreak><LineBreak></LineBreak>
+                    <Bold>Ledtråd:</Bold><LineBreak></LineBreak>
+                    Nere till vänster kan man genom att klicka på knappen "Ledtråd" få en beskrivning över det gömda ordet. Vid start av spelet är lådtråden gömd men vill du visa den klickar du på knappen.
+                    Klickar du igen på "Ledtråd" så döljs beskrivningen.<LineBreak></LineBreak><LineBreak></LineBreak>
+                    <Bold>Gissa direkt:</Bold><LineBreak></LineBreak>
+                    Funktionen gör att du direkt kan gissa på ordet om du hunnit lista ut det i inmatningsfältet brevid <Italic>Gissa direkt</Italic> 
+                    . Vid rätt svar har du vunnit spelet medan om du svarar fel förbrukas en gissning och antal fel ökas med ett.
+                </TextBlock>
+            </StackPanel>
+            <Button Style="{StaticResource StandardButton}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="NextPage_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

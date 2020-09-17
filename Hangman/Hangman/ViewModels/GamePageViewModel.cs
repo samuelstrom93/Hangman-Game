@@ -57,6 +57,8 @@ namespace Hangman.ViewModels
         private int numberOfCorrectTries;
         public bool isWon;
 
+
+        public bool isLost;
         public string numberOfCorrectTries_text { get; set; }
         public string numberOfIncorrectTries_text { get; set; }
 
@@ -72,6 +74,9 @@ namespace Hangman.ViewModels
 
         #region Hint
         public IWord IWord { get; set; }
+
+        
+            
         public ICommand ShowHintCommand { get; set; }
         public bool IsHintShown { get; set; }
 
@@ -87,6 +92,17 @@ namespace Hangman.ViewModels
             }
             
         }
+
+        public Word GetWord()
+        {
+            Word word = new Word
+            {
+                Id = IWord.Id,
+                Name = IWord.Name,
+                Hint = IWord.Hint
+            };
+            return word;
+            }
 
         #endregion Hint
         public GamePageViewModel()
@@ -322,7 +338,9 @@ namespace Hangman.ViewModels
             if (numberOfLives == 0)  //Game over
             {
                 EndGame();
+                isLost = true;
             }
+            
         }
 
         private void EndGame()

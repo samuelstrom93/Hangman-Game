@@ -14,18 +14,20 @@ using System.Windows.Shapes;
 namespace Hangman.Views
 {
     /// <summary>
-    /// Help_Page.xaml の相互作用ロジック
+    /// Interaction logic for GameIntroPage.xaml
     /// </summary>
-    public partial class Help_Page : Page
+    public partial class GameIntroPage : Page
     {
-        public Help_Page()
+        public GameIntroPage()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            this.NavigationService.GoBack();
         }
+
+        
     }
 }
