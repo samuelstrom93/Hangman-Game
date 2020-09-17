@@ -168,17 +168,8 @@
                             </Button.Resources> Ledtråd
                         </Button>
                     </WrapPanel>
-                    <WrapPanel Orientation="Horizontal">
-                        <Button  Background="#ECEBE4" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}">
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="5"/>
-                                </Style>
-                            </Button.Resources> Ledtråd
-                        </Button>
-                        <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding IWord.Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left"></TextBlock>
-                    </WrapPanel>
-                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Left" Click="GameIntroPage_Click" Content="Hjälp">
+
+                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Right" Click="GameIntroPage_Click" Content="Hjälp">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5"/>
