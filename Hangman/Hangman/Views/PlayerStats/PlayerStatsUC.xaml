@@ -26,8 +26,10 @@
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Background="DarkCyan">
+            <Grid Grid.Row="0" >
+                <Border Background="DarkCyan" CornerRadius="5">
                 <Label Content="Spelarstatistik" FontSize="18" HorizontalAlignment="Center"></Label>
+                </Border>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="0">
