@@ -94,20 +94,6 @@ namespace Hangman.ViewModels
 
         #endregion Hint
 
-        #region GetWord + Game
-
-        public Word GetWord()
-        {
-            Word word = new Word
-            {
-                Id = IWord.Id,
-                Name = IWord.Name,
-                Hint = IWord.Hint
-            };
-            return word;
-        }
-
-        #endregion
 
         public GamePageViewModel()  // UTAN inloggning
         {
@@ -127,7 +113,6 @@ namespace Hangman.ViewModels
 
         }
 
-
         public GamePageViewModel(IPlayer player)    // MED inloggning
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
@@ -146,7 +131,28 @@ namespace Hangman.ViewModels
 
         }
 
+        #region GetMethods: Word + Game
+
+        public Word GetWord()
+        {
+            Word word = new Word
+            {
+                Id = IWord.Id,
+                Name = IWord.Name,
+                Hint = IWord.Hint
+            };
+            return word;
+        }
+
+        public Game GetGameScore()
+        {
+            return game;
+        }
+
+        #endregion
+
         #region SetMethods
+
         private Player Player { get; set; }
         private void SetPlayer(IPlayer iplayer)
         {
@@ -174,6 +180,7 @@ namespace Hangman.ViewModels
 
         #endregion
 
+
         #region Methods: GameStart
 
         private void StartGame()
@@ -181,14 +188,7 @@ namespace Hangman.ViewModels
             IsStartBtnClickable = false;
             MakeWord();
 
-            if (Player.Id == 0)     // För spelaren UTAN inloggning
-            {
-                MakeGameWithoutPlayer();
-            }
-            else
-            {
-                MakeGame();
-            }
+            MakeGame();
 
             MakeWordArray();
             StartStopWatch();
@@ -200,32 +200,23 @@ namespace Hangman.ViewModels
         {
             IWord = GetRandomWord();
             upperWord = IWord.Name.ToUpper();
-            ShowingWordArray = new char[upperWord.Length];
-            wordCheckerArray = new int[upperWord.Length];
+
+            answerForPlayerArray = new char[upperWord.Length];  
             MakeFirstAnswerForPlayer();
+
+            wordCheckerArray = new int[upperWord.Length];
+
             LinkAnswerForPlayer();
         }
 
         private void MakeFirstAnswerForPlayer()
         {
-            for (int i = 0; i < ShowingWordArray.Length; i++) 
+            for (int i = 0; i < answerForPlayerArray.Length; i++) 
             {
-                ShowingWordArray[i] = '_';
+                answerForPlayerArray[i] = '_';
             } 
-            
         }
 
-        private void MakeGameWithoutPlayer()
-        {
-            game = new Game
-            {
-                IsWon = false,
-                NumberOfIncorrectTries = 0,
-                NumberOfTries = 0,
-                StartTime = DateTime.Now,
-                WordId = IWord.Id
-            };
-        }
         private void MakeGame()
         {
             game = new Game
@@ -239,16 +230,15 @@ namespace Hangman.ViewModels
             };
         }
 
-        private char[] wordArray;
+        private char[] upperWordArray;
         private void MakeWordArray()
         {
-            wordArray = new char[upperWord.Length];
+            upperWordArray = new char[upperWord.Length];
             for (int i = 0; i < upperWord.Length; i++)
             {
-                char oneOfWord = upperWord[i];
-                wordArray[i] = oneOfWord;
+                char oneOfUpperWord = upperWord[i];
+                upperWordArray[i] = oneOfUpperWord;
             }
-
         }
 
         private void RefreshGame()
@@ -257,14 +247,18 @@ namespace Hangman.ViewModels
             numberOfTries = 0;
             numberOfIncorrectTries = 0;
             numberOfCorrectTries = 0;
-            NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
-            NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+
+            NumberOfCorrectTries_text = numberOfCorrectTries.ToString();    //Binding GamePage.xml
+            NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();    //Binding GamePage.xml
+
             gameStage = 0;
             IsWon = false;
         }
+
         #endregion
 
         #region Methods: JudgeGame-End
+
         public void JudgeGame()
         {
             CompareWordAndSelectedKey();
@@ -274,47 +268,46 @@ namespace Hangman.ViewModels
             SwitchGameStatus();
         }
 
-        private int[] wordCheckerArray; // int[] =0 →FEL, int[] =1 →RÄTT
+        private int[] wordCheckerArray; // int[] =0 →gissat FEL, int[] =1 →gissat RÄTT
         public void CompareWordAndSelectedKey()
         {
-            for (int i = 0; i < wordArray.Length; i++)
+            for (int i = 0; i < upperWordArray.Length; i++)
             {
-                char oneOfWord = wordArray[i];
+                char oneOfWord = upperWordArray[i];
                 char selectedKeyChar = selectedKey[0];
 
-                if (oneOfWord == selectedKeyChar)   //Gissade rätt
+                if (oneOfWord == selectedKeyChar)   //Spelaren gissade rätt
                 {
                     wordCheckerArray[i] = 1;
                 }
-
             }
         }
 
-        public char[] ShowingWordArray { get; set; }
+        private char[] answerForPlayerArray { get; set; }
         private char[] ConvertShownWord()
         {
-            for (int i = 0; i < wordArray.Length; i++)
+            for (int i = 0; i < upperWordArray.Length; i++)
             {
 
                 if (wordCheckerArray[i] == 1)
                 {
-                    ShowingWordArray[i] = wordArray[i];
+                    answerForPlayerArray[i] = upperWordArray[i];
                 }
                 if (wordCheckerArray[i] == 0)
                 {
-                    ShowingWordArray[i] = '_';
+                    answerForPlayerArray[i] = '_';
                 }
             }
-            return ShowingWordArray;
+            return answerForPlayerArray;
         }
 
         public string AnswerForPlayer { get; set; } //Binding i GamePage.xml
         public void LinkAnswerForPlayer()
         {
             AnswerForPlayer ="";
-            for(int i = 0; i<ShowingWordArray.Length; i++)
+            for(int i = 0; i<answerForPlayerArray.Length; i++)
             {
-                AnswerForPlayer += $"{ShowingWordArray[i]}  ";
+                AnswerForPlayer += $"{answerForPlayerArray[i]}  ";
             }
 
         }
@@ -354,7 +347,7 @@ namespace Hangman.ViewModels
 
         public void SwitchGameStatus()
         {
-            string answer = new string(ShowingWordArray);
+            string answer = new string(answerForPlayerArray);
 
             if (answer == upperWord) //Spelaren vann
             {
@@ -367,7 +360,6 @@ namespace Hangman.ViewModels
                 EndGame();
                 IsLost = true;
             }
-            
         }
 
         private void EndGame()
@@ -386,11 +378,6 @@ namespace Hangman.ViewModels
 
             /*if(PlayerEngine.ActivePlayer!=null)
             AddGame(Game);*/ // Vi kan flytta på dem till sidan för att visa slutresultat, för #35
-        }
-
-        public Game GetGameScore()
-        {
-            return game;
         }
 
         #endregion
