@@ -32,7 +32,6 @@ namespace Hangman
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth);
 
             Main.Content = new LoginPage();
-            //this.SizeToContent = SizeToContent.Height;
         }
     }
 }
