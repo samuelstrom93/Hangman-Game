@@ -21,7 +21,7 @@ namespace Hangman.ViewModels
 
         public string Title { get; set; }
         public string PlayerStatus { get; set; }
-        public BitmapImage ImageForGameStage { get; set; } 
+        public BitmapImage MemeForWinRate { get; set; } 
         
         public string LabelColor { get; set; }
 
@@ -33,16 +33,16 @@ namespace Hangman.ViewModels
             CalculateWinRate();
             SetPlayerStatus();
             SetWinRate();
-            ViewStatusChange();
+            ChangeMemeWithWinRate();
         }
 
-        private void ViewStatusChange()
+        private void ChangeMemeWithWinRate()
         {
             string imageAdress;
             imageAdress = $"../../../Assets/Images/{PlayerStatus}.jpg";
 
             string currentPath = Environment.CurrentDirectory;
-            ImageForGameStage = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
+            MemeForWinRate = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
         }
 
         public void GetGamesPlayed()
@@ -80,8 +80,6 @@ namespace Hangman.ViewModels
         {
             if (WinRate >= 50)
             {
-                // lblWinRate.Foreground = Brushes.Green;
-
                 //NAMNGE MEMES
                 PlayerStatus = "YouRock";
                 LabelColor = "green";
@@ -91,14 +89,12 @@ namespace Hangman.ViewModels
             {
                 PlayerStatus = "YouAverage";
                 LabelColor = "yellow";
-                //  lblWinRate.Foreground = Brushes.Red;
             }
 
             else if (WinRate <= 30)
             {
                 PlayerStatus = "YouSuck";
                 LabelColor = "red";
-                //  lblWinRate.Foreground = Brushes.Red;
             }
 
             if (WinRate == 0)

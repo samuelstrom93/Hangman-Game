@@ -52,7 +52,7 @@
                 <Grid>
                     <Border>
                     <Border.Background>
-                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding ImageForGameStage}"/>
+                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding MemeForWinRate}"/>
                     </Border.Background>
                     </Border>
                 </Grid>
