@@ -66,15 +66,10 @@ namespace Hangman.Views
                 //((Button)sender).IsEnabled = false;
             }
 
-            if (gamePageViewModel.IsWon)
-            {
-                this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-            }
-            if (gamePageViewModel.IsLost)
+            if (gamePageViewModel.IsGameEnd)
             {
                 this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
             }
-
 
         }
 
@@ -96,11 +91,7 @@ namespace Hangman.Views
                 gamePageViewModel.GuessDirectly();
                 gamePageViewModel.SwitchGameStatus();
             }
-            if (gamePageViewModel.IsWon)
-            {
-                this.NavigationService.Content = new GameSuccess_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-            }
-            if (gamePageViewModel.IsLost)
+            if (gamePageViewModel.IsGameEnd)
             {
                 this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
             }

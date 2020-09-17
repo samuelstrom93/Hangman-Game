@@ -47,6 +47,8 @@ namespace Hangman.ViewModels
         private Game game { get; set; }
 
         public bool IsGameStart { get; set; }
+        public bool IsGameEnd { get; set; }
+
         public bool IsStartBtnClickable { get; set; }
 
         #endregion
@@ -59,7 +61,6 @@ namespace Hangman.ViewModels
         private int numberOfCorrectTries;
 
         public bool IsWon;
-        public bool IsLost;
         public string NumberOfCorrectTries_text { get; set; }
         public string NumberOfIncorrectTries_text { get; set; }
 
@@ -192,8 +193,10 @@ namespace Hangman.ViewModels
 
             MakeWordArray();
             StartStopWatch();
+
             IsHintShown = false;
             IsGameStart = true;
+            IsGameEnd = false;
         }
 
         private void MakeWord()
@@ -358,7 +361,6 @@ namespace Hangman.ViewModels
             if (numberOfLives == 0)  //Game over
             {
                 EndGame();
-                IsLost = true;
             }
         }
 
@@ -368,6 +370,7 @@ namespace Hangman.ViewModels
             StopStopWatch();
             SaveGameScore();
             IsGameStart = false;
+            IsGameEnd = true;
         }
 
         private void SaveGameScore()

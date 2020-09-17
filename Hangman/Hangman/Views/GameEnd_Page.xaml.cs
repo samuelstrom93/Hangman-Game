@@ -21,15 +21,12 @@ namespace Hangman.Views
     public partial class GameEnd_Page : Page
     {
         private GameEndPageViewModel gameEndPageViewModel;
+
         public GameEnd_Page(Game game, Word word)
         {
             InitializeComponent();
-            gameEndPageViewModel = new GameEndPageViewModel();
+            gameEndPageViewModel = new GameEndPageViewModel(game, word);
             DataContext = gameEndPageViewModel;
-
-            gameEndPageViewModel.SetGame(game);
-            gameEndPageViewModel.SetNumberOfCorrectTries();
-            gameEndPageViewModel.GetWord(word);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
