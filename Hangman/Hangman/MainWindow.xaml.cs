@@ -1,21 +1,7 @@
-﻿using Hangman.Repositories;
+﻿using Hangman.GameLogics;
 using Hangman.Views;
-using Hangman.Views.PlayerStats;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hangman
 {
@@ -24,14 +10,24 @@ namespace Hangman
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel model;
         public MainWindow()
         {
-            InitializeComponent(); 
-
-            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight);
-            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth);
+            InitializeComponent();
+            model = new MainWindowViewModel();
+            TopMenuUser.Content = PlayerEngine._menu;
+            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.7);
+            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.7);
 
             Main.Content = new LoginPage();
         }
+
+        //private void NotifyIconClickReset(object sender, RoutedEventArgs e)
+        //{
+        //    MenuShowName.Header = "Name";
+        //}
+
+
     }
 }
+

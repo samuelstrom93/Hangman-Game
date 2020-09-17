@@ -7,10 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="CenterScreen">
-    
-    <Grid >
-        <!--Döljer navigation för användaren-->
-        <Frame x:Name="Main"  NavigationUIVisibility="Hidden">
-        </Frame>
-    </Grid>
+    <Border Style="{StaticResource BackgroundBorder}">
+        <StackPanel Margin="0, 0, 0, 0" >
+            <Frame x:Name="TopMenuUser" />
+            <Frame x:Name="TopMenu" />
+
+            <Border>
+                <Grid Margin="0" Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Här tar vi bort Navigationsmöjligheten, vill vi ha det i alla?-->
+                    <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </Border>
+
+        </StackPanel>
+    </Border>
 </Window>

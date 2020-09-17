@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Hangman.Models;
 using Hangman.Repositories;
+using Hangman.Views.Menu;
 
 namespace Hangman.GameLogics
 {
@@ -14,6 +15,8 @@ namespace Hangman.GameLogics
         #region Properties
         public static IPlayer ActivePlayer { get; set; }
         #endregion
+
+        public static readonly TopMenuUC _menu = new TopMenuUC();
 
         #region methods
 
@@ -40,6 +43,8 @@ namespace Hangman.GameLogics
         public static void SetActivePlayer(string name)
         {
             PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
+
+            _menu.PlayerStatusChanged(ActivePlayer);
         }
         #endregion
     }

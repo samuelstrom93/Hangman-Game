@@ -1,4 +1,5 @@
-﻿using Hangman.Models;
+﻿using Hangman.GameLogics;
+using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
 using System;
@@ -47,22 +48,7 @@ namespace Hangman.Views
 
             GameStart.Content = new GameStartPage();
         }
-
-        #region MnuMethods
         
-
-        private void mnuLogOut(object sender, RoutedEventArgs e)
-        {
-            //leder tillbaka användaren till LoginSkärmen
-            this.NavigationService.Content = new LoginPage();
-        }
-
-        private void mnuDeleteUser(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new UserSettingsPage();
-        }
-
-        #endregion
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {

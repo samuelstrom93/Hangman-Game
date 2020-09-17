@@ -23,12 +23,15 @@ namespace Hangman.Views
     public partial class LoginPage : Page
     {
         private LoginPageViewModel model;
+        private MainWindowViewModel MWmodel;
 
         public LoginPage()
         {
             InitializeComponent();
             model = new LoginPageViewModel();
+            MWmodel = new MainWindowViewModel();
             DataContext = model;
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
