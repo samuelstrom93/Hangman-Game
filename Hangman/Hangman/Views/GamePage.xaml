@@ -25,8 +25,8 @@
         </Style>
     </Page.Resources>
 
-    <Border BorderThickness="0" Style="{StaticResource StandardBorder}">
-        <Grid>
+    <Border BorderThickness="0" Style="{StaticResource StandardBorder}" HorizontalAlignment="Stretch" >
+        <Grid VerticalAlignment="Top">
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -59,7 +59,7 @@
 
 
 
-                <StackPanel Margin="0,20,0,0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Margin="0,20,0,0" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     
                     <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="200" Width="400">
                         <Border.Background>
@@ -139,9 +139,9 @@
 
                     </Border>
 
-                    <StackPanel Orientation="Vertical" Margin="0,10,0,11">
+                    <StackPanel Orientation="Vertical" Margin="0,10,0,11" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                        <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="Green" HorizontalAlignment="Center" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}" Foreground="White" BorderBrush="{x:Null}">
+                        <Button IsEnabled="{Binding IsStartBtnClickable}"  Background="Green" HorizontalAlignment="Center" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}" Foreground="White" BorderBrush="{x:Null}" VerticalAlignment="Center">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
@@ -150,8 +150,15 @@
                             START
                         </Button>
 
-                        <TextBlock HorizontalAlignment="Center"  TextDecorations="Underline" Margin="0,5,5,5">Behöver du hjälp?</TextBlock>
+                        <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Right" Click="GameIntroPage_Click" Content="Hjälp">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                     </StackPanel>
+
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
@@ -168,15 +175,8 @@
                             </Button.Resources> Ledtråd
                         </Button>
                     </WrapPanel>
-
-                    <Button Background="#ECEBE4" Padding="20,0,20,0" Margin="5,5,5,5" HorizontalAlignment="Right" Click="GameIntroPage_Click" Content="Hjälp">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
                 </StackPanel>
+
             </Grid>
             <Frame x:Name="GameStart" Margin="0,4,0,0" />
         </Grid>
