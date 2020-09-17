@@ -151,8 +151,6 @@
 
                         <TextBlock HorizontalAlignment="Center"  TextDecorations="Underline" Margin="0,5,5,5" PreviewMouseDown="TextBlock_PreviewMouseDown">Behöver du hjälp?</TextBlock>
                     </StackPanel>
-
-
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
