@@ -14,13 +14,13 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Border Style="{StaticResource StandardBorder}" BorderThickness="0,0,0,1" Padding="0" Background="Transparent">
-            <DockPanel>
+        <DockPanel>
+            <Border Style="{StaticResource StandardBorder}" BorderThickness="0,0,0,1" Padding="0">
                 <Menu DockPanel.Dock="Top" Padding="5" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
                     <MenuItem x:Name="MenuShowName" Padding="5" Margin="20,0,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Header="{Binding PlayerName, FallbackValue=UserName}">
                     </MenuItem>
                 </Menu>
-            </DockPanel>
-        </Border>
+            </Border>
+        </DockPanel>
     </Grid>
 </UserControl>
