@@ -1,5 +1,6 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels;
+using static Hangman.Repositories.Player_Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,7 +32,16 @@ namespace Hangman.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Content = new GamePage();
+            if(gameEndPageViewModel.GetGame().PlayerId != 0)    // Behåller inloggning
+            {
+                this.NavigationService.Content = new GamePage(GetPlayerFromID(gameEndPageViewModel.GetGame().PlayerId));
+            }
+
+            else
+            {
+                this.NavigationService.Content = new GamePage();
+
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -48,7 +58,7 @@ namespace Hangman.Views
         private void ChangeStyleForGameScoreSaveBtn()
         {
             gameScoreSaveBtn.Opacity = 0.5;
-            gameScoreSaveBtn.Content = "Sparat!";
+            gameScoreSaveBtn.Content = "Kastat!";
             gameScoreSaveBtn.IsEnabled = false;
         }
     }

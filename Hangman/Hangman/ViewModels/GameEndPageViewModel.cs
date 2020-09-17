@@ -19,8 +19,10 @@ namespace Hangman.ViewModels
         public string GameStatus { get; set; }  //Binding i GameEnd_Page
 
         public bool IsRankingShown { get; set; }
+        public bool IsDeleteGameScoreBtnShown { get; set; }
 
-        
+
+
         public GameEndPageViewModel(Game game, Word word)
         {
             SetIGame(game);
@@ -28,21 +30,28 @@ namespace Hangman.ViewModels
             SetIWord(word);
             SetNumberOfCorrectTries();
             SetGameStatus();
-            SwitchRanking();
 
-            SaveGameScoreCommand = new RelayCommand(SaveGameScore);
+            SwitchRanking();
+            SwitchDeleteGameScoreBtn();
+
+            SaveGameScoreCommand = new RelayCommand(DeleteGameScore);
         }
 
         private Game game { get; set; }
+        public Game GetGame()
+        {
+            return game;
+        }
+
         private void SetGame(Game playersGameScore)
         {
             game = playersGameScore;
         }
 
 
-        private void SaveGameScore()
+        private void DeleteGameScore()
         {
-            AddGame(game);
+           // AddGame(game);
         }
 
 
@@ -83,6 +92,19 @@ namespace Hangman.ViewModels
             else
             {
                 IsRankingShown = false;
+            }
+        }
+
+        private void SwitchDeleteGameScoreBtn()
+        {
+            if(game.PlayerId != 0)
+            {
+                AddGame(game);
+                IsDeleteGameScoreBtnShown = true;
+            }
+            else
+            {
+                IsDeleteGameScoreBtnShown = false;
             }
         }
 
