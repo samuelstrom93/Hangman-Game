@@ -17,6 +17,7 @@ namespace Hangman.ViewModels
 
         public int NumberOfCorrectTries { get; set; } //Binding i GameEnd_Page
         public string GameStatus { get; set; }  //Binding i GameEnd_Page
+        public string QuitBtnContent { get; set; }  //Binding i GameEnd_Page
 
         public bool IsRankingShown { get; set; }
         public bool IsDeleteGameScoreBtnShown { get; set; }
@@ -31,8 +32,8 @@ namespace Hangman.ViewModels
             SetNumberOfCorrectTries();
             SetGameStatus();
 
-            SwitchRanking();
-            SwitchDeleteGameScoreBtn();
+            SwitchRankingView();
+            DistinguishPlayer();
 
             SaveGameScoreCommand = new RelayCommand(DeleteGameScore);
         }
@@ -83,7 +84,7 @@ namespace Hangman.ViewModels
             }
         }
 
-        private void SwitchRanking()
+        private void SwitchRankingView()
         {
             if ((IGame.IsWon == true)&&(game.PlayerId != 0))
             {
@@ -96,16 +97,18 @@ namespace Hangman.ViewModels
         }
 
         private int gameID;
-        private void SwitchDeleteGameScoreBtn()
+        private void DistinguishPlayer()
         {
-            if(game.PlayerId != 0)
+            if(game.PlayerId != 0)  // Spelaren med inloggning
             {
                 gameID = AddGame(game);
                 IsDeleteGameScoreBtnShown = true;
+                QuitBtnContent = "Logga ut";
             }
             else
             {
                 IsDeleteGameScoreBtnShown = false;
+                QuitBtnContent = "Avsluta spel";
             }
         }
 
