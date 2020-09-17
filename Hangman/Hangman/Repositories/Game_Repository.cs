@@ -155,7 +155,23 @@ namespace Hangman.Repositories
         }
 
 
-        
+
+        #endregion
+
+        #region DELETE
+        public static void DeleteGame(int id)
+        {
+            string stmt = "DELETE FROM game WHERE id = @id";
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                using (var command = new NpgsqlCommand(stmt, conn))
+                {
+                    conn.Open();
+                    command.Parameters.AddWithValue("id", id);
+                    command.ExecuteScalar();
+                }
+            }
+        }
         #endregion
     }
 }

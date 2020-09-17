@@ -51,7 +51,7 @@ namespace Hangman.ViewModels
 
         private void DeleteGameScore()
         {
-           // AddGame(game);
+            DeleteGame(gameID);
         }
 
 
@@ -95,11 +95,12 @@ namespace Hangman.ViewModels
             }
         }
 
+        private int gameID;
         private void SwitchDeleteGameScoreBtn()
         {
             if(game.PlayerId != 0)
             {
-                AddGame(game);
+                gameID = AddGame(game);
                 IsDeleteGameScoreBtnShown = true;
             }
             else
