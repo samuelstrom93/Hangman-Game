@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Frame x:Name="Main">
+    
+    <Grid >
+        <!--Döljer navigation för användaren-->
+        <Frame x:Name="Main"  NavigationUIVisibility="Hidden">
         </Frame>
     </Grid>
 </Window>

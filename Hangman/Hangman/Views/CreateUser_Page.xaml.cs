@@ -58,8 +58,7 @@ namespace Hangman.Views
         private void Button_Help_Click(object sender, RoutedEventArgs e)
         {
 
-            var w = new HelpWindow();
-            w.Show();
+            this.NavigationService.Content = new GameIntroPage();
         }
 
         private void Button_BackToLogin_Click(object sender, RoutedEventArgs e)

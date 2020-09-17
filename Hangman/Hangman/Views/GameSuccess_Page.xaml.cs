@@ -1,4 +1,6 @@
-﻿using Hangman.Models;
+﻿using Hangman.GameLogics;
+using Hangman.Models;
+using Hangman.Repositories;
 using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,20 +18,20 @@ using System.Windows.Shapes;
 namespace Hangman.Views
 {
     /// <summary>
-    /// Gameover_Page.xaml の相互作用ロジック
+    /// Interaction logic for GameSuccess_Page.xaml
     /// </summary>
-    public partial class GameEnd_Page : Page
+    public partial class GameSuccess_Page : Page
     {
-        private GameEndPageViewModel gameEndPageViewModel;
-        public GameEnd_Page(Game game, Word word)
+        private GameSuccessPageViewModel gameSuccessPageViewModel;
+        public GameSuccess_Page(Game game, Word word)
         {
             InitializeComponent();
-            gameEndPageViewModel = new GameEndPageViewModel();
-            DataContext = gameEndPageViewModel;
+            gameSuccessPageViewModel = new GameSuccessPageViewModel();
+            DataContext = gameSuccessPageViewModel;
 
-            gameEndPageViewModel.SetGame(game);
-            gameEndPageViewModel.SetNumberOfCorrectTries();
-            gameEndPageViewModel.GetWord(word);
+            gameSuccessPageViewModel.SetGame(game);
+            gameSuccessPageViewModel.SetNumberOfCorrectTries();
+            gameSuccessPageViewModel.GetWord(word);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

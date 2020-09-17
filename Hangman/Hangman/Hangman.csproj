@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\GameIntroPicture_2.png" />
+    <None Remove="Assets\Images\GamePageIntroPicture.png" />
+    <None Remove="Assets\Images\GamePageIntro_picture.png" />
     <None Remove="Assets\Images\hänggubbe0.png" />
     <None Remove="Assets\Images\hänggubbe1.png" />
     <None Remove="Assets\Images\hänggubbe10.png" />
@@ -35,7 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\GameIntroPicture_2.png" />
     <Resource Include="Assets\Images\YoureAmazing.jpg" />
+    <Resource Include="Assets\Images\GamePageIntroPicture.png" />
     <Resource Include="Assets\Images\hänggubbe0.png" />
     <Resource Include="Assets\Images\hänggubbe1.png" />
     <Resource Include="Assets\Images\hänggubbe10.png" />

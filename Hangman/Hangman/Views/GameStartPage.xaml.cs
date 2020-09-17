@@ -38,5 +38,10 @@ namespace Hangman.Views
         {
             this.Visibility = Visibility.Hidden;
         }
+
+        private void GameStartIntro_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
     }
 }
