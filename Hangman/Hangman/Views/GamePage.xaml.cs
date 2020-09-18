@@ -31,17 +31,17 @@ namespace Hangman.Views
         private GamePageViewModel gamePageViewModel;
         #endregion
 
-        public GamePage()
+        public GamePage(bool isPlayAgain)
         {
             InitializeComponent();
 
             gamePageViewModel = new GamePageViewModel();
             DataContext = gamePageViewModel;
 
-            GameStart.Content = new GameStartPage();
+            ViewGameStartPageAsOverray(isPlayAgain);
         }
 
-        public GamePage(IPlayer player)
+        public GamePage(IPlayer player, bool isPlayAgain)
         {
 
             InitializeComponent();
@@ -50,27 +50,94 @@ namespace Hangman.Views
             gamePageViewModel = new GamePageViewModel(player);
             DataContext = gamePageViewModel;
 
-            GameStart.Content = new GameStartPage();
+            ViewGameStartPageAsOverray(isPlayAgain);
+
         }
 
+
+        #region Methods: LetterBtn
         private void Letter_Click(object sender, RoutedEventArgs e)
+        {
+            JudgeGameFromLetterClick(((Button)sender));
+            ViewGameEndPage();
+        }
+
+
+        private void JudgeGameFromLetterClick(Button sender)
         {
             if (gamePageViewModel.IsGameStart)
             {
-                string selectedKey = ((Button)sender).Content.ToString();
+                string selectedKey = sender.Content.ToString();
 
                 gamePageViewModel.TakeSelectedKey(selectedKey);
                 gamePageViewModel.JudgeGame();
 
-                ChangeBtnStyle((Button)sender);
-                //((Button)sender).IsEnabled = false;
+                ChangeBtnStyle(sender);
             }
+        }
 
+        private void ChangeBtnStyle(Button sender)
+        {
+            if (gamePageViewModel.IsGuessCorrect)
+            {
+                //((Button)sender).Background = Brushes.Green;
+                sender.Opacity = 0.3;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Green;
+                sender.FontWeight = FontWeights.Bold;
+            }
+            else
+            {
+                //((Button)sender).Background = Brushes.Red;
+                sender.Opacity = 0.3;
+                sender.BorderThickness = new Thickness(0, 0, 0, 0);
+                sender.BorderBrush = null;
+                sender.Foreground = Brushes.Red;
+                sender.FontWeight = FontWeights.Bold;
+
+            }
+            sender.IsEnabled = false;
+
+        }
+
+        #endregion
+
+        #region Methods: GuessDirectlyBtn
+        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            JudgeGameFromGuessDirectly();
+            ViewGameEndPage();
+        }
+
+        private void JudgeGameFromGuessDirectly()
+        {
+            if (gamePageViewModel.IsGameStart)
+            {
+                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
+                gamePageViewModel.GuessDirectly();
+                gamePageViewModel.SwitchGameStatus();
+            }
+        }
+        #endregion
+
+        #region Methods: View/Jump other pages
+
+        private void ViewGameStartPageAsOverray(bool isPlayAgain)
+        {
+            if (isPlayAgain == false)
+            {
+                Overray.Content = new GameStartPage();
+            }
+        }
+
+        private void ViewGameEndPage()
+        {
             if (gamePageViewModel.IsGameEnd)
             {
-                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
             }
-
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)
@@ -82,44 +149,9 @@ namespace Hangman.Views
         {
             this.NavigationService.Content = new GameIntroPage();
         }
+        #endregion
 
-        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (gamePageViewModel.IsGameStart)
-            {
-                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
-                gamePageViewModel.GuessDirectly();
-                gamePageViewModel.SwitchGameStatus();
-            }
-            if (gamePageViewModel.IsGameEnd)
-            {
-                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-            }
 
-        }
-
-        private void ChangeBtnStyle(Button sender)
-        {
-            if (gamePageViewModel.IsGuessCorrect)
-            {
-                //((Button)sender).Background = Brushes.Green;
-                sender.Opacity = 0.5;
-                sender.BorderThickness = new Thickness(0, 0, 0, 0);
-                sender.BorderBrush = null;
-                sender.Foreground = Brushes.Green;
-            }
-            else
-            {
-                //((Button)sender).Background = Brushes.Red;
-                sender.Opacity = 0.5;
-                sender.BorderThickness = new Thickness(0, 0, 0, 0);
-                sender.BorderBrush = null;
-                sender.Foreground = Brushes.Red;
-
-            }
-            sender.IsEnabled = false;
-
-        }
 
 
     }
