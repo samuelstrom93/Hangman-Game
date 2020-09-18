@@ -31,17 +31,17 @@ namespace Hangman.Views
         private GamePageViewModel gamePageViewModel;
         #endregion
 
-        public GamePage()
+        public GamePage(bool isPlayAgain)
         {
             InitializeComponent();
 
             gamePageViewModel = new GamePageViewModel();
             DataContext = gamePageViewModel;
 
-            GameStart.Content = new GameStartPage();
+            ViewGameStartPageAsOverray(isPlayAgain);
         }
 
-        public GamePage(IPlayer player)
+        public GamePage(IPlayer player, bool isPlayAgain)
         {
 
             InitializeComponent();
@@ -50,7 +50,16 @@ namespace Hangman.Views
             gamePageViewModel = new GamePageViewModel(player);
             DataContext = gamePageViewModel;
 
-            GameStart.Content = new GameStartPage();
+            ViewGameStartPageAsOverray(isPlayAgain);
+
+        }
+
+        private void ViewGameStartPageAsOverray(bool isPlayAgain)
+        {
+            if (isPlayAgain == false)
+            {
+                Overray.Content = new GameStartPage();
+            }
         }
 
         private void Letter_Click(object sender, RoutedEventArgs e)
@@ -68,7 +77,9 @@ namespace Hangman.Views
 
             if (gamePageViewModel.IsGameEnd)
             {
-                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                // this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+               Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+
             }
 
         }
@@ -93,7 +104,9 @@ namespace Hangman.Views
             }
             if (gamePageViewModel.IsGameEnd)
             {
-                this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+
             }
 
         }

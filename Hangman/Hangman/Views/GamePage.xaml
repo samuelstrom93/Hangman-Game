@@ -168,7 +168,7 @@
                     
                 </StackPanel>
             </Grid>
-            <Frame x:Name="GameStart" Margin="0,4,0,0" />
+            <Frame x:Name="Overray" Content="{Binding OverrayPage}"/>
         </Grid>
     </Border>
 </Page>

@@ -24,6 +24,7 @@ namespace Hangman.Views
     {
         private LoginPageViewModel model;
         private MainWindowViewModel MWmodel;
+        private bool isPlayAgain = false;
 
         public LoginPage()
         {
@@ -47,7 +48,8 @@ namespace Hangman.Views
                 else
                 {
                     PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
-                    this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
+                    
+                    this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
                 }
 
             }
@@ -69,7 +71,8 @@ namespace Hangman.Views
 
         private void PlayWithoutUser_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Content = new GamePage();
+
+            this.NavigationService.Content = new GamePage(isPlayAgain);
         }
     }
 }

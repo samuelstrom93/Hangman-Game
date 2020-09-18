@@ -25,6 +25,7 @@ namespace Hangman.Views
     {
         private CreateUserViewModel model;
         private string message;
+        private bool isPlayAgain = false;
 
         public CreateUser_Page()
         {
@@ -44,7 +45,7 @@ namespace Hangman.Views
             {
                 message = model.CreatePlayer(name);
                 PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
-                this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer);
+                this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
             }
 
             else

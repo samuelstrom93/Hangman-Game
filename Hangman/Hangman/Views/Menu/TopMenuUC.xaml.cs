@@ -124,7 +124,8 @@ namespace Hangman.Views.Menu
         }
         private void mnuPlay(object sender, RoutedEventArgs e)
         {
-            ParentWindow.Main.Content = new GamePage();
+            bool isPlayAgain = false;
+            ParentWindow.Main.Content = new GamePage(isPlayAgain);
         }
         private void mnuLogin(object sender, RoutedEventArgs e)
         {
