@@ -93,7 +93,7 @@ namespace Hangman.ViewModels
         #region Methods for UI 
         private void SwitchRankingView()
         {
-            if ((IGame.IsWon == true)&&(game.PlayerId != 0))
+            if ((IGame.IsWon == true)&&(game.PlayerId != 0))    // Spelaren MED inloggning har vunnit
             {
                 IsRankingShown = true;
             }
