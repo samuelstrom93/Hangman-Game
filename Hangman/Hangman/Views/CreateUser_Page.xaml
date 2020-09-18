@@ -37,7 +37,7 @@
 
             <Grid Grid.Row="3" Margin="10, 0, 10, 10" Width="600">
                 <Button Width="120" Height="20" Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Content="Logga in" />
-                <Button Width="120" Height="20"  Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Behöver du hjälp?"  HorizontalAlignment="Right"  VerticalAlignment="Top" />
+                <Button Width="120" Height="20"  Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Såhär spelar du"  HorizontalAlignment="Right"  VerticalAlignment="Top" />
             </Grid>
 
            
