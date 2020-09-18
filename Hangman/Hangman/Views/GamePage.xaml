@@ -11,16 +11,17 @@
     
     <Page.Resources>
         <Style x:Key="KeyButton" TargetType="Button">
+            <Setter Property="Width" Value="28"></Setter>
             <Setter Property="BorderBrush" Value="#186b61" />
             <Setter Property="Background" Value="#cccedb"/>
-            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontFamily" Value="Helvetica" />
+            <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="MinWidth" Value="25"></Setter>
-            <Setter Property="Margin" Value="7"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="Padding" Value="5"></Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -82,8 +83,8 @@
 
                             </Grid>
 
-                            <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock Text="{Binding AnswerForPlayer}" FontSize="26"/>
+                            <WrapPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding AnswerForPlayer}" FontSize="28"/>
                             </WrapPanel>
                             
                         </Grid>
@@ -91,7 +92,7 @@
                     </Border>
                     
                     <Border BorderThickness="0" Style="{StaticResource BackgroundBorder}" Height="auto" Width="auto">
-                        <WrapPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <WrapPanel Margin="5,5,5,15" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                             <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >A</Button>
                             <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >B</Button>
@@ -168,7 +169,7 @@
                     
                 </StackPanel>
             </Grid>
-            <Frame x:Name="Overray" Content="{Binding OverrayPage}"/>
+            <Frame x:Name="Overray"/>
         </Grid>
     </Border>
 </Page>

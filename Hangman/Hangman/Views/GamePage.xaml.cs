@@ -81,18 +81,20 @@ namespace Hangman.Views
             if (gamePageViewModel.IsGuessCorrect)
             {
                 //((Button)sender).Background = Brushes.Green;
-                sender.Opacity = 0.5;
+                sender.Opacity = 0.3;
                 sender.BorderThickness = new Thickness(0, 0, 0, 0);
                 sender.BorderBrush = null;
                 sender.Foreground = Brushes.Green;
+                sender.FontWeight = FontWeights.Bold;
             }
             else
             {
                 //((Button)sender).Background = Brushes.Red;
-                sender.Opacity = 0.5;
+                sender.Opacity = 0.3;
                 sender.BorderThickness = new Thickness(0, 0, 0, 0);
                 sender.BorderBrush = null;
                 sender.Foreground = Brushes.Red;
+                sender.FontWeight = FontWeights.Bold;
 
             }
             sender.IsEnabled = false;
