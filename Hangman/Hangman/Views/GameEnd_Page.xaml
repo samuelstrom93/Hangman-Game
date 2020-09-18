@@ -12,26 +12,40 @@
     <Border Style="{StaticResource StandardBorder}">
         <Grid>
             <StackPanel>
-                <Button Style="{StaticResource StandardButton}" Grid.Row="0" Height="20" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="Button_Click_1">Logga ut
-                </Button>
-                <Label Grid.Row="0"  Content="Du förlorade" FontSize="45" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="DemiBold"></Label>
-                <WrapPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
-                    <TextBlock Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,15,0,0" FontSize="24">Antal rätt:</TextBlock>
-                    <TextBlock Text="{Binding NumberOfCorrectTries}" Margin="10,0,0,0" FontWeight="Bold" VerticalAlignment="Bottom" FontSize="24"/>
-                </WrapPanel>
-                <WrapPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
-                    <TextBlock Foreground="Red" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,0,0" FontSize="24">Antal fel:</TextBlock>
-                    <TextBlock FontSize="24" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold" Text="{Binding Game.NumberOfIncorrectTries}"></TextBlock>
-                </WrapPanel>
-                <StackPanel Grid.Row="1">
-                        <WrapPanel Margin="0,15,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontSize="24" FontWeight="Bold">
-                            Svaret var:</TextBlock>
-                        <TextBlock Text="{Binding Word.Name}" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="24"></TextBlock>
+                <Button Style="{StaticResource StandardButton}" Grid.Row="0" Height="25" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="Button_Click_1" Cursor="Hand" Content="{Binding QuitBtnContent}"></Button>
+                <StackPanel>
+                    <TextBlock Grid.Row="0" Text="{Binding GameStatus}" FontSize="45" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="DemiBold"></TextBlock>
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,20">
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,19,0">
+                            <TextBlock Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">Antal rätt:</TextBlock>
+                            <TextBlock Foreground="Green" Text="{Binding NumberOfCorrectTries}" Margin="10,0,0,0" VerticalAlignment="Bottom" FontSize="24"/>
                         </WrapPanel>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" FontSize="24">Antal fel:</TextBlock>
+                            <TextBlock Foreground="Red" FontSize="24" VerticalAlignment="Center" Margin="10,0,0,0"  Text="{Binding IGame.NumberOfIncorrectTries}"></TextBlock>
+                        </WrapPanel>
+                    </WrapPanel>
+
+                    <StackPanel Grid.Row="1">
+                        <WrapPanel Margin="0,15,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock FontSize="24" >
+                                Svaret var:</TextBlock>
+                            <TextBlock Foreground="Green" Text="{Binding IWord.Name}" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="24"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding IsRankingShown, Converter={StaticResource BoolToVisibility}}" >
+                            <TextBlock FontSize="24">
+                                Du kom på plats:
+                            </TextBlock>
+                            <TextBlock Text="{Binding ranking}" Margin="10,0,0,0" FontSize="20"></TextBlock>
+
+                        </WrapPanel>
+                        <Button Visibility="{Binding IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" x:Name="gameScoreSaveBtn" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Cursor="Hand" Click="Button_Click_2" Width="200" Height="27" Margin="0,10,0,10">Kasta bort min spelpoäng!</Button>
+
                     </StackPanel>
+                </StackPanel>
+                <Button Grid.Row="2" Height="25" Width="100" Style="{StaticResource StandardButton}"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="Button_Click">Spela igen?</Button>
+
             </StackPanel>
-            <Button Grid.Row="2" Height="25" Width="100" Style="{StaticResource StandardButton}"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="Button_Click">Spela igen?</Button>
         </Grid>
     </Border>
 </Page>

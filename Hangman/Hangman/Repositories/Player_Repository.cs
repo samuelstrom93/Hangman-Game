@@ -120,6 +120,38 @@ namespace Hangman.Repositories
 
             }
         }
+
+        public static Player GetPlayerFromID(int id)
+        {
+            string stmt = "SELECT id, name FROM player WHERE id=@id";
+
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                Player player = new Player();
+                player = null;
+                conn.Open();
+
+                using (var command = new NpgsqlCommand(stmt, conn))
+                {
+                    command.Parameters.AddWithValue("id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            player = new Player
+                            {
+                                Id = (int)reader["id"],
+                                Name = (string)reader["name"],
+
+                            };
+                        }
+                    }
+                    return player;
+                }
+
+            }
+        }
         #endregion
 
         #region DELETE

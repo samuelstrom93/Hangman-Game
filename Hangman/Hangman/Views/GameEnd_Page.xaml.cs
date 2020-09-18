@@ -1,5 +1,6 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels;
+using static Hangman.Repositories.Player_Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,25 +22,43 @@ namespace Hangman.Views
     public partial class GameEnd_Page : Page
     {
         private GameEndPageViewModel gameEndPageViewModel;
+
         public GameEnd_Page(Game game, Word word)
         {
             InitializeComponent();
-            gameEndPageViewModel = new GameEndPageViewModel();
+            gameEndPageViewModel = new GameEndPageViewModel(game, word);
             DataContext = gameEndPageViewModel;
-
-            gameEndPageViewModel.SetGame(game);
-            gameEndPageViewModel.SetNumberOfCorrectTries();
-            gameEndPageViewModel.GetWord(word);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Content = new GamePage();
+            if(gameEndPageViewModel.GetGame().PlayerId != 0)    // Behåller inloggning
+            {
+                this.NavigationService.Content = new GamePage(GetPlayerFromID(gameEndPageViewModel.GetGame().PlayerId));
+            }
+
+            else
+            {
+                this.NavigationService.Content = new GamePage();
+
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Content = new LoginPage();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            ChangeStyleForGameScoreSaveBtn();
+        }
+
+        private void ChangeStyleForGameScoreSaveBtn()
+        {
+            gameScoreSaveBtn.Opacity = 0.5;
+            gameScoreSaveBtn.Content = "Kastat!";
+            gameScoreSaveBtn.IsEnabled = false;
         }
     }
 }
