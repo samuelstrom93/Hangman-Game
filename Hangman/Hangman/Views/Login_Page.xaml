@@ -40,7 +40,7 @@
 
             <Grid Grid.Row="3" Width="600" Margin="10, 0, 10, 10">
                 <Button Width="120" Height="20" Style="{StaticResource StandardButton}" Click="Button_Click_2" HorizontalAlignment="Left"  VerticalAlignment="Top" Content="Skapa Användare"  />
-                <Button Width="120" Height="20" Style="{StaticResource StandardButton}" Click="Button_Click_1" Content="Behöver du hjälp?" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                <Button Width="120" Height="20" Style="{StaticResource StandardButton}" Click="Button_Click_1" Content="Såhär spelar du" VerticalAlignment="Top" HorizontalAlignment="Right" />
             </Grid>
 
         </Grid>
