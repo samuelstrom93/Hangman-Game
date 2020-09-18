@@ -27,7 +27,7 @@ namespace Hangman.ViewModels
                 try
                 {
                     Player_Repository.CreatePlayer(name);
-                    Message = $"Grattis {name}! Du är nu medlem och kan logga in!";
+                    Message = $"Grattis {name}! Du är nu medlem!";
                 }
 
                 catch (PostgresException ex)
