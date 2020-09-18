@@ -54,61 +54,26 @@ namespace Hangman.Views
 
         }
 
-        private void ViewGameStartPageAsOverray(bool isPlayAgain)
+
+        #region Methods: LetterBtn
+        private void Letter_Click(object sender, RoutedEventArgs e)
         {
-            if (isPlayAgain == false)
-            {
-                Overray.Content = new GameStartPage();
-            }
+            JudgeGameFromLetterClick(((Button)sender));
+            ViewGameEndPage();
         }
 
-        private void Letter_Click(object sender, RoutedEventArgs e)
+
+        private void JudgeGameFromLetterClick(Button sender)
         {
             if (gamePageViewModel.IsGameStart)
             {
-                string selectedKey = ((Button)sender).Content.ToString();
+                string selectedKey = sender.Content.ToString();
 
                 gamePageViewModel.TakeSelectedKey(selectedKey);
                 gamePageViewModel.JudgeGame();
 
-                ChangeBtnStyle((Button)sender);
-                //((Button)sender).IsEnabled = false;
+                ChangeBtnStyle(sender);
             }
-
-            if (gamePageViewModel.IsGameEnd)
-            {
-                // this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-               Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-
-            }
-
-        }
-
-        private void Help_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
-        }
-
-        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
-        }
-
-        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (gamePageViewModel.IsGameStart)
-            {
-                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
-                gamePageViewModel.GuessDirectly();
-                gamePageViewModel.SwitchGameStatus();
-            }
-            if (gamePageViewModel.IsGameEnd)
-            {
-                //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-                Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-
-            }
-
         }
 
         private void ChangeBtnStyle(Button sender)
@@ -133,6 +98,58 @@ namespace Hangman.Views
             sender.IsEnabled = false;
 
         }
+
+        #endregion
+
+        #region Methods: GuessDirectlyBtn
+        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            JudgeGameFromGuessDirectly();
+            ViewGameEndPage();
+        }
+
+        private void JudgeGameFromGuessDirectly()
+        {
+            if (gamePageViewModel.IsGameStart)
+            {
+                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
+                gamePageViewModel.GuessDirectly();
+                gamePageViewModel.SwitchGameStatus();
+            }
+        }
+        #endregion
+
+        #region Methods: View/Jump other pages
+
+        private void ViewGameStartPageAsOverray(bool isPlayAgain)
+        {
+            if (isPlayAgain == false)
+            {
+                Overray.Content = new GameStartPage();
+            }
+        }
+
+        private void ViewGameEndPage()
+        {
+            if (gamePageViewModel.IsGameEnd)
+            {
+                //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+            }
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
+
+        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new GameIntroPage();
+        }
+        #endregion
+
+
 
 
     }
