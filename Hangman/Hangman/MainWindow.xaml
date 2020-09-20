@@ -5,25 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hangman"
         mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
         Title="MainWindow"
         WindowStartupLocation="CenterScreen">
-    <Border Style="{StaticResource BackgroundBorder}">
-        <StackPanel Margin="0, 0, 0, 0" >
-            <Frame x:Name="TopMenuUser" />
-            <Frame x:Name="TopMenu" />
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
 
-            <Border>
-                <Grid Margin="0" Grid.Row="1" Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    
-                    <!-- Här tar vi bort Navigationsmöjligheten, vill vi ha det i alla?-->
-                    <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
-                </Grid>
-            </Border>
-
-        </StackPanel>
-    </Border>
+        <Border Style="{StaticResource BackgroundBorder}">
+            <StackPanel Margin="0, 0, 0, 0" Grid.Row="0" VerticalAlignment="Bottom">
+                <Frame x:Name="TopMenuUser" />
+                <Frame x:Name="TopMenu" />
+            </StackPanel>
+        </Border>
+        
+        <Border Grid.Row="1" Style="{StaticResource BackgroundBorder}">
+            <!-- Här tar vi bort Navigationsmöjligheten, vill vi ha det i alla?-->
+            <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
+        </Border>
+        
+    </Grid>
 </Window>

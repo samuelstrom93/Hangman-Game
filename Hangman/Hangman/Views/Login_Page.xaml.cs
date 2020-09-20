@@ -14,6 +14,7 @@ using Hangman.GameLogics;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
+using Hangman.Views.ErrorMessage;
 
 namespace Hangman.Views
 {
@@ -23,56 +24,92 @@ namespace Hangman.Views
     public partial class LoginPage : Page
     {
         private LoginPageViewModel model;
-        private MainWindowViewModel MWmodel;
         private bool isPlayAgain = false;
+ 
 
         public LoginPage()
         {
             InitializeComponent();
             model = new LoginPageViewModel();
-            MWmodel = new MainWindowViewModel();
             DataContext = model;
-           
+          
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        #region Metods: ButtonClick
+
+        /// <summary>
+        /// Event som triggas vid tryck på "Logga in":  * Kontroll om användaren finns
+        ///                                             * Kontroll om admin/vanlig spelare
+        ///                                             * Logga in på rätt sida
+        /// </summary>
+
+        private void Button_Login_Click(object sender, RoutedEventArgs e)
         {
-            //INPUT
-            if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
+            if (IsLoginPossible())
             {
-                if (txtBoxUserInput.Text == "Admin")
-                {
-                    this.NavigationService.Content = new AdminPage();
-                }
-
+                if (CheckIfAdmin())
+                    LoginAdmin();
                 else
-                {
-                    PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
-                    
-                    this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
-                }
-
+                    LoginPlayer();
             }
             else
             {
-                MessageBox.Show("Din användare finns inte!");
+                ErrorFrame.Content = new ErrorMessageUC();
+                model.ErrorMessage= "Din användare finns inte!";
+                txtBoxUserInput.Clear();
             }
+
+
+            DataContext = model;
+        }
+        #endregion
+
+        #region Metods: Login player/admin
+
+        public void LoginPlayer()
+        {
+            PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
+            this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public void LoginAdmin()
+        {
+            this.NavigationService.Content = new AdminPage();
+        }
+
+        public bool IsLoginPossible()
+        {
+            if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
+                return true;
+
+            else
+                return false;
+        }
+
+        public bool CheckIfAdmin()
+        {
+            if (txtBoxUserInput.Text == "Admin")
+                return true;
+            else
+                return false;
+        }
+        #endregion
+
+        #region Methods: Navigate to other pages
+        private void Button_GameIntro_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Content = new GameIntroPage();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
+        private void Button_CreateUser_Click(object sender, RoutedEventArgs e)
+        {         
             this.NavigationService.Content = new CreateUser_Page();
         }
 
         private void PlayWithoutUser_Click(object sender, RoutedEventArgs e)
         {
-
             this.NavigationService.Content = new GamePage(isPlayAgain);
         }
+        #endregion
     }
 }

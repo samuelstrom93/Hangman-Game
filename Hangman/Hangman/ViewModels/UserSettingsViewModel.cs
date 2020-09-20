@@ -6,36 +6,67 @@ using System.Windows.Media.Imaging;
 using Hangman.Repositories;
 using Hangman.GameLogics;
 using System.Windows.Controls;
+using System.Windows.Input;
+using Hangman.Models;
+using Npgsql;
 
 namespace Hangman.ViewModels
 {
     class UserSettingsViewModel : BaseViewModel
     {
+
+        #region Properties: PlayerStatsUC
         public string GamesPlayed { get; set; }
-
         public string GamesWon { get; set; }
-
         public double WinRate { get; set; }
-
         public string WinRateString { get; set; }
-
         public string Title { get; set; }
         public string PlayerStatus { get; set; }
-        public BitmapImage MemeForWinRate { get; set; } 
-        
+        public BitmapImage MemeForWinRate { get; set; }        
         public string LabelColor { get; set; }
+        #endregion
+
+        #region Properties: Delete User
+        public bool IsDeletable { get; set; }
+        public string DeleteMessage { get; set; }
+        #endregion
+
+        #region Properties: Update User
+        public string UpdateMessage { get; set; }
+        public ICommand UppdateUserCommand { get; set; }
+        public IPlayer Player { get; set; }
+
+        #endregion
 
         public UserSettingsViewModel()
         {
-            
-            GetGamesPlayed();
-            GetGamesWon();
-            CalculateWinRate();
-            SetPlayerStatus();
-            SetWinRate();
-            ChangeMemeWithWinRate();
+            UpdatePlayerStats();
         }
 
+        #region Methods: Delete User
+        public bool CheckIfDeletable(string name)
+        {
+            if (name == PlayerEngine.ActivePlayer.Name)
+            {
+                DeleteMessage = "Din användare raderas. Du loggas nu ut.";
+                return true;
+            }
+
+            else
+            {
+                DeleteMessage = "Du har skrivit in fel användarnamn.";
+                return false;
+            }
+
+        }
+
+        public void DeleteUser()
+        {
+            Player_Repository.DeletePlayer(PlayerEngine.ActivePlayer.Id);
+        }
+
+        #endregion
+        #region Methods: PlayerStatsUC
         private void ChangeMemeWithWinRate()
         {
             string imageAdress;
@@ -103,6 +134,62 @@ namespace Hangman.ViewModels
                 LabelColor = "black";
             }
         }
+
+        public void UpdatePlayerStats()
+        {
+            GetGamesPlayed();
+            GetGamesWon();
+            CalculateWinRate();
+            SetPlayerStatus();
+            SetWinRate();
+            ChangeMemeWithWinRate();
+        }
+
+        #endregion
+
+        #region Methods: Update User
+
+        public void UpdateUser(IPlayer player, string wantedName)
+        {
+
+            if (wantedName != "" && wantedName != PlayerEngine.ActivePlayer.Name)
+            {
+                try
+                {
+                    Player_Repository.UpdateNameOnPlayer(wantedName, PlayerEngine.ActivePlayer.Id);
+                    PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(wantedName);
+                    UpdateMessage = "Ditt användarnamn är nu bytt till " + wantedName;
+                }
+
+                catch (PostgresException ex)
+                {
+                    //ta fram koden om användaren inte existerar
+                    if (ex.SqlState.Contains("23505"))
+                    {
+                        UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
+                    }
+
+                    else
+                    {
+                        UpdateMessage = "Något gick fel - försök igen";
+                    }
+                }
+            }
+
+            else if (wantedName == PlayerEngine.ActivePlayer.Name)
+            {
+                UpdateMessage = "Du måste ange ett nytt namn";
+            }
+
+            else if (wantedName == "")
+                UpdateMessage = "Du måste ange ett namn";
+
+            else
+            {
+                UpdateMessage = "Något gick fel";
+            }
+        }
+        #endregion
 
     }
 

@@ -8,36 +8,48 @@
       d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
       Title="CreateUser_Page">
 
-    <Border Style="{StaticResource BackgroundBorder}" >
-        
+    <Border HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"/>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
+
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="170"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.ColumnSpan="4">
                 <Label Style="{StaticResource StandardHeader}" Content="Hänga Gubbe" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             </Grid>
 
-            <Border Grid.Row="1" Width="220" Height="100" Background="#cccedb" CornerRadius="10" VerticalAlignment="Top">
+            <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="10, 10, 10, 10" Style="{StaticResource StandardBorder}" CornerRadius="10" VerticalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top">
+                    <Label Style="{StaticResource PageTitleLabel}" FontWeight="Bold" Content="Skapa en användare"/>
                     <Label Style="{StaticResource StandardLabel}" Content="Välj ditt användarnamn:"/>
                     <TextBox Style="{StaticResource UserInputTxtBox}"  Name="txtBoxWantedName" VerticalAlignment="Top" />
-                    <Button Width="100" Height="20" Style="{StaticResource StandardButton}"  Click="Button_CreateUser_Click" Content="Registrera" HorizontalAlignment="Center"/>
+                    <Button Style="{StaticResource StandardButton}"  Click="Button_CreateUser_Click" Content="Registrera" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Border>
 
-            <Grid Grid.Row="2" Margin="10, 10, 10, 0" Width="600">
-                <Label Style="{StaticResource StandardLabel}" HorizontalAlignment="Left">Har du redan en användare?</Label>
+            <Grid Grid.Row="4" HorizontalAlignment="Center" >
+                <Label Style="{StaticResource StandardLabel}" HorizontalAlignment="Left">Har du en användare?</Label>
             </Grid>
 
-            <Grid Grid.Row="3" Margin="10, 0, 10, 10" Width="600">
-                <Button Width="120" Height="20" Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Content="Logga in" />
-                <Button Width="120" Height="20"  Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Såhär spelar du"  HorizontalAlignment="Right"  VerticalAlignment="Top" />
+            <Grid Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click"  Content="Logga in" />
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button   Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Såhär spelar du" />
             </Grid>
 
            
