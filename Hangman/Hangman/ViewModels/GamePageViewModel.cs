@@ -43,6 +43,11 @@ namespace Hangman.ViewModels
 
         #endregion
 
+        #region Hint
+        public HintUC HintUC { get; set; }
+        public IWord IWord { get; set; }
+        #endregion Hint
+
         #region PropertiesForGameStart
 
         public string PlayerName { get; set; }  // = PlayerEngine.ActivePlayer.Name
@@ -76,14 +81,6 @@ namespace Hangman.ViewModels
         public bool IsGuessCorrect { get; set; }
 
         #endregion
-
-        #region Hint
-        public HintUC HintUC { get; set; }
-        public IWord IWord { get; set; }
-            
-
-        #endregion Hint
-
 
         public GamePageViewModel()  // UTAN inloggning
         {
@@ -167,7 +164,6 @@ namespace Hangman.ViewModels
             
         }
         #endregion
-
 
         #region Methods: GameStart
 
@@ -371,7 +367,9 @@ namespace Hangman.ViewModels
 
         #endregion
 
-        #region MethodForSelectedBtn + GuessDirectlyBtn
+        #region SelectedBtn + GuessDirectlyBtn
+        KeyboardUC Keyboard { get; set; }
+        KeyboardViewModel KeyboardViewModel { get; set; }
         public void TakeSelectedKey(string selectedkey)
         {
             selectedKey = selectedkey;

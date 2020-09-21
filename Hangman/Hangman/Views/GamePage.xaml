@@ -93,6 +93,7 @@
                     </Border>
                     
                     <Border BorderThickness="0" Style="{StaticResource BackgroundBorder}" Height="auto" Width="auto">
+
                         <WrapPanel Margin="5,5,5,15" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                             <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >A</Button>
