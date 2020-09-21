@@ -13,11 +13,11 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"/>
-                <RowDefinition Height="160"/>
+                <RowDefinition Height="150"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
 
             </Grid.RowDefinitions>
 
@@ -28,8 +28,8 @@
                 <ColumnDefinition Width="170"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Grid.ColumnSpan="4">
-                <Label Style="{StaticResource StandardHeader}" Content="Hänga Gubbe" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Grid Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Label Style="{StaticResource StandardHeader}" FontFamily="Segoe UI Light" Content="Hänga Gubbe"/>
             </Grid>
 
             <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="10, 10, 10, 10" Style="{StaticResource StandardBorder}" CornerRadius="10" VerticalAlignment="Center">
@@ -37,7 +37,7 @@
                     <Label Style="{StaticResource PageTitleLabel}" FontWeight="Bold" Content="Skapa en användare"/>
                     <Label Style="{StaticResource StandardLabel}" Content="Välj ditt användarnamn:"/>
                     <TextBox Style="{StaticResource UserInputTxtBox}"  Name="txtBoxWantedName" VerticalAlignment="Top" />
-                    <Button Style="{StaticResource StandardButton}"  Click="Button_CreateUser_Click" Content="Registrera" HorizontalAlignment="Center"/>
+                    <Button Width="120" Height="30" Style="{StaticResource StandardButton}"  Click="Button_CreateUser_Click" Content="Registrera" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Border>
 
@@ -46,10 +46,10 @@
             </Grid>
 
             <Grid Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click"  Content="Logga in" />
+                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click"  Content="Logga in" />
             </Grid>
             <Grid Grid.Row="5" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button   Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Såhär spelar du" />
+                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Såhär spelar du" />
             </Grid>
 
            

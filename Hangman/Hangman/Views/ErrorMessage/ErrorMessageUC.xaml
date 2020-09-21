@@ -11,8 +11,8 @@
             BorderBrush="Red"
             BorderThickness="2"
             CornerRadius="10"
-            Width="140"
-            Height="120">
+            Width="160"
+            Height="70">
         
         <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
             <TextBlock FontWeight="Bold" FontSize="10" Foreground="Red" Margin="10, 10, 10, 10">Ett fel har uppstått!</TextBlock>
