@@ -16,8 +16,8 @@ namespace Hangman
             InitializeComponent();
             model = new MainWindowViewModel();
             TopMenuUser.Content = PlayerEngine._menu;
-            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.9);
-            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.9);
+            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.8);
+            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.8);
 
             Main.Content = new LoginPage();
         }

@@ -41,16 +41,26 @@ namespace Hangman.Views
             string name = txtBoxWantedName.Text;
             txtBoxWantedName.Clear();
 
-            if (PlayerEngine.IsNameUsed(name) == false)
+            //kolla upp whitespaces
+            if(name != "")
             {
-                message = model.CreatePlayer(name);
-                PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
-                this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
+                if (PlayerEngine.IsNameUsed(name) == false)
+                {
+                    message = model.CreatePlayer(name);                                      
+                    PlayerEngine.SetActivePlayer(name);
+                    this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
+                }
+
+                else
+                {
+                    message = model.CreatePlayer(name);
+                }
+
             }
 
-            else
+            else 
             {
-                message = model.CreatePlayer(name);
+                message = "Du måste ange ett namn";
             }
 
             MessageBox.Show(message);
