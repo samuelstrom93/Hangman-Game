@@ -27,17 +27,11 @@ namespace Hangman.ViewModels
         #region Commands
 
         public ICommand GameStartCommand { get; set; }
-        
 
         #endregion
 
         #region StopWatch
         public StopWatchEngine StopWatchEngine { get; set; }
-        //public string Timer { get; set; }
-        //public bool IsStopWatchView { get; set; } // Binding
-
-
-
         #endregion
 
         #region PropertiesForGameStart
@@ -118,9 +112,6 @@ namespace Hangman.ViewModels
             StopWatchEngine = new StopWatchEngine();
             StopWatchEngine.MakeStopWatch();
             StopWatchEngine.IsStopWatchView = true;
-
-            //IsStopWatchView = StopWatchEngine.IsStopWatchView;
-
         }
 
         public GamePageViewModel(IPlayer player)    // MED inloggning
@@ -177,7 +168,6 @@ namespace Hangman.ViewModels
             {
                 Id = 0
             };
-            //IPlayer.Id = playerWithoutLoggIn.Id;
         }
 
         private void SetCommands()
@@ -186,13 +176,6 @@ namespace Hangman.ViewModels
             ShowHintCommand = new RelayCommand(ShowHint);
             
         }
-
-       /* private void HideOrViewStopWatch()
-        {
-            StopWatchEngine.HideOrViewStopWatch();
-            //IsStopWatchView = StopWatchEngine.IsStopWatchView;
-        }*/
-
         #endregion
 
 
@@ -207,7 +190,6 @@ namespace Hangman.ViewModels
 
             MakeWordArray();
             StopWatchEngine.StartStopWatch();
-            //_timer = StopWatchEngine.Timer;
 
             IsHintShown = false;
             IsGameStart = true;
@@ -393,14 +375,7 @@ namespace Hangman.ViewModels
             game.NumberOfIncorrectTries = numberOfIncorrectTries;
             game.NumberOfTries = numberOfTries;
             game.IsWon = IsWon;
-
-            /*if(PlayerEngine.ActivePlayer!=null)
-            AddGame(Game);*/ // Vi kan flytta på dem till sidan för att visa slutresultat, för #35
         }
-
-        #endregion
-
-        #region Methods:StopWatch
 
         #endregion
 
