@@ -130,7 +130,7 @@ namespace Hangman.Views
             if (gamePageViewModel.GameEngine.IsGameEnd)
             {
                 //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-                Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                Overray.Content = new GameEnd_Page(gamePageViewModel.GameEngine.GetGame(), gamePageViewModel.GameEngine.GetWord());
             }
         }
 

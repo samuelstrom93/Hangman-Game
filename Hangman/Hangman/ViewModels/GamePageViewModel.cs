@@ -82,7 +82,7 @@ namespace Hangman.ViewModels
 
         #region ForJudgeGame
         //private string selectedKey;
-        private string upperWord;
+        //private string upperWord;
 
         //public bool IsGuessCorrect { get; set; }
 
@@ -142,12 +142,13 @@ namespace Hangman.ViewModels
             
             GameEngine.RefreshGame();
             GameEngine.ViewGameStage();
+            GameEngine.SetStopWatch(StopWatchEngine);
 
         }
 
         #region GetMethods: Word + Game
 
-        public Word GetWord()
+        /*public Word GetWord()
         {
             Word word = new Word
             {
@@ -161,13 +162,13 @@ namespace Hangman.ViewModels
         public Game GetGameScore()
         {
             return GameEngine.GetGame();
-        }
+        }*/
 
         #endregion
 
         #region SetMethods
 
-        private Player Player { get; set; }
+        /*private Player Player { get; set; }
         private void SetPlayer(IPlayer iplayer)
         {
             Player = new Player() 
@@ -182,7 +183,7 @@ namespace Hangman.ViewModels
             {
                 Id = 0
             };
-        }
+        }*/
 
         private void SetCommands()
         {
@@ -405,16 +406,18 @@ namespace Hangman.ViewModels
             selectedKey = selectedkey;
         }*/
         public string GuessDirectlyText { get; set; }
+        private string playersGuessingAnswer;
         private void GuessDirectly()
         {
             if (GameEngine.IsGameStart == true)
             {
                 playersGuessingAnswer = GuessDirectlyText.ToUpper();
                 GameEngine.GuessDirectly(playersGuessingAnswer);
+                GameEngine.SwitchGameStatus();
             }
 
         }
-        private string playersGuessingAnswer;
+        
         /*public void TakeGuessingAnswer(string guessingAnswer)
         {
             playersGuessingAnswer = guessingAnswer.ToUpper();

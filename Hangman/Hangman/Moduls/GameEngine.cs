@@ -240,7 +240,7 @@ namespace Hangman.Moduls
         private void EndGame()
         {
             game.EndTime = DateTime.Now;
-            //StopWatchEngine.StopStopWatch();
+            StopWatchEngine.StopStopWatch();
             SaveGameScore();
             IsGameStart = false;
             IsGameEnd = true;
@@ -257,7 +257,16 @@ namespace Hangman.Moduls
         {
             return game;
         }
-
+        public Word GetWord()
+        {
+            Word word = new Word
+            {
+                Id = IWord.Id,
+                Name = IWord.Name,
+                Hint = IWord.Hint
+            };
+            return word;
+        }
         public void GuessDirectly(string playersGuessingAnswer)
         {
             if (playersGuessingAnswer == upperWord) //Spelaren vann
