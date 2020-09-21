@@ -32,6 +32,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region StopWatch
+        public StopWatchUC StopWatchUC { get; set; }
         public StopWatchEngine StopWatchEngine { get; set; }
         #endregion
 
@@ -88,6 +89,7 @@ namespace Hangman.ViewModels
             SetCommands();
 
             MakeStopWatchEngine();
+            //StopWatchUC = new StopWatchUC();
             HintUC = new HintUC();
 
             IsGameStart = false;
@@ -95,11 +97,14 @@ namespace Hangman.ViewModels
 
         }
 
-        private void MakeStopWatchEngine()
+       private void MakeStopWatchEngine()
         {
             StopWatchEngine = new StopWatchEngine();
-            StopWatchEngine.MakeStopWatch();
-            StopWatchEngine.IsStopWatchView = true;
+            StopWatchUC = new StopWatchUC(StopWatchEngine);
+
+            /* StopWatchEngine = new StopWatchEngine();
+             StopWatchEngine.MakeStopWatch();
+             StopWatchEngine.IsStopWatchView = true;*/
         }
 
         public GamePageViewModel(IPlayer player)    // MED inloggning

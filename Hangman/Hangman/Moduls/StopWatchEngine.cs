@@ -8,7 +8,7 @@ using System.Windows.Threading;
 
 namespace Hangman.Moduls
 {
-    class StopWatchEngine : BaseViewModel
+    public class StopWatchEngine : BaseViewModel
     {
         public ICommand StopWatchHideCommand { get; set; }
 
@@ -20,6 +20,8 @@ namespace Hangman.Moduls
 
         public StopWatchEngine()
         {
+            MakeStopWatch();
+            IsStopWatchView = true;
             StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
         }
 
