@@ -17,24 +17,16 @@ namespace Hangman.ViewModels
         public GameEndPage GameEndPage { get; set; }
         public ICommand GuessDirectlyCommand { get; set; }
 
-
-
-       // public string SelectedKey { get; set; }
-       // public ICommand LetterClickCommand { get; set; } //Binding i KeyboardUC.xml
-
-        //public Button Button { get; set; }  //Binding i KeyboardUC.xml
-
         public KeyboardViewModel()
         {
-            //Button = new Button();
             GameEngine = new GameEngine();
             GuessDirectlyCommand = new RelayCommand(GuessDirectly);
 
             GuessDirectlyText = "";
-            //LetterClickCommand = new RelayCommand(Clickletter);
         }
 
-        public string GuessDirectlyText { get; set; }
+        public string GuessDirectlyText { get; set; }   //Binding i GamePage.xml
+
         private string playersGuessingAnswer;
         private void GuessDirectly()
         {
@@ -51,41 +43,6 @@ namespace Hangman.ViewModels
             }
 
         }
-
-        /* public void SetSelectedKey(string selectedKey)
-         {
-             SelectedKey = selectedKey;
-         }*/
-
-        /*  private void Clickletter()
-          {
-              if (GameEngine.IsGameStart)
-              {
-                  GameEngine.JudgeGame(SelectedKey);
-                  ChangeBtnStyle();
-              }
-
-          }*/
-
-        /* private void ChangeBtnStyle()
-         {
-             if (GameEngine.IsGuessCorrect)
-             {
-                 Button.Opacity = 0.3;
-                 Button.Foreground = Brushes.Green;
-                 Button.FontWeight = FontWeights.Bold;
-             }
-             else
-             {
-                 Button.Opacity = 0.3;
-                 Button.Foreground = Brushes.Red;
-                 Button.FontWeight = FontWeights.Bold;
-
-             }
-             Button.IsEnabled = false;
-
-         }*/
-
 
     }
 }

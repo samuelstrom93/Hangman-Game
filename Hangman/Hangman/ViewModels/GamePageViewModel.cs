@@ -25,78 +25,17 @@ namespace Hangman.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
-        public GameStartPage GameStartOverray { get; set; }
-        public GameEndPage GameEndOverray { get; set; }
-        #region Commands
+        public GameEndPage GameEndOverray { get; set; } //Binding i GamePage.xml
+        public ICommand GameStartCommand { get; set; }  //Binding i GamePage.xml
+        public HintUC HintUC { get; set; }  //Binding i GamePage.xml
 
-        public ICommand GameStartCommand { get; set; }
-        public ICommand GuessDirectlyCommand { get; set; }
-
-        #endregion
-
-        #region StopWatch
-        public StopWatchUC StopWatchUC { get; set; }
-        public StopWatchUCViewModel StopWatchEngine { get; set; }
-
-        private void MakeStopWatchUC()
-        {
-            StopWatchEngine = new StopWatchUCViewModel();
-            StopWatchUC = new StopWatchUC(StopWatchEngine);
-        }
-
-        #endregion
-
-        #region Hint
-        public HintUC HintUC { get; set; }
-        public IWord IWord { get; set; }
-        #endregion Hint
-
-        #region PropertiesForGameStart
-
-        public string PlayerName { get; set; }  // = PlayerEngine.ActivePlayer.Name
-       /* public IPlayer IPlayer { get; set; }
-        private Game game { get; set; }*/
-
-        /*public bool IsGameStart { get; set; }
-        public bool IsGameEnd { get; set; }
-
-        public bool IsStartBtnClickable { get; set; }*/
-
-        #endregion
-
-        #region ForGameScore
         public GameEngine GameEngine { get; set; }
 
-
-
-       /* private int numberOfLives;   // 0 =GAME OVER
-        private int numberOfTries;
-        private int numberOfIncorrectTries;
-        private int numberOfCorrectTries;
-
-        public bool IsWon;
-        public string NumberOfCorrectTries_text { get; set; }
-        public string NumberOfIncorrectTries_text { get; set; }*/
-
-
-
-        #endregion
-
-        #region ForJudgeGame
-        //private string selectedKey;
-        //private string upperWord;
-
-        //public bool IsGuessCorrect { get; set; }
-
-        #endregion
+        public string PlayerName { get; set; }  // = PlayerEngine.ActivePlayer.Name
 
         public GamePageViewModel()  // UTAN inloggning
         {
             PlayerName = "Spela utan användare";
-            // SetPlayerWithoutLoggIn();
-
-            //RefreshGame();
-            //ViewGameStage();
 
             SetCommands();
 
@@ -105,19 +44,11 @@ namespace Hangman.ViewModels
             MakeGameEngine();
             GameEngine.SetPlayerWithoutLoggIn();
             HintUC = new HintUC();
-
-            //GuessDirectlyText = "";
-
         }
-
 
         public GamePageViewModel(IPlayer player)    // MED inloggning
         {
             PlayerName = PlayerEngine.ActivePlayer.Name;
-            //SetPlayer(player);
-
-            //RefreshGame();
-            //ViewGameStage();
 
             SetCommands();
 
@@ -126,18 +57,12 @@ namespace Hangman.ViewModels
             MakeGameEngine();
             GameEngine.SetPlayer(player);
             HintUC = new HintUC();
-
-            //GuessDirectlyText = "";
-
-
         }
 
         private void MakeKeyboardUC()
         {
             KeyboardUC = new KeyboardUC();
             KeyboardViewModel = (KeyboardViewModel)KeyboardUC.DataContext;
-
-            //GameEndOverray = KeyboardViewModel.GameEndPage;
         }
 
         private void MakeGameEngine()
@@ -145,307 +70,43 @@ namespace Hangman.ViewModels
             GameEngine = KeyboardViewModel.GameEngine;
             
             GameEngine.RefreshGame();
-            GameEngine.ViewGameStage();
+            GameEngine.ShowGameStage();
             GameEngine.SetStopWatch(StopWatchEngine);
-
         }
-
-        #region GetMethods: Word + Game
-
-        /*public Word GetWord()
-        {
-            Word word = new Word
-            {
-                Id = IWord.Id,
-                Name = IWord.Name,
-                Hint = IWord.Hint
-            };
-            return word;
-        }
-
-        public Game GetGameScore()
-        {
-            return GameEngine.GetGame();
-        }*/
-
-        #endregion
-
-        #region SetMethods
-
-        /*private Player Player { get; set; }
-        private void SetPlayer(IPlayer iplayer)
-        {
-            Player = new Player() 
-            {
-                Id = iplayer.Id,
-                Name = iplayer.Name
-            };
-        }
-        private void SetPlayerWithoutLoggIn()
-        {
-            Player = new Player()
-            {
-                Id = 0
-            };
-        }*/
 
         private void SetCommands()
         {
             GameStartCommand = new RelayCommand(StartGame);
-            //GuessDirectlyCommand = new RelayCommand(GuessDirectly);
-            //ShowHintCommand = new RelayCommand(ShowHint);
-
         }
-        #endregion
 
-        #region Methods: GameStart
-
+        private IWord IWord { get; set; }
         private void StartGame()
         {
             GameEngine.StartGame();
-            //GameEngine.MakeWord();
-
-            //MakeGame();
-
-            //MakeWordArray();
 
             StopWatchEngine.StartStopWatch();
             IWord = GameEngine.IWord;
             HintUC.SetDataContext(IWord.Hint);
 
-
-            /*IsGameStart = true;
-            IsGameEnd = false;*/
-
         }
 
-       /* private void MakeWord()
-        {
-            IWord = GetRandomWord();
-            upperWord = IWord.Name.ToUpper();
+        #region Keyboard
 
-            answerForPlayerArray = new char[upperWord.Length];  
-            MakeFirstAnswerForPlayer();
-
-            wordCheckerArray = new int[upperWord.Length];
-
-            LinkAnswerForPlayer();
-        }*/
-
-       /* private void MakeFirstAnswerForPlayer()
-        {
-            for (int i = 0; i < answerForPlayerArray.Length; i++) 
-            {
-                answerForPlayerArray[i] = '_';
-            } 
-        }*/
-
-       /* private void MakeGame()
-        {
-            game = new Game
-            {
-                IsWon = false,
-                NumberOfIncorrectTries = 0,
-                NumberOfTries = 0,
-                StartTime = DateTime.Now,
-                PlayerId = Player.Id,
-                WordId = IWord.Id
-            };
-        }*/
-
-       /* private char[] upperWordArray;
-        private void MakeWordArray()
-        {
-            upperWordArray = new char[upperWord.Length];
-            for (int i = 0; i < upperWord.Length; i++)
-            {
-                char oneOfUpperWord = upperWord[i];
-                upperWordArray[i] = oneOfUpperWord;
-            }
-        }*/
-
-      /*  private void RefreshGame()
-        {
-            numberOfLives = 10;
-            numberOfTries = 0;
-            numberOfIncorrectTries = 0;
-            numberOfCorrectTries = 0;
-
-            NumberOfCorrectTries_text = numberOfCorrectTries.ToString();    //Binding GamePage.xml
-            NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();    //Binding GamePage.xml
-
-            gameStage = 0;
-            IsWon = false;
-        }*/
-
-        #endregion
-
-        #region Methods: JudgeGame-End
-
-     /*   public void JudgeGame()
-        {
-            CompareWordAndSelectedKey();
-            WorkCounters();
-            ConvertShownWord();
-            LinkAnswerForPlayer();
-            SwitchGameStatus();
-        }
-
-        private int[] wordCheckerArray; // int[] =0 →gissat FEL, int[] =1 →gissat RÄTT
-        public void CompareWordAndSelectedKey()
-        {
-            for (int i = 0; i < upperWordArray.Length; i++)
-            {
-                char oneOfWord = upperWordArray[i];
-                char selectedKeyChar = selectedKey[0];
-
-                if (oneOfWord == selectedKeyChar)   //Spelaren gissade rätt
-                {
-                    wordCheckerArray[i] = 1;
-                }
-            }
-        }
-
-        private char[] answerForPlayerArray { get; set; }
-        private char[] ConvertShownWord()
-        {
-            for (int i = 0; i < upperWordArray.Length; i++)
-            {
-
-                if (wordCheckerArray[i] == 1)
-                {
-                    answerForPlayerArray[i] = upperWordArray[i];
-                }
-                if (wordCheckerArray[i] == 0)
-                {
-                    answerForPlayerArray[i] = '_';
-                }
-            }
-            return answerForPlayerArray;
-        }
-
-        public string AnswerForPlayer { get; set; } //Binding i GamePage.xml
-        public void LinkAnswerForPlayer()
-        {
-            AnswerForPlayer ="";
-            for(int i = 0; i<answerForPlayerArray.Length; i++)
-            {
-                AnswerForPlayer += $"{answerForPlayerArray[i]}  ";
-            }
-
-        }
-
-        public void WorkCounters()
-        {
-
-            if (upperWord.Contains(selectedKey))    //Gissade rätt
-            {
-                numberOfTries++;
-                numberOfCorrectTries++;
-                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
-                IsGuessCorrect = true;
-            }
-            else //Gissade fel
-            {
-                numberOfTries++;
-                numberOfLives = numberOfLives - 1;
-                numberOfIncorrectTries++;
-                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
-                IsGuessCorrect = false;
-                gameStage++;
-                ViewGameStage();
-            }
-        }
-
-        private int gameStage;
-        public BitmapImage ImageForGameStage { get; set; }
-        private void ViewGameStage()
-        {
-            string imageAdress;
-            imageAdress = $"../../../Assets/Images/hänggubbe{gameStage}.png";
-
-            string currentPath = Environment.CurrentDirectory;
-            ImageForGameStage = new BitmapImage( new Uri( System.IO.Path.Combine(currentPath, imageAdress)));
-        }
-
-        public void SwitchGameStatus()
-        {
-            string answer = new string(answerForPlayerArray);
-
-            if (answer == upperWord) //Spelaren vann
-            {
-                IsWon = true;
-                EndGame();
-            }
-
-            if (numberOfLives == 0)  //Game over
-            {
-                EndGame();
-            }
-        }
-
-        private void EndGame()
-        {
-            game.EndTime = DateTime.Now;
-            StopWatchEngine.StopStopWatch();
-            SaveGameScore();
-            IsGameStart = false;
-            IsGameEnd = true;
-        }
-
-        private void SaveGameScore()
-        {
-            game.NumberOfIncorrectTries = numberOfIncorrectTries;
-            game.NumberOfTries = numberOfTries;
-            game.IsWon = IsWon;
-        }
-     */
-        #endregion
-
-        #region SelectedBtn + GuessDirectlyBtn
         public KeyboardUC KeyboardUC { get; set; }  //Binding i GamePage.xml
         public KeyboardViewModel KeyboardViewModel { get; set; }
 
-       /* public string GuessDirectlyText { get; set; }
-        private string playersGuessingAnswer;
-        private void GuessDirectly()
-        {
-            if (GameEngine.IsGameStart == true)
-            {
-                playersGuessingAnswer = GuessDirectlyText.ToUpper();
-                GameEngine.GuessDirectly(playersGuessingAnswer);
-                GameEngine.SwitchGameStatus();
-            }
+        #endregion
 
-        }*/
-        
-        /*public void TakeGuessingAnswer(string guessingAnswer)
+        #region StopWatch
+        public StopWatchUC StopWatchUC { get; set; } //Binding i GamePage.xml
+        public StopWatchUCViewModel StopWatchEngine { get; set; }
+
+        private void MakeStopWatchUC()
         {
-            playersGuessingAnswer = guessingAnswer.ToUpper();
+            StopWatchEngine = new StopWatchUCViewModel();
+            StopWatchUC = new StopWatchUC(StopWatchEngine);
         }
 
-        public void GuessDirectly()
-        {
-            if (playersGuessingAnswer == upperWord) //Spelaren vann
-            {
-                numberOfTries++;
-                numberOfCorrectTries++;
-                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
-
-                IsWon = true;
-                EndGame();
-            }
-            else //Gissade fel
-            {
-                numberOfTries++;
-                numberOfLives = numberOfLives - 1;
-                numberOfIncorrectTries++;
-                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
-                IsGuessCorrect = false;
-                gameStage++;
-                ViewGameStage();
-            }
-        }*/
         #endregion
     }
 }

@@ -18,45 +18,47 @@ namespace Hangman.Moduls
         public bool IsGameStart { get; set; }
         public bool IsGameEnd { get; set; }
         public bool IsWon;
-        public bool IsStartBtnClickable { get; set; }
+        public bool IsStartBtnClickable { get; set; }   //Binding i GamePage.xml
 
         public IPlayer IPlayer { get; set; }
         public IWord IWord { get; set; }
-
-        private Game game { get; set; }
-
-        private string selectedKey{get ; set;}
-        private string upperWord;
-        private char[] upperWordArray;
-        private int[] wordCheckerArray; // int[] =0 →gissat FEL, int[] =1 →gissat RÄTT
-        private char[] answerForPlayerArray { get; set; }
-
-        private int numberOfLives;   // 0 =GAME OVER
-        private int numberOfTries;
-        private int numberOfIncorrectTries;
-        private int numberOfCorrectTries;
 
         public string AnswerForPlayer { get; set; }     //Binding i GamePage.xml
         public string NumberOfCorrectTries_text { get; set; }   //Binding i GamePage.xml
         public string NumberOfIncorrectTries_text { get; set; } //Binding i GamePage.xml
 
-        private int gameStage;
-        public BitmapImage ImageForGameStage { get; set; }
-
         public GameEngine()
         {
             IsGameStart = false;
             IsStartBtnClickable = true;
-            
         }
 
+        #region GetAndSet
         public void SetStopWatch(StopWatchUCViewModel stopWatchUCViewModel) 
         {
             StopWatchEngine = stopWatchUCViewModel;
         }
-        #region GameStart
-        private Player Player { get; set; }
 
+        public Game GetGame()
+        {
+            return game;
+        }
+
+        public Word GetWord()
+        {
+            Word word = new Word
+            {
+                Id = IWord.Id,
+                Name = IWord.Name,
+                Hint = IWord.Hint
+            };
+            return word;
+        }
+        #endregion
+
+        #region GameStart
+
+        private Player Player { get; set; }
         public void SetPlayer(IPlayer iplayer)
         {
             Player = new Player()
@@ -73,6 +75,7 @@ namespace Hangman.Moduls
                 Id = 0
             };
         }
+
         public void StartGame()
         {
             IsStartBtnClickable = false;
@@ -83,6 +86,11 @@ namespace Hangman.Moduls
             MakeGame();
             MakeWordArray();
         }
+
+        private string upperWord;
+        private int[] wordCheckerArray; // int[] =0 →gissat FEL, int[] =1 →gissat RÄTT
+        private char[] answerForPlayerArray { get; set; }
+
         private void MakeWord()
         {
             IWord = GetRandomWord();
@@ -95,6 +103,7 @@ namespace Hangman.Moduls
 
             LinkAnswerForPlayer();
         }
+
         private void MakeFirstAnswerForPlayer()
         {
             for (int i = 0; i < answerForPlayerArray.Length; i++)
@@ -103,6 +112,7 @@ namespace Hangman.Moduls
             }
         }
 
+        private Game game { get; set; }
         private void MakeGame()
         {
             game = new Game
@@ -115,6 +125,8 @@ namespace Hangman.Moduls
                 WordId = IWord.Id
             };
         }
+
+        private char[] upperWordArray;
         private void MakeWordArray()
         {
             upperWordArray = new char[upperWord.Length];
@@ -124,7 +136,10 @@ namespace Hangman.Moduls
                 upperWordArray[i] = oneOfUpperWord;
             }
         }
-        internal void ViewGameStage()
+
+        private int gameStage;
+        public BitmapImage ImageForGameStage { get; set; }  //Binding i GamePage.xml
+        internal void ShowGameStage()
         {
             string imageAdress;
             imageAdress = $"../../../Assets/Images/hänggubbe{gameStage}.png";
@@ -132,6 +147,11 @@ namespace Hangman.Moduls
             string currentPath = Environment.CurrentDirectory;
             ImageForGameStage = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
         }
+
+        private int numberOfLives;   // 0 =GAME OVER
+        private int numberOfTries;
+        private int numberOfIncorrectTries;
+        private int numberOfCorrectTries;
 
         internal void RefreshGame()
         {
@@ -148,6 +168,9 @@ namespace Hangman.Moduls
         }
 
         #endregion
+
+        #region GameJudge
+        private string selectedKey { get; set; }
 
         public void JudgeGame(string selectedkey)
         {
@@ -190,7 +213,7 @@ namespace Hangman.Moduls
                 NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
-                ViewGameStage();
+                ShowGameStage();
             }
         }
 
@@ -237,6 +260,33 @@ namespace Hangman.Moduls
             }
         }
 
+        public void GuessDirectly(string playersGuessingAnswer)
+        {
+            if (playersGuessingAnswer == upperWord) //Spelaren vann
+            {
+                numberOfTries++;
+                numberOfCorrectTries++;
+                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
+
+                IsWon = true;
+                EndGame();
+            }
+
+            else //Gissade fel
+            {
+                numberOfTries++;
+                numberOfLives = numberOfLives - 1;
+                numberOfIncorrectTries++;
+                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
+                IsGuessCorrect = false;
+                gameStage++;
+                ShowGameStage();
+            }
+        }
+
+        #endregion
+
+        #region GameEnd
         private void EndGame()
         {
             game.EndTime = DateTime.Now;
@@ -252,42 +302,7 @@ namespace Hangman.Moduls
             game.NumberOfTries = numberOfTries;
             game.IsWon = IsWon;
         }
+        #endregion
 
-        public Game GetGame()
-        {
-            return game;
-        }
-        public Word GetWord()
-        {
-            Word word = new Word
-            {
-                Id = IWord.Id,
-                Name = IWord.Name,
-                Hint = IWord.Hint
-            };
-            return word;
-        }
-        public void GuessDirectly(string playersGuessingAnswer)
-        {
-            if (playersGuessingAnswer == upperWord) //Spelaren vann
-            {
-                numberOfTries++;
-                numberOfCorrectTries++;
-                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
-
-                IsWon = true;
-                EndGame();
-            }
-            else //Gissade fel
-            {
-                numberOfTries++;
-                numberOfLives = numberOfLives - 1;
-                numberOfIncorrectTries++;
-                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
-                IsGuessCorrect = false;
-                gameStage++;
-                ViewGameStage();
-            }
-        }
     }
 }
