@@ -39,8 +39,10 @@ namespace Hangman.Views
             //var model = new Page2ViewModel(player); //Helt ok, eftersom Cpu implementerar IFullname
 
 
-            var player = PlayerEngine.ActivePlayer;
-            var model = new GamePageViewModel(player);
+            //var player = PlayerEngine.ActivePlayer;
+
+            //var model = new GamePageViewModel(player);
+            var model = new GameStartViewModel();
             Page page = NavigateToPageHelper.GetPage(selectedPage, model);
             NavigationService.Navigate(page);
         }

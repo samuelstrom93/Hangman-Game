@@ -24,12 +24,15 @@ namespace Hangman.ViewModels.Base
             NavigationService.Navigate(page);
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+        public BaseViewModel()
+        {
+            NavigateToPageByParameterCommand = new RelayParameterizedCommand(parameter => GoToPage(parameter));
         }
     }
 }
