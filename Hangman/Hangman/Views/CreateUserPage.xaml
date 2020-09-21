@@ -36,8 +36,8 @@
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top">
                     <Label Style="{StaticResource PageTitleLabel}" FontWeight="Bold" Content="Skapa en användare"/>
                     <Label Style="{StaticResource StandardLabel}" Content="Välj ditt användarnamn:"/>
-                    <TextBox Style="{StaticResource UserInputTxtBox}"  Name="txtBoxWantedName" VerticalAlignment="Top" />
-                    <Button Width="120" Height="30" Style="{StaticResource StandardButton}"  Click="Button_CreateUser_Click" Content="Registrera" HorizontalAlignment="Center"/>
+                    <TextBox Style="{StaticResource UserInputTxtBox}" VerticalAlignment="Top" Text="{Binding PlayerName}"/>
+                    <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Registrera" HorizontalAlignment="Center" Command="{Binding TryRegister}"/>
                 </StackPanel>
             </Border>
 
@@ -46,10 +46,10 @@
             </Grid>
 
             <Grid Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Click="Button_BackToLogin_Click"  Content="Logga in" />
+                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command="{Binding GoToLogin}" />
             </Grid>
             <Grid Grid.Row="5" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Click="Button_Help_Click" Content="Såhär spelar du" />
+                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Såhär spelar du" Command="{Binding GoToIntro}"/>
             </Grid>
 
            

@@ -1,19 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Hangman.Modules;
-using Hangman.Models;
-using Hangman.Repositories;
+﻿using System.Windows.Controls;
 using Hangman.ViewModels;
 
 namespace Hangman.Views
@@ -23,57 +8,10 @@ namespace Hangman.Views
     /// </summary>
     public partial class CreateUser_Page : Page
     {
-        private CreateUserViewModel model;
-        private string message;
-        private bool isPlayAgain = false;
-
         public CreateUser_Page()
         {
             InitializeComponent();
-            model = new CreateUserViewModel();
-            DataContext = model;
-        }
-
-
-        private void Button_CreateUser_Click(object sender, RoutedEventArgs e)
-        {
-
-            string name = txtBoxWantedName.Text;
-            txtBoxWantedName.Clear();
-
-            //kolla upp whitespaces
-            if(name != "")
-            {
-                var module = new PlayerModule();
-                if (module.TryAddPlayer(name, out _))
-                {
-                    this.NavigationService.Content = new GamePage(PlayerModule.GetActivePlayer(), isPlayAgain);
-                }
-
-                else
-                {
-                    message = model.CreatePlayer(name);
-                }
-
-            }
-
-            else 
-            {
-                message = "Du måste ange ett namn";
-            }
-
-            MessageBox.Show(message);
-        }
-
-        private void Button_Help_Click(object sender, RoutedEventArgs e)
-        {
-
-            this.NavigationService.Content = new GameIntroPage();
-        }
-
-        private void Button_BackToLogin_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.GoBack();
+            DataContext = new CreateUserViewModel();
         }
     }
 }

@@ -5,53 +5,57 @@ using System.Text;
 using Hangman.Repositories;
 using Npgsql;
 using Hangman.ViewModels.Base;
+using System.Windows.Input;
+using Hangman.Modules;
 
 namespace Hangman.ViewModels
 {
     class CreateUserViewModel : BaseViewModel
     {
-        public string PlayerName;
-        public string Message;
+        public string PlayerName { get; set; }
+        public string Message { get; set; }
 
-        #region methods
+        public ICommand TryRegister { get; set; }
+        public ICommand GoToLogin { get; set; }
+        public ICommand GoToIntro { get; set; }
 
-        /// <summary>
-        /// En metod för att kontrollera om användarmnamnet redan finns i databasen
-        /// </summary>   
-        public string CreatePlayer(string name)
+        private readonly PlayerModule _module;
+
+        public CreateUserViewModel()
         {
-            string Message; 
+            _module = new PlayerModule();
 
-            if(name!= "")
-            {
-                try
-                {
-                    PlayerRepository.CreatePlayer(name);
-                    Message = $"Grattis {name}! Du är nu medlem!";
-                }
+            TryRegister = new RelayCommand(TryAddPlayer);
+            GoToLogin = new RelayCommand(NavigateToLogin);
+            GoToIntro = new RelayCommand(NavigateToIntro);
+        }
 
-                catch (PostgresException ex)
-                {
-                    if (ex.SqlState.Contains("23505"))
-                    {
-                        Message = "Du har valt ett namn som är upptaget - försök igen";
-                    }
-
-                    else
-                    {
-                        Message = "Något gick fel - försök igen";
-                    }
-                }
-                
-            }
-
-            else
+        private void TryAddPlayer()
+        {
+            if (string.IsNullOrWhiteSpace(PlayerName))
             {
                 Message = "Du måste skriva något.";
+                return;
             }
-            return Message;
+
+            if (_module.TryAddPlayer(PlayerName, out _))
+            {
+                Message = $"Grattis {PlayerName}! Du är nu medlem!";
+                return;
+            }
+
+            Message = "Du har valt ett namn som är upptaget - försök igen";
         }
-        #endregion;
+
+        private void NavigateToLogin()
+        {
+            //TODO
+        }
+
+        private void NavigateToIntro()
+        {
+            //TODO
+        }
     }
 }
 
