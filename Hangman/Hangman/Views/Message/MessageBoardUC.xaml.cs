@@ -1,4 +1,4 @@
-﻿using Hangman.GameLogics;
+﻿using Hangman.Modules;
 using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using Hangman.GameLogics;
+﻿using Hangman.Modules;
 using Hangman.Models;
 using System;
 using System.Collections.Generic;
@@ -41,7 +41,21 @@ namespace Hangman.Views.Menu
             }
         }
 
-        public TopMenuUC()
+        private static TopMenuUC _instance;
+        public static TopMenuUC Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new TopMenuUC();
+                }
+
+                return _instance;
+            }
+        }
+
+        private TopMenuUC()
         {
             InitializeComponent();
 

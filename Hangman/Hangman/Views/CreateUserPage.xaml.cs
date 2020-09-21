@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
@@ -44,11 +44,10 @@ namespace Hangman.Views
             //kolla upp whitespaces
             if(name != "")
             {
-                if (PlayerEngine.IsNameUsed(name) == false)
+                var module = new PlayerModule();
+                if (module.TryAddPlayer(name, out _))
                 {
-                    message = model.CreatePlayer(name);                                      
-                    PlayerEngine.SetActivePlayer(name);
-                    this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
+                    this.NavigationService.Content = new GamePage(PlayerModule.GetActivePlayer(), isPlayAgain);
                 }
 
                 else

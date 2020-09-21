@@ -1,4 +1,4 @@
-﻿using Hangman.GameLogics;
+﻿using Hangman.Modules;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;

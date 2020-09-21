@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Hangman.Moduls
+namespace Hangman.Modules
 {
-    class StopWatch
+    class GameEngine
     {
     }
 }

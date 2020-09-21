@@ -1,6 +1,6 @@
-﻿using Hangman.GameLogics;
+﻿using Hangman.Modules;
 using Hangman.Views;
-
+using Hangman.Views.Menu;
 using System.Windows;
 
 namespace Hangman
@@ -15,7 +15,7 @@ namespace Hangman
         {
             InitializeComponent();
             model = new MainWindowViewModel();
-            TopMenuUser.Content = PlayerEngine._menu;
+            TopMenuUser.Content = TopMenuUC.Instance;
             this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.8);
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.8);
 

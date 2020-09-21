@@ -1,4 +1,4 @@
-﻿using Hangman.GameLogics;
+﻿using Hangman.Modules;
 using Hangman.Models;
 using Hangman.ViewModels.Base;
 using System;
@@ -21,7 +21,7 @@ namespace Hangman.Views
 
         public void UpdateActivePlayer()
         {
-            PlayerName = PlayerEngine.ActivePlayer.Name;
+            PlayerName = PlayerModule.GetActivePlayer().Name;
         }
     }
 }

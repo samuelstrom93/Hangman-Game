@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using Hangman.ViewModels;
 using Hangman.Views.Menu;
 
@@ -56,7 +56,7 @@ namespace Hangman.Views
             string name = txtBoxInsertName.Text;
 
             //Uppdatera Player Engine
-            usVM.UpdateUser(PlayerEngine.ActivePlayer, name);
+            usVM.UpdateUser(PlayerModule.GetActivePlayer(), name);
 
             txtBoxInsertName.Clear();
             DataContext = usVM;

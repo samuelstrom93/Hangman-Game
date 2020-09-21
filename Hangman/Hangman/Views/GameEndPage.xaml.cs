@@ -46,6 +46,7 @@ namespace Hangman.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            // TODO: LOGOUT METHOD
             this.NavigationService.Content = new LoginPage();
         }
 

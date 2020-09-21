@@ -10,7 +10,7 @@ using System.Text;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Hangman.Views;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -116,7 +116,7 @@ namespace Hangman.ViewModels
 
         public GamePageViewModel(IPlayer player)    // MED inloggning
         {
-            PlayerName = PlayerEngine.ActivePlayer.Name;
+            PlayerName = PlayerModule.GetActivePlayer().Name;
             SetPlayer(player);
 
             RefreshGame();
