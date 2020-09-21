@@ -22,7 +22,7 @@ namespace Hangman.ViewModels
             SelectedKey = selectedKey;
             Button = new Button();
 
-            LetterClickCommand = new RelayCommand(ChangeBtnStyle);
+            LetterClickCommand = new RelayCommand(Clickletter);
         }
 
         public void SetIsGuessCorrect(bool isGuessCorrect)
@@ -32,6 +32,15 @@ namespace Hangman.ViewModels
         public void SetIsGameStart(bool isGameStart)
         {
             IsGameStart = IsGameStart;
+        }
+
+        private void Clickletter()
+        {
+            if (IsGameStart)
+            {
+                ChangeBtnStyle();
+            }
+
         }
 
         private void ChangeBtnStyle()
