@@ -1,6 +1,6 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels.Base;
-using static Hangman.Repositories.Game_Repository;
+using static Hangman.Repositories.GameRepository;
 using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;

@@ -1,8 +1,8 @@
 using Hangman.Models;
 using Hangman.ViewModels.Base;
-using static Hangman.Repositories.Player_Repository;
-using static Hangman.Repositories.Word_Repository;
-using static Hangman.Repositories.Game_Repository;
+using static Hangman.Repositories.PlayerRepository;
+using static Hangman.Repositories.WordRepository;
+using static Hangman.Repositories.GameRepository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

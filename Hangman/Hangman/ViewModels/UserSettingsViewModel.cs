@@ -62,7 +62,7 @@ namespace Hangman.ViewModels
 
         public void DeleteUser()
         {
-            Player_Repository.DeletePlayer(PlayerEngine.ActivePlayer.Id);
+            PlayerRepository.DeletePlayer(PlayerEngine.ActivePlayer.Id);
         }
 
         #endregion
@@ -156,8 +156,8 @@ namespace Hangman.ViewModels
             {
                 try
                 {
-                    Player_Repository.UpdateNameOnPlayer(wantedName, PlayerEngine.ActivePlayer.Id);
-                    PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(wantedName);
+                    PlayerRepository.UpdateNameOnPlayer(wantedName, PlayerEngine.ActivePlayer.Id);
+                    PlayerEngine.ActivePlayer = PlayerRepository.GetPlayer(wantedName);
                     UpdateMessage = "Ditt användarnamn är nu bytt till " + wantedName;
                 }
 

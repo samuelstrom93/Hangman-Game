@@ -26,7 +26,7 @@ namespace Hangman.ViewModels
             {
                 try
                 {
-                    Player_Repository.CreatePlayer(name);
+                    PlayerRepository.CreatePlayer(name);
                     Message = $"Grattis {name}! Du är nu medlem!";
                 }
 

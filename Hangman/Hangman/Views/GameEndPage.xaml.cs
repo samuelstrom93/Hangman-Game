@@ -1,6 +1,6 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels;
-using static Hangman.Repositories.Player_Repository;
+using static Hangman.Repositories.PlayerRepository;
 using System;
 using System.Collections.Generic;
 using System.Text;

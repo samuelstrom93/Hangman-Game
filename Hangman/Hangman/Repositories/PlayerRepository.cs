@@ -9,7 +9,7 @@ using System.Net.NetworkInformation;
 
 namespace Hangman.Repositories
 {
-    public static class Player_Repository
+    public static class PlayerRepository
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 

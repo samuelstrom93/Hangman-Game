@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace Hangman.Repositories
 {
-    public class Word_Repository
+    public class WordRepository
     {
 
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;

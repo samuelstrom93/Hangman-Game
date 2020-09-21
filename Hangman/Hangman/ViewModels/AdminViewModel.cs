@@ -34,7 +34,7 @@ namespace Hangman.ViewModels
                 return;
             }
 
-            if (!Word_Repository.TryAddWord(Word, Description, out _))
+            if (!WordRepository.TryAddWord(Word, Description, out _))
             {
                 //TODO: Ge feedback i gränssnitt
                 return;

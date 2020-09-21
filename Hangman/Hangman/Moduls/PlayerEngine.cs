@@ -25,7 +25,7 @@ namespace Hangman.GameLogics
         /// </summary>
         public static bool IsNameUsed(string name)
         {
-            Player player = Player_Repository.GetPlayer(name);
+            Player player = PlayerRepository.GetPlayer(name);
 
             if (player != null)
             {
@@ -42,7 +42,7 @@ namespace Hangman.GameLogics
         /// <param name="name"></param>
         public static void SetActivePlayer(string name)
         {
-            PlayerEngine.ActivePlayer = Player_Repository.GetPlayer(name);
+            PlayerEngine.ActivePlayer = PlayerRepository.GetPlayer(name);
 
             _menu.PlayerStatusChanged(ActivePlayer);
         }
