@@ -12,10 +12,12 @@ namespace Hangman.ViewModels
     public class KeyboardViewModel : BaseViewModel
     {
         public string SelectedKey { get; set; }
-        public ICommand LetterClickCommand { get; set; }
-        public bool IsGameStart { get; set; }
-        public bool IsGuessCorrect { get; set; }
-        public Button Button { get; set; }
+        public ICommand LetterClickCommand { get; set; } //Binding i KeyboardUC.xml
+
+        private bool IsGameStart { get; set; }
+        private bool IsGuessCorrect { get; set; }
+
+        public Button Button { get; set; }  //Binding i KeyboardUC.xml
 
         public KeyboardViewModel(string selectedKey)
         {
@@ -23,15 +25,6 @@ namespace Hangman.ViewModels
             Button = new Button();
 
             LetterClickCommand = new RelayCommand(Clickletter);
-        }
-
-        public void SetIsGuessCorrect(bool isGuessCorrect)
-        {
-            IsGuessCorrect = isGuessCorrect;
-        }
-        public void SetIsGameStart(bool isGameStart)
-        {
-            IsGameStart = IsGameStart;
         }
 
         private void Clickletter()
@@ -61,5 +54,17 @@ namespace Hangman.ViewModels
             Button.IsEnabled = false;
 
         }
+
+        public void SetIsGuessCorrect(bool isGuessCorrect)
+        {
+            IsGuessCorrect = isGuessCorrect;
+        }
+
+        public void SetIsGameStart(bool isGameStart)
+        {
+            IsGameStart = IsGameStart;
+        }
+
+
     }
 }
