@@ -19,6 +19,7 @@ using System.IO;
 using System.Drawing;
 using System.Reflection;
 using Hangman.Moduls;
+using Hangman.Views.UCsForGamePage;
 
 namespace Hangman.ViewModels
 {
@@ -69,7 +70,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Hint
-        public HintEngine HintEngine { get; set; }
+        public HintUC HintUC { get; set; }
         public IWord IWord { get; set; }
             
 
@@ -87,6 +88,7 @@ namespace Hangman.ViewModels
             SetCommands();
 
             MakeStopWatchEngine();
+            HintUC = new HintUC();
 
             IsGameStart = false;
             IsStartBtnClickable = true;
@@ -177,15 +179,11 @@ namespace Hangman.ViewModels
             MakeWordArray();
 
             StopWatchEngine.StartStopWatch();
-            MakeHint();
+            HintUC.SetDataContext(IWord.Hint);
+
 
             IsGameStart = true;
             IsGameEnd = false;
-        }
-
-        private void MakeHint()
-        {
-            HintEngine = new HintEngine(IWord.Hint);
         }
 
         private void MakeWord()

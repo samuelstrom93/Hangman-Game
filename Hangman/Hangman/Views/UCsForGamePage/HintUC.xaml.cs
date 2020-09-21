@@ -22,6 +22,7 @@ namespace Hangman.Views.UCsForGamePage
         public HintUC()
         {
             InitializeComponent();
+            
         }
 
         public void SetDataContext(string hint)
