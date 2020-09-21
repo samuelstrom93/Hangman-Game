@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Hangman.Repositories;
 
 namespace Hangman.ViewModels
 {
@@ -23,6 +24,7 @@ namespace Hangman.ViewModels
 
         public bool IsRankingShown { get; set; }    //Binding i GameEnd_Page
         public bool IsDeleteGameScoreBtnShown { get; set; }     //Binding i GameEnd_Page
+        public int Ranking { get; set; }
 
         #endregion
 
@@ -34,9 +36,9 @@ namespace Hangman.ViewModels
             SetNumberOfCorrectTries();
             SetGameStatus();
 
-            SwitchRankingView();
             DistinguishPlayer();
-
+            SwitchRankingView();
+            
             DeleteGameScoreCommand = new RelayCommand(DeleteGameScore);
         }
 
@@ -96,6 +98,7 @@ namespace Hangman.ViewModels
             if ((IGame.IsWon == true)&&(game.PlayerId != 0))    // Spelaren MED inloggning har vunnit
             {
                 IsRankingShown = true;
+                Ranking = HighscoreRepository.GetRankOnHighScore(game.Id);
             }
             else
             {

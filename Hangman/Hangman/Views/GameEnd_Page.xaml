@@ -36,7 +36,7 @@
                             <TextBlock FontSize="24">
                                 Du kom på plats:
                             </TextBlock>
-                            <TextBlock Text="{Binding ranking}" Margin="10,0,0,0" FontSize="20"></TextBlock>
+                            <TextBlock Text="{Binding Ranking}" Margin="10,0,0,0" FontSize="24"></TextBlock>
 
                         </WrapPanel>
                         <Button Grid.Row="2" Height="25" Width="100" Style="{StaticResource StandardButton}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,35,10,10" Click="Button_Click">Spela igen?</Button>
