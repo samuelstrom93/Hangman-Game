@@ -69,23 +69,9 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Hint
-
+        public HintEngine HintEngine { get; set; }
         public IWord IWord { get; set; }
             
-        public ICommand ShowHintCommand { get; set; }
-        public bool IsHintShown { get; set; }
-
-        public void ShowHint()
-        {
-            if (IsHintShown == true)
-            {
-                IsHintShown = false;
-            }
-            else
-            {
-                IsHintShown = true;
-            }
-        }
 
         #endregion Hint
 
@@ -173,7 +159,7 @@ namespace Hangman.ViewModels
         private void SetCommands()
         {
             GameStartCommand = new RelayCommand(StartGame);
-            ShowHintCommand = new RelayCommand(ShowHint);
+            //ShowHintCommand = new RelayCommand(ShowHint);
             
         }
         #endregion
@@ -189,11 +175,17 @@ namespace Hangman.ViewModels
             MakeGame();
 
             MakeWordArray();
-            StopWatchEngine.StartStopWatch();
 
-            IsHintShown = false;
+            StopWatchEngine.StartStopWatch();
+            MakeHint();
+
             IsGameStart = true;
             IsGameEnd = false;
+        }
+
+        private void MakeHint()
+        {
+            HintEngine = new HintEngine(IWord.Hint);
         }
 
         private void MakeWord()
