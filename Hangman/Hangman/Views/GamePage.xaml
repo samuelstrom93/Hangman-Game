@@ -90,7 +90,7 @@
                             </Grid>
 
                             <WrapPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                <TextBlock Text="{Binding AnswerForPlayer}" FontSize="28"/>
+                                <TextBlock Text="{Binding AnswerForPlayer}" FontSize="26"/>
                             </WrapPanel>
                             
                         </Grid>
