@@ -6,13 +6,13 @@ using System.Windows.Input;
 
 namespace Hangman.Moduls
 {
-    class HintEngine : BaseViewModel
+    class HintUCViewModel : BaseViewModel
     {
         public string Hint { get; set; }
         public ICommand ShowHintCommand { get; set; }
         public bool IsHintShown { get; set; }
 
-        public HintEngine(string hint)
+        public HintUCViewModel(string hint)
         {
             Hint = hint;
             IsHintShown = false;

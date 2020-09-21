@@ -27,7 +27,7 @@ namespace Hangman.Views.UCsForGamePage
 
         public void SetDataContext(string hint)
         {
-            DataContext = new HintEngine(hint);
+            DataContext = new HintUCViewModel(hint);
         }
     }
 }

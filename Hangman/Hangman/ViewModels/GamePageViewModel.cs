@@ -33,11 +33,11 @@ namespace Hangman.ViewModels
 
         #region StopWatch
         public StopWatchUC StopWatchUC { get; set; }
-        public StopWatchEngine StopWatchEngine { get; set; }
+        public StopWatchUCViewModel StopWatchEngine { get; set; }
 
         private void MakeStopWatchUC()
         {
-            StopWatchEngine = new StopWatchEngine();
+            StopWatchEngine = new StopWatchUCViewModel();
             StopWatchUC = new StopWatchUC(StopWatchEngine);
         }
 

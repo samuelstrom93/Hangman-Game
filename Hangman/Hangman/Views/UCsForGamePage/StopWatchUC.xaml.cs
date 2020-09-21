@@ -19,7 +19,7 @@ namespace Hangman.Views.UCsForGamePage
     /// </summary>
     public partial class StopWatchUC : UserControl
     {
-        public StopWatchUC(StopWatchEngine stopWatchEngine)
+        public StopWatchUC(StopWatchUCViewModel stopWatchEngine)
         {
             InitializeComponent();
             DataContext = stopWatchEngine;
