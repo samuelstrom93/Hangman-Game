@@ -30,11 +30,12 @@ namespace Hangman.ViewModels
         {
             SelectedKey = selectedKey;
         }
+
         private void Clickletter()
         {
             if (GameEngine.IsGameStart)
             {
-                GameEngine.JudgeGame();
+                GameEngine.JudgeGame(SelectedKey);
                 ChangeBtnStyle();
             }
 

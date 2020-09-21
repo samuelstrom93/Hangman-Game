@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hangman.Models
 {
-    interface IWord
+    public interface IWord
     {
         public int Id { get; set; }
         public string Name { get; set; }

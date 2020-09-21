@@ -28,6 +28,7 @@ namespace Hangman.ViewModels
         #region Commands
 
         public ICommand GameStartCommand { get; set; }
+        public ICommand GuessDirectlyCommand { get; set; }
 
         #endregion
 
@@ -51,56 +52,81 @@ namespace Hangman.ViewModels
         #region PropertiesForGameStart
 
         public string PlayerName { get; set; }  // = PlayerEngine.ActivePlayer.Name
-        public IPlayer IPlayer { get; set; }
-        private Game game { get; set; }
+       /* public IPlayer IPlayer { get; set; }
+        private Game game { get; set; }*/
 
-        public bool IsGameStart { get; set; }
+        /*public bool IsGameStart { get; set; }
         public bool IsGameEnd { get; set; }
 
-        public bool IsStartBtnClickable { get; set; }
+        public bool IsStartBtnClickable { get; set; }*/
 
         #endregion
 
         #region ForGameScore
+        public GameEngine GameEngine { get; set; }
 
-        private int numberOfLives;   // 0 =GAME OVER
+
+
+       /* private int numberOfLives;   // 0 =GAME OVER
         private int numberOfTries;
         private int numberOfIncorrectTries;
         private int numberOfCorrectTries;
 
         public bool IsWon;
         public string NumberOfCorrectTries_text { get; set; }
-        public string NumberOfIncorrectTries_text { get; set; }
+        public string NumberOfIncorrectTries_text { get; set; }*/
+
+
 
         #endregion
 
         #region ForJudgeGame
-        private string selectedKey;
+        //private string selectedKey;
         private string upperWord;
 
-        public bool IsGuessCorrect { get; set; }
+        //public bool IsGuessCorrect { get; set; }
 
         #endregion
 
         public GamePageViewModel()  // UTAN inloggning
         {
             PlayerName = "Spela utan användare";
-            SetPlayerWithoutLoggIn();
+            // SetPlayerWithoutLoggIn();
 
-            RefreshGame();
-            ViewGameStage();
+            //RefreshGame();
+            //ViewGameStage();
 
             SetCommands();
 
+            MakeStopWatchUC();
+            MakeKeyboardUC();
+            MakeGameEngine();
+            GameEngine.SetPlayerWithoutLoggIn();
+            HintUC = new HintUC();
+
+            GuessDirectlyText = "";
+
+        }
+
+
+        public GamePageViewModel(IPlayer player)    // MED inloggning
+        {
+            PlayerName = PlayerEngine.ActivePlayer.Name;
+            //SetPlayer(player);
+
+            //RefreshGame();
+            //ViewGameStage();
+
+            SetCommands();
 
             MakeStopWatchUC();
             MakeKeyboardUC();
-
-
+            MakeGameEngine();
+            GameEngine.SetPlayer(player);
             HintUC = new HintUC();
 
-            IsGameStart = false;
-            IsStartBtnClickable = true;
+            GuessDirectlyText = "";
+
 
         }
 
@@ -110,22 +136,12 @@ namespace Hangman.ViewModels
             KeyboardViewModel = (KeyboardViewModel)KeyboardUC.DataContext;
         }
 
-        public GamePageViewModel(IPlayer player)    // MED inloggning
+        private void MakeGameEngine()
         {
-            PlayerName = PlayerEngine.ActivePlayer.Name;
-            SetPlayer(player);
-
-            RefreshGame();
-            ViewGameStage();
-
-            SetCommands();
-
-            MakeStopWatchUC();
-            MakeKeyboardUC();
-            HintUC = new HintUC();
-
-            IsGameStart = false;
-            IsStartBtnClickable = true;
+            GameEngine = KeyboardViewModel.GameEngine;
+            
+            GameEngine.RefreshGame();
+            GameEngine.ViewGameStage();
 
         }
 
@@ -144,7 +160,7 @@ namespace Hangman.ViewModels
 
         public Game GetGameScore()
         {
-            return game;
+            return GameEngine.GetGame();
         }
 
         #endregion
@@ -171,8 +187,9 @@ namespace Hangman.ViewModels
         private void SetCommands()
         {
             GameStartCommand = new RelayCommand(StartGame);
+            GuessDirectlyCommand = new RelayCommand(GuessDirectly);
             //ShowHintCommand = new RelayCommand(ShowHint);
-            
+
         }
         #endregion
 
@@ -180,23 +197,24 @@ namespace Hangman.ViewModels
 
         private void StartGame()
         {
-            IsStartBtnClickable = false;
-            MakeWord();
+            GameEngine.StartGame();
+            //GameEngine.MakeWord();
 
-            MakeGame();
+            //MakeGame();
 
-            MakeWordArray();
+            //MakeWordArray();
 
             StopWatchEngine.StartStopWatch();
+            IWord = GameEngine.IWord;
             HintUC.SetDataContext(IWord.Hint);
 
 
-            IsGameStart = true;
-            IsGameEnd = false;
+            /*IsGameStart = true;
+            IsGameEnd = false;*/
 
         }
 
-        private void MakeWord()
+       /* private void MakeWord()
         {
             IWord = GetRandomWord();
             upperWord = IWord.Name.ToUpper();
@@ -207,17 +225,17 @@ namespace Hangman.ViewModels
             wordCheckerArray = new int[upperWord.Length];
 
             LinkAnswerForPlayer();
-        }
+        }*/
 
-        private void MakeFirstAnswerForPlayer()
+       /* private void MakeFirstAnswerForPlayer()
         {
             for (int i = 0; i < answerForPlayerArray.Length; i++) 
             {
                 answerForPlayerArray[i] = '_';
             } 
-        }
+        }*/
 
-        private void MakeGame()
+       /* private void MakeGame()
         {
             game = new Game
             {
@@ -228,9 +246,9 @@ namespace Hangman.ViewModels
                 PlayerId = Player.Id,
                 WordId = IWord.Id
             };
-        }
+        }*/
 
-        private char[] upperWordArray;
+       /* private char[] upperWordArray;
         private void MakeWordArray()
         {
             upperWordArray = new char[upperWord.Length];
@@ -239,9 +257,9 @@ namespace Hangman.ViewModels
                 char oneOfUpperWord = upperWord[i];
                 upperWordArray[i] = oneOfUpperWord;
             }
-        }
+        }*/
 
-        private void RefreshGame()
+      /*  private void RefreshGame()
         {
             numberOfLives = 10;
             numberOfTries = 0;
@@ -253,13 +271,13 @@ namespace Hangman.ViewModels
 
             gameStage = 0;
             IsWon = false;
-        }
+        }*/
 
         #endregion
 
         #region Methods: JudgeGame-End
 
-        public void JudgeGame()
+     /*   public void JudgeGame()
         {
             CompareWordAndSelectedKey();
             WorkCounters();
@@ -376,19 +394,28 @@ namespace Hangman.ViewModels
             game.NumberOfTries = numberOfTries;
             game.IsWon = IsWon;
         }
-
+     */
         #endregion
 
         #region SelectedBtn + GuessDirectlyBtn
         public KeyboardUC KeyboardUC { get; set; }  //Binding i GamePage.xml
         public KeyboardViewModel KeyboardViewModel { get; set; }
-        public void TakeSelectedKey(string selectedkey)
+        /*public void TakeSelectedKey(string selectedkey)
         {
             selectedKey = selectedkey;
-        }
+        }*/
+        public string GuessDirectlyText { get; set; }
+        private void GuessDirectly()
+        {
+            if (GameEngine.IsGameStart == true)
+            {
+                playersGuessingAnswer = GuessDirectlyText.ToUpper();
+                GameEngine.GuessDirectly(playersGuessingAnswer);
+            }
 
+        }
         private string playersGuessingAnswer;
-        public void TakeGuessingAnswer(string guessingAnswer)
+        /*public void TakeGuessingAnswer(string guessingAnswer)
         {
             playersGuessingAnswer = guessingAnswer.ToUpper();
         }
@@ -414,7 +441,7 @@ namespace Hangman.ViewModels
                 gameStage++;
                 ViewGameStage();
             }
-        }
+        }*/
         #endregion
     }
 }

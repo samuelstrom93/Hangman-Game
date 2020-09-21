@@ -56,63 +56,63 @@ namespace Hangman.Views
 
 
         #region Methods: LetterBtn
-        private void Letter_Click(object sender, RoutedEventArgs e)
-        {
-            JudgeGameFromLetterClick(((Button)sender));
-            ViewGameEndPage();
-        }
+        /* private void Letter_Click(object sender, RoutedEventArgs e)
+         {
+             JudgeGameFromLetterClick(((Button)sender));
+             ViewGameEndPage();
+         }
 
 
-        private void JudgeGameFromLetterClick(Button sender)
-        {
-            if (gamePageViewModel.IsGameStart)
-            {
-                string selectedKey = sender.Content.ToString();
+         private void JudgeGameFromLetterClick(Button sender)
+         {
+             if (gamePageViewModel.IsGameStart)
+             {
+                 string selectedKey = sender.Content.ToString();
 
-                gamePageViewModel.TakeSelectedKey(selectedKey);
-                gamePageViewModel.JudgeGame();
+                 gamePageViewModel.TakeSelectedKey(selectedKey);
+                 gamePageViewModel.JudgeGame();
 
-                ChangeBtnStyle(sender);
-            }
-        }
+                 ChangeBtnStyle(sender);
+             }
+         }
 
-        private void ChangeBtnStyle(Button sender)
-        {
-            if (gamePageViewModel.IsGuessCorrect)
-            {
-                sender.Opacity = 0.3;
-                sender.Foreground = Brushes.Green;
-                sender.FontWeight = FontWeights.Bold;
-            }
-            else
-            {
-                sender.Opacity = 0.3;
-                sender.Foreground = Brushes.Red;
-                sender.FontWeight = FontWeights.Bold;
+         private void ChangeBtnStyle(Button sender)
+         {
+             if (gamePageViewModel.IsGuessCorrect)
+             {
+                 sender.Opacity = 0.3;
+                 sender.Foreground = Brushes.Green;
+                 sender.FontWeight = FontWeights.Bold;
+             }
+             else
+             {
+                 sender.Opacity = 0.3;
+                 sender.Foreground = Brushes.Red;
+                 sender.FontWeight = FontWeights.Bold;
 
-            }
-            sender.IsEnabled = false;
+             }
+             sender.IsEnabled = false;
 
-        }
+         }*/
 
         #endregion
 
         #region Methods: GuessDirectlyBtn
         private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
         {
-            JudgeGameFromGuessDirectly();
-            ViewGameEndPage();
+            /*JudgeGameFromGuessDirectly();
+            ViewGameEndPage();*/
         }
 
-        private void JudgeGameFromGuessDirectly()
+        /*private void JudgeGameFromGuessDirectly()
         {
-            if (gamePageViewModel.IsGameStart)
+            if (gamePageViewModel.GameEngine.IsGameStart)
             {
                 gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
                 gamePageViewModel.GuessDirectly();
-                gamePageViewModel.SwitchGameStatus();
+                gamePageViewModel.GameEngine.SwitchGameStatus();
             }
-        }
+        }*/
         #endregion
 
         #region Methods: View/Jump other pages
@@ -127,7 +127,7 @@ namespace Hangman.Views
 
         private void ViewGameEndPage()
         {
-            if (gamePageViewModel.IsGameEnd)
+            if (gamePageViewModel.GameEngine.IsGameEnd)
             {
                 //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
                 Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
