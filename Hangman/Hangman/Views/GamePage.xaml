@@ -8,28 +8,7 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       
       Title="GamePage">
-    
-    <Page.Resources>
-        <Style x:Key="KeyButton" TargetType="Button">
-            <Setter Property="Width" Value="28"></Setter>
-            <Setter Property="BorderBrush" Value="#186b61" />
-            <Setter Property="Background" Value="#cccedb"/>
-            <Setter Property="BorderThickness" Value="0"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontFamily" Value="Helvetica" />
-            <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="Margin" Value="5"></Setter>
-            <Setter Property="Padding" Value="5"></Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#4e8895"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Page.Resources>
+
 
     <Border BorderThickness="0" Style="{StaticResource StandardBorder}" 
             VerticalAlignment="Center" 
@@ -93,41 +72,7 @@
                     </Border>
                     
                     <Border BorderThickness="0" Style="{StaticResource BackgroundBorder}" Height="auto" Width="auto">
-
-                        <WrapPanel Margin="5,5,5,15" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >A</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >B</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >C</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">D</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">E</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">F</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">G</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">H</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">I</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">J</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">K</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">L</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">M</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">N</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">O</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">P</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">Q</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">R</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">S</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">T</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">U</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">V</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">W</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">X</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">Y</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">Z</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">Å</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">Ä</Button>
-                            <Button  Style="{StaticResource KeyButton}" Click="Letter_Click">Ö</Button>
-
-                        </WrapPanel>
-
+                        <Frame Content="{Binding KeyboardUC}"></Frame>
                     </Border>
 
                     <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="0,10,0,11" HorizontalAlignment="Center" VerticalAlignment="Center">

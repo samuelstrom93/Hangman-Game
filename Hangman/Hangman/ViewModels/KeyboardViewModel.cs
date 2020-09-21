@@ -1,4 +1,5 @@
-﻿using Hangman.ViewModels.Base;
+﻿using Hangman.Moduls;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,26 +12,29 @@ namespace Hangman.ViewModels
 {
     public class KeyboardViewModel : BaseViewModel
     {
+        public GameEngine GameEngine { get; set; }
+
         public string SelectedKey { get; set; }
         public ICommand LetterClickCommand { get; set; } //Binding i KeyboardUC.xml
 
-        private bool IsGameStart { get; set; }
-        private bool IsGuessCorrect { get; set; }
-
         public Button Button { get; set; }  //Binding i KeyboardUC.xml
 
-        public KeyboardViewModel(string selectedKey)
+        public KeyboardViewModel()
         {
-            SelectedKey = selectedKey;
             Button = new Button();
-
+            GameEngine = new GameEngine();
             LetterClickCommand = new RelayCommand(Clickletter);
         }
 
+        public void SetSelectedKey(string selectedKey)
+        {
+            SelectedKey = selectedKey;
+        }
         private void Clickletter()
         {
-            if (IsGameStart)
+            if (GameEngine.IsGameStart)
             {
+                GameEngine.JudgeGame();
                 ChangeBtnStyle();
             }
 
@@ -38,7 +42,7 @@ namespace Hangman.ViewModels
 
         private void ChangeBtnStyle()
         {
-            if (IsGuessCorrect)
+            if (GameEngine.IsGuessCorrect)
             {
                 Button.Opacity = 0.3;
                 Button.Foreground = Brushes.Green;
@@ -53,16 +57,6 @@ namespace Hangman.ViewModels
             }
             Button.IsEnabled = false;
 
-        }
-
-        public void SetIsGuessCorrect(bool isGuessCorrect)
-        {
-            IsGuessCorrect = isGuessCorrect;
-        }
-
-        public void SetIsGameStart(bool isGameStart)
-        {
-            IsGameStart = IsGameStart;
         }
 
 

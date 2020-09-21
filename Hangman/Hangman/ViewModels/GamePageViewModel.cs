@@ -92,7 +92,11 @@ namespace Hangman.ViewModels
 
             SetCommands();
 
+
             MakeStopWatchUC();
+            MakeKeyboardUC();
+
+
             HintUC = new HintUC();
 
             IsGameStart = false;
@@ -100,6 +104,11 @@ namespace Hangman.ViewModels
 
         }
 
+        private void MakeKeyboardUC()
+        {
+            KeyboardUC = new KeyboardUC();
+            KeyboardViewModel = (KeyboardViewModel)KeyboardUC.DataContext;
+        }
 
         public GamePageViewModel(IPlayer player)    // MED inloggning
         {
@@ -112,6 +121,8 @@ namespace Hangman.ViewModels
             SetCommands();
 
             MakeStopWatchUC();
+            MakeKeyboardUC();
+            HintUC = new HintUC();
 
             IsGameStart = false;
             IsStartBtnClickable = true;
@@ -182,6 +193,7 @@ namespace Hangman.ViewModels
 
             IsGameStart = true;
             IsGameEnd = false;
+
         }
 
         private void MakeWord()
@@ -368,8 +380,8 @@ namespace Hangman.ViewModels
         #endregion
 
         #region SelectedBtn + GuessDirectlyBtn
-        KeyboardUC Keyboard { get; set; }
-        KeyboardViewModel KeyboardViewModel { get; set; }
+        public KeyboardUC KeyboardUC { get; set; }  //Binding i GamePage.xml
+        public KeyboardViewModel KeyboardViewModel { get; set; }
         public void TakeSelectedKey(string selectedkey)
         {
             selectedKey = selectedkey;

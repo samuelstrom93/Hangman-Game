@@ -19,23 +19,19 @@ namespace Hangman.Views.UCsForGamePage
     /// </summary>
     public partial class KeyboardUC : UserControl
     {
+        public KeyboardViewModel KeyboardViewModel { get; set; }
         public KeyboardUC()
         {
             InitializeComponent();
-        }
+            KeyboardViewModel = new KeyboardViewModel();
+            DataContext = KeyboardViewModel;
 
-        public KeyboardViewModel SetDataContext(Button button)
-        {
-            KeyboardViewModel keyboardViewModel = new KeyboardViewModel(button.Content.ToString());
-            DataContext = keyboardViewModel;
-            return keyboardViewModel;
         }
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
-            SetDataContext((Button)sender);
-            /*JudgeGameFromLetterClick(((Button)sender));
-            ViewGameEndPage();*/
+            Button button = (Button)sender;
+            KeyboardViewModel.SetSelectedKey(button.Content.ToString());
         }
     }
 }
