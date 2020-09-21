@@ -26,12 +26,55 @@ namespace Hangman.Views.UCsForGamePage
             KeyboardViewModel = new KeyboardViewModel();
             DataContext = KeyboardViewModel;
 
+
         }
 
         private void Letter_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            KeyboardViewModel.SetSelectedKey(button.Content.ToString());
+            JudgeGameFromLetterClick(((Button)sender));
+            ViewGameEndPage();
+            //Button button = (Button)sender;
+            //KeyboardViewModel.SetSelectedKey(button.Content.ToString());
+        }
+
+        private void JudgeGameFromLetterClick(Button sender)
+        {
+            if (KeyboardViewModel.GameEngine.IsGameStart)
+            {
+                string selectedKey = sender.Content.ToString();
+
+               // KeyboardViewModel.TakeSelectedKey(selectedKey);
+                KeyboardViewModel.GameEngine.JudgeGame(selectedKey);
+
+                ChangeBtnStyle(sender);
+            }
+        }
+
+        private void ChangeBtnStyle(Button sender)
+        {
+            if (KeyboardViewModel.GameEngine.IsGuessCorrect)
+            {
+                sender.Opacity = 0.3;
+                sender.Foreground = Brushes.Green;
+                sender.FontWeight = FontWeights.Bold;
+            }
+            else
+            {
+                sender.Opacity = 0.3;
+                sender.Foreground = Brushes.Red;
+                sender.FontWeight = FontWeights.Bold;
+
+            }
+            sender.IsEnabled = false;
+        }
+
+        private void ViewGameEndPage()
+        {
+            if (KeyboardViewModel.GameEngine.IsGameEnd)
+            {
+                //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
+                KeyboardViewModel.GameEndPage = new GameEndPage(KeyboardViewModel.GameEngine.GetGame(), KeyboardViewModel.GameEngine.GetWord());
+            }
         }
     }
 }

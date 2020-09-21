@@ -25,6 +25,8 @@ namespace Hangman.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
+        public GameStartPage GameStartOverray { get; set; }
+        public GameEndPage GameEndOverray { get; set; }
         #region Commands
 
         public ICommand GameStartCommand { get; set; }
@@ -104,7 +106,7 @@ namespace Hangman.ViewModels
             GameEngine.SetPlayerWithoutLoggIn();
             HintUC = new HintUC();
 
-            GuessDirectlyText = "";
+            //GuessDirectlyText = "";
 
         }
 
@@ -125,7 +127,7 @@ namespace Hangman.ViewModels
             GameEngine.SetPlayer(player);
             HintUC = new HintUC();
 
-            GuessDirectlyText = "";
+            //GuessDirectlyText = "";
 
 
         }
@@ -134,6 +136,8 @@ namespace Hangman.ViewModels
         {
             KeyboardUC = new KeyboardUC();
             KeyboardViewModel = (KeyboardViewModel)KeyboardUC.DataContext;
+
+            //GameEndOverray = KeyboardViewModel.GameEndPage;
         }
 
         private void MakeGameEngine()
@@ -188,7 +192,7 @@ namespace Hangman.ViewModels
         private void SetCommands()
         {
             GameStartCommand = new RelayCommand(StartGame);
-            GuessDirectlyCommand = new RelayCommand(GuessDirectly);
+            //GuessDirectlyCommand = new RelayCommand(GuessDirectly);
             //ShowHintCommand = new RelayCommand(ShowHint);
 
         }
@@ -401,11 +405,8 @@ namespace Hangman.ViewModels
         #region SelectedBtn + GuessDirectlyBtn
         public KeyboardUC KeyboardUC { get; set; }  //Binding i GamePage.xml
         public KeyboardViewModel KeyboardViewModel { get; set; }
-        /*public void TakeSelectedKey(string selectedkey)
-        {
-            selectedKey = selectedkey;
-        }*/
-        public string GuessDirectlyText { get; set; }
+
+       /* public string GuessDirectlyText { get; set; }
         private string playersGuessingAnswer;
         private void GuessDirectly()
         {
@@ -416,7 +417,7 @@ namespace Hangman.ViewModels
                 GameEngine.SwitchGameStatus();
             }
 
-        }
+        }*/
         
         /*public void TakeGuessingAnswer(string guessingAnswer)
         {
