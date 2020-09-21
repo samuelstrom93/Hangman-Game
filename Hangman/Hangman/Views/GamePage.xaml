@@ -56,12 +56,12 @@
                         <Border.Background>
                             <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding ImageForGameStage}"/>
                      </Border.Background>
-                        
+                     
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
-                        <Button Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding StopWatchHideCommand}">
+                            <Button Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" DataContext="{Binding StopWatchEngine}" Command="{Binding StopWatchHideCommand}">
                                 <Image Source="/Assets/Images/timer.png"/>
                         </Button>
-                        <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility}}" />
+                        <TextBlock Text="{Binding Timer}" Padding="4" FontSize="12" DataContext="{Binding StopWatchEngine}" Visibility="{Binding IsStopWatchView, Converter={StaticResource BoolToVisibility}}" />
                     </WrapPanel>
                     </Border>
                     

@@ -18,6 +18,7 @@ using System.Windows.Resources;
 using System.IO;
 using System.Drawing;
 using System.Reflection;
+using Hangman.Moduls;
 
 namespace Hangman.ViewModels
 {
@@ -26,17 +27,16 @@ namespace Hangman.ViewModels
         #region Commands
 
         public ICommand GameStartCommand { get; set; }
-        public ICommand StopWatchHideCommand { get; set; }
+        
 
         #endregion
 
         #region StopWatch
+        public StopWatchEngine StopWatchEngine { get; set; }
+        //public string Timer { get; set; }
+        //public bool IsStopWatchView { get; set; } // Binding
 
-        public string Timer { get; set; }
-        public bool IsStopWatchView { get; private set; }
 
-        private DispatcherTimer dispatcherTimer;
-        private Stopwatch stopWatch;
 
         #endregion
 
@@ -106,11 +106,20 @@ namespace Hangman.ViewModels
 
             SetCommands();
 
-            MakeStopWatch();
+            MakeStopWatchEngine();
 
-            IsStopWatchView = true;
             IsGameStart = false;
             IsStartBtnClickable = true;
+
+        }
+
+        private void MakeStopWatchEngine()
+        {
+            StopWatchEngine = new StopWatchEngine();
+            StopWatchEngine.MakeStopWatch();
+            StopWatchEngine.IsStopWatchView = true;
+
+            //IsStopWatchView = StopWatchEngine.IsStopWatchView;
 
         }
 
@@ -124,9 +133,8 @@ namespace Hangman.ViewModels
 
             SetCommands();
 
-            MakeStopWatch();
+            MakeStopWatchEngine();
 
-            IsStopWatchView = true;
             IsGameStart = false;
             IsStartBtnClickable = true;
 
@@ -176,8 +184,14 @@ namespace Hangman.ViewModels
         {
             GameStartCommand = new RelayCommand(StartGame);
             ShowHintCommand = new RelayCommand(ShowHint);
-            StopWatchHideCommand = new RelayCommand(HideOrViewStopWatch);
+            
         }
+
+       /* private void HideOrViewStopWatch()
+        {
+            StopWatchEngine.HideOrViewStopWatch();
+            //IsStopWatchView = StopWatchEngine.IsStopWatchView;
+        }*/
 
         #endregion
 
@@ -192,7 +206,8 @@ namespace Hangman.ViewModels
             MakeGame();
 
             MakeWordArray();
-            StartStopWatch();
+            StopWatchEngine.StartStopWatch();
+            //_timer = StopWatchEngine.Timer;
 
             IsHintShown = false;
             IsGameStart = true;
@@ -367,7 +382,7 @@ namespace Hangman.ViewModels
         private void EndGame()
         {
             game.EndTime = DateTime.Now;
-            StopStopWatch();
+            StopWatchEngine.StopStopWatch();
             SaveGameScore();
             IsGameStart = false;
             IsGameEnd = true;
@@ -386,54 +401,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Methods:StopWatch
-        private void MakeStopWatch()
-        {
-            Timer = "00:00:00";
-            dispatcherTimer = new DispatcherTimer();
-            stopWatch = new Stopwatch();
-            dispatcherTimer.Tick += new EventHandler(dt_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
-        }
 
-        private void HideOrViewStopWatch()
-        {
-            if (IsStopWatchView == true)
-            {
-                IsStopWatchView = false;
-            }
-            else
-            {
-                IsStopWatchView = true;
-            }
-        }
-
-        private void dt_Tick(object sender, EventArgs e)
-        {
-            if (stopWatch.IsRunning)
-            {
-                TimeSpan ts = stopWatch.Elapsed;
-                Timer = String.Format("{0:00}:{1:00}:{2:00}",
-                ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-            }
-        }
-
-        private void StartStopWatch()
-        {
-            stopWatch.Start();
-            dispatcherTimer.Start();
-        }
-
-        private void StopStopWatch()    //Använd när det här spelet slutar
-        {
-            stopWatch.Stop();
-            dispatcherTimer.Stop();
-        }
-
-        private void ResetStopWatch()   //Använd när ett nytt spel startar
-        {
-            stopWatch.Reset();
-            Timer = "00:00:00";
-        }
         #endregion
 
         #region MethodForSelectedBtn + GuessDirectlyBtn
