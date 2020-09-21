@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hangman.ViewModels.Base;
 
 namespace Hangman.Views
 {
@@ -29,6 +30,16 @@ namespace Hangman.Views
             InitializeComponent();
             gameEndPageViewModel = new GameEndPageViewModel(game, word);
             DataContext = gameEndPageViewModel;
+        }
+
+        public GameEnd_Page(BaseViewModel specificModel)
+        {
+            InitializeComponent();
+            DataContext = specificModel;
+        }
+        public GameEnd_Page()
+        {
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

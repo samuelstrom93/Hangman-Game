@@ -15,6 +15,7 @@ using Hangman.GameLogics;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 
 namespace Hangman.Views
 {
@@ -30,9 +31,16 @@ namespace Hangman.Views
         public CreateUser_Page()
         {
             InitializeComponent();
-            model = new CreateUserViewModel();
-            DataContext = model;
+            //model = new CreateUserViewModel();
+            DataContext = new CreateUserViewModel();
         }
+
+        public CreateUser_Page(BaseViewModel specificModel)
+        {
+            InitializeComponent();
+            DataContext = specificModel;
+        }
+
 
 
         private void Button_CreateUser_Click(object sender, RoutedEventArgs e)

@@ -14,20 +14,15 @@ namespace Hangman
         public MainWindow()
         {
             InitializeComponent();
-            model = new MainWindowViewModel();
-            TopMenuUser.Content = PlayerEngine._menu;
-            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.8);
-            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.8);
+            //model = new MainWindowViewModel();
+            //TopMenuUser.Content = PlayerEngine._menu;
+            //this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.8);
+            //this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.8);
 
-            Main.Content = new LoginPage();
+            //Main.Content = new LoginPage();
+
+            DataContext = new MainWindowViewModel();
         }
-
-        //private void NotifyIconClickReset(object sender, RoutedEventArgs e)
-        //{
-        //    MenuShowName.Header = "Name";
-        //}
-
-
     }
 }
 

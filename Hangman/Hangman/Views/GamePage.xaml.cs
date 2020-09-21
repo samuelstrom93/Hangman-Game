@@ -2,6 +2,7 @@
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -52,6 +53,16 @@ namespace Hangman.Views
 
             ViewGameStartPageAsOverray(isPlayAgain);
 
+        }
+
+        public GamePage()
+        {
+            InitializeComponent();
+        }
+        public GamePage(BaseViewModel specificModel)
+        {
+            InitializeComponent();
+            DataContext = specificModel;
         }
 
 

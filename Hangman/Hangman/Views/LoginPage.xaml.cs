@@ -14,6 +14,7 @@ using Hangman.GameLogics;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using Hangman.Views.ErrorMessage;
 
 namespace Hangman.Views
@@ -25,14 +26,21 @@ namespace Hangman.Views
     {
         private LoginPageViewModel model;
         private bool isPlayAgain = false;
- 
+        private BaseViewModel model1;
 
         public LoginPage()
         {
             InitializeComponent();
-            model = new LoginPageViewModel();
-            DataContext = model;
+            //model = new LoginPageViewModel();
+            //DataContext = model;
+            DataContext = new LoginPageViewModel();
           
+        }
+
+        public LoginPage(BaseViewModel specificModel)
+        {
+            InitializeComponent();
+            DataContext = specificModel;
         }
 
         #region Metods: ButtonClick

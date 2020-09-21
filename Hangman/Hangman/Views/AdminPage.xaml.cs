@@ -1,4 +1,5 @@
 ﻿using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +29,12 @@ namespace Hangman.Views
             DataContext = new AdminViewModel();
 
             MessageView.Content = new MessageBoardUC();
+        }
+
+        public AdminPage(BaseViewModel specificModel)
+        {
+            InitializeComponent();
+            DataContext = specificModel;
         }
 
         private void TextBoxWord_GotFocus(object sender, RoutedEventArgs e)

@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Hangman.GameLogics;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using Hangman.Views.Menu;
 
 namespace Hangman.Views
@@ -29,6 +30,11 @@ namespace Hangman.Views
             usVM = new UserSettingsViewModel();
 
             UserStatsFrame.Content = new PlayerStatsUC();
+        }
+        public UserSettingsPage(BaseViewModel specificModel)
+        {
+            InitializeComponent();
+            DataContext = specificModel;
         }
 
         #region Methods: Btn_Click
