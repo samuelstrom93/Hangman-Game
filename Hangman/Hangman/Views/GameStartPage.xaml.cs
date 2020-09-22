@@ -43,5 +43,10 @@ namespace Hangman.Views
         {
             this.NavigationService.Content = new GameIntroPage();
         }
+
+        private void Leaderboard_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Content = new HighScore_Page();
+        }
     }
 }

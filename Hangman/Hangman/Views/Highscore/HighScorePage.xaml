@@ -5,28 +5,31 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="HighScore_Page">
 
-    <Grid>
+    <Grid Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="350" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="220" />
-            <ColumnDefinition Width="220" />
-            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="300" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+            <Button Grid.Row="2" Grid.Column="2" Height="25" Width="150" Content="Gå tillbaka" Style="{StaticResource StandardButton}" ></Button>
         <Grid Margin="10" Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label HorizontalAlignment="Center">Dina bästa spel</Label>
+            <ListBox Grid.Row="2" ItemsSource="{Binding TopCurrentPlayerHighscores}" MinHeight="150"></ListBox>
             <Frame x:Name="TopPlayerHighScores" Grid.Row="1"></Frame>
         </Grid>
         <Grid Margin="10" Grid.Row="1" Grid.Column="2">
@@ -35,7 +38,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label HorizontalAlignment="Center">Top 10 bästa spelen</Label>
-            <Frame x:Name="TopHighScores" Grid.Row="1"></Frame>
+            <ListBox Grid.Row="2" ItemsSource="{Binding Leaderboard}" MinHeight="150"></ListBox>
+            <!--<Frame x:Name="TopHighScores" Grid.Row="1"></Frame>-->
         </Grid>
         <Grid Margin="10" Grid.Row="1" Grid.Column="3">
             <Grid.RowDefinitions>
@@ -43,6 +47,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label HorizontalAlignment="Center">Flitigaste spelarna</Label>
+            <ListBox Grid.Row="2" ItemsSource="{Binding TopDiligentPlayers}" MinHeight="150"></ListBox>
             <Frame x:Name="TopPlayers" Grid.Row="1"></Frame>
         </Grid>
     </Grid>
