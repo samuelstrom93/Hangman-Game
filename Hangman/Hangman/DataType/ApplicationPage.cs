@@ -8,6 +8,7 @@
         GamePage,
         GameEnd,
         Admin,
-        UserSettings
+        UserSettings,
+        GameIntro
     }
 }

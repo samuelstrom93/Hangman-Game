@@ -16,18 +16,14 @@ namespace Hangman.ViewModels
         public string Message { get; set; }
 
         public ICommand TryRegister { get; set; }
-        public ICommand GoToLogin { get; set; }
-        public ICommand GoToIntro { get; set; }
 
-        private readonly PlayerModule _module;
+        private readonly IPlayerModule _module;
 
         public CreateUserViewModel()
         {
             _module = new PlayerModule();
 
             TryRegister = new RelayCommand(TryAddPlayer);
-            GoToLogin = new RelayCommand(NavigateToLogin);
-            GoToIntro = new RelayCommand(NavigateToIntro);
         }
 
         private void TryAddPlayer()
@@ -41,20 +37,11 @@ namespace Hangman.ViewModels
             if (_module.TryAddPlayer(PlayerName, out _))
             {
                 Message = $"Grattis {PlayerName}! Du är nu medlem!";
+                GoToPage(ApplicationPage.GamePage);
                 return;
             }
 
             Message = "Du har valt ett namn som är upptaget - försök igen";
-        }
-
-        private void NavigateToLogin()
-        {
-            //TODO
-        }
-
-        private void NavigateToIntro()
-        {
-            //TODO
         }
     }
 }

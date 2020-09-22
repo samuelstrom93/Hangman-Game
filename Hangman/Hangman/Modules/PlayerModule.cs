@@ -12,9 +12,7 @@ namespace Hangman.Modules
     /// </summary>
     public class PlayerModule : IPlayerModule
     {
-        #region Properties
         private static IPlayer ActivePlayer { get; set; }
-        #endregion
 
         #region methods
 

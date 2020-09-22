@@ -13,7 +13,6 @@ namespace Hangman.ViewModels
     {
         public Visibility Visibility { get; set; }
         public ICommand PlayGame { get; set; }
-        public ICommand GoToGameGuide { get; set; }
         public TopGamesUC Highscores { get; set; }
 
         public GameStartViewModel()
@@ -22,17 +21,11 @@ namespace Hangman.ViewModels
             Highscores = new TopGamesUC(playerId);
 
             PlayGame = new RelayCommand(PlayGameCommand);
-            GoToGameGuide = new RelayCommand(NavigateToGameGuide);
         }
 
         private void PlayGameCommand()
         {
             Visibility = Visibility.Collapsed;
-        }
-
-        private void NavigateToGameGuide()
-        {
-            //TODO: Samuels navigation grej
         }
     }
 }

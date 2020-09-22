@@ -51,7 +51,7 @@ namespace Hangman.Views
 
             else
             {
-                this.NavigationService.Content = new GamePage(isPlayAgain);
+                this.NavigationService.Content = new GamePage(isPlayAgain: isPlayAgain);
             }
         }
 

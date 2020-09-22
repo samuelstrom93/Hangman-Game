@@ -1,7 +1,4 @@
 ﻿using Hangman.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Hangman.Modules
 {
@@ -9,6 +6,7 @@ namespace Hangman.Modules
     {
         void LogOutPlayer();
         bool TryLogInPlayer(string name);
+        bool TryAddPlayer(string name, out IPlayer added);
 
     }
 }

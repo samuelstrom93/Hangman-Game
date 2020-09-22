@@ -23,13 +23,13 @@ namespace Hangman.Helper
         {
             return page switch
             {
-                ApplicationPage.Login => model != null ? new LoginPage(model) : new LoginPage(),
-                ApplicationPage.Admin => model != null ? new AdminPage(model) : new AdminPage(),
-                ApplicationPage.CreateUser => model != null ? new CreateUser_Page(model) : new CreateUser_Page(),
-                ApplicationPage.GameStart => model != null ? new GameStartPage(model) : new GameStartPage(), 
-                ApplicationPage.GamePage => model != null ? new GamePage(model) : new GamePage(),
-                ApplicationPage.GameEnd => model != null ? new GameEnd_Page(model) : new GameEnd_Page(),
-                ApplicationPage.UserSettings => model != null ? new UserSettingsPage(model) : new UserSettingsPage(),
+                ApplicationPage.Login => new LoginPage(model),
+                ApplicationPage.Admin => new AdminPage(model),
+                ApplicationPage.CreateUser => new CreateUser_Page(model),
+                ApplicationPage.GameStart => new GameStartPage(model), 
+                ApplicationPage.GamePage => new GamePage(specificModel: model),
+                ApplicationPage.GameEnd => new GameEnd_Page(model),
+                ApplicationPage.UserSettings => new UserSettingsPage(model),
                 _ => null,
 
             };

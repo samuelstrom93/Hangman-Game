@@ -32,37 +32,17 @@ namespace Hangman.Views
         private GamePageViewModel gamePageViewModel;
         #endregion
 
-        public GamePage(bool isPlayAgain)
-        {
-            InitializeComponent();
-
-            gamePageViewModel = new GamePageViewModel();
-            DataContext = gamePageViewModel;
-
-            ViewGameStartPageAsOverray(isPlayAgain);
-        }
-
-        public GamePage(IPlayer player, bool isPlayAgain)
+        public GamePage(IPlayer player = null, bool isPlayAgain = false, BaseViewModel specificModel = null)
         {
 
             InitializeComponent();
             Player = player;
 
-            gamePageViewModel = new GamePageViewModel(player);
+            gamePageViewModel = new GamePageViewModel();
             DataContext = gamePageViewModel;
 
             ViewGameStartPageAsOverray(isPlayAgain);
 
-        }
-
-        public GamePage()
-        {
-            InitializeComponent();
-        }
-        public GamePage(BaseViewModel specificModel)
-        {
-            InitializeComponent();
-            DataContext = specificModel;
         }
 
 

@@ -12,9 +12,6 @@ namespace Hangman.ViewModels
     {        
         public string ErrorMessage { get; set; }
         public string PlayerName { get; set; }
-        public ICommand GoToCreateUser { get; set; }
-        public ICommand GoToGameIntro { get; set; }
-        public ICommand PlayWithoutUser { get; set; }
         public ICommand TryLogIn { get; set; }
 
         private readonly PlayerModule _module = new PlayerModule();
@@ -22,25 +19,7 @@ namespace Hangman.ViewModels
 
         public LoginPageViewModel()
         {
-            GoToCreateUser = new RelayCommand(NavigateToCreateUser);
-            GoToGameIntro = new RelayCommand(NavigateToGameIntro);
-            PlayWithoutUser = new RelayCommand(QuickPlay);
             TryLogIn = new RelayCommand(TryLogInPlayer);
-        }
-
-        private void NavigateToCreateUser()
-        {
-            //TODO
-        }
-
-        private void NavigateToGameIntro()
-        {
-            //TODO
-        }
-
-        private void QuickPlay()
-        {
-            //TODO
         }
 
         private void TryLogInPlayer()
@@ -52,7 +31,7 @@ namespace Hangman.ViewModels
 
             if (PlayerName.Equals("admin", StringComparison.OrdinalIgnoreCase))
             {
-                //TODO navigate admin
+                GoToPage(ApplicationPage.Admin);
             }
 
             if (!_module.TryLogInPlayer(PlayerName))
@@ -61,7 +40,7 @@ namespace Hangman.ViewModels
             }
             else
             {
-                //TODO NAVIGATION
+                GoToPage(ApplicationPage.GamePage);
             }
         }
     }

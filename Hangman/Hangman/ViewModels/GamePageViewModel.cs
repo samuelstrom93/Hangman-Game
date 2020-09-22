@@ -96,28 +96,11 @@ namespace Hangman.ViewModels
         #endregion Hint
 
 
-        public GamePageViewModel()  // UTAN inloggning
+        public GamePageViewModel()    // MED inloggning
         {
-            PlayerName = "Spela utan användare";
-            SetPlayerWithoutLoggIn();
-
-            RefreshGame();
-            ViewGameStage();
-
-            SetCommands();
-
-            MakeStopWatch();
-
-            IsStopWatchView = true;
-            IsGameStart = false;
-            IsStartBtnClickable = true;
-
-        }
-
-        public GamePageViewModel(IPlayer player)    // MED inloggning
-        {
-            PlayerName = PlayerModule.GetActivePlayer().Name;
-            SetPlayer(player);
+            var player = PlayerModule.GetActivePlayer();
+            PlayerName = player == null ? "Spela utan användare" : player.Name;
+            if (player != null) SetPlayer(player);
 
             RefreshGame();
             ViewGameStage();
@@ -228,7 +211,7 @@ namespace Hangman.ViewModels
                 NumberOfIncorrectTries = 0,
                 NumberOfTries = 0,
                 StartTime = DateTime.Now,
-                PlayerId = Player.Id,
+                PlayerId = Player?.Id ?? 0,
                 WordId = IWord.Id
             };
         }
