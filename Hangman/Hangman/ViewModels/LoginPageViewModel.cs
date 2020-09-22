@@ -14,7 +14,7 @@ namespace Hangman.ViewModels
         public string PlayerName { get; set; }
         public ICommand TryLogIn { get; set; }
 
-        private readonly PlayerModule _module = new PlayerModule();
+        private readonly IPlayerModule _module = new PlayerModule();
 
 
         public LoginPageViewModel()

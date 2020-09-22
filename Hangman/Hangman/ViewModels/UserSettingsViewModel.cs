@@ -29,11 +29,12 @@ namespace Hangman.ViewModels
         #region Properties: Delete User
         public bool IsDeletable { get; set; }
         public string DeleteMessage { get; set; }
+        public ICommand DeleteUserCommand { get; set; }
         #endregion
 
         #region Properties: Update User
         public string UpdateMessage { get; set; }
-        public ICommand UppdateUserCommand { get; set; }
+        public ICommand UpdateUserCommand { get; set; }
         public IPlayer Player { get; set; }
 
         #endregion
@@ -41,9 +42,17 @@ namespace Hangman.ViewModels
         public UserSettingsViewModel()
         {
             UpdatePlayerStats();
+
+            DeleteUserCommand = new RelayCommand(TryDeleteUser);
+            UpdateUserCommand = new RelayCommand(UpdateUser);
         }
 
         #region Methods: Delete User
+
+        private void TryDeleteUser()
+        {
+
+        }
         public bool CheckIfDeletable(string name)
         {
             if (name == ActivePlayer.Name)
@@ -149,46 +158,46 @@ namespace Hangman.ViewModels
 
         #region Methods: Update User
 
-        public void UpdateUser(IPlayer player, string wantedName)
+        public void UpdateUser()
         {
 
-            if (wantedName != "" && wantedName != ActivePlayerName)
-            {
-                try
-                {
-                    PlayerRepository.UpdateNameOnPlayer(wantedName, ActivePlayer.Id);
-                    var module = new PlayerModule();
-                    module.TryLogInPlayer(wantedName);
-                    UpdateMessage = "Ditt användarnamn är nu bytt till " + wantedName;
-                }
+            //if (wantedName != "" && wantedName != ActivePlayerName)
+            //{
+            //    try
+            //    {
+            //        PlayerRepository.UpdateNameOnPlayer(wantedName, ActivePlayer.Id);
+            //        var module = new PlayerModule();
+            //        module.TryLogInPlayer(wantedName);
+            //        UpdateMessage = "Ditt användarnamn är nu bytt till " + wantedName;
+            //    }
 
-                catch (PostgresException ex)
-                {
-                    //ta fram koden om användaren inte existerar
-                    if (ex.SqlState.Contains("23505"))
-                    {
-                        UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
-                    }
+            //    catch (PostgresException ex)
+            //    {
+            //        //ta fram koden om användaren inte existerar
+            //        if (ex.SqlState.Contains("23505"))
+            //        {
+            //            UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
+            //        }
 
-                    else
-                    {
-                        UpdateMessage = "Något gick fel - försök igen";
-                    }
-                }
-            }
+            //        else
+            //        {
+            //            UpdateMessage = "Något gick fel - försök igen";
+            //        }
+            //    }
+            //}
 
-            else if (wantedName == ActivePlayerName)
-            {
-                UpdateMessage = "Du måste ange ett nytt namn";
-            }
+            //else if (wantedName == ActivePlayerName)
+            //{
+            //    UpdateMessage = "Du måste ange ett nytt namn";
+            //}
 
-            else if (wantedName == "")
-                UpdateMessage = "Du måste ange ett namn";
+            //else if (wantedName == "")
+            //    UpdateMessage = "Du måste ange ett namn";
 
-            else
-            {
-                UpdateMessage = "Något gick fel";
-            }
+            //else
+            //{
+            //    UpdateMessage = "Något gick fel";
+            //}
         }
         #endregion
 
