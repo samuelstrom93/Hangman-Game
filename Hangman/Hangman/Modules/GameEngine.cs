@@ -19,11 +19,11 @@ namespace Hangman.Modules
         public bool IsGameStart { get; set; }
         public bool IsGameEnd { get; set; }
         public bool IsWon;
-        public bool IsStartBtnClickable { get; set; }   //Binding i GamePage.xml
 
         public IPlayer IPlayer { get; set; }
         public IWord IWord { get; set; }
 
+        public bool IsStartBtnClickable { get; set; }   //Binding i GamePage.xml
         public string AnswerForPlayer { get; set; }     //Binding i GamePage.xml
         public string NumberOfCorrectTries_text { get; set; }   //Binding i GamePage.xml
         public string NumberOfIncorrectTries_text { get; set; } //Binding i GamePage.xml

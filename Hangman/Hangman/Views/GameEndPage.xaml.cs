@@ -23,7 +23,6 @@ namespace Hangman.Views
     public partial class GameEndPage : Page
     {
         private GameEndPageViewModel gameEndPageViewModel;
-        private bool isPlayAgain = true;
 
         public GameEndPage(Game game, Word word)
         {
@@ -40,19 +39,6 @@ namespace Hangman.Views
         public GameEndPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if(gameEndPageViewModel.GameEndEngine.GetGame().PlayerId != 0)    // Behåller inloggning
-            {
-                this.NavigationService.Content = new GamePage(GetPlayerFromID(gameEndPageViewModel.GameEndEngine.GetGame().PlayerId), isPlayAgain);
-            }
-
-            else
-            {
-                this.NavigationService.Content = new GamePage(isPlayAgain: isPlayAgain);
-            }
         }
 
     }

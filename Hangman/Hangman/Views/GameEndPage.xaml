@@ -43,7 +43,7 @@
                         </TextBlock>
                         <TextBlock Text="{Binding GameEndEngine.Ranking}" Margin="10,0,0,0" FontSize="24"></TextBlock>
                     </WrapPanel>
-                    <Button Grid.Row="2" Height="25" Width="200" Style="{StaticResource StandardButton}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,35,10,10" Click="Button_Click">Spela igen?</Button>
+                    <Button Grid.Row="2" Height="25" Width="200" Style="{StaticResource StandardButton}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,35,10,10" Command="{Binding PlayAgainCommand}" Cursor="Hand">Spela igen?</Button>
 
                 </StackPanel>
             </StackPanel>
