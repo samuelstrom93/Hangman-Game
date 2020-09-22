@@ -39,12 +39,12 @@
                             <TextBlock Text="{Binding Ranking}" Margin="10,0,0,0" FontSize="24"></TextBlock>
 
                         </WrapPanel>
-                        <Button Grid.Row="2" Height="25" Width="100" Style="{StaticResource StandardButton}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,35,10,10" Click="Button_Click">Spela igen?</Button>
+                        <Button Grid.Row="2" Height="25" Width="200" Style="{StaticResource StandardButton}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,35,10,10" Click="Button_Click">Spela igen?</Button>
 
                     </StackPanel>
                 </StackPanel>
                 
-                <Button Visibility="{Binding IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" x:Name="gameScoreSaveBtn" HorizontalAlignment="Right" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Cursor="Hand" Click="Button_Click_2" Width="200" Height="27" Margin="0,10,0,10">Kasta bort min spelpoäng!</Button>
+                <Button Visibility="{Binding IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" x:Name="gameScoreSaveBtn" HorizontalAlignment="Right" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Cursor="Hand" Click="Button_Click_2" Width="175" Height="27" Margin="0,10,0,10">Kasta bort min spelpoäng!</Button>
             </StackPanel>
         </Grid>
     </Border>
