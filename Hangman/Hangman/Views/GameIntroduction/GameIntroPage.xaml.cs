@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Hangman.ViewModels.Base;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hangman.Views
 {
@@ -18,7 +9,7 @@ namespace Hangman.Views
     /// </summary>
     public partial class GameIntroPage : Page
     {
-        public GameIntroPage()
+        public GameIntroPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
         }

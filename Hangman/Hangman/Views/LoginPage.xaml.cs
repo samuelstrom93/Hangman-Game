@@ -14,6 +14,7 @@ using Hangman.Modules;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using Hangman.Views.ErrorMessage;
 
 namespace Hangman.Views
@@ -23,10 +24,11 @@ namespace Hangman.Views
     /// </summary>
     public partial class LoginPage : Page
     {
-        public LoginPage()
+        public LoginPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
-            DataContext = new LoginPageViewModel();
+            DataContext = specificModel ?? new LoginPageViewModel();
+          
         }
 
     }

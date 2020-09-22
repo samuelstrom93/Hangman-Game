@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 
 namespace Hangman.Views
 {
@@ -8,10 +9,10 @@ namespace Hangman.Views
     /// </summary>
     public partial class CreateUser_Page : Page
     {
-        public CreateUser_Page()
+        public CreateUser_Page(BaseViewModel specificModel = null)
         {
             InitializeComponent();
-            DataContext = new CreateUserViewModel();
+            DataContext = specificModel ?? new CreateUserViewModel();
         }
     }
 }

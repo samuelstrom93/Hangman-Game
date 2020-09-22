@@ -8,28 +8,20 @@
         d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
         Title="MainWindow"
         WindowStartupLocation="CenterScreen">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-        </Grid.ColumnDefinitions>
 
         <Border Style="{StaticResource BackgroundBorder}">
-            <StackPanel Margin="0, 0, 0, 0" Grid.Row="0" VerticalAlignment="Bottom">
-                <Frame x:Name="TopMenuUser" />
-                <Frame x:Name="TopMenu" />
-            </StackPanel>
+            <Frame x:Name="TopMenu" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch"/>
         </Border>
-        
+
         <Border Grid.Row="1" Style="{StaticResource BackgroundBorder}">
             <!-- Här tar vi bort Navigationsmöjligheten, vill vi ha det i alla?-->
             <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
         </Border>
-        
     </Grid>
 </Window>

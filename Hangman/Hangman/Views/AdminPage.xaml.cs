@@ -1,4 +1,5 @@
 ﻿using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,14 +20,11 @@ namespace Hangman.Views
     /// </summary>
     public partial class AdminPage : Page
     {
-        private readonly AdminViewModel _vm;
-        public AdminPage()
+        public AdminPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
 
-            _vm = new AdminViewModel();
-            DataContext = new AdminViewModel();
-
+            DataContext = specificModel ?? new AdminViewModel();
             MessageView.Content = new MessageBoardUC();
         }
 

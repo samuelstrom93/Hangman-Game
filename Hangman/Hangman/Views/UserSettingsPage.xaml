@@ -57,7 +57,7 @@
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Style="{StaticResource StandardFontTextBlock}">Skriv in önskat nytt namn</TextBlock>
                             <TextBox  Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertName"/>
-                            <Button Style="{DynamicResource StandardButton}"  Content="Byt Namn!" Click="Button_UpdateUser_Click"/>
+                            <Button Style="{DynamicResource StandardButton}"  Content="Byt Namn!"/>
                             <TextBlock x:Name="txtBlockUpdateMessage" Foreground="Red" Text="{Binding UpdateMessage}"/>
                         </StackPanel>
                     </Grid>
@@ -82,7 +82,7 @@
                             >
                             <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
                             <TextBox Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertUser" />
-                            <Button Style="{StaticResource StandardButton}"  Content="Ta bort mig." Click="Button_DeleteUser_Click"/>
+                            <Button Style="{StaticResource StandardButton}"  Content="Ta bort mig."/>
                             <TextBlock x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}"/>
                         </StackPanel>
                     </Grid>

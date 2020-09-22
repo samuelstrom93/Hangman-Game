@@ -1,5 +1,6 @@
 ﻿using Hangman.Modules;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,11 +21,11 @@ namespace Hangman.Views
     /// </summary>
     public partial class GameStartPage : Page
     {
-        public GameStartPage()
+        public GameStartPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
 
-            DataContext = new GameStartViewModel();
+            DataContext = specificModel ?? new GameStartViewModel();
         }
     }
 }

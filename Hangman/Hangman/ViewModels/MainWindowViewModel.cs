@@ -1,11 +1,7 @@
-﻿using Hangman.Modules;
-using Hangman.Models;
-using Hangman.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using Hangman.ViewModels.Base;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Hangman.Views 
 {
@@ -14,14 +10,16 @@ namespace Hangman.Views
         public string PlayerName { get; set; } = "Meny";
         public Visibility Visibility { get; set; }
 
+        public ICommand NavigateToPageCommand { get; set; }
         public MainWindowViewModel()
         {
-
+            NavigateToPageCommand = new RelayCommand(GoToPage);
         }
 
-        public void UpdateActivePlayer()
+        private void GoToPage()
         {
-            PlayerName = PlayerModule.GetActivePlayer().Name;
+            Page page = new LoginPage();
+            NavigationService.Navigate(page);
         }
     }
 }
