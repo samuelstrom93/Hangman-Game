@@ -23,13 +23,8 @@ namespace Hangman.Views
     /// </summary>
     public partial class GamePage : Page
     {
-        #region public field
         public IPlayer Player;
-
-        #endregion
-        #region private field
         private GamePageViewModel gamePageViewModel;
-        #endregion
 
         public GamePage(bool isPlayAgain)
         {
@@ -55,72 +50,6 @@ namespace Hangman.Views
         }
 
 
-        #region Methods: LetterBtn
-        private void Letter_Click(object sender, RoutedEventArgs e)
-        {
-            JudgeGameFromLetterClick(((Button)sender));
-            ViewGameEndPage();
-        }
-
-
-        private void JudgeGameFromLetterClick(Button sender)
-        {
-            if (gamePageViewModel.IsGameStart)
-            {
-                string selectedKey = sender.Content.ToString();
-
-                gamePageViewModel.TakeSelectedKey(selectedKey);
-                gamePageViewModel.JudgeGame();
-
-                ChangeBtnStyle(sender);
-            }
-        }
-
-        private void ChangeBtnStyle(Button sender)
-        {
-            if (gamePageViewModel.IsGuessCorrect)
-            {
-                //((Button)sender).Background = Brushes.Green;
-                sender.Opacity = 0.3;
-                sender.BorderThickness = new Thickness(0, 0, 0, 0);
-                sender.BorderBrush = null;
-                sender.Foreground = Brushes.Green;
-                sender.FontWeight = FontWeights.Bold;
-            }
-            else
-            {
-                //((Button)sender).Background = Brushes.Red;
-                sender.Opacity = 0.3;
-                sender.BorderThickness = new Thickness(0, 0, 0, 0);
-                sender.BorderBrush = null;
-                sender.Foreground = Brushes.Red;
-                sender.FontWeight = FontWeights.Bold;
-
-            }
-            sender.IsEnabled = false;
-
-        }
-
-        #endregion
-
-        #region Methods: GuessDirectlyBtn
-        private void GuessDirectlyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            JudgeGameFromGuessDirectly();
-            ViewGameEndPage();
-        }
-
-        private void JudgeGameFromGuessDirectly()
-        {
-            if (gamePageViewModel.IsGameStart)
-            {
-                gamePageViewModel.TakeGuessingAnswer(guessingWordText.Text);
-                gamePageViewModel.GuessDirectly();
-                gamePageViewModel.SwitchGameStatus();
-            }
-        }
-        #endregion
-
         #region Methods: View/Jump other pages
 
         private void ViewGameStartPageAsOverray(bool isPlayAgain)
@@ -131,16 +60,7 @@ namespace Hangman.Views
             }
         }
 
-        private void ViewGameEndPage()
-        {
-            if (gamePageViewModel.IsGameEnd)
-            {
-                //this.NavigationService.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-                Overray.Content = new GameEnd_Page(gamePageViewModel.GetGameScore(), gamePageViewModel.GetWord());
-            }
-        }
-
-        private void Help_Click(object sender, RoutedEventArgs e)
+         private void Help_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Content = new GameIntroPage();
         }

@@ -19,12 +19,12 @@ namespace Hangman.Views
     /// <summary>
     /// Gameover_Page.xaml の相互作用ロジック
     /// </summary>
-    public partial class GameEnd_Page : Page
+    public partial class GameEndPage : Page
     {
         private GameEndPageViewModel gameEndPageViewModel;
         private bool isPlayAgain = true;
 
-        public GameEnd_Page(Game game, Word word)
+        public GameEndPage(Game game, Word word)
         {
             InitializeComponent();
             gameEndPageViewModel = new GameEndPageViewModel(game, word);
