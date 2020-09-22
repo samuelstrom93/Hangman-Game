@@ -11,7 +11,7 @@ using Hangman.Moduls;
 
 namespace Hangman.Modules
 {
-    public class GameEngine : DefaultBaseViewModel
+    public class GameEngine : BaseViewModel
     {
         public StopWatchUCViewModel StopWatchEngine { get; set; }
 
