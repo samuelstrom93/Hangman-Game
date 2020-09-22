@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using Hangman.Repositories;
 using Hangman;
 using Hangman.ViewModels;

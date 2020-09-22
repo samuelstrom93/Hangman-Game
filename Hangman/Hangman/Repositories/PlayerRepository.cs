@@ -16,10 +16,10 @@ namespace Hangman.Repositories
         #region CREATE
 
         //Metod för att skapa spelare - Vill vi ha name/id/Person som indata?
-        public static void CreatePlayer(string name)
+        public static IPlayer CreatePlayer(string name)
         {
             string stmt = "INSERT INTO player (name) values(@name) returning id";
-            Player player = new Player();
+            Player player = null;
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
@@ -36,8 +36,15 @@ namespace Hangman.Repositories
                             command.CommandText = stmt;
                             command.Prepare();
                             int id = (int)command.ExecuteScalar();
+                            if (id > 0)
+                            {
+                                player = new Player
+                                {
+                                    Id = id,
+                                    Name = name
+                                };
+                            }
                             command.Parameters.Clear();
-
                         }
                         trans.Commit();
 
@@ -46,11 +53,11 @@ namespace Hangman.Repositories
                     catch (PostgresException)
                     {
                         trans.Rollback();
-                        throw;
                     }
                 }
-
             }
+
+            return player;
         }
 
         #endregion
@@ -95,8 +102,7 @@ namespace Hangman.Repositories
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
-                Player player = new Player();
-                player = null;
+                Player player = null;
                 conn.Open();
 
                 using (var command = new NpgsqlCommand(stmt, conn))

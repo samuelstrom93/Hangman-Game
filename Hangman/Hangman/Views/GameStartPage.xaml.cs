@@ -1,4 +1,6 @@
-﻿using Hangman.GameLogics;
+﻿using Hangman.Modules;
+using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,29 +21,11 @@ namespace Hangman.Views
     /// </summary>
     public partial class GameStartPage : Page
     {
-        public GameStartPage()
+        public GameStartPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
 
-            var player = PlayerEngine.ActivePlayer;
-            if (player == null)
-            {
-                YourTopGames.Content = new TopGamesUC();
-            }
-            else
-            {
-                YourTopGames.Content = new TopGamesUC(player.Id);
-            }
-        }
-
-        private void BtnPlay_Click(object sender, RoutedEventArgs e)
-        {
-            this.Visibility = Visibility.Hidden;
-        }
-
-        private void GameStartIntro_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
+            DataContext = specificModel ?? new GameStartViewModel();
         }
     }
 }

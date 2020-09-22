@@ -1,27 +1,26 @@
-﻿using Hangman.GameLogics;
-using Hangman.Models;
-using Hangman.ViewModels.Base;
-using System;
+﻿using Hangman.ViewModels.Base;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Hangman.Views 
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public string PlayerName { get; set; } = "Meny";
-        public Visibility Visibility { get; set; }
-
+        public ICommand NavigateToPageCommand { get; set; }
         public MainWindowViewModel()
         {
-
+            NavigateToPageCommand = new RelayCommand(GoToPage);
         }
 
-        public void UpdateActivePlayer()
+        private void GoToPage()
         {
-            PlayerName = PlayerEngine.ActivePlayer.Name;
+            Page page = new LoginPage();
+            NavigationService.Navigate(page);
         }
     }
 }

@@ -10,8 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using Hangman.Views.Menu;
 
 namespace Hangman.Views
@@ -21,48 +22,43 @@ namespace Hangman.Views
     /// </summary>
     public partial class UserSettingsPage : Page
     {
-        private UserSettingsViewModel usVM;
-
-        public UserSettingsPage()
+        public UserSettingsPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
-            usVM = new UserSettingsViewModel();
+            DataContext = specificModel ?? new UserSettingsViewModel();
 
             UserStatsFrame.Content = new PlayerStatsUC();
         }
 
-        #region Methods: Btn_Click
-        private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
-        {
-            string name = txtBoxInsertUser.Text;
-            bool result;
+        //private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string name = txtBoxInsertUser.Text;
+        //    bool result;
 
-            result = usVM.CheckIfDeletable(name);
+        //    result = usVM.CheckIfDeletable(name);
 
-            if (result)
-            {
-                usVM.DeleteUser();
-                MessageBox.Show("Din användare är nu radarad, du loggas nu ut.");
-                this.NavigationService.Content = new LoginPage();
-            }
+        //    if (result)
+        //    {
+        //        usVM.DeleteUser();
+        //        MessageBox.Show("Din användare är nu radarad, du loggas nu ut.");
+        //        this.NavigationService.Content = new LoginPage();
+        //    }
 
-            txtBoxInsertUser.Clear();
-            DataContext = usVM;
+        //    txtBoxInsertUser.Clear();
+        //    DataContext = usVM;
 
-        }
+        //}
 
-        private void Button_UpdateUser_Click(object sender, RoutedEventArgs e)
-        {
-            string name = txtBoxInsertName.Text;
+        //private void Button_UpdateUser_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string name = txtBoxInsertName.Text;
 
-            //Uppdatera Player Engine
-            usVM.UpdateUser(PlayerEngine.ActivePlayer, name);
+        //    //Uppdatera Player Engine
+        //    usVM.UpdateUser(PlayerModule.GetActivePlayer(), name);
 
-            txtBoxInsertName.Clear();
-            DataContext = usVM;
-        }
-
-        #endregion
+        //    txtBoxInsertName.Clear();
+        //    DataContext = usVM;
+        //}
 
     }
 }

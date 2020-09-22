@@ -10,7 +10,7 @@ using System.Text;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Hangman.Views;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -18,8 +18,8 @@ using System.Windows.Resources;
 using System.IO;
 using System.Drawing;
 using System.Reflection;
-using Hangman.Moduls;
 using Hangman.Views.UCsForGamePage;
+using Hangman.Moduls;
 
 namespace Hangman.ViewModels
 {
@@ -33,29 +33,16 @@ namespace Hangman.ViewModels
 
         public string PlayerName { get; set; }  // = PlayerEngine.ActivePlayer.Name
 
-        public GamePageViewModel()  // UTAN inloggning
+        public GamePageViewModel()    // MED inloggning
         {
-            PlayerName = "Spela utan användare";
 
-            SetCommands();
+            var player = ActivePlayer;
+            PlayerName = player == null ? "Spela utan användare" : player.Name;
 
             MakeStopWatchUC();
             MakeKeyboardUC();
             MakeGameEngine();
-            GameEngine.SetPlayerWithoutLoggIn();
-            HintUC = new HintUC();
-        }
-
-        public GamePageViewModel(IPlayer player)    // MED inloggning
-        {
-            PlayerName = PlayerEngine.ActivePlayer.Name;
-
-            SetCommands();
-
-            MakeStopWatchUC();
-            MakeKeyboardUC();
-            MakeGameEngine();
-            GameEngine.SetPlayer(player);
+            if (player != null) GameEngine.SetPlayer(player);
             HintUC = new HintUC();
         }
 
@@ -89,11 +76,6 @@ namespace Hangman.ViewModels
         private void StartGame()
         {
             GameEngine.StartGame();
-
-            StopWatchEngine.StartStopWatch();
-            IWord = GameEngine.IWord;
-            HintUC.SetDataContext(IWord.Hint);
-
         }
 
         #region Keyboard

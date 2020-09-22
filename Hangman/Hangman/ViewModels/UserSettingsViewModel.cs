@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media.Imaging;
 using Hangman.Repositories;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Hangman.Models;
 using Npgsql;
+using System.Windows;
 
 namespace Hangman.ViewModels
 {
@@ -27,13 +28,16 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Properties: Delete User
+        public string NameCheck { get; set; }
         public bool IsDeletable { get; set; }
         public string DeleteMessage { get; set; }
+        public ICommand DeleteUserCommand { get; set; }
         #endregion
 
         #region Properties: Update User
+        public string NewName { get; set; }
         public string UpdateMessage { get; set; }
-        public ICommand UppdateUserCommand { get; set; }
+        public ICommand UpdateUserCommand { get; set; }
         public IPlayer Player { get; set; }
 
         #endregion
@@ -41,12 +45,27 @@ namespace Hangman.ViewModels
         public UserSettingsViewModel()
         {
             UpdatePlayerStats();
+
+            DeleteUserCommand = new RelayCommand(TryDeleteUser);
+            UpdateUserCommand = new RelayCommand(UpdateUser);
         }
 
         #region Methods: Delete User
+
+        private void TryDeleteUser()
+        {
+            if (CheckIfDeletable(NameCheck))
+            {
+                DeleteUser();
+                MessageBox.Show("Din användare är nu radarad, du loggas nu ut.");
+
+                SetActivePlayer(null);
+                GoToPage(ApplicationPage.Login);
+            }
+        }
         public bool CheckIfDeletable(string name)
         {
-            if (name == PlayerEngine.ActivePlayer.Name)
+            if (name == ActivePlayer.Name)
             {
                 DeleteMessage = "Din användare raderas. Du loggas nu ut.";
                 return true;
@@ -62,7 +81,7 @@ namespace Hangman.ViewModels
 
         public void DeleteUser()
         {
-            PlayerRepository.DeletePlayer(PlayerEngine.ActivePlayer.Id);
+            PlayerRepository.DeletePlayer(ActivePlayer.Id);
         }
 
         #endregion
@@ -78,19 +97,19 @@ namespace Hangman.ViewModels
 
         public void GetGamesPlayed()
         {
-            GamesPlayed = PlayerStatsRepository.GetGamesPlayed(PlayerEngine.ActivePlayer).ToString();
+            GamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
         }
 
         public void GetGamesWon()
         {
-            GamesWon = PlayerStatsRepository.GetGamesWon(PlayerEngine.ActivePlayer).ToString();
+            GamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer).ToString();
         }
 
         public void CalculateWinRate()
         {
 
-            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(PlayerEngine.ActivePlayer);
-            double gamesWon = PlayerStatsRepository.GetGamesWon(PlayerEngine.ActivePlayer);
+            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer);
+            double gamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer);
 
             if (gamesPlayed == 0)
             {
@@ -149,16 +168,17 @@ namespace Hangman.ViewModels
 
         #region Methods: Update User
 
-        public void UpdateUser(IPlayer player, string wantedName)
+        public void UpdateUser()
         {
-
-            if (wantedName != "" && wantedName != PlayerEngine.ActivePlayer.Name)
+            if (NewName != "" && NewName != ActivePlayerName)
             {
                 try
                 {
-                    PlayerRepository.UpdateNameOnPlayer(wantedName, PlayerEngine.ActivePlayer.Id);
-                    PlayerEngine.ActivePlayer = PlayerRepository.GetPlayer(wantedName);
-                    UpdateMessage = "Ditt användarnamn är nu bytt till " + wantedName;
+                    PlayerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
+                    var module = new PlayerModule();
+                    module.TryLogInPlayer(NewName);
+                    SetActivePlayer(NewName);
+                    UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
                 }
 
                 catch (PostgresException ex)
@@ -176,12 +196,12 @@ namespace Hangman.ViewModels
                 }
             }
 
-            else if (wantedName == PlayerEngine.ActivePlayer.Name)
+            else if (NewName == ActivePlayerName)
             {
                 UpdateMessage = "Du måste ange ett nytt namn";
             }
 
-            else if (wantedName == "")
+            else if (NewName == "")
                 UpdateMessage = "Du måste ange ett namn";
 
             else

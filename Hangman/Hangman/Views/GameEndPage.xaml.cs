@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hangman.ViewModels.Base;
 
 namespace Hangman.Views
 {
@@ -31,6 +32,16 @@ namespace Hangman.Views
             DataContext = gameEndPageViewModel;
         }
 
+        public GameEnd_Page(BaseViewModel specificModel)
+        {
+            InitializeComponent();
+            DataContext = specificModel;
+        }
+        public GameEnd_Page()
+        {
+            InitializeComponent();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(gameEndPageViewModel.GameEndEngine.GetGame().PlayerId != 0)    // Behåller inloggning
@@ -40,12 +51,13 @@ namespace Hangman.Views
 
             else
             {
-                this.NavigationService.Content = new GamePage(isPlayAgain);
+                this.NavigationService.Content = new GamePage(isPlayAgain: isPlayAgain);
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            // TODO: LOGOUT METHOD
             this.NavigationService.Content = new LoginPage();
         }
     }

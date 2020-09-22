@@ -7,8 +7,9 @@ using System.Windows.Media.Imaging;
 using static Hangman.Repositories.PlayerRepository;
 using static Hangman.Repositories.WordRepository;
 using static Hangman.Repositories.GameRepository;
+using Hangman.Moduls;
 
-namespace Hangman.Moduls
+namespace Hangman.Modules
 {
     public class GameEngine : BaseViewModel
     {

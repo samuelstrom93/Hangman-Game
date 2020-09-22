@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Hangman.Views"
+      xmlns:local="clr-namespace:Hangman"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
       Title="LoginPage">
@@ -44,17 +44,17 @@
                 
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" >
                     <Label Style="{StaticResource PageTitleLabel}" Content="Logga in på din användare" FontWeight="Bold"></Label>
-                    <TextBox Style="{StaticResource UserInputTxtBox}" Name="txtBoxUserInput"></TextBox>
-                    <Button Width="100" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command ="{Binding LoginCommand}" Click ="Button_Login_Click" />
+                    <TextBox Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName}"></TextBox>
+                    <Button Width="100" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command ="{Binding TryLogIn}" />
                 </StackPanel>
             </Border>
 
             <Border   Grid.Row="1" Grid.Column="3"  Grid.RowSpan="3"   VerticalAlignment="Top" Margin="0, 15, 0, 0">
                 <StackPanel>
                     <Label FontSize="12" Style="{StaticResource StandardLabel}"  Content="Vill du spela utan användare?"></Label>
-                    <Button  Width="125" Height="35"  Style="{StaticResource StandardButton}" Foreground="White" Content="Spela direkt"  Click="PlayWithoutUser_Click"  ></Button>
+                    <Button  Width="125" Height="35"  Style="{StaticResource StandardButton}" Foreground="White" Content="Spela direkt" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}"></Button>
                     <Label FontSize="12"  Style="{StaticResource StandardLabel}" Content="Är du en ny spelare?" ></Label>
-                    <Button Width="125" Height="35" Foreground="White" Style="{StaticResource StandardButton}" Click="Button_CreateUser_Click"  Content="Skapa en användare"  />
+                    <Button Width="125" Height="35" Foreground="White" Style="{StaticResource StandardButton}" Content="Skapa en användare" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.CreateUser}" />
                 </StackPanel>
             </Border>
 
@@ -62,7 +62,7 @@
             <Border Grid.Row="3" Grid.Column="4">
                 <StackPanel>
                     <Label FontSize="12"  Style="{StaticResource StandardLabel}" Content="Vill du läsa reglerna?" ></Label>
-                    <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Click="Button_GameIntro_Click" Content="Såhär spelar du" HorizontalAlignment="Center"  />
+                    <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Såhär spelar du" HorizontalAlignment="Center" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" />
                 </StackPanel>
             </Border>
 

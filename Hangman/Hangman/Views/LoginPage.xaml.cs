@@ -10,10 +10,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hangman.GameLogics;
+using Hangman.Modules;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using Hangman.Views.ErrorMessage;
 
 namespace Hangman.Views
@@ -23,93 +24,12 @@ namespace Hangman.Views
     /// </summary>
     public partial class LoginPage : Page
     {
-        private LoginPageViewModel model;
-        private bool isPlayAgain = false;
- 
-
-        public LoginPage()
+        public LoginPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
-            model = new LoginPageViewModel();
-            DataContext = model;
+            DataContext = specificModel ?? new LoginPageViewModel();
           
         }
 
-        #region Metods: ButtonClick
-
-        /// <summary>
-        /// Event som triggas vid tryck på "Logga in":  * Kontroll om användaren finns
-        ///                                             * Kontroll om admin/vanlig spelare
-        ///                                             * Logga in på rätt sida
-        /// </summary>
-
-        private void Button_Login_Click(object sender, RoutedEventArgs e)
-        {
-            if (IsLoginPossible())
-            {
-                if (CheckIfAdmin())
-                    LoginAdmin();
-                else
-                    LoginPlayer();
-            }
-            else
-            {
-                ErrorFrame.Content = new ErrorMessageUC();
-                model.ErrorMessage= "Din användare finns inte!";
-                txtBoxUserInput.Clear();
-            }
-
-
-            DataContext = model;
-        }
-        #endregion
-
-        #region Metods: Login player/admin
-
-        public void LoginPlayer()
-        {
-            PlayerEngine.SetActivePlayer(txtBoxUserInput.Text);
-            this.NavigationService.Content = new GamePage(PlayerEngine.ActivePlayer, isPlayAgain);
-        }
-
-        public void LoginAdmin()
-        {
-            this.NavigationService.Content = new AdminPage();
-        }
-
-        public bool IsLoginPossible()
-        {
-            if (PlayerEngine.IsNameUsed(txtBoxUserInput.Text))
-                return true;
-
-            else
-                return false;
-        }
-
-        public bool CheckIfAdmin()
-        {
-            if (txtBoxUserInput.Text == "Admin")
-                return true;
-            else
-                return false;
-        }
-        #endregion
-
-        #region Methods: Navigate to other pages
-        private void Button_GameIntro_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
-        }
-
-        private void Button_CreateUser_Click(object sender, RoutedEventArgs e)
-        {         
-            this.NavigationService.Content = new CreateUser_Page();
-        }
-
-        private void PlayWithoutUser_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GamePage(isPlayAgain);
-        }
-        #endregion
     }
 }

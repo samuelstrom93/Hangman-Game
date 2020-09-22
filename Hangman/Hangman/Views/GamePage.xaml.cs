@@ -1,7 +1,8 @@
-﻿using Hangman.GameLogics;
+﻿using Hangman.Modules;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,23 +27,13 @@ namespace Hangman.Views
         public IPlayer Player;
         private GamePageViewModel gamePageViewModel;
 
-        public GamePage(bool isPlayAgain)
-        {
-            InitializeComponent();
-
-            gamePageViewModel = new GamePageViewModel();
-            DataContext = gamePageViewModel;
-
-            ViewGameStartPageAsOverray(isPlayAgain);
-        }
-
-        public GamePage(IPlayer player, bool isPlayAgain)
+        public GamePage(IPlayer player = null, bool isPlayAgain = false, BaseViewModel specificModel = null)
         {
 
             InitializeComponent();
             Player = player;
 
-            gamePageViewModel = new GamePageViewModel(player);
+            gamePageViewModel = new GamePageViewModel();
             DataContext = gamePageViewModel;
 
             ViewGameStartPageAsOverray(isPlayAgain);
