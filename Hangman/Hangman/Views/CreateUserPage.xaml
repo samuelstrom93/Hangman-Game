@@ -49,7 +49,7 @@
                 <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}" />
             </Grid>
             <Grid Grid.Row="5" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Såhär spelar du" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"/>
+                <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Såhär spelar du" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" Cursor="Hand"/>
             </Grid>
 
            

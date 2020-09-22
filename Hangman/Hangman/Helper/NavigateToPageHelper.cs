@@ -24,6 +24,7 @@ namespace Hangman.Helper
             return page switch
             {
                 ApplicationPage.Login => new LoginPage(model),
+                ApplicationPage.GameIntro => new GameIntroPage(model),
                 ApplicationPage.Admin => new AdminPage(model),
                 ApplicationPage.CreateUser => new CreateUser_Page(model),
                 ApplicationPage.GameStart => new GameStartPage(model), 
