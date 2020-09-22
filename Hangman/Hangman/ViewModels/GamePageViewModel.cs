@@ -59,6 +59,12 @@ namespace Hangman.ViewModels
             HintUC = new HintUC();
         }
 
+        private void MakeStopWatchUC()
+        {
+            StopWatchEngine = new StopWatchUCViewModel();
+            StopWatchUC = new StopWatchUC(StopWatchEngine);
+        }
+
         private void MakeKeyboardUC()
         {
             KeyboardUC = new KeyboardUC();
@@ -100,12 +106,6 @@ namespace Hangman.ViewModels
         #region StopWatch
         public StopWatchUC StopWatchUC { get; set; } //Binding i GamePage.xml
         public StopWatchUCViewModel StopWatchEngine { get; set; }
-
-        private void MakeStopWatchUC()
-        {
-            StopWatchEngine = new StopWatchUCViewModel();
-            StopWatchUC = new StopWatchUC(StopWatchEngine);
-        }
 
         #endregion
     }
