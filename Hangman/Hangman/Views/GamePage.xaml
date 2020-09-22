@@ -25,7 +25,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="600"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
@@ -108,7 +108,7 @@
                 </StackPanel>
             </Grid>
             <Frame x:Name="Overray" />
-            <Frame Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
+            <Frame Width="800" Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
         </Grid>
     </Border>
 </Page>
