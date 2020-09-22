@@ -177,6 +177,7 @@ namespace Hangman.ViewModels
                     PlayerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
                     var module = new PlayerModule();
                     module.TryLogInPlayer(NewName);
+                    SetActivePlayer(NewName);
                     UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
                 }
 
