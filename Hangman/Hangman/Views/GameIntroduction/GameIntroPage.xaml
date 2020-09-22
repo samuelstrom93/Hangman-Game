@@ -8,6 +8,7 @@
       d:DesignHeight="1250" d:DesignWidth="1500"
       Title="GameIntroPage">
 
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
     <Grid Background="#cccedb" Width="1500" Height="1250">
         <StackPanel>
             <TextBlock Grid.Column="4" Grid.Row="5" Margin="0,20,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="30">Spelintroduktion</TextBlock>
@@ -57,4 +58,5 @@
             <Button Style="{StaticResource StandardButton}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="NextPage_Click"/>
         </StackPanel>
     </Grid>
+    </ScrollViewer>
 </Page>
