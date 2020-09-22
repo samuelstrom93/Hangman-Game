@@ -32,10 +32,6 @@
             <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
         </Border>
         <StackPanel>
-            <Button Command="{Binding NavigateToPageCommand}" Content="Visa sida 1" MinWidth="34"  Margin="5 5 2.5 5"/>
-            <Button Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}" Content="Gamestart" MinWidth="34"/>
-            <Button Command="{Binding NavigateToPageByParaMeterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameStart}" Content="GamePage" MinWidth="34"/>
-            <Button Command="{Binding NavigateToPageByParaMeterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameEnd}" Content="GameEnd" MinWidth="34"/>
             <!--<Button Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}" Content="Visa sida 2"/>-->
         </StackPanel>
         <Frame Grid.Row="1" x:Name="mainFrame"/>

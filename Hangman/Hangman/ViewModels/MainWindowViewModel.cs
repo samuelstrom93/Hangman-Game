@@ -31,21 +31,21 @@ namespace Hangman.Views
             NavigationService.Navigate(page);
         }
 
-        protected override void GoToPage(object parameter)
-        {
-            var selectedPage = (ApplicationPage)parameter;
+        //protected override void GoToPage(object parameter)
+        //{
+        //    var selectedPage = (ApplicationPage)parameter;
 
-            //var player = new Cpu { Fullname = "R2D2" };
-            //var model = new Page2ViewModel(player); //Helt ok, eftersom Cpu implementerar IFullname
+        //    //var player = new Cpu { Fullname = "R2D2" };
+        //    //var model = new Page2ViewModel(player); //Helt ok, eftersom Cpu implementerar IFullname
 
 
-            //var player = PlayerEngine.ActivePlayer;
+        //    //var player = PlayerEngine.ActivePlayer;
 
-            //var model = new GamePageViewModel(player);
-            var model = new GameStartViewModel();
-            Page page = NavigateToPageHelper.GetPage(selectedPage, model);
-            NavigationService.Navigate(page);
-        }
+        //    //var model = new GamePageViewModel(player);
+        //    var model = new GameStartViewModel();
+        //    Page page = NavigateToPageHelper.GetPage(selectedPage, model);
+        //    NavigationService.Navigate(page);
+        //}
 
         #endregion
         public void UpdateActivePlayer()

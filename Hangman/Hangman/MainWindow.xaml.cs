@@ -19,8 +19,9 @@ namespace Hangman
             //this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.8);
             //this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.8);
 
-            //Main.Content = new LoginPage();
 
+
+            Main.Content = new LoginPage();
             DataContext = new MainWindowViewModel();
         }
     }
