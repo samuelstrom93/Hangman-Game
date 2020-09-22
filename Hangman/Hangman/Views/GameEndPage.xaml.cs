@@ -33,9 +33,9 @@ namespace Hangman.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(gameEndPageViewModel.GetGame().PlayerId != 0)    // Behåller inloggning
+            if(gameEndPageViewModel.GameEndEngine.GetGame().PlayerId != 0)    // Behåller inloggning
             {
-                this.NavigationService.Content = new GamePage(GetPlayerFromID(gameEndPageViewModel.GetGame().PlayerId), isPlayAgain);
+                this.NavigationService.Content = new GamePage(GetPlayerFromID(gameEndPageViewModel.GameEndEngine.GetGame().PlayerId), isPlayAgain);
             }
 
             else

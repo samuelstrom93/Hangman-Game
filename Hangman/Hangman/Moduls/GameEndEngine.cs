@@ -1,25 +1,18 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels.Base;
 using static Hangman.Repositories.GameRepository;
-using Hangman.ViewModels;
+using static Hangman.Repositories.HighscoreRepository;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Input;
 using Hangman.Repositories;
-using Hangman.Moduls;
 
-namespace Hangman.ViewModels
+namespace Hangman.Moduls
 {
-    class GameEndPageViewModel : BaseViewModel
+    class GameEndEngine : BaseViewModel
     {
-        #region public fields
-
-        public ICommand DeleteGameScoreCommand { get; set; } //Binding i GameEnd_Page
-        public GameEndEngine GameEndEngine { get; set; }
-
-        /*public IGame IGame { get; set; } 
-        public IWord IWord { get; set; }  
+        public IGame IGame { get; set; }
+        public IWord IWord { get; set; }
 
         public int NumberOfCorrectTries { get; set; } //Binding i GameEnd_Page
         public string GameStatus { get; set; }  //Binding i GameEnd_Page
@@ -27,41 +20,34 @@ namespace Hangman.ViewModels
 
         public bool IsRankingShown { get; set; }    //Binding i GameEnd_Page
         public bool IsDeleteGameScoreBtnShown { get; set; }     //Binding i GameEnd_Page
-        public int Ranking { get; set; }*/
+        public int Ranking { get; set; }
 
-        #endregion
-
-        public GameEndPageViewModel(Game game, Word word)
+        public GameEndEngine(Game game, Word word)
         {
-            GameEndEngine = new GameEndEngine(game, word);
-
-           /* SetIGame(game);
+            SetIGame(game);
             SetGame(game);
             SetIWord(word);
             SetNumberOfCorrectTries();
             SetGameStatus();
 
             DistinguishPlayer();
-            SwitchRankingView();*/
-            
-            DeleteGameScoreCommand = new RelayCommand(DeleteGameScore);
+            SwitchRankingView();
         }
 
         #region Methods for Get+DeleteGame
 
-      /*  private Game game { get; set; }
+        private Game game { get; set; }
         public Game GetGame()
         {
             return game;
         }
-      */
-        private void DeleteGameScore()
+        private int gameID;
+        public void DeleteGameScore()
         {
-            GameEndEngine.DeleteGameScore();
-            //DeleteGame(gameID);
+            DeleteGame(gameID);
         }
 
-       /* #endregion
+        #endregion
 
         #region SetMethods
 
@@ -101,7 +87,7 @@ namespace Hangman.ViewModels
         #region Methods for UI 
         private void SwitchRankingView()
         {
-            if ((IGame.IsWon == true)&&(game.PlayerId != 0))    // Spelaren MED inloggning har vunnit
+            if ((IGame.IsWon == true) && (game.PlayerId != 0))    // Spelaren MED inloggning har vunnit
             {
                 IsRankingShown = true;
                 Ranking = HighscoreRepository.GetRankOnHighScore(game.Id);
@@ -112,11 +98,10 @@ namespace Hangman.ViewModels
             }
         }
 
-        private int gameID;
 
         private void DistinguishPlayer()
         {
-            if(game.PlayerId != 0)  // Spelaren MED inloggning
+            if (game.PlayerId != 0)  // Spelaren MED inloggning
             {
                 gameID = AddGame(game);
                 IsDeleteGameScoreBtnShown = true;
@@ -128,7 +113,7 @@ namespace Hangman.ViewModels
                 QuitBtnContent = "Avsluta spel";
             }
         }
-       */
+
         #endregion
 
     }
