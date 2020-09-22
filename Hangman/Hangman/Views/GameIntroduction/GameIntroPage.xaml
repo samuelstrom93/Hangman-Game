@@ -11,7 +11,6 @@
     <Grid  Background="#cccedb" Width="1500" Height="1250">
         <StackPanel>
             <TextBlock Grid.Column="4" Grid.Row="5" Margin="0,20,0,0" TextAlignment="Center" FontWeight="Bold" FontSize="30">Spelintroduktion</TextBlock>
-            <TextBlock Margin="0,10,0,0" TextAlignment="Center" FontWeight="SemiBold" FontSize="25" FontStyle="Italic" >Rädda Gubben</TextBlock>
             <TextBlock Padding="15" Margin="0,25,0,30" Background="AliceBlue" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="600">
              <Bold>Spelidé:</Bold><LineBreak></LineBreak>
               Spelet baseras på det klassiska spelet <Italic>Hänga Gubbe</Italic> där spelaren ställs inför utmaningen att gissa vilket ord som slumpats fram och rädda vår huvudkaraktär genom att på gissa på bokstäver i ordet. 
@@ -22,7 +21,7 @@
                 <TextBlock Margin="160,0,0,0" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Right">Information</TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
-                <Border BorderThickness="1" HorizontalAlignment="Center"  Margin="390,2,0,0" Height="300" Width="350">
+                <Border BorderThickness="1" HorizontalAlignment="Center"  Margin="390,2,0,0" Height="250" Width="350">
                     <Border.Background>
                         <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
                     </Border.Background>
@@ -33,7 +32,7 @@
                     Vid varje fel gissning tappar gubben greppet med ett finger i taget. På så sätt har du koll på när spelet tar slut.
                 </TextBlock>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,55">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,15">
                 <Border BorderBrush="Black" BorderThickness="1" Margin="35,10,25,0" Height="430" Width="350">
                     <Border.Background>
                         <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
