@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Hangman.Repositories;
+using System.Windows.Controls;
 
 namespace Hangman.Moduls
 {
@@ -16,6 +17,8 @@ namespace Hangman.Moduls
 
         #region Properties: Binding i GameEndPage
 
+        public Button Button { get; set; }
+
         public int NumberOfCorrectTries { get; set; }
         public int Ranking { get; set; }
 
@@ -24,6 +27,7 @@ namespace Hangman.Moduls
 
         public bool IsRankingShown { get; set; }   
         public bool IsDeleteGameScoreBtnShown { get; set; } 
+
         #endregion
 
         public GameEndEngine(Game game, Word word)
@@ -33,10 +37,13 @@ namespace Hangman.Moduls
             SetIWord(word);
             SetNumberOfCorrectTries();
             SetGameStatus();
+            SetBtn();
+            
 
             ChangeQuitBtnContent();
             SwitchRankingView();
         }
+
 
         #region Methods for Get+DeleteGame
 
@@ -61,22 +68,22 @@ namespace Hangman.Moduls
             game = playersGameScore;
         }
 
-        public void SetIGame(Game game)
+        private void SetIGame(Game game)
         {
             IGame = game;
         }
 
-        public void SetIWord(Word word)
+        private void SetIWord(Word word)
         {
             IWord = word;
         }
 
-        public void SetNumberOfCorrectTries()
+        private void SetNumberOfCorrectTries()
         {
             NumberOfCorrectTries = IGame.NumberOfTries - IGame.NumberOfIncorrectTries;
         }
 
-        public void SetGameStatus()
+        private void SetGameStatus()
         {
             if (IGame.IsWon == true)
             {
@@ -87,6 +94,13 @@ namespace Hangman.Moduls
                 GameStatus = "Du förlorade...";
             }
         }
+
+        private void SetBtn()
+        {
+            Button = new Button();
+            Button.Content = "Kasta bort min spelpoäng!";
+        }
+
         #endregion
 
         #region Methods for UI 
@@ -116,6 +130,13 @@ namespace Hangman.Moduls
                 IsDeleteGameScoreBtnShown = false;
                 QuitBtnContent = "Avsluta spel";
             }
+        }
+
+        public void ChangeBtnStyle()
+        {
+            Button.Opacity = 0.5;
+            Button.Content = "Kastat!";
+            Button.IsEnabled = false;
         }
 
         #endregion

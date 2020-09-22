@@ -48,7 +48,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <Button Grid.Row="2" Visibility="{Binding GameEndEngine.IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" x:Name="gameScoreSaveBtn" HorizontalAlignment="Right" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Cursor="Hand" Click="Button_Click_2" Width="175" Height="27" Margin="0,0,10,10" VerticalAlignment="Bottom">Kasta bort min spelpoäng!</Button>
+            <Button Grid.Row="2" Visibility="{Binding GameEndEngine.IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Right" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Content="{Binding GameEndEngine.Button.Content}" Opacity="{Binding GameEndEngine.Button.Opacity}" IsEnabled="{Binding GameEndEngine.Button.IsEnabled}"  Width="175" Height="27" Margin="0,0,10,10" VerticalAlignment="Bottom" Cursor="Hand"></Button>
         </Grid>
     </Border>
 </Page>

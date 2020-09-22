@@ -48,17 +48,5 @@ namespace Hangman.Views
         {
             this.NavigationService.Content = new LoginPage();
         }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            ChangeStyleForGameScoreSaveBtn();
-        }
-
-        private void ChangeStyleForGameScoreSaveBtn()
-        {
-            gameScoreSaveBtn.Opacity = 0.5;
-            gameScoreSaveBtn.Content = "Kastat!";
-            gameScoreSaveBtn.IsEnabled = false;
-        }
     }
 }

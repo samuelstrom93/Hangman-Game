@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Input;
 using Hangman.Repositories;
 using Hangman.Moduls;
+using System.Windows.Controls;
 
 namespace Hangman.ViewModels
 {
@@ -21,12 +22,14 @@ namespace Hangman.ViewModels
         {
             GameEndEngine = new GameEndEngine(game, word);
             
+            
             DeleteGameScoreCommand = new RelayCommand(DeleteGameScore);
         }
 
         private void DeleteGameScore()
         {
             GameEndEngine.DeleteGameScore();
+            GameEndEngine.ChangeBtnStyle();
         }
 
 
