@@ -12,7 +12,7 @@ using System.Windows.Media;
 
 namespace Hangman.ViewModels
 {
-    public class KeyboardViewModel : DefaultBaseViewModel
+    public class KeyboardViewModel : BaseViewModel
     {
         public GameEngine GameEngine { get; set; }
         public GameEndPage GameEndPage { get; set; }

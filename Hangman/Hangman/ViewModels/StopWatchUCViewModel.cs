@@ -8,7 +8,7 @@ using System.Windows.Threading;
 
 namespace Hangman.Moduls
 {
-    public class StopWatchUCViewModel : DefaultBaseViewModel
+    public class StopWatchUCViewModel : BaseViewModel
     {
         public ICommand StopWatchHideCommand { get; set; }
 
