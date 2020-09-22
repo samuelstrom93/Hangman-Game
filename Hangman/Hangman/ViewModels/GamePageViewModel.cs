@@ -25,7 +25,7 @@ namespace Hangman.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
-        public GameEndPage GameEndOverray { get; set; } //Binding i GamePage.xml
+        public GameStartPage GameStartPage { get; set; }    //Binding i GamePage.xml
         public ICommand GameStartCommand { get; set; }  //Binding i GamePage.xml
         public HintUC HintUC { get; set; }  //Binding i GamePage.xml
 
@@ -33,8 +33,9 @@ namespace Hangman.ViewModels
 
         public string PlayerName { get; set; }  // = PlayerEngine.ActivePlayer.Name
 
-        public GamePageViewModel()    // MED inloggning
+        public GamePageViewModel(bool isPlayAgain)  
         {
+            ViewGameStartPageAsOverray(isPlayAgain);
 
             var player = ActivePlayer;
             PlayerName = player == null ? "Spela utan användare" : player.Name;
@@ -45,6 +46,14 @@ namespace Hangman.ViewModels
             MakeGameEngine();
             if (player != null) GameEngine.SetPlayer(player);
             HintUC = new HintUC();
+        }
+
+        private void ViewGameStartPageAsOverray(bool isPlayAgain)
+        {
+            if (isPlayAgain == false)
+            {
+                GameStartPage = new GameStartPage();
+            }
         }
 
         private void MakeStopWatchUC()

@@ -33,37 +33,9 @@ namespace Hangman.Views
             InitializeComponent();
             Player = player;
 
-            gamePageViewModel = new GamePageViewModel();
+            gamePageViewModel = new GamePageViewModel(isPlayAgain);
             DataContext = gamePageViewModel;
 
-            ViewGameStartPageAsOverray(isPlayAgain);
-
         }
-
-
-        #region Methods: View/Jump other pages
-
-        private void ViewGameStartPageAsOverray(bool isPlayAgain)
-        {
-            if (isPlayAgain == false)
-            {
-                Overray.Content = new GameStartPage();
-            }
-        }
-
-         private void Help_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
-        }
-
-        private void GameIntroPage_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Content = new GameIntroPage();
-        }
-        #endregion
-
-
-
-
     }
 }

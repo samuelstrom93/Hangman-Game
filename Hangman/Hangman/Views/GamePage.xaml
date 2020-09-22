@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Hangman.Views"
+      xmlns:local="clr-namespace:Hangman"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       
@@ -98,7 +98,7 @@
                     
                         <Frame Content="{Binding HintUC}"></Frame>
 
-                    <Button Background="{x:Null}" Padding="20,2,20,2" Margin="0,7,0,5" HorizontalAlignment="Right" Click="GameIntroPage_Click" Content="Hjälp?" BorderBrush="White" Width="100" Height="25">
+                    <Button Background="{x:Null}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" Padding="20,2,20,2" Margin="0,7,0,5" HorizontalAlignment="Right" Content="Hjälp?" BorderBrush="White" Width="100" Height="25">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -107,7 +107,7 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <Frame x:Name="Overray" />
+            <Frame Content="{Binding GameStartPage}"/>
             <Frame Width="800" Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
         </Grid>
     </Border>
