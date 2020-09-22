@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace Hangman.Moduls
 {
-    class HintUCViewModel : BaseViewModel
+    class HintUCViewModel : DefaultBaseViewModel
     {
         public string Hint { get; set; }
         public ICommand ShowHintCommand { get; set; }

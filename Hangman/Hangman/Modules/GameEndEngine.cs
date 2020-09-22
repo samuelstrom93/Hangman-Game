@@ -10,7 +10,7 @@ using System.Windows.Controls;
 
 namespace Hangman.Moduls
 {
-    class GameEndEngine : BaseViewModel
+    class GameEndEngine : DefaultBaseViewModel
     {
         public IGame IGame { get; set; }
         public IWord IWord { get; set; }

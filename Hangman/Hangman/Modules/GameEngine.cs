@@ -11,7 +11,7 @@ using Hangman.Moduls;
 
 namespace Hangman.Modules
 {
-    public class GameEngine : BaseViewModel
+    public class GameEngine : DefaultBaseViewModel
     {
         public StopWatchUCViewModel StopWatchEngine { get; set; }
 
@@ -69,7 +69,7 @@ namespace Hangman.Modules
             };
         }
 
-        public void SetPlayerWithoutLoggIn()
+        public void SetPlayerWithNoID()
         {
             Player = new Player()
             {
@@ -156,6 +156,7 @@ namespace Hangman.Modules
 
         internal void RefreshGame()
         {
+            SetPlayerWithNoID();
             numberOfLives = 10;
             numberOfTries = 0;
             numberOfIncorrectTries = 0;

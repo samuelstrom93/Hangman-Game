@@ -39,6 +39,7 @@ namespace Hangman.ViewModels
             var player = ActivePlayer;
             PlayerName = player == null ? "Spela utan användare" : player.Name;
 
+            SetCommands();
             MakeStopWatchUC();
             MakeKeyboardUC();
             MakeGameEngine();
@@ -76,6 +77,9 @@ namespace Hangman.ViewModels
         private void StartGame()
         {
             GameEngine.StartGame();
+            StopWatchEngine.StartStopWatch();
+            IWord = GameEngine.IWord;
+            HintUC.SetDataContext(IWord.Hint);
         }
 
         #region Keyboard

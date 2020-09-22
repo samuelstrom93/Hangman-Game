@@ -1,4 +1,5 @@
-﻿using Hangman.Moduls;
+﻿using Hangman.Modules;
+using Hangman.Moduls;
 using Hangman.ViewModels.Base;
 using Hangman.Views;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Media;
 
 namespace Hangman.ViewModels
 {
-    public class KeyboardViewModel : BaseViewModel
+    public class KeyboardViewModel : DefaultBaseViewModel
     {
         public GameEngine GameEngine { get; set; }
         public GameEndPage GameEndPage { get; set; }

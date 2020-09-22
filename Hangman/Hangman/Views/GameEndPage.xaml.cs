@@ -32,12 +32,12 @@ namespace Hangman.Views
             DataContext = gameEndPageViewModel;
         }
 
-        public GameEnd_Page(BaseViewModel specificModel)
+        public GameEndPage(BaseViewModel specificModel)
         {
             InitializeComponent();
             DataContext = specificModel;
         }
-        public GameEnd_Page()
+        public GameEndPage()
         {
             InitializeComponent();
         }
