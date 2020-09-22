@@ -14,13 +14,17 @@ namespace Hangman.Moduls
         public IGame IGame { get; set; }
         public IWord IWord { get; set; }
 
-        public int NumberOfCorrectTries { get; set; } //Binding i GameEnd_Page
-        public string GameStatus { get; set; }  //Binding i GameEnd_Page
-        public string QuitBtnContent { get; set; }  //Binding i GameEnd_Page
+        #region Properties: Binding i GameEndPage
 
-        public bool IsRankingShown { get; set; }    //Binding i GameEnd_Page
-        public bool IsDeleteGameScoreBtnShown { get; set; }     //Binding i GameEnd_Page
+        public int NumberOfCorrectTries { get; set; }
         public int Ranking { get; set; }
+
+        public string GameStatus { get; set; } 
+        public string QuitBtnContent { get; set; }
+
+        public bool IsRankingShown { get; set; }   
+        public bool IsDeleteGameScoreBtnShown { get; set; } 
+        #endregion
 
         public GameEndEngine(Game game, Word word)
         {
@@ -30,17 +34,18 @@ namespace Hangman.Moduls
             SetNumberOfCorrectTries();
             SetGameStatus();
 
-            DistinguishPlayer();
+            ChangeQuitBtnContent();
             SwitchRankingView();
         }
 
         #region Methods for Get+DeleteGame
 
-        private Game game { get; set; }
+        private Game game;
         public Game GetGame()
         {
             return game;
         }
+
         private int gameID;
         public void DeleteGameScore()
         {
@@ -98,8 +103,7 @@ namespace Hangman.Moduls
             }
         }
 
-
-        private void DistinguishPlayer()
+        private void ChangeQuitBtnContent()
         {
             if (game.PlayerId != 0)  // Spelaren MED inloggning
             {
