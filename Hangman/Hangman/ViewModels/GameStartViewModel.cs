@@ -17,7 +17,7 @@ namespace Hangman.ViewModels
 
         public GameStartViewModel()
         {
-            var playerId = PlayerModule.GetActivePlayer()?.Id;
+            var playerId = ActivePlayer?.Id;
             Highscores = new TopGamesUC(playerId);
 
             PlayGame = new RelayCommand(PlayGameCommand);

@@ -40,6 +40,7 @@ namespace Hangman.ViewModels
             }
             else
             {
+                SetActivePlayer(PlayerName);
                 GoToPage(ApplicationPage.GamePage);
             }
         }

@@ -46,7 +46,7 @@ namespace Hangman.ViewModels
         #region Methods: Delete User
         public bool CheckIfDeletable(string name)
         {
-            if (name == PlayerModule.GetActivePlayer().Name)
+            if (name == ActivePlayer.Name)
             {
                 DeleteMessage = "Din användare raderas. Du loggas nu ut.";
                 return true;
@@ -62,7 +62,7 @@ namespace Hangman.ViewModels
 
         public void DeleteUser()
         {
-            PlayerRepository.DeletePlayer(PlayerModule.GetActivePlayer().Id);
+            PlayerRepository.DeletePlayer(ActivePlayer.Id);
         }
 
         #endregion
@@ -78,19 +78,19 @@ namespace Hangman.ViewModels
 
         public void GetGamesPlayed()
         {
-            GamesPlayed = PlayerStatsRepository.GetGamesPlayed(PlayerModule.GetActivePlayer()).ToString();
+            GamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
         }
 
         public void GetGamesWon()
         {
-            GamesWon = PlayerStatsRepository.GetGamesWon(PlayerModule.GetActivePlayer()).ToString();
+            GamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer).ToString();
         }
 
         public void CalculateWinRate()
         {
 
-            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(PlayerModule.GetActivePlayer());
-            double gamesWon = PlayerStatsRepository.GetGamesWon(PlayerModule.GetActivePlayer());
+            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer);
+            double gamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer);
 
             if (gamesPlayed == 0)
             {
@@ -152,11 +152,11 @@ namespace Hangman.ViewModels
         public void UpdateUser(IPlayer player, string wantedName)
         {
 
-            if (wantedName != "" && wantedName != PlayerModule.GetActivePlayer().Name)
+            if (wantedName != "" && wantedName != ActivePlayerName)
             {
                 try
                 {
-                    PlayerRepository.UpdateNameOnPlayer(wantedName, PlayerModule.GetActivePlayer().Id);
+                    PlayerRepository.UpdateNameOnPlayer(wantedName, ActivePlayer.Id);
                     var module = new PlayerModule();
                     module.TryLogInPlayer(wantedName);
                     UpdateMessage = "Ditt användarnamn är nu bytt till " + wantedName;
@@ -177,7 +177,7 @@ namespace Hangman.ViewModels
                 }
             }
 
-            else if (wantedName == PlayerModule.GetActivePlayer().Name)
+            else if (wantedName == ActivePlayerName)
             {
                 UpdateMessage = "Du måste ange ett nytt namn";
             }

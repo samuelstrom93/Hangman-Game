@@ -4,10 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman.Views.Menu"
-             mc:Ignorable="d" d:DesignWidth="800"
-             Visibility="{Binding Visibility}">
-    <Grid Visibility="{Binding Visibility}" Background="Transparent">
-
+             mc:Ignorable="d" d:DesignWidth="800">
+    <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="200" />
@@ -29,7 +27,7 @@
             <DockPanel>
                 <Border Background="Transparent" BorderBrush="black" BorderThickness="1, 1, 1, 0" CornerRadius="2">
                     <Menu Background="Transparent" DockPanel.Dock="Top" Padding="20, 0, 20, 0" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
-                        <MenuItem  FontSize="16"  x:Name="MenuShowName" Padding="5" Margin="10,0,10,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Header="{Binding PlayerName, FallbackValue=UserName}">
+                        <MenuItem  FontSize="16"  x:Name="MenuShowName" Padding="5" Margin="10,0,10,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Header="{Binding PlayerName, FallbackValue=Meny}" ItemsSource="{Binding ItemsToShow}">
                         </MenuItem>
                     </Menu>
                 </Border>

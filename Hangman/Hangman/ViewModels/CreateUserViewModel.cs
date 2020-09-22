@@ -37,6 +37,7 @@ namespace Hangman.ViewModels
             if (_module.TryAddPlayer(PlayerName, out _))
             {
                 Message = $"Grattis {PlayerName}! Du är nu medlem!";
+                SetActivePlayer(PlayerName);
                 GoToPage(ApplicationPage.GamePage);
                 return;
             }

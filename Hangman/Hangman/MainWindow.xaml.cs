@@ -13,7 +13,7 @@ namespace Hangman
         public MainWindow()
         {
             InitializeComponent();
-            TopMenu.Content = TopMenuUC.Instance;
+            TopMenu.Content = new TopMenuUC();
 
             Main.Content = new LoginPage();
             DataContext = new MainWindowViewModel();

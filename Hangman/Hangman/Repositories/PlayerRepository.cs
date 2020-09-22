@@ -102,8 +102,7 @@ namespace Hangman.Repositories
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
-                Player player = new Player();
-                player = null;
+                Player player = null;
                 conn.Open();
 
                 using (var command = new NpgsqlCommand(stmt, conn))

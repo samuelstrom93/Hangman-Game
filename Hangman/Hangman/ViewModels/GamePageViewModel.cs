@@ -98,7 +98,7 @@ namespace Hangman.ViewModels
 
         public GamePageViewModel()    // MED inloggning
         {
-            var player = PlayerModule.GetActivePlayer();
+            var player = ActivePlayer;
             PlayerName = player == null ? "Spela utan användare" : player.Name;
             if (player != null) SetPlayer(player);
 

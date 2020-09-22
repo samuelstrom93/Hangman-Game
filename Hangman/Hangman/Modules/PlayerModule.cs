@@ -12,13 +12,8 @@ namespace Hangman.Modules
     /// </summary>
     public class PlayerModule : IPlayerModule
     {
-        private static IPlayer ActivePlayer { get; set; }
 
         #region methods
-
-        /// <summary>
-        /// En metod för att kontrollera om namnet på Player används redan.
-        /// </summary>
         private bool IsNameUsed(string name)
         {
             Player player = PlayerRepository.GetPlayer(name);
@@ -29,32 +24,10 @@ namespace Hangman.Modules
                 return false;
         }
 
-        /// <summary>
-        /// En metod för att tilldela ActiveUser en Player
-        /// </summary>
-        /// <param name="name"></param>
-        private void SetActivePlayer(string name)
-        {
-            ActivePlayer = PlayerRepository.GetPlayer(name);
-
-            TopMenuUC.Instance.PlayerStatusChanged(ActivePlayer);
-        }
-
-        public static IPlayer GetActivePlayer()
-        {
-            return ActivePlayer;
-        }
-
-        public void LogOutPlayer()
-        {
-            ActivePlayer = null;
-        }
-
         public bool TryLogInPlayer(string name)
         {
-            if (!IsNameUsed(name))
+            if (IsNameUsed(name))
             {
-                SetActivePlayer(name);
                 return true;
             }
 
@@ -69,7 +42,6 @@ namespace Hangman.Modules
                 added = PlayerRepository.CreatePlayer(name);
                 if (added != null)
                 {
-                    SetActivePlayer(name);
                     return true;
                 }
             }
