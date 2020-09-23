@@ -9,6 +9,7 @@
         GameEnd,
         Admin,
         UserSettings,
-        GameIntro
+        GameIntro,
+        HighscorePage
     }
 }

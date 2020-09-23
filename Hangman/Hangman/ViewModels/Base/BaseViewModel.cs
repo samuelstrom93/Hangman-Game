@@ -17,6 +17,7 @@ namespace Hangman.ViewModels.Base
     {
         protected static NavigationService NavigationService { get; } = (Application.Current.MainWindow as MainWindow).Main.NavigationService;
         public ICommand NavigateToPageByParameterCommand { get; set; }
+        public ICommand NavigateBackParameterCommand { get; set; }
 
         private static string activePlayerName;
         public string ActivePlayerName 
@@ -44,6 +45,11 @@ namespace Hangman.ViewModels.Base
             NavigationService.Navigate(page);
         }
 
+        protected void GoBack()
+        {
+            NavigationService.GoBack();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public static event PropertyChangedEventHandler GlobalPropertyChanged;
 
@@ -59,6 +65,7 @@ namespace Hangman.ViewModels.Base
         protected BaseViewModel()
         {
             NavigateToPageByParameterCommand = new RelayParameterizedCommand(parameter => GoToPage(parameter));
+            NavigateBackParameterCommand = new RelayCommand(GoBack);
         }
     }
 }

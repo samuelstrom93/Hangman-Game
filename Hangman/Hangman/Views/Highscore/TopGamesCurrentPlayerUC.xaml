@@ -51,7 +51,7 @@
                                 <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=PlayerName}" />
                                 <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Word}" />
                                 <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{Binding Path=NumberOfIncorrectTries}" />
-                                <TextBlock HorizontalAlignment="Right" Grid.Column="4" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss}" />
+                                <TextBlock HorizontalAlignment="Right" Grid.Column="4" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss\\:ff}" />
                             </Grid>
                         </ListBoxItem>
                     </Border>

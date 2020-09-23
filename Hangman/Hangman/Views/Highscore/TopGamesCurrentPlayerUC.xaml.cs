@@ -1,5 +1,4 @@
-﻿using Hangman.GameLogics;
-using Hangman.Repositories;
+﻿using Hangman.Repositories;
 using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,8 +24,6 @@ namespace Hangman.Views.Highscore
         public TopGamesCurrentPlayerUC(int? playerId = null)
         {
             InitializeComponent();
-
-            playerId = PlayerEngine.ActivePlayer.Id;
 
             HighscoresViewModel vm = new HighscoresViewModel()
             {
