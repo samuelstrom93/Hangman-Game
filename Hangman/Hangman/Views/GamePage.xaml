@@ -11,7 +11,7 @@
       Title="GamePage">
 
 
-    <Border BorderThickness="0" Style="{StaticResource StandardBorder}" 
+    <Border BorderThickness="0" Style="{StaticResource BackgroundBorder}" 
             VerticalAlignment="Center" 
             Height="1080"
             Width="1920"
@@ -72,7 +72,7 @@
                         </StackPanel>
                     </Border>
                     
-                    <Border BorderThickness="0" Style="{StaticResource BackgroundBorder}" Height="auto" Width="auto">
+                    <Border BorderThickness="0" Style="{StaticResource StandardBorder}" Height="auto" Width="auto">
                         <Frame Content="{Binding KeyboardUC}"></Frame>
                     </Border>
 
@@ -98,13 +98,6 @@
                     
                         <Frame Content="{Binding HintUC}"></Frame>
 
-                    <Button Background="{x:Null}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" Padding="20,2,20,2" Margin="0,7,0,5" HorizontalAlignment="Right" Content="Hjälp?" BorderBrush="White" Width="100" Height="25">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
                 </StackPanel>
                 <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                     <Button Style="{StaticResource HelpButton}"  HorizontalAlignment="Right" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"  />
