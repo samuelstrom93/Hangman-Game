@@ -2,6 +2,7 @@
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Text;
 
@@ -64,6 +65,61 @@ namespace Hangman.Repositories
             return result;
         }
 
+
+        public static ObservableCollection<HighscoreGame> GetLeaderboard(int? playerId = null, int numHighscores = 20)
+        {
+            var result = new ObservableCollection<HighscoreGame>();
+
+            var queryString = "WITH leaderboard as (SELECT *, CAST(RANK () OVER(ORDER BY number_of_incorrect_tries, game_time) as integer) " +
+                "FROM(SELECT number_of_incorrect_tries, player.name AS player_name, word.name AS word_name, (SELECT end_time - start_time AS game_time) " +
+                "FROM game " +
+                "JOIN player ON player.id = game.player_id " +
+                "JOIN word ON word.id = word_id " +
+                "WHERE is_won IS true" +
+                $"{(playerId.HasValue ? $" and player_id=@playerid" : string.Empty)}" +
+                ") AS rows) " +
+                "SELECT* " +
+                "FROM leaderboard " +
+                "LIMIT 10";
+
+            using (var conn = new NpgsqlConnection(_connectionString))
+            {
+                conn.Open();
+                using (var command = new NpgsqlCommand(queryString, conn))
+                {
+                    if (playerId.HasValue)
+                    {
+                        command.Parameters.AddWithValue("playerid", playerId.Value);
+                    }
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            return result;
+                        }
+
+                        while (reader.Read())
+                        {
+                            var row = new HighscoreGame
+                            {
+                                PlayerName = (string)reader["player_name"],
+                                Word = (string)reader["word_name"],
+                                //NumberOfTries = (int)reader["number_of_tries"],
+                                NumberOfIncorrectTries = (int)reader["number_of_incorrect_tries"],
+                                GameTime = (TimeSpan)reader["game_time"],
+                                RankOnLeaderboard = (int)reader["rank"]
+                            };
+
+                            result.Add(row);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+
         /// <summary>
         /// Hämta mest frekventa spelarna
         /// </summary>
@@ -100,6 +156,11 @@ namespace Hangman.Repositories
 
             return result;
         }
+
+
+
+
+
 
         public static int GetRankOnHighScore(int gameId)
         {
