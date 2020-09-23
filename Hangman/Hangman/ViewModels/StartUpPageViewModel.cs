@@ -12,6 +12,7 @@ namespace Hangman.ViewModels
     {
         public StartUpPageViewModel()
         {
+          
 
         }
     }
