@@ -170,7 +170,7 @@ namespace Hangman.ViewModels
 
         public void UpdateUser()
         {
-            if (NewName != "" && NewName != ActivePlayerName)
+            if (NewName != "" && NewName != ActivePlayerName && !NewName.Contains(""))
             {
                 try
                 {
@@ -203,6 +203,9 @@ namespace Hangman.ViewModels
 
             else if (NewName == "")
                 UpdateMessage = "Du måste ange ett namn";
+
+            else if (NewName.Contains(""))
+                UpdateMessage = "Ditt namn får inte innehålla mellanslag";
 
             else
             {

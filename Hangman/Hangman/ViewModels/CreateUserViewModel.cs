@@ -28,9 +28,15 @@ namespace Hangman.ViewModels
 
         private void TryAddPlayer()
         {
-            if (string.IsNullOrWhiteSpace(PlayerName))
+            if (string.IsNullOrWhiteSpace(PlayerName) )
             {
                 Message = "Du måste skriva något.";
+                return;
+            }
+
+            else if (PlayerName.Contains(" "))
+            {
+                Message = "Ditt namn får inte innehålla mellanslag";
                 return;
             }
 

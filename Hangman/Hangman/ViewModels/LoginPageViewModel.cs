@@ -26,6 +26,11 @@ namespace Hangman.ViewModels
         {
             if (string.IsNullOrWhiteSpace(PlayerName))
             {
+                if (string.IsNullOrEmpty(PlayerName))
+                    ErrorMessage = "Du måste skriva något";
+
+                else
+                    ErrorMessage = "Du får inte använda mellanslag";
                 return;
             }
 

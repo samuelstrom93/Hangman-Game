@@ -29,7 +29,6 @@
                 <ColumnDefinition Width="170"/>
             </Grid.ColumnDefinitions>
 
-
             <Grid Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <Label Style="{StaticResource StandardHeader}" Content="HÄNGA HEN "/>
             </Grid>
@@ -37,7 +36,7 @@
             <Border 
                 Width="250"
                 Height="120" 
-                Style="{StaticResource ListItemBorder}" 
+                Style="{StaticResource StandardBorder}" 
                 Grid.Row="1"  
                 Grid.Column="1" 
                 Grid.ColumnSpan="2" 
@@ -46,10 +45,15 @@
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" >
                     <Label Style="{StaticResource PageTitleLabel}" Content="Användarnamn:" FontWeight="Bold"></Label>
-                    <TextBox Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName}"></TextBox>
+                    <TextBox Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName}"/>
                     <Button Width="100" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command ="{Binding TryLogIn}" />
                 </StackPanel>
             </Border>
+
+            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" Width="250" Background="Transparent">
+                <TextBox HorizontalContentAlignment="Center" Background="White" Foreground="Red" Text="{Binding ErrorMessage}"></TextBox>
+            </Grid>
+
 
             <Border   Grid.Row="1" Grid.Column="0"  Grid.RowSpan="3"   VerticalAlignment="Top" Margin="0, 15, 0, 0">
                 <StackPanel>
@@ -70,12 +74,6 @@
                     <Button Width="178" Height="155" Style="{StaticResource HelpButton}" HorizontalAlignment="Center" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" />
                 </StackPanel>
             </Border>
-
-
-            <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Frame x:Name="ErrorFrame"></Frame>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="ErrorMessage" Text="{Binding ErrorMessage}"></TextBlock>
-            </Grid>
 
         </Grid>
     </Border>
