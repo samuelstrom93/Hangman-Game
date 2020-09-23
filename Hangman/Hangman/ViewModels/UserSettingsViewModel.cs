@@ -170,7 +170,7 @@ namespace Hangman.ViewModels
 
         public void UpdateUser()
         {
-            if (NewName != "" && NewName != ActivePlayerName && !NewName.Contains(""))
+            if (NewName != "" && NewName != ActivePlayerName)
             {
                 try
                 {
