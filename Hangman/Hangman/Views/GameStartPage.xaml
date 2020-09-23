@@ -38,8 +38,8 @@
                     <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Grid.Row="2" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding PlayGame}">Spela!</Button>
-                <Button Grid.Column="1" Grid.Row="4" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}">Spelguide</Button>
+                <Button Grid.Column="1" Grid.Row="2" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding PlayGame}">SPELA!</Button>
+                <Button Grid.Column="1" Grid.Row="4" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}">SPELGUIDE</Button>
             </Grid>
             <Border Style="{StaticResource StandardBorder}" Grid.Row="1" Grid.Column="3">
                 <Grid>

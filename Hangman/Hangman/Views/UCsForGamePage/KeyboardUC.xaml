@@ -7,29 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <UserControl.Resources>
-        <Style x:Key="KeyButton" TargetType="Button">
-            <Setter Property="Opacity" Value="{Binding Button.Opacity}"></Setter>
-            <Setter Property="Width" Value="28"></Setter>
-            <Setter Property="Background" Value="#cccedb"/>
-            <Setter Property="BorderThickness" Value="0"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="Foreground" Value="{Binding Button.Foreground}"></Setter>
-            <Setter Property="FontWeight" Value="{Binding Button.FontWeight}"></Setter>
-            <Setter Property="FontFamily" Value="Helvetica" />
-            <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="Margin" Value="5"></Setter>
-            <Setter Property="Padding" Value="5"></Setter>
-            <Setter Property="Command" Value="{Binding LetterClickCommand}"></Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#4e8895"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
+
     <Grid>
         <WrapPanel Margin="5,5,5,15" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" Cursor="Hand" >A</Button>
