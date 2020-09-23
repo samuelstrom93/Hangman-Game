@@ -11,10 +11,11 @@ namespace Hangman.ViewModels
     public class PlayGameViewModel : BaseViewModel
     {
         public WrapPanel KeyBoard { get; set; } = new WrapPanel();
+        public string GameStateImage { get; set; } = @"..\..\..\Assets\Images\hänggubbe0.png";
+        protected char[] CurrentWord { get; set; }
 
 
         private readonly Dictionary<char, Button> KeyBoardButtons;
-
         private static readonly char[] _letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ".ToCharArray();
 
         public PlayGameViewModel()
@@ -32,9 +33,7 @@ namespace Hangman.ViewModels
                     Content = c,
                     Command = new RelayParameterizedCommand(p => LetterClick((char)p)),
                     CommandParameter = c,
-                    Margin = new Thickness(5),
-                    Padding = new Thickness(10),
-                    Style = Application.Current.FindResource("StandardButton") as Style
+                    Style = Application.Current.FindResource("KeyButton") as Style
                 };
 
                 KeyBoardButtons.Add(c, b);
@@ -43,6 +42,17 @@ namespace Hangman.ViewModels
         }
 
         private void LetterClick(char letter)
+        {
+
+        }
+
+        private void MarkLetterCorrect(Button b)
+        {
+            b.Opacity = 0.3;
+            b.Foreground = Brushes.Green;
+            b.FontWeight = FontWeights.Bold;
+        }
+        private void MarkLetterIncorrect(Button b)
         {
 
         }
