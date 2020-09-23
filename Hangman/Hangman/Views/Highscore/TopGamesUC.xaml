@@ -20,11 +20,13 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Center">Namn</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="1">Ord</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="2">Gissningar</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="3">Tid</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="0">Rank</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="1">Namn</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="2">Ord</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="3">Gissningar</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="4">Tid</Label>
         </Grid>
         <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopHighscores}">
             <ListBox.Resources>
@@ -43,11 +45,13 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock HorizontalAlignment="Left" Text="{Binding Path=PlayerName}" />
-                                <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=Word}" />
-                                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=NumberOfIncorrectTries}" />
-                                <TextBlock HorizontalAlignment="Right" Grid.Column="3" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss}" />
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="0" Text="{Binding Path=RankOnLeaderboard}"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=PlayerName}" />
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Word}" />
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{Binding Path=NumberOfIncorrectTries}" />
+                                <TextBlock HorizontalAlignment="Right" Grid.Column="4" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss\\:ff}" />
                             </Grid>
                         </ListBoxItem>
                     </Border>

@@ -31,8 +31,7 @@ namespace Hangman.Helper
                 ApplicationPage.GamePage => new GamePage(specificModel: model),
                 ApplicationPage.GameEnd => new GameEndPage(model),
                 ApplicationPage.UserSettings => new UserSettingsPage(model),
-                ApplicationPage.StartUpPage => new StartUpPage(model),
-
+                ApplicationPage.HighscorePage => new HighScore_Page(model),
                 _ => null,
 
             };
