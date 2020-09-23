@@ -32,7 +32,7 @@
 
                 <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     
-                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="200" Width="400">
+                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="300" Width="400">
                         <Border.Background>
                             <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding GameEngine.ImageForGameStage}"/>
                      </Border.Background>
