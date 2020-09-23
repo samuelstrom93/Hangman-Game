@@ -14,12 +14,13 @@ namespace Hangman.Views
         {
             InitializeComponent();
 
-            //HighscoresViewModel vm = new HighscoresViewModel()
-            //{
-            //    TopDiligentPlayers = HighscoreRepository.GetTopDiligentPlayers() as Dictionary<string, long>
-            //};
+            HighscoresViewModel vm = new HighscoresViewModel()
+            {
+                TopDiligentPlayers = HighscoreRepository.GetTopDiligentPlayers() as Dictionary<string, long>,
+                Title = "Topp flitigaste spelarna",
+            };
 
-            //DataContext = vm;
+            DataContext = vm;
         }
     }
 }

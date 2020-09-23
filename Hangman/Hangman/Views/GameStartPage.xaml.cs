@@ -1,4 +1,5 @@
 ﻿using Hangman.GameLogics;
+using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,16 +23,17 @@ namespace Hangman.Views
         public GameStartPage()
         {
             InitializeComponent();
+            DataContext = new HighscoresViewModel();
 
-            var player = PlayerEngine.ActivePlayer;
-            if (player == null)
-            {
-                YourTopGames.Content = new TopGamesUC();
-            }
-            else
-            {
-                YourTopGames.Content = new TopGamesUC(player.Id);
-            }
+            //var player = PlayerEngine.ActivePlayer;
+            //if (player == null)
+            //{
+            //    YourTopGames.Content = new TopGamesUC();
+            //}
+            //else
+            //{
+            //    YourTopGames.Content = new TopGamesUC(player.Id);
+            //}
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
