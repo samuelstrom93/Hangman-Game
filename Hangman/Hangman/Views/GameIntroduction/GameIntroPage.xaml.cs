@@ -1,4 +1,5 @@
-﻿using Hangman.ViewModels.Base;
+﻿using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,6 +13,7 @@ namespace Hangman.Views
         public GameIntroPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
+            DataContext = specificModel ?? new HighscorePageViewModel();
         }
     }
 }
