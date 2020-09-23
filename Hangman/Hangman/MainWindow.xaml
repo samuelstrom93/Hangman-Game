@@ -21,13 +21,10 @@
             <Frame x:Name="TopMenu" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch"/>
         </Border>
 
-<<<<<<< HEAD
-=======
         <Grid Grid.Row="0" Grid.RowSpan="2">
             
         </Grid>
 
->>>>>>> #101_UppdateraGränssnitsDesign
         <Border Grid.Row="1" Style="{StaticResource BackgroundBorder}">
             <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>                
             <!-- Här tar vi bort Navigationsmöjligheten, vill vi ha det i alla?-->

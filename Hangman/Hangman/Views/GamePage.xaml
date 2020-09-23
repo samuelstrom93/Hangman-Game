@@ -107,7 +107,7 @@
                     </Button>
                 </StackPanel>
                 <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <Button Style="{StaticResource HelpButton}"  HorizontalAlignment="Right" Click="GameIntroPage_Click" />
+                    <Button Style="{StaticResource HelpButton}"  HorizontalAlignment="Right" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"  />
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">

@@ -8,102 +8,65 @@
       d:DesignHeight="1250" d:DesignWidth="1500"
       Title="GameIntroPage">
 
-<<<<<<< HEAD
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-    <Grid Background="#cccedb" Width="1200" Height="800" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
-                <RowDefinition Height="6*"></RowDefinition>
-                <RowDefinition Height="0.7*"></RowDefinition>
-            </Grid.RowDefinitions>
+        <Grid  Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-        
-            <TextBlock Grid.Row="0" Grid.ColumnSpan="4" TextAlignment="Center" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">Spelintroduktion</TextBlock>
-        
-                    <TextBlock Grid.Row="1" Grid.Column="1" Padding="15" Background="AliceBlue" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Width="355" Height="170" Margin="0,0,10,0">
-                         <Bold>Spelidé:</Bold><LineBreak></LineBreak>
-                         Spelet baseras på det klassiska spelet <Italic>Hänga Gubbe</Italic> där spelaren ställs inför utmaningen att gissa vilket ord som slumpats fram och rädda vår huvudkaraktär genom att på gissa på bokstäver i ordet. 
-                         Om spelaren avslöjer alla bokstäver räddar du gubben ifrån att tappa greppet. Om spelaren kommer upp i tio felaktiga gissningar innan alla bokstäver har avslöjats så har spelaren förlorat spelet..
-                    </TextBlock>
 
-                    <TextBlock Grid.Row="1" Grid.Column="2" Padding="15" HorizontalAlignment="Left" Background="AliceBlue" TextWrapping="Wrap" Width="350" VerticalAlignment="Center" Height="174" Margin="10,0,0,0">
-                    <Bold>Regler:</Bold> <LineBreak></LineBreak>
-                        I detta spel hänger gubben ifrån en stång och för varje fel gissning så tappar gubben greppet med ett finger i taget. Därav spelets namn <Italic>Rädda gubben</Italic>. 
-                        Vid varje fel gissning tappar gubben greppet med ett finger i taget. På så sätt har du koll på när spelet tar slut.
-                    </TextBlock>
-        
-                <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="0,0,10,0" Height="430" Width="350" HorizontalAlignment="Right">
-                    <Border.Background>
-                        <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
-                    </Border.Background>
-                </Border>
-                <TextBlock Grid.Row="2" Grid.Column="2" Padding="10" VerticalAlignment="Center" Background="AliceBlue" TextWrapping="Wrap" Height="430" Width="350" HorizontalAlignment="Left" Margin="10,0,0,0">
-=======
-    <Grid  Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">SPELINTRODUKTION</Label>
+                <Label Style="{StaticResource PageTitleLabel }" FontWeight="SemiBold" FontSize="25" FontStyle="Italic" >Rädda Gubben</Label>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="110"/>
-            <RowDefinition Height="400"/>
-            <RowDefinition Height="30"/>
-        </Grid.RowDefinitions>
-        
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">SPELINTRODUKTION</Label>
-            <Label Style="{StaticResource PageTitleLabel }" FontWeight="SemiBold" FontSize="25" FontStyle="Italic" >Rädda Gubben</Label>
-
-            <Border Style="{StaticResource StandardBorder}">
-                <TextBlock Style="{StaticResource StandardFontTextBlock}" Padding="10" TextWrapping="Wrap" Width="600">
+                <Border Style="{StaticResource StandardBorder}">
+                    <TextBlock Style="{StaticResource StandardFontTextBlock}" Padding="10" TextWrapping="Wrap" Width="600">
                 <Bold>Spelidé:</Bold><LineBreak></LineBreak>
                 Spelet baseras på det klassiska spelet <Italic>Hänga Gubbe</Italic> där spelaren ställs inför utmaningen att gissa vilket ord som slumpats fram och rädda vår huvudkaraktär genom att på gissa på bokstäver i ordet. 
                    Om spelaren avslöjer alla bokstäver räddar du gubben ifrån att tappa greppet. Om spelaren kommer upp i tio felaktiga gissningar innan alla bokstäver har avslöjats så har spelaren förlorat spelet..
-            </TextBlock>
+                    </TextBlock>
+                </Border>
+            </StackPanel>
+
+            <Grid Grid.Row="1" >
+                <Label Style="{StaticResource StandardHeader}" HorizontalAlignment="Center"  FontSize="20">Exempelbild</Label>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
+                <Label Style="{StaticResource StandardHeader}" FontSize="20">Information</Label>
+            </Grid>
+
+            <Border  Grid.Row="2" Grid.Column="0" BorderThickness="1" HorizontalAlignment="Center"  Height="100" Width="200">
+                <Border.Background>
+                    <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
+                </Border.Background>
             </Border>
-        </StackPanel>
 
-        <Grid Grid.Row="1" >
-            <Label Style="{StaticResource StandardHeader}" HorizontalAlignment="Center"  FontSize="20">Exempelbild</Label>
-        </Grid>
-
-        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
-            <Label Style="{StaticResource StandardHeader}" FontSize="20">Information</Label>
-        </Grid>
-        
-        <Border  Grid.Row="2" Grid.Column="0" BorderThickness="1" HorizontalAlignment="Center"  Height="100" Width="200">
-            <Border.Background>
-                <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
-            </Border.Background>
-        </Border>
-
-        <Border  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource StandardBorder}">
-            <TextBlock  Padding="10" TextWrapping="Wrap" Width="350" Style="{StaticResource StandardFontTextBlock}">
+            <Border  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource StandardBorder}">
+                <TextBlock  Padding="10" TextWrapping="Wrap" Width="350" Style="{StaticResource StandardFontTextBlock}">
                 <Bold>Regler:</Bold> <LineBreak></LineBreak>
                     I detta spel hänger gubben ifrån en stång och för varje fel gissning så tappar gubben greppet med ett finger i taget. Därav spelets namn <Italic>Rädda gubben</Italic>. 
                     Vid varje fel gissning tappar gubben greppet med ett finger i taget. På så sätt har du koll på när spelet tar slut.
-            </TextBlock>
-        </Border>
+                </TextBlock>
+            </Border>
 
-        <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Height="220"  Width="200">
-            <Border.Background>
-                <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
-            </Border.Background>
-        </Border>
+            <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Height="220"  Width="200">
+                <Border.Background>
+                    <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
+                </Border.Background>
+            </Border>
 
-        <Border HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Style="{StaticResource StandardBorder}">
-            <TextBlock Padding="10" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="350">
->>>>>>> #101_UppdateraGränssnitsDesign
+            <Border HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Style="{StaticResource StandardBorder}">
+                <TextBlock Padding="10" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="350">
                 <Bold>Tid:</Bold><LineBreak></LineBreak> När du startar ett spel startas ett tidtagarur som visar det nuvarande spelets tidsåtgång. På exempelbilden kan du se att det gått 21,72 sekunder.
                     <LineBreak></LineBreak><LineBreak></LineBreak>
                     <Bold>Välj bokstav:</Bold><LineBreak></LineBreak>
@@ -116,22 +79,16 @@
                     <Bold>Gissa direkt:</Bold><LineBreak></LineBreak>
                     Funktionen gör att du direkt kan gissa på ordet om du hunnit lista ut det i inmatningsfältet brevid <Italic>Gissa direkt</Italic> 
                     . Vid rätt svar har du vunnit spelet medan om du gissar fel förbrukas en gissning och antal fel ökas med ett.
-<<<<<<< HEAD
                 </TextBlock>
-            <Button Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource StandardButton}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="NextPage_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        
-=======
-            </TextBlock>
-        </Border>
-        <Grid Grid.Row="4" Grid.ColumnSpan="2">
-             <Button Style="{StaticResource StandardButton}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="NextPage_Click"/>
+            </Border>
+            <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                <Button Style="{StaticResource StandardButton}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150" Click="NextPage_Click"/>
+
+            </Grid>
+
+
+
 
         </Grid>
-
-
-
-
->>>>>>> #101_UppdateraGränssnitsDesign
-    </Grid>
     </ScrollViewer>
 </Page>
