@@ -13,9 +13,9 @@
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
-                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
                 <RowDefinition Height="140" />
-                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
 
@@ -27,26 +27,26 @@
             
             <Border Grid.RowSpan="5"
                     Grid.ColumnSpan="2"
-                    Background="#cccedb"
+                    Style="{StaticResource ListItemBorder}"
                     CornerRadius="10">
             </Border>
 
             <Grid Grid.Row="0" Grid.ColumnSpan="2" >
-                <Label  Style="{StaticResource StandardHeader}"> Användarinställningar</Label>
+                <Label  Style="{StaticResource StandardHeader}"> DIN ANVÄNDARE</Label>
             </Grid>
             
             <Grid Grid.Row="1" Grid.Column="0">
-                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}" >Ändra din användare</Label>
+                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}" >ÄNDRA NAMN</Label>
             </Grid>
 
             <Grid Grid.Row="3" Grid.Column="0">
-                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}">Ta bort din användare</Label>
+                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}">TA BORT DIN ANVÄNDARE</Label>
             </Grid>
 
 
             <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
                 <Border
-            Style="{DynamicResource OverlayBorder}"
+            Style="{DynamicResource BackgroundBorder}"
             Height="100"
             Width="300"
             CornerRadius="10">
@@ -57,7 +57,7 @@
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Style="{StaticResource StandardFontTextBlock}">Skriv in önskat nytt namn</TextBlock>
                             <TextBox  Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertName"/>
-                            <Button Style="{DynamicResource StandardButton}"  Content="Byt Namn!" Click="Button_UpdateUser_Click"/>
+                            <Button Style="{DynamicResource StandardButton}"  Content="Byt namn" Click="Button_UpdateUser_Click"/>
                             <TextBlock x:Name="txtBlockUpdateMessage" Foreground="Red" Text="{Binding UpdateMessage}"/>
                         </StackPanel>
                     </Grid>
@@ -73,7 +73,7 @@
 
             <Grid Grid.Row="4" Grid.Column="0" VerticalAlignment="Top">
                 <Border
-                    Style="{DynamicResource OverlayBorder}"
+                    Style="{DynamicResource  BackgroundBorder}"
                     Height="120"
                     Width="300"
                     CornerRadius="10">
@@ -82,7 +82,7 @@
                             >
                             <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
                             <TextBox Style="{StaticResource UserInputTxtBox}" x:Name="txtBoxInsertUser" />
-                            <Button Style="{StaticResource StandardButton}"  Content="Ta bort mig." Click="Button_DeleteUser_Click"/>
+                            <Button Style="{StaticResource StandardButton}"  Content="Ta bort mig" Click="Button_DeleteUser_Click"/>
                             <TextBlock x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}"/>
                         </StackPanel>
                     </Grid>

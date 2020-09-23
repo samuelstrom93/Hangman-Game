@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Gifs\ChatBubbleGif.gif" />
+    <None Remove="Assets\Gifs\GameOn.gif" />
     <None Remove="Assets\Images\GameIntroPicture_2.png" />
     <None Remove="Assets\Images\GamePageIntroPicture.png" />
     <None Remove="Assets\Images\GamePageIntro_picture.png" />
@@ -24,15 +26,36 @@
     <None Remove="Assets\Images\timer.png" />
     <None Remove="Assets\Images\YouRock.jpg" />
     <None Remove="Assets\Images\YouSuck.jpg" />
+    <None Remove="Assets\Sounds\PunchesFX.wav" />
+    <None Remove="Assets\Sounds\PunchSFX.mp3" />
+    <None Remove="Assets\Sounds\PunchSFX.wav" />
+    <None Remove="Views\Gifs\ChatBubbleGif.gif" />
+    <None Remove="Views\Gifs\GameOn.gif" />
+    <None Remove="Views\Menu\Gifs\ChatBubbleGif.gif" />
+    <None Remove="Views\Menu\Gifs\GameOn.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="MediaPlayer.dll">
+      <Guid>22d6f304-b0f6-11d0-94ab-0080c74c7e95</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="4.1.4" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Gifs\ChatBubbleGif.gif" />
+    <Resource Include="Assets\Gifs\GameOn.gif" />
     <Resource Include="Assets\Images\GameIntroPicture_2.png" />
     <Resource Include="Assets\Images\YouRock.jpg" />
     <Resource Include="Assets\Images\GamePageIntroPicture.png" />
@@ -49,21 +72,16 @@
     <Resource Include="Assets\Images\hänggubbe9.png" />
     <Resource Include="Assets\Images\timer.png" />
     <Resource Include="Assets\Images\YouSuck.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Content Include="Assets\Sounds\PunchesFX.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\PunchSFX.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Views\Gifs\ChatBubbleGif.gif" />
+    <Resource Include="Views\Gifs\GameOn.gif" />
+    <Resource Include="Views\Menu\Gifs\ChatBubbleGif.gif" />
+    <Resource Include="Views\Menu\Gifs\GameOn.gif" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,48 @@
+﻿<Page x:Class="Hangman.Views.StartUppPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Hangman.Views"     
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      mc:Ignorable="d" 
+      d:DesignHeight="920" d:DesignWidth="1800"
+      Title="StartUppPage">
+
+    <Border>
+        <Grid Background="#FFEFC7F1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Image Height="1000" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
+            </Grid>
+
+
+            <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0, 0, 0, 30">
+                <Button Height="200"  Style="{StaticResource HelpButton}" Click="Button_Click"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Label BorderBrush="Black" BorderThickness="0, 0,0,2" FontSize="30" FontWeight="Bold" Foreground="Black" FontFamily="Bahnschrift Light Condensed">HJÄLP OSS ATT RÄDDA VÄRLDEN</Label>
+                    </WrapPanel>
+                    <Button  Cursor="Hand" FontSize="25" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="200" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">ENTER</Button>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Page>
+
