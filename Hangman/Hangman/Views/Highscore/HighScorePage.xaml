@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="450" />
+            <ColumnDefinition Width="350" />
             <ColumnDefinition Width="450" />
             <ColumnDefinition Width="450" />
             <ColumnDefinition Width="*" />
@@ -28,7 +28,7 @@
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame Content="{Binding TopGamesCurrentPlayer}" Grid.Row="1"></Frame>
+            <Frame Content="{Binding TopPlayers}" Grid.Row="1"></Frame>
         </Grid>
         <Grid Margin="10" Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
@@ -42,7 +42,7 @@
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame Content="{Binding TopPlayers}" Grid.Row="1"></Frame>
+            <Frame Content="{Binding TopGamesCurrentPlayer}" Grid.Row="1"></Frame>
         </Grid>
     </Grid>
 </Page>

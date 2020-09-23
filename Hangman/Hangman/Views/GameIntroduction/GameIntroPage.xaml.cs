@@ -13,12 +13,5 @@ namespace Hangman.Views
         {
             InitializeComponent();
         }
-
-        private void NextPage_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.GoBack();
-        }
-
-        
     }
 }
