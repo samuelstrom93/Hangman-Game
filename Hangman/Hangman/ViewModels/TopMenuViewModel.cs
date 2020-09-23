@@ -12,7 +12,7 @@ namespace Hangman.ViewModels
 {
     public class TopMenuViewModel : BaseViewModel
     {
-        public string PlayerName { get; set; } = "Meny";
+        public string PlayerName { get; set; } = "MENY";
         public ObservableCollection<object> ItemsToShow { get; set; } = new ObservableCollection<object>();
 
         private readonly List<MenuItem> _menuItems = new List<MenuItem>();
@@ -73,7 +73,7 @@ namespace Hangman.ViewModels
             var playItem = new MenuItem
             {
                 Name = "PlayItem",
-                Header = "Spela!"
+                Header = "Spela"
             };
             playItem.Click += mnuPlay;
             _menuItems.Add(playItem);

@@ -35,7 +35,7 @@
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" Width="250" Background="Transparent">
-                <TextBox HorizontalContentAlignment="Center" Background="White" Foreground="Red" Text="{Binding Message}"></TextBox>
+                <TextBlock TextAlignment="Center" Background="White" Foreground="Red" Text="{Binding Message}"></TextBlock>
             </Grid>
 
 
@@ -43,7 +43,7 @@
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top" Height="Auto">
                     <Label Style="{StaticResource PageTitleLabel}" FontWeight="Bold" Content="Skapa en användare"/>
                     <Label Style="{StaticResource StandardLabel}" Content="Välj ditt användarnamn:"/>
-                    <TextBox Style="{StaticResource UserInputTxtBox}" VerticalAlignment="Top" Text="{Binding PlayerName}"/>
+                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" VerticalAlignment="Top" Text="{Binding PlayerName}"/>
                     <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Registrera" HorizontalAlignment="Center" Command="{Binding TryRegister}" Cursor="Hand"/>
                 </StackPanel>
             </Border>
