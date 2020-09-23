@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman.Views.Menu"
-             mc:Ignorable="d" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com" >
     <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -12,20 +13,21 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Border BorderBrush="Black" BorderThickness="0, 0, 0, 1" CornerRadius="0, 0, 0, 0" Background="#4e8895"  Opacity="50">
+        <Border BorderBrush="Black" BorderThickness="0, 0, 0, 1" CornerRadius="0, 0, 0, 0" Background="Transparent"  Opacity="50">
             
         </Border>
-        <Border Grid.Column="2" BorderBrush="black" Background="#4e8895" Opacity="50" BorderThickness="0, 0, 1, 1" CornerRadius="2">
+        <Border Grid.Column="2" BorderBrush="black" Background="Transparent"  BorderThickness="0, 0, 1, 1" CornerRadius="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label FontFamily="Bahnschrift" HorizontalAlignment="Center" VerticalAlignment="Center">HÄNGA HEN</Label>
+                <Image HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
+            </StackPanel>
         </Border>
         
-        <Grid Grid.Column="1" Grid.ColumnSpan="2">
-            <Label Margin="0, 0, 20, 0"  FontSize="20" FontStyle="Italic" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Center">Hänga Gubbe</Label>
-        </Grid>
 
         
         <Border  Grid.Column="1">
             <DockPanel>
-                <Border Background="Transparent" BorderBrush="black" BorderThickness="1, 1, 1, 0" CornerRadius="2">
+                <Border Background="Transparent" BorderBrush="black" BorderThickness="0, 0, 0, 1" CornerRadius="2">
                     <Menu Background="Transparent" DockPanel.Dock="Top" Padding="20, 0, 20, 0" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
                         <MenuItem  FontSize="16"  x:Name="MenuShowName" Padding="5" Margin="10,0,10,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Header="{Binding PlayerName, FallbackValue=Meny}" ItemsSource="{Binding ItemsToShow}">
                         </MenuItem>
