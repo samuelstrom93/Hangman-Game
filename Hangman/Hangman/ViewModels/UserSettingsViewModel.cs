@@ -169,8 +169,8 @@ namespace Hangman.ViewModels
         #region Methods: Update User
 
         public void UpdateUser()
-        {
-            if (NewName != "" && NewName != ActivePlayerName)
+        { 
+            if (!string.IsNullOrWhiteSpace(NewName) && NewName != ActivePlayerName && !NewName.Contains(" "))
             {
                 try
                 {
@@ -204,8 +204,8 @@ namespace Hangman.ViewModels
             else if (NewName == "")
                 UpdateMessage = "Du måste ange ett namn";
 
-            else if (NewName.Contains(""))
-                UpdateMessage = "Ditt namn får inte innehålla mellanslag";
+            else if (NewName.Contains(" "))
+                UpdateMessage = "Du får inte ha mellanslag i ditt namn";
 
             else
             {
