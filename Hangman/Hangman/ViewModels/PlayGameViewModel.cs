@@ -1,4 +1,5 @@
 ﻿using Hangman.Models;
+using Hangman.Moduls.InterfacesForDatabase;
 using Hangman.Repositories;
 using Hangman.ViewModels.Base;
 using System;
@@ -36,11 +37,15 @@ namespace Hangman.ViewModels
         private int numberOfIncorrectGuesses;
         private DateTime currentGameStartTime;
 
+        private readonly IWordRepository wordRepository;
+        private readonly IGameRepository gameRepository;
         public PlayGameViewModel()
         {
+            wordRepository = new WordRepository();
+            gameRepository = new GameRepository();
             CreateLetterButtons();
 
-            currentWord = WordRepository.GetRandomWord();
+            currentWord = wordRepository.GetRandomWord();
             CreateWordTextBlocks();
         }
 
@@ -68,10 +73,11 @@ namespace Hangman.ViewModels
             int currentGridColumn = 0;
             foreach (var c in CurrentWordArray)
             {
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
                 var tb = new TextBlock();
                 tb.Text = _letterPlaceHolder;
+                tb.FontSize = 58;
                 Grid.SetColumn(tb, currentGridColumn);
 
                 if (_wordTextBlocks.TryGetValue(c, out List<TextBlock> items))
@@ -114,6 +120,7 @@ namespace Hangman.ViewModels
             else
             {
                 MarkLetterIncorrect(_keyboardButtons[letter]);
+                numberOfIncorrectGuesses++;
 
                 if (numberOfIncorrectGuesses >= _incorrectGuessLimit)
                 {
@@ -159,7 +166,7 @@ namespace Hangman.ViewModels
                     WordId = currentWord.Id
                 };
 
-                GameRepository.AddGame(game);
+                gameRepository.AddGame(game);
             }
         }
     }

@@ -23,8 +23,8 @@
             <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StandardBorder}">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid>
@@ -34,28 +34,40 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border Grid.Column="1">
-                            <Image Source="{Binding GameStateImage}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform"  Margin="0"/>
-                        </Border>
-                        <Frame Grid.Row="1" Grid.Column="1" Content="{Binding WordDisplay}" HorizontalContentAlignment="Center"/>
+                        <Frame Grid.Column="1" Content="{Binding WordDisplay}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="8*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="6*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="1" Grid.Column="1">
-                            <Frame Content="{Binding Keyboard}"/>
+                            <Image Source="{Binding GameStateImage}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform"  Margin="0"/>
                         </Border>
+                        <Grid Grid.Row="1" Grid.Column="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="1" Grid.Column="1" Content="{Binding Keyboard}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Border>
