@@ -31,15 +31,17 @@ namespace Hangman.ViewModels
 
                 if (!string.IsNullOrWhiteSpace(ActivePlayerName))
                 {
-                    ItemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
                     ItemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
+                    ItemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
                     ItemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
+
                 }
                 else
                 {
                     ItemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
                     ItemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
                     ItemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
+;
                 }
             }
         }
@@ -75,10 +77,21 @@ namespace Hangman.ViewModels
                 Name = "PlayItem",
                 Header = "Spela"
             };
+
             playItem.Click += mnuPlay;
             _menuItems.Add(playItem);
 
+            var highScoreItem = new MenuItem
+            {
+                Name = "HighScoresItem",
+                Header = "Topplistor"
+            };
+            highScoreItem.Click += mnuHighScores;
+            _menuItems.Add(highScoreItem);
+
+
             ItemsToShow.Add(loginItem);
+            ItemsToShow.Add(highScoreItem);
             ItemsToShow.Add(new Separator());
             ItemsToShow.Add(playItem);
         }
@@ -100,6 +113,11 @@ namespace Hangman.ViewModels
         private void mnuLogin(object sender, RoutedEventArgs e)
         {
             GoToPage(ApplicationPage.Login);
+        }
+
+        private void mnuHighScores(object sender, RoutedEventArgs e)
+        {
+            GoToPage(ApplicationPage.HighscorePage);
         }
     }
 }
