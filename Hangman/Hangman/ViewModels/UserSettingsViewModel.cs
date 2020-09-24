@@ -39,11 +39,18 @@ namespace Hangman.ViewModels
         public string UpdateMessage { get; set; }
         public ICommand UpdateUserCommand { get; set; }
         public IPlayer Player { get; set; }
+        public string TextColor { get; set; }
 
         #endregion
 
+        private PlayerRepository playerRepository;
+        private PlayerStatsRepository playerStatsRepository;
+
         public UserSettingsViewModel()
         {
+            playerRepository = new PlayerRepository();
+            playerStatsRepository = new PlayerStatsRepository();
+
             UpdatePlayerStats();
 
             DeleteUserCommand = new RelayCommand(TryDeleteUser);
@@ -81,7 +88,7 @@ namespace Hangman.ViewModels
 
         public void DeleteUser()
         {
-            PlayerRepository.DeletePlayer(ActivePlayer.Id);
+            playerRepository.DeletePlayer(ActivePlayer.Id);
         }
 
         #endregion
@@ -97,19 +104,19 @@ namespace Hangman.ViewModels
 
         public void GetGamesPlayed()
         {
-            GamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
+            GamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
         }
 
         public void GetGamesWon()
         {
-            GamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer).ToString();
+            GamesWon = playerStatsRepository.GetGamesWon(ActivePlayer).ToString();
         }
 
         public void CalculateWinRate()
         {
 
-            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer);
-            double gamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer);
+            double gamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer);
+            double gamesWon = playerStatsRepository.GetGamesWon(ActivePlayer);
 
             if (gamesPlayed == 0)
             {
@@ -174,10 +181,11 @@ namespace Hangman.ViewModels
             {
                 try
                 {
-                    PlayerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
+                    playerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
                     var module = new PlayerModule();
                     module.TryLogInPlayer(NewName);
                     SetActivePlayer(NewName);
+                    TextColor = "green";
                     UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
                 }
 
@@ -186,11 +194,13 @@ namespace Hangman.ViewModels
                     //ta fram koden om användaren inte existerar
                     if (ex.SqlState.Contains("23505"))
                     {
+                        TextColor = "red";
                         UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
                     }
 
                     else
                     {
+                        TextColor = "red";
                         UpdateMessage = "Något gick fel - försök igen";
                     }
                 }
@@ -198,17 +208,27 @@ namespace Hangman.ViewModels
 
             else if (NewName == ActivePlayerName)
             {
+                TextColor = "red";
                 UpdateMessage = "Du måste ange ett nytt namn";
             }
 
-            else if (NewName == "")
+            else if (NewName == null)
+            {
+                TextColor = "red";
                 UpdateMessage = "Du måste ange ett namn";
+            }
+
 
             else if (NewName.Contains(" "))
+            {
+                TextColor = "red";
                 UpdateMessage = "Du får inte ha mellanslag i ditt namn";
+            }
+
 
             else
             {
+                TextColor = "red";
                 UpdateMessage = "Något gick fel";
             }
         }

@@ -34,7 +34,8 @@ namespace Hangman.ViewModels.Base
 
         protected void SetActivePlayer(string name)
         {
-            ActivePlayer = string.IsNullOrWhiteSpace(name) ? null : PlayerRepository.GetPlayer(name);
+            PlayerRepository playerRepository = new PlayerRepository();
+            ActivePlayer = string.IsNullOrWhiteSpace(name) ? null : playerRepository.GetPlayer(name);
             ActivePlayerName = name;
         }
 

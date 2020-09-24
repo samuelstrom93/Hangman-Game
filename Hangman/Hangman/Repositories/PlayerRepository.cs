@@ -6,17 +6,18 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Net.NetworkInformation;
+using Hangman.Database;
 
 namespace Hangman.Repositories
 {
-    public static class PlayerRepository
+    public class PlayerRepository : IPlayerRepository
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region CREATE
 
         //Metod för att skapa spelare - Vill vi ha name/id/Person som indata?
-        public static IPlayer CreatePlayer(string name)
+        public IPlayer CreatePlayer(string name)
         {
             string stmt = "INSERT INTO player (name) values(@name) returning id";
             Player player = null;
@@ -65,7 +66,7 @@ namespace Hangman.Repositories
         #region READ
 
         //Metod för att läsa in alla användare 
-        public static List<Player> GetPlayers()
+        public List<Player> GetPlayers()
         {
             string stmt = "SELECT name, id FROM player ORDER BY name";
 
@@ -96,7 +97,7 @@ namespace Hangman.Repositories
         }
 
         //En metod för att hämta en användare - vill vi ha name/id/Player som indata?
-        public static Player GetPlayer(string name)
+        public Player GetPlayer(string name)
         {
             string stmt = "SELECT id, name FROM player WHERE name=@name";
 
@@ -127,7 +128,7 @@ namespace Hangman.Repositories
             }
         }
 
-        public static Player GetPlayerFromID(int id)
+        public Player GetPlayerFromID(int id)
         {
             string stmt = "SELECT id, name FROM player WHERE id=@id";
 
@@ -163,7 +164,7 @@ namespace Hangman.Repositories
         #region DELETE
 
         //Metod för att ta bort en spelare - vill vi ha name/id/Person som indata?
-        public static void DeletePlayer(int id)
+        public void DeletePlayer(int id)
         {
             string stmt = "DELETE FROM player WHERE id=@id";
 
@@ -187,7 +188,7 @@ namespace Hangman.Repositories
         #endregion
 
         #region UPDATE
-        public static void UpdateNameOnPlayer(string name, int id)
+        public void UpdateNameOnPlayer(string name, int id)
         {
             string stmt = "UPDATE player SET name = @name WHERE id=@id";
 

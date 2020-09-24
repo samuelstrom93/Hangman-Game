@@ -58,7 +58,7 @@
                             <TextBlock Style="{StaticResource StandardFontTextBlock}">Skriv in önskat nytt namn</TextBlock>
                             <TextBox  TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NewName}"/>
                             <Button Style="{DynamicResource StandardButton}"  Content="Byt Namn!" Command="{Binding UpdateUserCommand}"/>
-                            <TextBlock x:Name="txtBlockUpdateMessage" Foreground="Red" Text="{Binding UpdateMessage}"/>
+                            <TextBlock x:Name="txtBlockUpdateMessage" Text="{Binding UpdateMessage}" Foreground="{Binding TextColor, FallbackValue=black}"/>
                         </StackPanel>
                     </Grid>
                 </Border>
