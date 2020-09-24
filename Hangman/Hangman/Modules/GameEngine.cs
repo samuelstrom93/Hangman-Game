@@ -8,6 +8,7 @@ using static Hangman.Repositories.PlayerRepository;
 using static Hangman.Repositories.WordRepository;
 using static Hangman.Repositories.GameRepository;
 using Hangman.Moduls;
+using Hangman.Repositories;
 
 namespace Hangman.Modules
 {
@@ -28,8 +29,11 @@ namespace Hangman.Modules
         public string NumberOfCorrectTries_text { get; set; }   //Binding i GamePage.xml
         public string NumberOfIncorrectTries_text { get; set; } //Binding i GamePage.xml
 
+        private WordRepository wordRepository;
+
         public GameEngine()
         {
+            wordRepository = new WordRepository();
             IsGameStart = false;
             IsStartBtnClickable = true;
         }
@@ -94,7 +98,7 @@ namespace Hangman.Modules
 
         private void MakeWord()
         {
-            IWord = GetRandomWord();
+            IWord = wordRepository.GetRandomWord();
             upperWord = IWord.Name.ToUpper();
 
             answerForPlayerArray = new char[upperWord.Length];
