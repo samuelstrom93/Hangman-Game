@@ -25,7 +25,7 @@
             <Label HorizontalAlignment="Center" Grid.Column="0">Rank</Label>
             <Label HorizontalAlignment="Center" Grid.Column="1">Namn</Label>
             <Label HorizontalAlignment="Center" Grid.Column="2">Ord</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="3">Gissningar</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="3">Antal fel</Label>
             <Label HorizontalAlignment="Center" Grid.Column="4">Tid</Label>
         </Grid>
         <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopHighscores}">
