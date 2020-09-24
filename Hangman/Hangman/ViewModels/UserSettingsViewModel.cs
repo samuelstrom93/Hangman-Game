@@ -42,12 +42,15 @@ namespace Hangman.ViewModels
 
         #endregion
 
+        private PlayerRepository playerRepository;
         public UserSettingsViewModel()
         {
             UpdatePlayerStats();
 
             DeleteUserCommand = new RelayCommand(TryDeleteUser);
             UpdateUserCommand = new RelayCommand(UpdateUser);
+
+            playerRepository = new PlayerRepository();
         }
 
         #region Methods: Delete User
@@ -81,7 +84,7 @@ namespace Hangman.ViewModels
 
         public void DeleteUser()
         {
-            PlayerRepository.DeletePlayer(ActivePlayer.Id);
+            playerRepository.DeletePlayer(ActivePlayer.Id);
         }
 
         #endregion
@@ -174,7 +177,7 @@ namespace Hangman.ViewModels
             {
                 try
                 {
-                    PlayerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
+                    playerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
                     var module = new PlayerModule();
                     module.TryLogInPlayer(NewName);
                     SetActivePlayer(NewName);
