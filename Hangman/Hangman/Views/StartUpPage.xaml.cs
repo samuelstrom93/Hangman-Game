@@ -12,29 +12,27 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Media;
-
+using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 
 namespace Hangman.Views
 {
     /// <summary>
     /// Interaction logic for StartUppPage.xaml
     /// </summary>
-    public partial class StartUppPage : Page
+    public partial class StartUpPage : Page
     {
         SoundPlayer sounds = new SoundPlayer();
 
-        public StartUppPage()
+        public StartUpPage(BaseViewModel specificModel = null)
         {
-            InitializeComponent();
-            sounds.SoundLocation = "Assets/Sounds/PunchesFX.wav";
-            sounds.Play();
+            InitializeComponent(); 
+            DataContext = specificModel ?? new StartUpPageViewModel();
+            //  sounds.SoundLocation = "Assets/Sounds/PunchesFX.wav";
+            //  sounds.Play();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-            this.NavigationService.Content = new GameIntroPage();
-            sounds.Stop();
-        }
+
     }
 }

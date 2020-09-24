@@ -12,6 +12,7 @@
     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"/>
                 <RowDefinition Height="150"/>
@@ -33,11 +34,16 @@
                 <Label Style="{StaticResource StandardHeader}" Content="HÄNGA HEN"/>
             </Grid>
 
-            <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="10, 10, 10, 10" Style="{StaticResource StandardBorder}" CornerRadius="10" VerticalAlignment="Center">
+            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" MinWidth="200" MaxWidth="300" Background="Transparent">
+                <TextBlock TextAlignment="Center" Background="{Binding TextBoxBackground}" Foreground="Red" Text="{Binding Message}"></TextBlock>
+            </Grid>
+
+
+            <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10, 10, 10, 10" Style="{StaticResource StandardBorder}" CornerRadius="10" VerticalAlignment="Top">
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top" Height="Auto">
                     <Label Style="{StaticResource PageTitleLabel}" FontWeight="Bold" Content="Skapa en användare"/>
                     <Label Style="{StaticResource StandardLabel}" Content="Välj ditt användarnamn:"/>
-                    <TextBox Style="{StaticResource UserInputTxtBox}" VerticalAlignment="Top" Text="{Binding PlayerName}"/>
+                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" VerticalAlignment="Top" Text="{Binding PlayerName}"/>
                     <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Registrera" HorizontalAlignment="Center" Command="{Binding TryRegister}" Cursor="Hand"/>
                 </StackPanel>
             </Border>

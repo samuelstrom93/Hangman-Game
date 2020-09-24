@@ -17,12 +17,16 @@ namespace Hangman.ViewModels
         public string Description { get; set; }
         public ICommand TryAddWordCommand { get; set; }
 
+        private WordRepository wordRepository;
+
         public AdminViewModel()
         {
             Word = WordPlaceholder;
             Description = DescriptionPlaceholder;
 
             TryAddWordCommand = new RelayCommand(TryAddWord);
+
+            wordRepository = new WordRepository();
         }
 
         private void TryAddWord()
@@ -34,7 +38,7 @@ namespace Hangman.ViewModels
                 return;
             }
 
-            if (!WordRepository.TryAddWord(Word, Description, out _))
+            if (!wordRepository.TryAddWord(Word, Description, out _))
             {
                 //TODO: Ge feedback i gränssnitt
                 return;

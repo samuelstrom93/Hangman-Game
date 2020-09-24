@@ -1,4 +1,5 @@
-﻿using Hangman.Repositories;
+﻿
+using Hangman.Repositories;
 using Hangman.ViewModels;
 using System.Linq;
 using System.Windows.Controls;
@@ -16,10 +17,11 @@ namespace Hangman.Views
 
             HighscoresViewModel vm = new HighscoresViewModel()
             {
-                TopHighscores = HighscoreRepository.GetTopGames(playerId).ToList(),
-                Title = playerId.HasValue ? "Dina toppspel" : "Topplistan"
+                HighscoreRepository = new HighscoreRepository(),
+                Title = playerId.HasValue ? "Dina 10 bästa spel" : "Topp 10 bästa spel",
             };
 
+            vm.TopHighscores = vm.HighscoreRepository.GetLeaderboard(playerId).ToList();
             DataContext = vm;
         }
     }

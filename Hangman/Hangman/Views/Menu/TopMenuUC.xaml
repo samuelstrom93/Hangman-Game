@@ -3,37 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Hangman.Views.Menu"
+             xmlns:local="clr-namespace:Hangman"
              mc:Ignorable="d" d:DesignWidth="800"
              xmlns:gif="http://wpfanimatedgif.codeplex.com" >
-    <Grid Background="Transparent">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    
+    <Border BorderBrush="Black" BorderThickness="0, 0, 0, 2">
+        <Grid Background="Transparent">
 
-        <Border BorderBrush="Black" BorderThickness="0, 0, 0, 1" CornerRadius="0, 0, 0, 0" Background="Transparent"  Opacity="50">
-            
-        </Border>
-        <Border Grid.Column="2" BorderBrush="black" Background="Transparent"  BorderThickness="0, 0, 1, 1" CornerRadius="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Label FontFamily="Bahnschrift" HorizontalAlignment="Center" VerticalAlignment="Center">HÄNGA HEN</Label>
-                <Image HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
-            </StackPanel>
-        </Border>
-        
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
 
-        
-        <Border  Grid.Column="1">
-            <DockPanel>
-                <Border Background="Transparent" BorderBrush="black" BorderThickness="0, 0, 0, 1" CornerRadius="2">
-                    <Menu Background="Transparent" DockPanel.Dock="Top" Padding="20, 0, 20, 0" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
-                        <MenuItem  FontSize="16"  x:Name="MenuShowName" Padding="5" Margin="10,0,10,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Header="{Binding PlayerName, FallbackValue=Meny}" ItemsSource="{Binding ItemsToShow}">
-                        </MenuItem>
-                    </Menu>
+
+            <!--Knapp för navigering via HEADER -->
+            <Border Grid.Column="0" Background="Transparent" Height="40"  HorizontalAlignment="Left">
+                <Button Width="200" Background="#FFEFC7F1" HorizontalAlignment="Right" BorderBrush="Transparent">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Style="{StaticResource StandardLabel}" FontFamily="Bahnschrift" HorizontalAlignment="Center" VerticalAlignment="Center">HÄNGA HEN</Label>
+                            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
+                        </StackPanel>
+                    </Button.Content>
+                    
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="white">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                </ContentPresenter>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Border>
+
+            <!--Bild för Hamburgarmeny-->
+            <Border Grid.Column="2" Background="Transparent" Height="40" Margin="0, 0, 10, 0">
+                <Border Width="30" Height="30"  HorizontalAlignment="Right" >
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Images/ham_icon_menu.png"/>
+                    </Border.Background>
                 </Border>
-            </DockPanel>
-        </Border>
-    </Grid>
+            </Border>
+
+
+            <Border Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent" Width="200"  Height="40">
+                <DockPanel>
+                    <Menu Background="Transparent" DockPanel.Dock="Top"  FontFamily="Bahnschrift Light" Width="200" >
+                        <MenuItem FontSize="14" HorizontalContentAlignment="Center" x:Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=MENY}" ItemsSource="{Binding ItemsToShow}" Width="200" Height="40"  Cursor="Hand"/>
+                    </Menu>
+                </DockPanel>
+            </Border>
+
+        </Grid>
+    </Border>
 </UserControl>

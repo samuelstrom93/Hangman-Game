@@ -12,9 +12,14 @@ namespace Hangman.Modules
     /// </summary>
     public class PlayerModule : IPlayerModule
     {
+        private PlayerRepository playerRepository;
+        public PlayerModule()
+        {
+            playerRepository = new PlayerRepository();
+        }
         private bool IsNameUsed(string name)
         {
-            Player player = PlayerRepository.GetPlayer(name);
+            Player player = playerRepository.GetPlayer(name);
 
             if (player != null)
                 return true;
@@ -37,7 +42,7 @@ namespace Hangman.Modules
             added = null;
             if (!IsNameUsed(name))
             {
-                added = PlayerRepository.CreatePlayer(name);
+                added = playerRepository.CreatePlayer(name);
                 if (added != null)
                 {
                     return true;

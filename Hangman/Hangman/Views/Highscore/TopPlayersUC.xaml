@@ -8,28 +8,41 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="2" />
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid>
+        <TextBlock FontSize="22pt" FontWeight="Bold" Text="{Binding Title}" HorizontalAlignment="Center"></TextBlock>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Center">Namn</Label>
+            <Label HorizontalAlignment="Center" Grid.Column="0">Namn</Label>
             <Label HorizontalAlignment="Center" Grid.Column="1">Antal spel</Label>
         </Grid>
-        <ListBox HorizontalContentAlignment="Stretch" Grid.Row="1" ItemsSource="{Binding TopDiligentPlayers}">
+        <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopDiligentPlayers}">
+            <ListBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+            </ListBox.Resources>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Path=Key}" />
-                        <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Value}" />
-                    </Grid>
+                    <Border Style="{StaticResource ListItemBorder}">
+                        <ListBoxItem Style="{StaticResource StandardListBoxItem}">
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="0" Text="{Binding Path=Key}"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=Value}" />
+                            </Grid>
+                        </ListBoxItem>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

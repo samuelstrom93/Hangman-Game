@@ -4,16 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
+using Hangman.Moduls.InterfacesForDatabase;
 
 namespace Hangman.Repositories
 {
-    public class WordRepository
+    public class WordRepository : IWordRepository
     {
 
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region READ
-        public static Word GetRandomWord()
+        public Word GetRandomWord()
         {
             string stmt = $"SELECT id, name, hint FROM word ORDER BY RANDOM() LIMIT 1";
             using (var conn = new NpgsqlConnection(connectionString))
@@ -42,7 +43,7 @@ namespace Hangman.Repositories
         }
         #endregion
 
-        public static bool TryAddWord(string word, string hint, out Word addedWord)
+        public bool TryAddWord(string word, string hint, out Word addedWord)
         {
             addedWord = null;
             if (string.IsNullOrWhiteSpace(word) || string.IsNullOrWhiteSpace(hint))

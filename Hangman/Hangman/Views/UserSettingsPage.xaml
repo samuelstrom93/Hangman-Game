@@ -56,9 +56,9 @@
             Width="300">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Style="{StaticResource StandardFontTextBlock}">Skriv in önskat nytt namn</TextBlock>
-                            <TextBox  Style="{StaticResource UserInputTxtBox}" Text="{Binding NewName}"/>
-                            <Button Style="{DynamicResource StandardButton}"  Content="Byt Namn!" Command="{Binding UpdateUserCommand}"/>
-                            <TextBlock x:Name="txtBlockUpdateMessage" Foreground="Red" Text="{Binding UpdateMessage}"/>
+                            <TextBox  TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NewName}"/>
+                            <Button Style="{DynamicResource StandardButton}"  Width="100" Content="Byt namn" Command="{Binding UpdateUserCommand}"/>
+                            <TextBlock Text="{Binding UpdateMessage}" HorizontalAlignment="Center" Margin="0, 4 ,0 ,0 " Padding="2" Foreground="{Binding TextColor, FallbackValue=black}" Background="{Binding BackGroundColorUpdateBox}"/>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -81,9 +81,9 @@
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
                             >
                             <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
-                            <TextBox Style="{StaticResource UserInputTxtBox}" Text="{Binding NameCheck}" />
-                            <Button Style="{StaticResource StandardButton}"  Content="Ta bort mig" Command="{Binding DeleteUserCommand}"/>
-                            <TextBlock x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}"/>
+                            <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NameCheck}" />
+                            <Button Style="{StaticResource StandardButton}" Width="100" Content="Ta bort mig" Command="{Binding DeleteUserCommand}"/>
+                            <TextBlock Margin="0, 4 ,0 ,0 " Padding="2" x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}" Background="{Binding BackGroundColorDeleteBox}"/>
                         </StackPanel>
                     </Grid>
                 </Border>

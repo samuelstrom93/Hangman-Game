@@ -16,9 +16,16 @@
                 <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource StandardButton}" Grid.Row="0" Height="25" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,10,0" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}" Cursor="Hand" Content="{Binding GameEndEngine.QuitBtnContent}"></Button>
 
-            <StackPanel  Grid.Row="1"  VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource StandardButton}" Grid.Row="0" Height="25" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,10,0" Command="{Binding LogOutCommand}" Cursor="Hand" Content="{Binding GameEndEngine.QuitBtnContent}"></Button>
+            
+            <StackPanel  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                 <TextBlock Text="{Binding GameEndEngine.GameStatus}" FontSize="45" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="DemiBold"></TextBlock>
                 <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,20">
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,19,0">
@@ -33,14 +40,14 @@
 
                 <StackPanel>
                     <WrapPanel Margin="0,15,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock FontSize="24" >
-                                Svaret var:</TextBlock>
+                        <Label Style="{StaticResource StandardLabel}" FontSize="24" >
+                                Svaret var:</Label>
                         <TextBlock Foreground="Green" Text="{Binding GameEndEngine.IWord.Name}" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="24"></TextBlock>
                     </WrapPanel>
                     <WrapPanel Margin="0,15,0,0" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding GameEndEngine.IsRankingShown, Converter={StaticResource BoolToVisibility}}" >
-                        <TextBlock FontSize="24">
+                        <Label Style="{StaticResource StandardLabel}" FontSize="24">
                                 Du kom på plats:
-                        </TextBlock>
+                        </Label>
                         <TextBlock Text="{Binding GameEndEngine.Ranking}" Margin="10,0,0,0" FontSize="24"></TextBlock>
                     </WrapPanel>
                     <Button Grid.Row="2" Height="25" Width="200" Style="{StaticResource StandardButton}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,35,10,10" Command="{Binding PlayAgainCommand}" Cursor="Hand">Spela igen?</Button>
@@ -48,7 +55,12 @@
                 </StackPanel>
             </StackPanel>
 
-            <Button Grid.Row="2" Visibility="{Binding GameEndEngine.IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Right" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Content="{Binding GameEndEngine.Button.Content}" Opacity="{Binding GameEndEngine.Button.Opacity}" IsEnabled="{Binding GameEndEngine.Button.IsEnabled}"  Width="175" Height="27" Margin="0,0,10,10" VerticalAlignment="Bottom" Cursor="Hand"></Button>
+            <Button Grid.Row="2" Grid.Column="2" Visibility="{Binding GameEndEngine.IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Right" Command="{Binding DeleteGameScoreCommand}" Style="{StaticResource StandardButton}" Content="{Binding GameEndEngine.Button.Content}" Opacity="{Binding GameEndEngine.Button.Opacity}" IsEnabled="{Binding GameEndEngine.Button.IsEnabled}"  Width="175" Height="27" Margin="0,0,10,10" VerticalAlignment="Bottom" Cursor="Hand"></Button>
+
+            <!-- PLATS FÖR USERSTATS -->
+            <Grid Grid.Row="1">
+                <Frame Name="UserStatsFrame" Visibility="{Binding GameEndEngine.IsDeleteGameScoreBtnShown, Converter={StaticResource BoolToVisibility}}" ></Frame>
+            </Grid>
         </Grid>
     </Border>
 </Page>

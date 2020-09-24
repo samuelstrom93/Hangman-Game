@@ -24,6 +24,7 @@ namespace Hangman.Views
         public GameStartPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
+            DataContext = new HighscoresViewModel();
 
             DataContext = specificModel ?? new GameStartViewModel();
         }

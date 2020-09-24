@@ -30,7 +30,6 @@
     <!-- Hjälpknapp, pratbubbla-->
     <Style x:Key="HelpButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-
         <Setter Property="Content">
             <Setter.Value>
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -79,11 +78,13 @@
     </Style>
 
 
+    <!--Standardknapp-->
     <Style x:Key="StandardButton" TargetType="Button">
         <Setter Property="Background" Value="black"/>
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontFamily" Value="Bahnschrift" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="IsDefault" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -102,7 +103,7 @@
     </Style>
     
     
-
+    <!--Första utkastet mall-->
     <Style x:Key="StandardBorderOG" TargetType="Border">
         <Setter Property="Background" Value="#cccedb" />
         <Setter Property="BorderBrush" Value="#186b61" />
@@ -110,7 +111,9 @@
         <Setter Property="CornerRadius" Value="5" />
         <Setter Property="Padding" Value="5" />
     </Style>
-
+    
+    
+    <!--Standardborder-->
     <Style x:Key="StandardBorder" TargetType="Border">
         <Setter Property="Background" Value="white" />
         <Setter Property="BorderBrush" Value="black" />
@@ -131,6 +134,11 @@
                 <Setter Property="Background" Value="#4e8895"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+    
+    <!--Textblock för felmeddelanden när felmeddelande finns-->
+    <Style x:Key="ErrorMessageTextBlock" TargetType="TextBlock">
+        <Setter Property="Background" Value="White"/>
     </Style>
     
     <Style x:Key="BackgroundBorder" TargetType="Border">

@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
+using System.Windows.Controls;
 
 namespace Hangman.Views
 {
@@ -7,13 +9,10 @@ namespace Hangman.Views
     /// </summary>
     public partial class HighScore_Page : Page
     {
-        public HighScore_Page()
+        public HighScore_Page(BaseViewModel specificModel)
         {
             InitializeComponent();
-
-            TopPlayerHighScores.Content = new TopGamesUC(28);
-            TopHighScores.Content = new TopGamesUC();
-            TopPlayers.Content = new TopPlayersUC();
+            DataContext = specificModel ?? new HighscorePageViewModel();
         }
     }
 }
