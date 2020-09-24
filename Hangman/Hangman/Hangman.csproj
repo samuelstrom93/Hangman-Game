@@ -20,7 +20,6 @@
     <None Remove="Assets\Images\hänggubbe10.png" />
     <None Remove="Assets\Images\hänggubbe2.png" />
     <None Remove="Assets\Images\hänggubbe3.png" />
-    <None Remove="Assets\Images\hänggubbe4.png" />
     <None Remove="Assets\Images\hänggubbe5.png" />
     <None Remove="Assets\Images\hänggubbe6.png" />
     <None Remove="Assets\Images\hänggubbe7.png" />
@@ -67,7 +66,6 @@
     <Resource Include="Assets\Images\hänggubbe10.png" />
     <Resource Include="Assets\Images\hänggubbe2.png" />
     <Resource Include="Assets\Images\hänggubbe3.png" />
-    <Resource Include="Assets\Images\hänggubbe4.png" />
     <Resource Include="Assets\Images\hänggubbe5.png" />
     <Resource Include="Assets\Images\hänggubbe6.png" />
     <Resource Include="Assets\Images\hänggubbe7.png" />
