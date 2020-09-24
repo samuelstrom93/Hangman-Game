@@ -26,7 +26,7 @@
 
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
                 <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">SPELINTRODUKTION</Label>
-                <Label Style="{StaticResource PageTitleLabel }" FontWeight="SemiBold" FontSize="25" FontStyle="Italic" >Rädda hen</Label>
+                <Label Style="{StaticResource PageTitleLabel }" FontWeight="SemiBold" FontSize="25" FontStyle="Italic" >HÄNGA HEN</Label>
 
                 <Border Style="{StaticResource StandardBorder}">
                     <TextBlock Style="{StaticResource StandardFontTextBlock}" Padding="10" TextWrapping="Wrap" Width="600">
