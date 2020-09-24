@@ -12,8 +12,6 @@ namespace Hangman.Modules
     /// </summary>
     public class PlayerModule : IPlayerModule
     {
-
-        #region methods
         private bool IsNameUsed(string name)
         {
             Player player = PlayerRepository.GetPlayer(name);
@@ -48,7 +46,6 @@ namespace Hangman.Modules
 
             return false;
         }
-        #endregion
     }
 
 }
