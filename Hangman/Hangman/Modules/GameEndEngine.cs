@@ -29,10 +29,12 @@ namespace Hangman.Moduls
         #endregion
 
         private GameRepository gameRepository;
+        private HighscoreRepository highscoreRepository;
 
         public GameEndEngine(Game game, Word word)
         {
             gameRepository = new GameRepository();
+            highscoreRepository = new HighscoreRepository();
 
             SetIGame(game);
             SetGame(game);
@@ -111,7 +113,7 @@ namespace Hangman.Moduls
             if ((IGame.IsWon == true) && (game.PlayerId != 0))    // Spelaren MED inloggning har vunnit
             {
                 IsRankingShown = true;
-                Ranking = HighscoreRepository.GetRankOnHighScore(game.Id);
+                Ranking = highscoreRepository.GetRankOnHighScore(game.Id);
             }
             else
             {
