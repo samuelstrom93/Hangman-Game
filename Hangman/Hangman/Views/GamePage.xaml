@@ -96,7 +96,7 @@
                 <StackPanel Width="auto" Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
                         <TextBox Text="{Binding GuessDirectlyText, Mode=TwoWay}" TextAlignment="Center" Width="100" Height="30" Margin="0,0,5,0" FontSize="20" DataContext="{Binding KeyboardViewModel}"></TextBox>
-                        <Button DataContext="{Binding KeyboardViewModel}" Style="{StaticResource StandardButton}" Command="{Binding GuessDirectlyCommand}" Content="Gissa direkt" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" BorderBrush="{x:Null}" FontWeight="Bold" Width="100" Height="25" Cursor="Hand" ></Button>
+                        <Button IsDefault="True" DataContext="{Binding KeyboardViewModel}" Style="{StaticResource StandardButton}" Command="{Binding GuessDirectlyCommand}" Content="Gissa direkt" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" BorderBrush="{x:Null}" FontWeight="Bold" Width="100" Height="25" Cursor="Hand" ></Button>
                     </WrapPanel>
                     <Frame Content="{Binding HintUC}"></Frame>
                 </StackPanel>
@@ -109,6 +109,7 @@
                     <Image Height="100" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
                 </Grid>
             </Grid>
+            
             <Frame Content="{Binding GameStartPage}"/>
             <Frame Width="800" Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
         </Grid>
