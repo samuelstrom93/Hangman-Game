@@ -18,7 +18,7 @@
 
             <!--Knapp för navigering via HEADER -->
             <Border Grid.Column="0" Background="Transparent" Height="40"  HorizontalAlignment="Left">
-                <Button Width="200" Background="#FFEFC7F1" HorizontalAlignment="Right" BorderBrush="Transparent">
+                <Button Width="200" Background="#FFEFC7F1" HorizontalAlignment="Right" BorderBrush="Transparent" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" Cursor="Hand">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Label Style="{StaticResource StandardLabel}" FontFamily="Bahnschrift" HorizontalAlignment="Center" VerticalAlignment="Center">HÄNGA HEN</Label>
