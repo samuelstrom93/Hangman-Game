@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Hangman"
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"    
+      d:DesignHeight="720" d:DesignWidth="1820"    
       Title="GamePage">
 
 
@@ -19,19 +19,20 @@
                 
                 <!-- Definitions for grid -->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="600" />
+                    <ColumnDefinition Width="400" />
                     <ColumnDefinition Width="400" />
                     <ColumnDefinition Width="250" />
                 </Grid.ColumnDefinitions>
                 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="600"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <!-- Stackpanel with Image and clock -->
-                <StackPanel Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="400" Width="500">
+                <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="200" Width="500">
                         <Border.Background>
                             <ImageBrush Viewport="0 0 1 1" ImageSource="{Binding GameEngine.ImageForGameStage}"/>
                         </Border.Background>
@@ -40,7 +41,7 @@
                 </StackPanel>
 
                 <!--Stackpanel with keyboard-->
-                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Grid.Column="1" Grid.Row="" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Border Style="{StaticResource StandardBorder}" Width="auto" Height="auto">
                         <StackPanel Margin="0,0,0,0">
                             <Grid>
