@@ -201,7 +201,7 @@ namespace Hangman.ViewModels
                 UpdateMessage = "Du måste ange ett nytt namn";
             }
 
-            else if (NewName == "")
+            else if (NewName == null)
                 UpdateMessage = "Du måste ange ett namn";
 
             else if (NewName.Contains(" "))
