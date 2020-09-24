@@ -157,12 +157,16 @@ namespace Hangman.ViewModels
 
         public void UpdatePlayerStats()
         {
-            GetGamesPlayed();
-            GetGamesWon();
-            CalculateWinRate();
-            SetPlayerStatus();
-            SetWinRate();
-            ChangeMemeWithWinRate();
+            if(ActivePlayer!= null)
+            {
+                GetGamesPlayed();
+                GetGamesWon();
+                CalculateWinRate();
+                SetPlayerStatus();
+                SetWinRate();
+                ChangeMemeWithWinRate();
+            }
+
         }
 
         #endregion

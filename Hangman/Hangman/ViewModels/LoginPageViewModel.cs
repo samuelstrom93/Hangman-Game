@@ -14,6 +14,8 @@ namespace Hangman.ViewModels
         public string PlayerName { get; set; }
         public ICommand TryLogIn { get; set; }
 
+        public string MessageBackground { get; set; }
+
         private readonly IPlayerModule _module = new PlayerModule();
 
 
@@ -27,10 +29,17 @@ namespace Hangman.ViewModels
             if (string.IsNullOrWhiteSpace(PlayerName))
             {
                 if (string.IsNullOrEmpty(PlayerName))
-                    ErrorMessage = "Du måste skriva något";
+                {
+                     MessageBackground = "white";
+                     ErrorMessage = "Du måste skriva något";
+                }
 
                 else
+                {
                     ErrorMessage = "Du får inte använda mellanslag";
+                    MessageBackground = "white";
+                }
+
                 return;
             }
 
@@ -41,6 +50,7 @@ namespace Hangman.ViewModels
 
             if (!_module.TryLogInPlayer(PlayerName))
             {
+                MessageBackground = "white";
                 ErrorMessage = "Din användare finns inte!";
             }
             else

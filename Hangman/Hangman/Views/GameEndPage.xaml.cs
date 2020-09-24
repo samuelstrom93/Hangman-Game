@@ -28,6 +28,7 @@ namespace Hangman.Views
         {
             InitializeComponent();
             gameEndPageViewModel = new GameEndPageViewModel(game, word);
+            UserStatsFrame.Content = new PlayerStatsUC();
             DataContext = gameEndPageViewModel;
         }
 

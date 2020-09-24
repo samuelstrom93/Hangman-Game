@@ -35,7 +35,7 @@
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" Width="250" Background="Transparent">
-                <TextBlock TextAlignment="Center" Background="White" Foreground="Red" Text="{Binding Message}"></TextBlock>
+                <TextBlock TextAlignment="Center" Background="{Binding TextBoxBackground}" Foreground="Red" Text="{Binding Message}"></TextBlock>
             </Grid>
 
 

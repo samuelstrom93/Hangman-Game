@@ -13,7 +13,7 @@ namespace Hangman.Repositories
 
         #region READ
         public static double GetGamesPlayed(IPlayer player)
-        {
+        {           
             string stmt = "Select COUNT(player_id) FROM Game where player_id=" + player.Id;
 
             using (var conn = new NpgsqlConnection(connectionString))
