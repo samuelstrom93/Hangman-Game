@@ -36,6 +36,9 @@ namespace Hangman.Modules
             wordRepository = new WordRepository();
             IsGameStart = false;
             IsStartBtnClickable = true;
+
+            MakeWord();
+            MakeWordArray();
         }
 
         #region GetAndSet
@@ -87,9 +90,8 @@ namespace Hangman.Modules
             IsGameStart = true;
             IsGameEnd = false;
 
-            MakeWord();
             MakeGame();
-            MakeWordArray();
+
         }
 
         private string upperWord;
