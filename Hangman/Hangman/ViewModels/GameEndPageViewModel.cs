@@ -18,6 +18,8 @@ namespace Hangman.ViewModels
     {
         public ICommand PlayAgainCommand { get; set; }  //Binding i GameEnd_Page
         public ICommand DeleteGameScoreCommand { get; set; } //Binding i GameEnd_Page
+        public ICommand LogOutCommand { get; set; } //Binding i GameEnd_Page
+
         public GameEndEngine GameEndEngine { get; set; }
 
         public GameEndPageViewModel(Game game, Word word)
@@ -26,7 +28,9 @@ namespace Hangman.ViewModels
 
             PlayAgainCommand = new RelayCommand(PlayAgain);
             DeleteGameScoreCommand = new RelayCommand(DeleteGameScore);
+            LogOutCommand = new RelayCommand(LogOut);
         }
+
 
         private void PlayAgain()
         {
@@ -49,6 +53,12 @@ namespace Hangman.ViewModels
         {
             GameEndEngine.DeleteGameScore();
             GameEndEngine.ChangeBtnStyle();
+        }
+
+        private void LogOut()
+        {
+            SetActivePlayer(null);
+            GoToPage(ApplicationPage.Login);
         }
 
 
