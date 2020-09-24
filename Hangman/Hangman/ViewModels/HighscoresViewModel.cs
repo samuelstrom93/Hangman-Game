@@ -18,6 +18,7 @@ namespace Hangman.ViewModels
 
         public string Title { get; set; }
 
+        public HighscoreRepository HighscoreRepository { get; set; }
 
         //public ObservableCollection<HighscoreGame> TopCurrentPlayerHighscores { get; set; }
         //public List<HighscoreGame> TopCurrentPlayerHighscoresList { get; set; }

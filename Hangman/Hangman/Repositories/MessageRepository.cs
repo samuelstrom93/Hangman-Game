@@ -1,4 +1,5 @@
-﻿using Hangman.Models;
+﻿using Hangman.Database;
+using Hangman.Models;
 using Microsoft.VisualBasic.CompilerServices;
 using Npgsql;
 using System;
@@ -8,12 +9,12 @@ using System.Text;
 
 namespace Hangman.Repositories
 {
-    public static class MessageRepository
+    public class MessageRepository : IMessageRepository
     {
         private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region READ
-        public static IEnumerable<Message> GetMessages(int? recieverId = null, int? senderId = null)
+        public IEnumerable<Message> GetMessages(int? recieverId = null, int? senderId = null)
         {
             string query = "select message.id, topic, content, sender_id, sender.name as sender_name, reciever_id, reciever.name as reciever_name, sent_at, read_at from message" +
                 "\ninner join player sender on sender.id=sender_id" +
@@ -67,7 +68,7 @@ namespace Hangman.Repositories
             return result;
         }
 
-        public static Message GetSingleMessage(int id)
+        public Message GetSingleMessage(int id)
         {
             var query = "select message.id, topic, content, sender_id, sender.name as sender_name, reciever_id, reciever.name as reciever_name, sent_at, read_at from message" +
                 "\ninner join player sender on sender.id=sender_id" +
@@ -106,12 +107,12 @@ namespace Hangman.Repositories
         }
         #endregion
 
-        public static bool TryAddMessage(Message message, out Message added)
+        public bool TryAddMessage(Message message, out Message added)
         {
             return TryAddMessage(message.Topic, message.Content, message.SenderId, message.RecieverId, out added);
         }
 
-        public static bool TryAddMessage(string topic, string content, int senderId, int recieverId, out Message added)
+        public bool TryAddMessage(string topic, string content, int senderId, int recieverId, out Message added)
         {
             added = null;
 
