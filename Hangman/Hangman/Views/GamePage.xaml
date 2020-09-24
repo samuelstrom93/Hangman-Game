@@ -17,7 +17,7 @@
                 <!--Definitioner för grid-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200*" />
-                    <ColumnDefinition Width="200*" />
+                    <ColumnDefinition Width="160*" />
                     <ColumnDefinition Width="200*" />
                 </Grid.ColumnDefinitions>
                 
@@ -31,14 +31,20 @@
                 </Grid.RowDefinitions>
 
                 <!--Ordet som spelaren gissar på-->
-                <Border Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource StandardBorder}" Width="400" Height="100" Margin="0, 0, 0, 30" >
-                    <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="{Binding GameEngine.AnswerForPlayer}" FontSize="65" TextAlignment="Center"/>
-                    </WrapPanel>
-                </Border>
+                <Grid Grid.Column="0" Grid.ColumnSpan="3" >
+                    <StackPanel>
+                        <Label Style="{StaticResource PageTitleLabel}" VerticalAlignment="Top">DITT ORD:</Label>
+
+                        <Border Style="{StaticResource StandardBorder}" Width="400" Height="100" Margin="0, 0, 0, 30" >
+                        <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding GameEngine.AnswerForPlayer}" FontSize="65" TextAlignment="Center"/>
+                        </WrapPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
                 
                 <!-- Spelbilden med hjärtan-->
-                <Grid Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Grid Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right">
                     <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="300" Width="400">
                         <Border.Background>
                             <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding GameEngine.ImageForGameStage}"/>
