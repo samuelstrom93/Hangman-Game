@@ -58,7 +58,7 @@
 
     <!--Knappar för bokstäver -->
     <Style x:Key="KeyButton" TargetType="Button">
-        <Setter Property="Width" Value="28"></Setter>
+        <Setter Property="Width" Value="40"></Setter>
         <Setter Property="BorderBrush" Value="#FFEFC7F1" />
         <Setter Property="Background" Value="black"/>
         <Setter Property="BorderThickness" Value="0"></Setter>
