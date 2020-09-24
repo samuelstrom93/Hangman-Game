@@ -45,14 +45,14 @@
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" >
                     <Label Style="{StaticResource PageTitleLabel}" Content="Användarnamn:" FontWeight="Bold"></Label>
-                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName}"/>
-                    <Button Width="100" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command ="{Binding TryLogIn}" />
+                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName}"  />
+                    <Button Width="100" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command ="{Binding TryLogIn}"/>
                 </StackPanel>
             </Border>
 
-            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" Width="250" Background="Transparent">
-                <TextBlock TextAlignment="Center" Background="White" Foreground="Red" Text="{Binding ErrorMessage}"></TextBlock>
-            </Grid>
+            <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" Width="250" Background="Transparent">
+                <TextBlock Background="{Binding MessageBackground}" TextAlignment="Center" Foreground="Red" Text="{Binding ErrorMessage}"></TextBlock>
+            </Border>
 
 
             <Border   Grid.Row="1" Grid.Column="0"  Grid.RowSpan="3"   VerticalAlignment="Top" Margin="0, 15, 0, 0">

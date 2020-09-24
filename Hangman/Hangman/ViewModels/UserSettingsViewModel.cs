@@ -10,6 +10,7 @@ using System.Windows.Input;
 using Hangman.Models;
 using Npgsql;
 using System.Windows;
+using System.Windows.Data;
 
 namespace Hangman.ViewModels
 {
@@ -32,6 +33,8 @@ namespace Hangman.ViewModels
         public bool IsDeletable { get; set; }
         public string DeleteMessage { get; set; }
         public ICommand DeleteUserCommand { get; set; }
+        public string BackGroundColorDeleteBox { get; set; }
+
         #endregion
 
         #region Properties: Update User
@@ -40,6 +43,8 @@ namespace Hangman.ViewModels
         public ICommand UpdateUserCommand { get; set; }
         public IPlayer Player { get; set; }
         public string TextColor { get; set; }
+
+        public string BackGroundColorUpdateBox { get; set; }
 
         #endregion
 
@@ -74,12 +79,13 @@ namespace Hangman.ViewModels
         {
             if (name == ActivePlayer.Name)
             {
-                DeleteMessage = "Din användare raderas. Du loggas nu ut.";
+                BackGroundColorDeleteBox = "white";
                 return true;
             }
 
             else
             {
+                BackGroundColorDeleteBox = "white";
                 DeleteMessage = "Du har skrivit in fel användarnamn.";
                 return false;
             }
@@ -163,12 +169,16 @@ namespace Hangman.ViewModels
 
         public void UpdatePlayerStats()
         {
-            GetGamesPlayed();
-            GetGamesWon();
-            CalculateWinRate();
-            SetPlayerStatus();
-            SetWinRate();
-            ChangeMemeWithWinRate();
+            if(ActivePlayer!= null)
+            {
+                GetGamesPlayed();
+                GetGamesWon();
+                CalculateWinRate();
+                SetPlayerStatus();
+                SetWinRate();
+                ChangeMemeWithWinRate();
+            }
+
         }
 
         #endregion
@@ -208,12 +218,14 @@ namespace Hangman.ViewModels
 
             else if (NewName == ActivePlayerName)
             {
+                BackGroundColorUpdateBox = "white";
                 TextColor = "red";
                 UpdateMessage = "Du måste ange ett nytt namn";
             }
 
             else if (NewName == null)
             {
+                BackGroundColorUpdateBox = "white";
                 TextColor = "red";
                 UpdateMessage = "Du måste ange ett namn";
             }
@@ -221,6 +233,7 @@ namespace Hangman.ViewModels
 
             else if (NewName.Contains(" "))
             {
+                BackGroundColorUpdateBox = "white";
                 TextColor = "red";
                 UpdateMessage = "Du får inte ha mellanslag i ditt namn";
             }
@@ -228,6 +241,7 @@ namespace Hangman.ViewModels
 
             else
             {
+                BackGroundColorUpdateBox = "white";
                 TextColor = "red";
                 UpdateMessage = "Något gick fel";
             }

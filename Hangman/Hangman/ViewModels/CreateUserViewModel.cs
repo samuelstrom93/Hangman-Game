@@ -19,6 +19,8 @@ namespace Hangman.ViewModels
 
         private readonly IPlayerModule _module;
 
+        public string TextBoxBackground { get; set; }
+
         public CreateUserViewModel()
         {
             _module = new PlayerModule();
@@ -30,24 +32,28 @@ namespace Hangman.ViewModels
         {
             if (string.IsNullOrWhiteSpace(PlayerName) )
             {
+                TextBoxBackground = "white";
                 Message = "Du måste skriva något.";
                 return;
             }
 
             else if (PlayerName.Contains(" "))
             {
+                TextBoxBackground = "white";
                 Message = "Ditt namn får inte innehålla mellanslag";
                 return;
             }
 
             if (_module.TryAddPlayer(PlayerName, out _))
             {
+                TextBoxBackground = "white";
                 Message = $"Grattis {PlayerName}! Du är nu medlem!";
                 SetActivePlayer(PlayerName);
                 GoToPage(ApplicationPage.GamePage);
                 return;
             }
 
+            TextBoxBackground = "white";
             Message = "Du har valt ett namn som är upptaget - försök igen";
         }
     }

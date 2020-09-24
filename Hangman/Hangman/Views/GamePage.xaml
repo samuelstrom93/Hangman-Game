@@ -6,75 +6,72 @@
       xmlns:local="clr-namespace:Hangman"
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1820"    
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      
       Title="GamePage">
 
 
     <Border BorderThickness="0" Style="{StaticResource BackgroundBorder}" 
             VerticalAlignment="Center" 
+            Height="1080"
+            Width="1920"
             HorizontalAlignment="Center">
         
-        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid VerticalAlignment="Center">
             <Grid>
-                
-                <!-- Definitions for grid -->
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="400" />
-                    <ColumnDefinition Width="400" />
-                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="200"></RowDefinition>
-                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <!-- Stackpanel with Image and clock -->
-                <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="200" Width="500">
+                <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    
+                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="300" Width="400">
                         <Border.Background>
-                            <ImageBrush Viewport="0 0 1 1" ImageSource="{Binding GameEngine.ImageForGameStage}"/>
-                        </Border.Background>
+                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding GameEngine.ImageForGameStage}"/>
+                     </Border.Background>
+
                         <Frame Content="{Binding StopWatchUC}"></Frame>
                     </Border>
-                </StackPanel>
-
-                <!--Stackpanel with keyboard-->
-                <StackPanel Grid.Column="1" Grid.Row="" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    
                     <Border Style="{StaticResource StandardBorder}" Width="auto" Height="auto">
-                        <StackPanel Margin="0,0,0,0">
-                            <Grid>
+                        <StackPanel Margin="0,10,0,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                
-                                <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                                    <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0" FontSize="24"><Run Text="Antal rätt:"/></TextBlock>
-                                    <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding GameEngine.NumberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-                                    <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0" FontSize="24"><Run Text="Antal fel:"/></TextBlock>
+                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0" FontSize="24"><Run Text="Antal rätt:"/></TextBlock>
+                                <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" Text="{Binding GameEngine.NumberOfCorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                                <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0" FontSize="24"><Run Text="Antal fel:"/></TextBlock>
                                     <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding GameEngine.NumberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
 
-                                </Grid>
-
-                                <WrapPanel Grid.Column="1" Margin="10, 10, 10, 10" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding GameEngine.AnswerForPlayer}" FontSize="26"/>
-                                </WrapPanel>
-
                             </Grid>
+
+                            <WrapPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding GameEngine.AnswerForPlayer}" FontSize="26"/>
+                            </WrapPanel>
+                            
+                        </Grid>
                         </StackPanel>
                     </Border>
-
+                    
                     <Border BorderThickness="0" Style="{StaticResource StandardBorder}" Height="auto" Width="auto">
                         <Frame Content="{Binding KeyboardUC}"></Frame>
                     </Border>
@@ -92,16 +89,16 @@
 
                     </WrapPanel>
                 </StackPanel>
-                
-                <!-- Stackpanel for Guess-->
+
                 <StackPanel Width="auto" Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                        <TextBox Text="{Binding GuessDirectlyText, Mode=TwoWay}" TextAlignment="Center" Width="100" Height="30" Margin="0,0,5,0" FontSize="20" DataContext="{Binding KeyboardViewModel}"></TextBox>
-                        <Button IsDefault="True" DataContext="{Binding KeyboardViewModel}" Style="{StaticResource StandardButton}" Command="{Binding GuessDirectlyCommand}" Content="Gissa direkt" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" BorderBrush="{x:Null}" FontWeight="Bold" Width="100" Height="25" Cursor="Hand" ></Button>
+                        <TextBox Style="{StaticResource UserInputTxtBox}" Text="{Binding GuessDirectlyText, Mode=TwoWay}" TextAlignment="Center" Width="100" Height="30" Margin="0,0,5,0" FontSize="20" DataContext="{Binding KeyboardViewModel}"></TextBox>
+                        <Button DataContext="{Binding KeyboardViewModel}" Style="{StaticResource StandardButton}" Command="{Binding GuessDirectlyCommand}" Content="Gissa direkt" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" BorderBrush="{x:Null}" FontWeight="Bold"  Width="100" Height="25" Cursor="Hand" ></Button>
                     </WrapPanel>
-                    <Frame Content="{Binding HintUC}"></Frame>
+                    
+                        <Frame Content="{Binding HintUC}"></Frame>
+
                 </StackPanel>
-                
                 <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                     <Button Style="{StaticResource HelpButton}"  HorizontalAlignment="Right" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"  />
                 </Grid>
@@ -110,7 +107,6 @@
                     <Image Height="100" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
                 </Grid>
             </Grid>
-            
             <Frame Content="{Binding GameStartPage}"/>
             <Frame Width="800" Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
         </Grid>
