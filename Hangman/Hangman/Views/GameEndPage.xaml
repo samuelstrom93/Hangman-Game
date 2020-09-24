@@ -16,7 +16,6 @@
                 <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource StandardButton}" Grid.Row="0" Height="25" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,10,0" Command="{Binding LogOutCommand}" Cursor="Hand" Content="{Binding GameEndEngine.QuitBtnContent}"></Button>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -24,8 +23,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource StandardButton}" Grid.Row="0" Grid.Column="2" Height="25" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,10,0" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}" Cursor="Hand" Content="{Binding GameEndEngine.QuitBtnContent}"></Button>
-
+            <Button Style="{StaticResource StandardButton}" Grid.Row="0" Height="25" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,10,0" Command="{Binding LogOutCommand}" Cursor="Hand" Content="{Binding GameEndEngine.QuitBtnContent}"></Button>
+            
             <StackPanel  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                 <TextBlock Text="{Binding GameEndEngine.GameStatus}" FontSize="45" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="DemiBold"></TextBlock>
                 <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,20">
