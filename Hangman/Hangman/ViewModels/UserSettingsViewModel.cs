@@ -43,14 +43,17 @@ namespace Hangman.ViewModels
         #endregion
 
         private PlayerRepository playerRepository;
+        private PlayerStatsRepository playerStatsRepository;
+
         public UserSettingsViewModel()
         {
+            playerRepository = new PlayerRepository();
+            playerStatsRepository = new PlayerStatsRepository();
+
             UpdatePlayerStats();
 
             DeleteUserCommand = new RelayCommand(TryDeleteUser);
             UpdateUserCommand = new RelayCommand(UpdateUser);
-
-            playerRepository = new PlayerRepository();
         }
 
         #region Methods: Delete User
@@ -100,19 +103,19 @@ namespace Hangman.ViewModels
 
         public void GetGamesPlayed()
         {
-            GamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
+            GamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
         }
 
         public void GetGamesWon()
         {
-            GamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer).ToString();
+            GamesWon = playerStatsRepository.GetGamesWon(ActivePlayer).ToString();
         }
 
         public void CalculateWinRate()
         {
 
-            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer);
-            double gamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer);
+            double gamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer);
+            double gamesWon = playerStatsRepository.GetGamesWon(ActivePlayer);
 
             if (gamesPlayed == 0)
             {
