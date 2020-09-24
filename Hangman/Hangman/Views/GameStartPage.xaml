@@ -39,7 +39,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="1" Grid.Row="1" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding PlayGame}">SPELA!</Button>
-                <Button Grid.Column="1" Grid.Row="3" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}">SPELGUIDE</Button>
+                <Button Grid.Column="1" Grid.Row="3" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}">SPELINTRODUKTION</Button>
                 <Button Grid.Column="1" Grid.Row="5" Margin="5" Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.HighscorePage}">TOPPLISTOR</Button>
             </Grid>
             <Border Style="{StaticResource StandardBorder}" Grid.Row="1" Grid.Column="3">
