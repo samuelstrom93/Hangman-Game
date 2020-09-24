@@ -39,6 +39,7 @@ namespace Hangman.ViewModels
         public string UpdateMessage { get; set; }
         public ICommand UpdateUserCommand { get; set; }
         public IPlayer Player { get; set; }
+        public string TextColor { get; set; }
 
         #endregion
 
@@ -178,6 +179,7 @@ namespace Hangman.ViewModels
                     var module = new PlayerModule();
                     module.TryLogInPlayer(NewName);
                     SetActivePlayer(NewName);
+                    TextColor = "green";
                     UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
                 }
 
@@ -186,11 +188,13 @@ namespace Hangman.ViewModels
                     //ta fram koden om användaren inte existerar
                     if (ex.SqlState.Contains("23505"))
                     {
+                        TextColor = "red";
                         UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
                     }
 
                     else
                     {
+                        TextColor = "red";
                         UpdateMessage = "Något gick fel - försök igen";
                     }
                 }
@@ -198,17 +202,27 @@ namespace Hangman.ViewModels
 
             else if (NewName == ActivePlayerName)
             {
+                TextColor = "red";
                 UpdateMessage = "Du måste ange ett nytt namn";
             }
 
             else if (NewName == null)
+            {
+                TextColor = "red";
                 UpdateMessage = "Du måste ange ett namn";
+            }
+
 
             else if (NewName.Contains(" "))
+            {
+                TextColor = "red";
                 UpdateMessage = "Du får inte ha mellanslag i ditt namn";
+            }
+
 
             else
             {
+                TextColor = "red";
                 UpdateMessage = "Något gick fel";
             }
         }
