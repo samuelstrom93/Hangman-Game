@@ -22,6 +22,8 @@ namespace Hangman.ViewModels
 
         public GameEndEngine GameEndEngine { get; set; }
 
+        private PlayerRepository playerRepository { get; set; }
+
         public GameEndPageViewModel(Game game, Word word)
         {
             GameEndEngine = new GameEndEngine(game, word);
@@ -29,6 +31,8 @@ namespace Hangman.ViewModels
             PlayAgainCommand = new RelayCommand(PlayAgain);
             DeleteGameScoreCommand = new RelayCommand(DeleteGameScore);
             LogOutCommand = new RelayCommand(LogOut);
+
+            playerRepository = new PlayerRepository();
         }
 
 
@@ -38,7 +42,7 @@ namespace Hangman.ViewModels
             
             if (GameEndEngine.GetGame().PlayerId != 0)    // Behåller inloggning
             {
-                var page = new GamePage(GetPlayerFromID(GameEndEngine.GetGame().PlayerId), isPlayAgain);
+                var page = new GamePage(playerRepository.GetPlayerFromID(GameEndEngine.GetGame().PlayerId), isPlayAgain);
                 NavigationService.Navigate(page);
             }
 

@@ -12,9 +12,11 @@ namespace Hangman.ViewModels
     {
         public int PlayerId { get; set; }
         public List<Message> Messages { get; set; }
+        public MessageRepository MessageRepository { get; set; }
 
         public MessagesViewModel(int playerId)
         {
+            MessageRepository = new MessageRepository();
             Messages = MessageRepository.GetMessages(playerId).ToList();
         }
     }

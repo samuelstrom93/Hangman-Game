@@ -1,4 +1,5 @@
-﻿using Hangman.Models;
+﻿using Hangman.Database;
+using Hangman.Models;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace Hangman.Repositories
 {
-    public static class HighscoreRepository
+    public class HighscoreRepository : IHighscoreRepository
     {
         private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
@@ -18,7 +19,7 @@ namespace Hangman.Repositories
         /// <param name="playerId">SpelarId om man vill hämta topplista för en specifik spelare</param>
         /// <param name="numHighscores">Hur lång toppplista man vill ha</param>
         /// <returns>Lista med toppspel</returns>
-        public static IEnumerable<HighscoreGame> GetTopGames(int? playerId = null, int numHighscores = 10)
+        public IEnumerable<HighscoreGame> GetTopGames(int? playerId = null, int numHighscores = 10)
         {
             var result = new List<HighscoreGame>();
             var queryString = "select number_of_tries, number_of_incorrect_tries, player.name as player_name, word.name as word_name, (select end_time - start_time as game_time) from game"
@@ -66,7 +67,7 @@ namespace Hangman.Repositories
         }
 
 
-        public static ObservableCollection<HighscoreGame> GetLeaderboard(int? playerId = null, int numHighscores = 20)
+        public ObservableCollection<HighscoreGame> GetLeaderboard(int? playerId = null, int numHighscores = 20)
         {
             var result = new ObservableCollection<HighscoreGame>();
 
@@ -124,7 +125,7 @@ namespace Hangman.Repositories
         /// Hämta mest frekventa spelarna
         /// </summary>
         /// <returns>Dictionary med spelarnamn som nyckel och antal spelade spel som värde.</returns>
-        public static IDictionary<string, long> GetTopDiligentPlayers(int numPlayers = 10)
+        public IDictionary<string, long> GetTopDiligentPlayers(int numPlayers = 10)
         {
             var result = new Dictionary<string, long>();
             var queryString = "select player.name as player_name, (select count(game)) as count from game"
@@ -162,7 +163,7 @@ namespace Hangman.Repositories
 
 
 
-        public static int GetRankOnHighScore(int gameId)
+        public int GetRankOnHighScore(int gameId)
         {
             string stmt = $"WITH leaderboard as (SELECT*, RANK () OVER(ORDER BY number_of_incorrect_tries, game_time) FROM (SELECT id, number_of_incorrect_tries, (SELECT end_time - start_time AS game_time) FROM game WHERE is_won IS true) AS rows) SELECT CAST(rank as integer), number_of_incorrect_tries, game_time FROM leaderboard WHERE id = {gameId}";
 

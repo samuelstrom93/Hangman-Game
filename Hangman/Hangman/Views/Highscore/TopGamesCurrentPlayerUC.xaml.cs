@@ -27,10 +27,10 @@ namespace Hangman.Views.Highscore
 
             HighscoresViewModel vm = new HighscoresViewModel()
             {
-                TopCurrentPlayerHighscores = HighscoreRepository.GetLeaderboard(playerId).ToList(),
+                HighscoreRepository = new HighscoreRepository(),
                 Title = playerId.HasValue ? "Dina 10 bästa spel" : " ",
             };
-
+            vm.TopCurrentPlayerHighscores = vm.HighscoreRepository.GetLeaderboard(playerId).ToList();
             DataContext = vm;
         }
     }

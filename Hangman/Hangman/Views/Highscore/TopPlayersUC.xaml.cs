@@ -16,10 +16,10 @@ namespace Hangman.Views
 
             HighscoresViewModel vm = new HighscoresViewModel()
             {
-                TopDiligentPlayers = HighscoreRepository.GetTopDiligentPlayers() as Dictionary<string, long>,
+                HighscoreRepository = new HighscoreRepository(),
                 Title = "Topp flitigaste spelarna",
             };
-
+            vm.TopDiligentPlayers = vm.HighscoreRepository.GetTopDiligentPlayers() as Dictionary<string, long>;
             DataContext = vm;
         }
     }

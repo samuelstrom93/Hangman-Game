@@ -4,15 +4,16 @@ using System.Text;
 using Npgsql;
 using System.Configuration;
 using Hangman.Models;
+using Hangman.Database;
 
 namespace Hangman.Repositories
 {
-    class PlayerStatsRepository
+    public class PlayerStatsRepository : IPlayerStatsRepository
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region READ
-        public static double GetGamesPlayed(IPlayer player)
+        public double GetGamesPlayed(IPlayer player)
         {
             string stmt = "Select COUNT(player_id) FROM Game where player_id=" + player.Id;
 
@@ -32,7 +33,7 @@ namespace Hangman.Repositories
             }
         }
 
-        public static double GetGamesWon(IPlayer player)
+        public double GetGamesWon(IPlayer player)
         {
             string stmt = "Select COUNT(player_id) FROM Game where player_id=" + player.Id + "and is_won = true";
 

@@ -43,8 +43,14 @@ namespace Hangman.ViewModels
 
         #endregion
 
+        private PlayerRepository playerRepository;
+        private PlayerStatsRepository playerStatsRepository;
+
         public UserSettingsViewModel()
         {
+            playerRepository = new PlayerRepository();
+            playerStatsRepository = new PlayerStatsRepository();
+
             UpdatePlayerStats();
 
             DeleteUserCommand = new RelayCommand(TryDeleteUser);
@@ -82,7 +88,7 @@ namespace Hangman.ViewModels
 
         public void DeleteUser()
         {
-            PlayerRepository.DeletePlayer(ActivePlayer.Id);
+            playerRepository.DeletePlayer(ActivePlayer.Id);
         }
 
         #endregion
@@ -98,19 +104,19 @@ namespace Hangman.ViewModels
 
         public void GetGamesPlayed()
         {
-            GamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
+            GamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
         }
 
         public void GetGamesWon()
         {
-            GamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer).ToString();
+            GamesWon = playerStatsRepository.GetGamesWon(ActivePlayer).ToString();
         }
 
         public void CalculateWinRate()
         {
 
-            double gamesPlayed = PlayerStatsRepository.GetGamesPlayed(ActivePlayer);
-            double gamesWon = PlayerStatsRepository.GetGamesWon(ActivePlayer);
+            double gamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer);
+            double gamesWon = playerStatsRepository.GetGamesWon(ActivePlayer);
 
             if (gamesPlayed == 0)
             {
@@ -175,7 +181,7 @@ namespace Hangman.ViewModels
             {
                 try
                 {
-                    PlayerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
+                    playerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
                     var module = new PlayerModule();
                     module.TryLogInPlayer(NewName);
                     SetActivePlayer(NewName);
