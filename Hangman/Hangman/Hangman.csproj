@@ -20,7 +20,6 @@
     <None Remove="Assets\Images\hänggubbe10.png" />
     <None Remove="Assets\Images\hänggubbe2.png" />
     <None Remove="Assets\Images\hänggubbe3.png" />
-    <None Remove="Assets\Images\hänggubbe4.png" />
     <None Remove="Assets\Images\hänggubbe5.png" />
     <None Remove="Assets\Images\hänggubbe6.png" />
     <None Remove="Assets\Images\hänggubbe7.png" />
@@ -67,14 +66,12 @@
     <Resource Include="Assets\Images\hänggubbe10.png" />
     <Resource Include="Assets\Images\hänggubbe2.png" />
     <Resource Include="Assets\Images\hänggubbe3.png" />
-    <Resource Include="Assets\Images\hänggubbe4.png" />
     <Resource Include="Assets\Images\hänggubbe5.png" />
     <Resource Include="Assets\Images\hänggubbe6.png" />
     <Resource Include="Assets\Images\hänggubbe7.png" />
     <Resource Include="Assets\Images\hänggubbe8.png" />
     <Resource Include="Assets\Images\hänggubbe9.png" />
     <Resource Include="Assets\Images\YouRock.jpg" />
-    <Resource Include="Assets\Images\GamePageIntroPicture.png" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe0.png" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe1.png" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe10.png" />
