@@ -1,4 +1,5 @@
 ﻿using Hangman.Models;
+using Hangman.Moduls.InterfacesForDatabase;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,12 @@ using System.Text;
 
 namespace Hangman.Repositories
 {
-    class GameRepository
+    class GameRepository : IGameRepository
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbMain"].ConnectionString;
 
         #region CREATE
-        public static int AddGame(Game game)
+        public int AddGame(Game game)
         {
             string stmt = "INSERT INTO game(is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id) values(@is_won ,@number_of_tries, @start_time, @end_time,@number_of_incorrect_tries, @player_id, @word_id) returning id";
 
@@ -52,7 +53,7 @@ namespace Hangman.Repositories
         #endregion
 
         #region READ
-        public static Game GetGameFromID(int id)
+        public Game GetGameFromID(int id)
         {
             string stmt = "select id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id from game where id = @id";
 
@@ -86,7 +87,7 @@ namespace Hangman.Repositories
             }
         }
 
-        public static Game GetGameFromPlayerID(int id)
+        public Game GetGameFromPlayerID(int id)
         {
             string stmt = "select id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id from game where id = @player_id";
 
@@ -120,7 +121,7 @@ namespace Hangman.Repositories
             }
         }
 
-        public static Game GetGameFromWordID(int id)
+        public Game GetGameFromWordID(int id)
         {
             string stmt = "select id, is_won, number_of_tries, start_time, end_time, number_of_incorrect_tries, player_id, word_id from game where id = @word_id";
 
@@ -159,7 +160,7 @@ namespace Hangman.Repositories
         #endregion
 
         #region DELETE
-        public static void DeleteGame(int id)
+        public void DeleteGame(int id)
         {
             string stmt = "DELETE FROM game WHERE id = @id";
             using (var conn = new NpgsqlConnection(connectionString))

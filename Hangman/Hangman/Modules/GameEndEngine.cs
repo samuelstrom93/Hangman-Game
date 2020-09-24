@@ -1,7 +1,5 @@
 ﻿using Hangman.Models;
 using Hangman.ViewModels.Base;
-using static Hangman.Repositories.GameRepository;
-using static Hangman.Repositories.HighscoreRepository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,12 +24,16 @@ namespace Hangman.Moduls
         public string QuitBtnContent { get; set; }
 
         public bool IsRankingShown { get; set; }   
-        public bool IsDeleteGameScoreBtnShown { get; set; } 
+        public bool IsDeleteGameScoreBtnShown { get; set; }
 
         #endregion
 
+        private GameRepository gameRepository;
+
         public GameEndEngine(Game game, Word word)
         {
+            gameRepository = new GameRepository();
+
             SetIGame(game);
             SetGame(game);
             SetIWord(word);
@@ -56,7 +58,7 @@ namespace Hangman.Moduls
         private int gameID;
         public void DeleteGameScore()
         {
-            DeleteGame(gameID);
+            gameRepository.DeleteGame(gameID);
         }
 
         #endregion
@@ -121,7 +123,7 @@ namespace Hangman.Moduls
         {
             if (game.PlayerId != 0)  // Spelaren MED inloggning
             {
-                gameID = AddGame(game);
+                gameID = gameRepository.AddGame(game);
                 IsDeleteGameScoreBtnShown = true;
                 QuitBtnContent = "Logga ut";
             }
