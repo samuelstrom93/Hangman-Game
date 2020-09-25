@@ -1,7 +1,9 @@
 ﻿using Hangman.Models;
+using Hangman.Moduls;
 using Hangman.Moduls.InterfacesForDatabase;
 using Hangman.Repositories;
 using Hangman.ViewModels.Base;
+using Hangman.Views.UCsForGamePage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +17,20 @@ namespace Hangman.ViewModels
 {
     public class PlayGameViewModel : BaseViewModel
     {
-        private static readonly char[] _letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ".ToCharArray();
+        private static readonly char[] _lettersABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ".ToCharArray();
+        private static readonly char[] _lettersQWERTY = "QWERTYUIOPÅASDFGHJKLÖÄZXCVBNM".ToCharArray();
         private static readonly int _incorrectGuessLimit = 10;
         private static readonly string _letterPlaceHolder = "_";
 
 
         public WrapPanel Keyboard { get; set; } = new WrapPanel();
         public Grid WordDisplay { get; set; }
+
+        private StopWatchUCViewModel stopWatchVM;
+        public StopWatchUC StopWatch { get; set; }
         public string GameStateImage { get; set; } = @"..\..\..\Assets\Images\hänggubbe0.png";
+        public Visibility HintVisibility { get; set; } = Visibility.Hidden;
+        public ICommand ShowHintCommand { get; set; }
 
         private Word currentWord;
         public char[] CurrentWordArray { get => currentWord?.Name.ToUpper().ToCharArray(); }
@@ -47,11 +55,27 @@ namespace Hangman.ViewModels
 
             currentWord = wordRepository.GetRandomWord();
             CreateWordTextBlocks();
+
+            ShowHintCommand = new RelayCommand(ShowHint);
+            stopWatchVM = new StopWatchUCViewModel();
+            StopWatch = new StopWatchUC(stopWatchVM);
         }
 
-        private void CreateLetterButtons()
+        private void ShowHint()
         {
-            foreach (var c in _letters)
+            if (HintVisibility == Visibility.Hidden)
+            {
+                HintVisibility = Visibility.Visible;
+            }
+            else
+            {
+                HintVisibility = Visibility.Hidden;
+            }
+        }
+
+        private void CreateLetterButtons(bool isQwerty = true)
+        {
+            foreach (var c in isQwerty ? _lettersQWERTY : _lettersABC)
             {
                 var b = new Button
                 {
@@ -134,6 +158,7 @@ namespace Hangman.ViewModels
             isGameInProgress = true;
             numberOfIncorrectGuesses = 0;
             currentGameStartTime = DateTime.Now;
+            stopWatchVM.StartStopWatch();
             //TODO
         }
 
@@ -154,6 +179,8 @@ namespace Hangman.ViewModels
         private void GameOver(bool isWin)
         {
             //TODO
+
+            stopWatchVM.StopStopWatch();
 
             if (ActivePlayer != null)
             {
