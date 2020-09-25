@@ -54,13 +54,6 @@
                     <Frame Content="{Binding StopWatchUC}"></Frame>
                 </Grid>
                 
-                <!--Felgissningar
-                <Grid Grid.Row="1">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0" FontSize="24"><Run Text="Antal fel:"/></TextBlock>
-                        <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding GameEngine.NumberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-                    </StackPanel>
-                </Grid> -->
 
                 <!--BokstavsKeyboard -->
                 <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource StandardBorder}"  Height="250" Width="400" Background="#FFF5E5F5" >
