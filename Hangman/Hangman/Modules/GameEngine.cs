@@ -156,7 +156,6 @@ namespace Hangman.Modules
         private int numberOfLives;   // 0 =GAME OVER
         private int numberOfTries;
         private int numberOfIncorrectTries;
-        private int numberOfCorrectTries;
 
         internal void RefreshGame()
         {
@@ -164,7 +163,6 @@ namespace Hangman.Modules
             numberOfLives = 10;
             numberOfTries = 0;
             numberOfIncorrectTries = 0;
-            numberOfCorrectTries = 0;
 
             gameStage = 0;
             IsWon = false;
@@ -204,8 +202,6 @@ namespace Hangman.Modules
             if (upperWord.Contains(selectedKey))    //Gissade rätt
             {
                 numberOfTries++;
-                numberOfCorrectTries++;
-                //NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
                 IsGuessCorrect = true;
             }
             else //Gissade fel
@@ -213,7 +209,6 @@ namespace Hangman.Modules
                 numberOfTries++;
                 numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-                //NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
                 ShowGameStage();
@@ -268,7 +263,6 @@ namespace Hangman.Modules
             if (playersGuessingAnswer == upperWord) //Spelaren vann
             {
                 numberOfTries++;
-                numberOfCorrectTries++;
 
                 IsWon = true;
                 EndGame();
