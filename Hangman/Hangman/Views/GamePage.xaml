@@ -17,7 +17,7 @@
                 <!--Definitioner för grid-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200*" />
-                    <ColumnDefinition Width="160*" />
+                    <ColumnDefinition Width="190*" />
                     <ColumnDefinition Width="200*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -93,12 +93,12 @@
                 </Grid>
                 
                 <!--Hjälpknapp-->
-                <Grid Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Grid Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <Button Style="{StaticResource HelpButton}"  HorizontalAlignment="Right" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"  />
                 </Grid>
                 
                 <!--GIF-->
-                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left">
+                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center">
                     <Image Height="100" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
                 </Grid>
                 
