@@ -40,7 +40,7 @@ namespace Hangman.ViewModels
 
             if(GameEngine.IsGameEnd)
             {
-                GameEndPage = new GameEndPage(GameEngine.GetGame(), GameEngine.GetWord());
+                GameEndPage = new GameEndPage(GameEngine.GetGame(), GameEngine.GetWord(), GameEngine.StopWatchEngine.Timer);
             }
 
         }

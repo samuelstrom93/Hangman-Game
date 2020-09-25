@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Hangman.Repositories;
 using System.Windows.Controls;
+using Hangman.Views.UCsForGamePage;
 
 namespace Hangman.Moduls
 {
