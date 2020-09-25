@@ -18,7 +18,6 @@ namespace Hangman.ViewModels
         public HighscorePageViewModel()
         {
             var playerId = ActivePlayer?.Id;
-
             HighscoresViewModel vm = new HighscoresViewModel();
 
             if (playerId != null)
