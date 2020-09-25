@@ -89,11 +89,20 @@ namespace Hangman.ViewModels
             highScoreItem.Click += mnuHighScores;
             _menuItems.Add(highScoreItem);
 
+            var startUpItem = new MenuItem
+            {
+                Name = "StartUpItem",
+                Header = "Startsida"
+            };
+            startUpItem.Click += mnuStartUp;
+            _menuItems.Add(startUpItem);
+
 
             ItemsToShow.Add(loginItem);
             ItemsToShow.Add(highScoreItem);
-            ItemsToShow.Add(new Separator());
             ItemsToShow.Add(playItem);
+            ItemsToShow.Add(new Separator());
+            ItemsToShow.Add(startUpItem);
         }
 
         private void mnuLogOut(object sender, RoutedEventArgs e)
@@ -118,6 +127,11 @@ namespace Hangman.ViewModels
         private void mnuHighScores(object sender, RoutedEventArgs e)
         {
             GoToPage(ApplicationPage.HighscorePage);
+        }
+
+        private void mnuStartUp(object sender, RoutedEventArgs e)
+        {
+            GoToPage(ApplicationPage.StartUpPage);
         }
     }
 }

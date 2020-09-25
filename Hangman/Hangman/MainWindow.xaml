@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:Hangman"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
+        d:DesignHeight="450" d:DesignWidth="800"
         Title="MainWindow"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        MinHeight="720"
+        MinWidth="1080">
+
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
@@ -22,11 +24,11 @@
         </Border>
 
         <Grid Grid.Row="0" Grid.RowSpan="2">
-            
+
         </Grid>
 
         <Border Grid.Row="1" Style="{StaticResource BackgroundBorder}">
-            <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>                
+            <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
             <!-- Här tar vi bort Navigationsmöjligheten, vill vi ha det i alla?-->
         </Border>
     </Grid>

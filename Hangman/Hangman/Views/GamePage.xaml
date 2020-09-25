@@ -16,10 +16,11 @@
             <Grid>
                 <!--Definitioner för grid-->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200*" />
-                    <ColumnDefinition Width="190*" />
-                    <ColumnDefinition Width="200*" />
+                    <ColumnDefinition Width="450*" />
+                    <ColumnDefinition Width="400*" />
+                    <ColumnDefinition Width="450*" />
                 </Grid.ColumnDefinitions>
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200*"/>
                     <RowDefinition Height="400*"/>
@@ -32,7 +33,7 @@
                 <Grid Grid.Column="0" Grid.ColumnSpan="3" >
                     <StackPanel>
                         <Label Style="{StaticResource PageTitleLabel}" VerticalAlignment="Top">DITT ORD:</Label>
-                            <Border Style="{StaticResource StandardBorder}" Width="400" Height="100" >
+                            <Border Style="{StaticResource StandardBorder}" Width="400" Height="100" Margin="0, 0 ,0,20" >
                             <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding GameEngine.AnswerForPlayer}" FontSize="60" TextAlignment="Center"/>
                             </WrapPanel>
@@ -40,30 +41,24 @@
                     </StackPanel>
                 </Grid>
                 
-                <!-- Spelbilden med hjärtan-->
-                <Grid Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right">
-                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="300" Width="400">
-                        <Border.Background>
-                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding GameEngine.ImageForGameStage}"/>
-                        </Border.Background>
-                    </Border>
-                </Grid>
+
 
                 <!--Klockan-->
                 <Grid Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Margin="0, 0, 40, 0" HorizontalAlignment="Right" >
                     <Frame Content="{Binding StopWatchUC}"></Frame>
                 </Grid>
-                
-                <!--Felgissningar
-                <Grid Grid.Row="1">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Foreground="Red" Grid.Row="1" Grid.Column="0" FontSize="24"><Run Text="Antal fel:"/></TextBlock>
-                        <TextBlock Foreground="Red" Grid.Row="1" Grid.Column='1' Text="{Binding GameEngine.NumberOfIncorrectTries_text}" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-                    </StackPanel>
-                </Grid> -->
+
+                <!-- Spelbilden med hjärtan-->
+                <Grid Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="250" Width="300">
+                        <Border.Background>
+                            <ImageBrush ImageSource="{Binding GameEngine.ImageForGameStage}"/>
+                        </Border.Background>
+                    </Border>
+                </Grid>
 
                 <!--BokstavsKeyboard -->
-                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource StandardBorder}"  Height="250" Width="400" Background="#FFF5E5F5" >
+                <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource StandardBorder}"  Height="250" Width="400" Background="#FFF5E5F5" Grid.ColumnSpan="3">
                     <Frame Content="{Binding KeyboardUC}"></Frame>
                 </Border>
                 
@@ -72,9 +67,15 @@
                     <TextBox Style="{StaticResource UserInputTxtBox}" Text="{Binding GuessDirectlyText, Mode=TwoWay}" TextAlignment="Center" Width="100" Height="30" Margin="0,0,5,0" FontSize="20" DataContext="{Binding KeyboardViewModel}"></TextBox>
                     <Button DataContext="{Binding KeyboardViewModel}" Style="{StaticResource StandardButton}" Command="{Binding GuessDirectlyCommand}" Content="Gissa direkt" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" BorderBrush="{x:Null}" FontWeight="Bold"  Width="100" Height="25" Cursor="Hand" ></Button>
                 </WrapPanel>
+
+                
+                <!--GIF-->
+                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left">
+                    <Image Height="100" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
+                </Grid>
                 
                 <!--Startknapp-->
-                <Grid Grid.Row="2" Grid.Column="1">
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
                     <Button IsEnabled="{Binding GameEngine.IsStartBtnClickable}" Width="400" Height="60" Background="Green" HorizontalAlignment="Center" Padding="25, 5, 25, 5"  Command="{Binding GameStartCommand}" Foreground="White" BorderBrush="{x:Null}" VerticalAlignment="Center" Cursor="Hand" FontSize="24">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -93,14 +94,11 @@
                 </Grid>
                 
                 <!--Hjälpknapp-->
-                <Grid Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Grid Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                     <Button Style="{StaticResource HelpButton}"  HorizontalAlignment="Right" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"  />
                 </Grid>
                 
-                <!--GIF-->
-                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center">
-                    <Image Height="100" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
-                </Grid>
+
                 
             </Grid>
             

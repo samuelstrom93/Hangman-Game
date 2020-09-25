@@ -18,7 +18,7 @@
 
             <!--Knapp för navigering via HEADER -->
             <Border Grid.Column="0" Background="Transparent" Height="40"  HorizontalAlignment="Left">
-                <Button Width="200" Background="#FFEFC7F1" HorizontalAlignment="Right" BorderBrush="Transparent" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" Cursor="Hand">
+                <Button Width="200" Background="#FFEFC7F1" HorizontalAlignment="Right" BorderBrush="Transparent" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.StartUpPage}" Cursor="Hand">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Label Style="{StaticResource StandardLabel}" FontFamily="Bahnschrift" HorizontalAlignment="Center" VerticalAlignment="Center">HÄNGA HEN</Label>
@@ -46,11 +46,11 @@
                 </Border>
             </Border>
 
-
+            <!--Meny-->
             <Border Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent" Width="200"  Height="40">
                 <DockPanel>
-                    <Menu Background="Transparent" DockPanel.Dock="Top"  FontFamily="Bahnschrift Light" Width="200" >
-                        <MenuItem FontSize="14" HorizontalContentAlignment="Center" x:Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=MENY}" ItemsSource="{Binding ItemsToShow}" Width="200" Height="40"  Cursor="Hand"/>
+                    <Menu Background="Transparent" DockPanel.Dock="Top"  FontFamily="Bahnschrift Light" Width="200" Cursor="Hand">
+                        <MenuItem FontSize="14" HorizontalContentAlignment="Center" x:Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=MENY}" ItemsSource="{Binding ItemsToShow}" Width="200" Height="40"/>
                     </Menu>
                 </DockPanel>
             </Border>

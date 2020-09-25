@@ -35,7 +35,7 @@ namespace Hangman.ViewModels
 
         public GamePageViewModel(bool isPlayAgain)  
         {
-            ViewGameStartPageAsOverray(isPlayAgain);
+            /*ViewGameStartPageAsOverray(isPlayAgain);*/
 
             var player = ActivePlayer;
             PlayerName = player == null ? "Spela utan användare" : player.Name;
@@ -48,13 +48,14 @@ namespace Hangman.ViewModels
             HintUC = new HintUC();
         }
 
+        /*
         private void ViewGameStartPageAsOverray(bool isPlayAgain)
         {
             if (isPlayAgain == false)
             {
                 GameStartPage = new GameStartPage();
             }
-        }
+        }*/
 
         private void MakeStopWatchUC()
         {
