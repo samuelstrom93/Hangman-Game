@@ -12,11 +12,5 @@ namespace Hangman.Models
         public int NumberOfTries { get; set; }
         public TimeSpan GameTime { get; set; } 
         public int RankOnLeaderboard { get; set; }
-
-        
-        public override string ToString()
-        {
-            return $"{RankOnLeaderboard} Spelarnamn: {PlayerName} Speltid: {GameTime} Ord: {Word} Antal fel: {NumberOfIncorrectTries}";
-        }
     }
 }

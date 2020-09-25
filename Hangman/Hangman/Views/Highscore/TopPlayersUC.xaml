@@ -19,10 +19,10 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Center" Grid.Column="0">Namn</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="1">Antal spel</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="0">Namn</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Antal spel</Label>
         </Grid>
-        <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopDiligentPlayers}">
+        <ListBox Grid.Row="3" FontSize="14" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopDiligentPlayers}">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />

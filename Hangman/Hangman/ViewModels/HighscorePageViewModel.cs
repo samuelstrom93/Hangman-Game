@@ -4,6 +4,7 @@ using Hangman.Views;
 using Hangman.Views.Highscore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Hangman.ViewModels
@@ -17,10 +18,12 @@ namespace Hangman.ViewModels
         public HighscorePageViewModel()
         {
             var playerId = ActivePlayer?.Id;
+
+            HighscoresViewModel vm = new HighscoresViewModel();
+
             if (playerId != null)
             {
                 TopGamesCurrentPlayer = new TopGamesCurrentPlayerUC(playerId);
-
             }
             TopGames = new TopGamesUC();
             TopPlayers = new TopPlayersUC();
