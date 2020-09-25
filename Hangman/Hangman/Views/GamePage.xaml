@@ -97,9 +97,9 @@
                 
             </Grid>
             
-            <!--Frame för GameStart-->
+            <!--Frame för GameStart och GameEnd-->
             <Frame Content="{Binding GameStartPage}"/>
-            <Frame Width="800" Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
+            <Frame Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
             
         </Grid>
     </Border>
