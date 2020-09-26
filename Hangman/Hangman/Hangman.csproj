@@ -9,11 +9,13 @@
   <ItemGroup>
     <None Remove="Assets\Gifs\ChatBubbleGif.gif" />
     <None Remove="Assets\Gifs\GameOn.gif" />
+    <None Remove="Assets\Gifs\HeartBreak0.gif" />
     <None Remove="Assets\Images\Arkiv\ham_icon_menu.png" />
     <None Remove="Assets\Images\GameIntroPicture_2.png" />
     <None Remove="Assets\Images\GamePageIntroPicture.png" />
     <None Remove="Assets\Images\GamePageIntro_picture.png" />
     <None Remove="Assets\Images\Hamburger_Icon.png" />
+    <None Remove="Assets\Images\heart.png" />
     <None Remove="Assets\Images\hänggubbe0.png" />
     <None Remove="Assets\Images\hänggubbe0OG.png" />
     <None Remove="Assets\Images\hänggubbe1.png" />
@@ -33,6 +35,8 @@
     <None Remove="Assets\Sounds\PunchSFX.wav" />
     <None Remove="Views\Gifs\ChatBubbleGif.gif" />
     <None Remove="Views\Gifs\GameOn.gif" />
+    <None Remove="Views\Gifs\heart.png" />
+    <None Remove="Views\Gifs\HeartBreak0.gif" />
     <None Remove="Views\Menu\Gifs\ChatBubbleGif.gif" />
     <None Remove="Views\Menu\Gifs\GameOn.gif" />
   </ItemGroup>
@@ -53,14 +57,17 @@
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
     <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
+    <PackageReference Include="XamlAnimatedGif" Version="1.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\Gifs\ChatBubbleGif.gif" />
     <Resource Include="Assets\Gifs\GameOn.gif" />
+    <Resource Include="Assets\Gifs\HeartBreak0.gif" />
     <Resource Include="Assets\Images\ham_icon_menu.png" />
     <Resource Include="Assets\Images\GameIntroPicture_2.png" />
     <Resource Include="Assets\Images\Hamburger_Icon.png" />
+    <Resource Include="Assets\Images\heart.png" />
     <Resource Include="Assets\Images\hänggubbe0.png" />
     <Resource Include="Assets\Images\hänggubbe1.png" />
     <Resource Include="Assets\Images\hänggubbe10.png" />
@@ -91,8 +98,12 @@
     <Content Include="Assets\Sounds\PunchSFX.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Views\Gifs\heart.png" />
     <Resource Include="Views\Gifs\ChatBubbleGif.gif" />
     <Resource Include="Views\Gifs\GameOn.gif" />
+    <Resource Include="Views\Gifs\HeartBreak0.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Views\Menu\Gifs\ChatBubbleGif.gif" />
     <Resource Include="Views\Menu\Gifs\GameOn.gif" />
   </ItemGroup>

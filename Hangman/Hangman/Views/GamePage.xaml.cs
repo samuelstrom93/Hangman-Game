@@ -27,6 +27,7 @@ namespace Hangman.Views
         public IPlayer Player;
         private GamePageViewModel gamePageViewModel;
 
+
         public GamePage(IPlayer player = null, bool isPlayAgain = false, BaseViewModel specificModel = null)
         {
 
@@ -36,6 +37,7 @@ namespace Hangman.Views
             gamePageViewModel = new GamePageViewModel(isPlayAgain);
             DataContext = gamePageViewModel;
 
+       
         }
     }
 }

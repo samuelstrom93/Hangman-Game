@@ -4,14 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman"
-      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+
+      xmlns:gif ="http://wpfanimatedgif.codeplex.com"
+      
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      
       Title="GamePage">
 
 
     <Border>
+
+        <!--
+        xmlns:gif ="https://github.com/XamlAnimatedGif/XamlAnimatedGif"-->
+        
         <Grid VerticalAlignment="Center">
             <Grid>
                 <!--Definitioner för grid-->
@@ -57,6 +62,27 @@
                     </Border>
                 </Grid>
 
+                
+                
+                <!--Extraliven-->
+                <Grid Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" >
+                    <WrapPanel>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv1}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv2}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv3}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv4}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv5}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv6}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv7}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv8}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv9}"/>
+                        <Image gif:ImageBehavior.AnimatedSource ="Gifs/HeartBreak0.gif"  Height="30" Width="30" gif:ImageBehavior.AnimationDuration ="{Binding GameEngine.extraliv10}"/>
+                    </WrapPanel>
+                </Grid>
+
+
+
+
                 <!--BokstavsKeyboard -->
                 <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource StandardBorder}"  Height="250" Width="400" Background="#FFF5E5F5" Grid.ColumnSpan="3">
                     <Frame Content="{Binding KeyboardUC}"></Frame>
@@ -71,7 +97,7 @@
                 
                 <!--GIF-->
                 <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left">
-                    <Image Height="100" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
+                    <!--      <Image Height="100" gif:AnimationBehavior.SourceUri="Gifs/GameOn.gif" />-->
                 </Grid>
                 
                 <!--Startknapp-->

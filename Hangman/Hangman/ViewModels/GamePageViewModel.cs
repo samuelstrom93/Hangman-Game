@@ -25,6 +25,8 @@ namespace Hangman.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
+        public bool extraliv = false;
+
         public GameStartPage GameStartPage { get; set; }    //Binding i GamePage.xml
         public ICommand GameStartCommand { get; set; }  //Binding i GamePage.xml
         public HintUC HintUC { get; set; }  //Binding i GamePage.xml
