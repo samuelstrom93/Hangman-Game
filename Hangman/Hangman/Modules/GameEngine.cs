@@ -166,7 +166,7 @@ namespace Hangman.Modules
 
             ImageForGameStage = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
 
-            ShowNumberOfLives(); //Lägga hjärtan här
+            BreakHearts(); //Lägga hjärtan här
         } 
 
         public int numberOfLives;   // 0 =GAME OVER
@@ -342,7 +342,7 @@ namespace Hangman.Modules
         public string extraliv10 { get; set; } = "10";
 
 
-        public void ShowNumberOfLives()
+        public void BreakHearts()
         {
 
             switch (gameStage)

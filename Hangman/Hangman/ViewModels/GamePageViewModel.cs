@@ -94,6 +94,7 @@ namespace Hangman.ViewModels
             HintUC.SetDataContext(IWord.Hint);
         }
 
+
         #region Keyboard
 
         public KeyboardUC KeyboardUC { get; set; }  //Binding i GamePage.xml
