@@ -1,5 +1,4 @@
 ﻿using Hangman.ViewModels;
-using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,14 +15,14 @@ using System.Windows.Shapes;
 namespace Hangman.Views.PlayGame
 {
     /// <summary>
-    /// Interaction logic for PlayGamePage.xaml
+    /// Interaction logic for GameEndUC.xaml
     /// </summary>
-    public partial class PlayGamePage : Page
+    public partial class GameEndUC : UserControl
     {
-        public PlayGamePage(BaseViewModel model = null)
+        public GameEndUC(GameEndViewModel vm)
         {
             InitializeComponent();
-            DataContext = model ?? new PlayGameViewModel();
+            DataContext = vm;
         }
     }
 }

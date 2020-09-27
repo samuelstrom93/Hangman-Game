@@ -16,7 +16,7 @@ namespace Hangman
             InitializeComponent();
             TopMenu.Content = new TopMenuUC();
 
-            Main.Content = new PlayGamePage();
+            Main.Content = new LoginPage();
             DataContext = new MainWindowViewModel();
         }
     }

@@ -3,6 +3,8 @@ using Hangman.Moduls;
 using Hangman.Moduls.InterfacesForDatabase;
 using Hangman.Repositories;
 using Hangman.ViewModels.Base;
+using Hangman.Views;
+using Hangman.Views.PlayGame;
 using Hangman.Views.UCsForGamePage;
 using System;
 using System.Collections.Generic;
@@ -17,17 +19,21 @@ namespace Hangman.ViewModels
 {
     public class PlayGameViewModel : BaseViewModel
     {
-        private static readonly char[] _lettersABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ".ToCharArray();
-        private static readonly char[] _lettersQWERTY = "QWERTYUIOPÅASDFGHJKLÖÄZXCVBNM".ToCharArray();
         private static readonly int _incorrectGuessLimit = 10;
         private static readonly string _letterPlaceHolder = "_";
 
+        private LetterKeyboardViewModel keyboardVM;
+        public LetterKeyboardUC Keyboard { get; set; }
 
-        public WrapPanel Keyboard { get; set; } = new WrapPanel();
-        public Grid WordDisplay { get; set; }
 
         private StopWatchUCViewModel stopWatchVM;
         public StopWatchUC StopWatch { get; set; }
+
+        private GameEndViewModel gameEndVM;
+        public GameEndUC GameEndOverlay { get; set; }
+
+        public Grid WordDisplay { get; set; }
+
         public string GameStateImage { get; set; } = @"..\..\..\Assets\Images\hänggubbe0.png";
         public Visibility HintVisibility { get; set; } = Visibility.Hidden;
         public ICommand ShowHintCommand { get; set; }
@@ -36,8 +42,6 @@ namespace Hangman.ViewModels
         public char[] CurrentWordArray { get => currentWord?.Name.ToUpper().ToCharArray(); }
         public string CurrentWordHint { get => currentWord?.Hint; }
 
-
-        private readonly Dictionary<char, Button> _keyboardButtons = new Dictionary<char, Button>();
         private readonly Dictionary<char, List<TextBlock>> _wordTextBlocks = new Dictionary<char, List<TextBlock>>();
 
 
@@ -51,7 +55,6 @@ namespace Hangman.ViewModels
         {
             wordRepository = new WordRepository();
             gameRepository = new GameRepository();
-            CreateLetterButtons();
 
             currentWord = wordRepository.GetRandomWord();
             CreateWordTextBlocks();
@@ -59,6 +62,10 @@ namespace Hangman.ViewModels
             ShowHintCommand = new RelayCommand(ShowHint);
             stopWatchVM = new StopWatchUCViewModel();
             StopWatch = new StopWatchUC(stopWatchVM);
+
+            keyboardVM = new LetterKeyboardViewModel();
+            Keyboard = new LetterKeyboardUC(keyboardVM);
+            keyboardVM.CreateLetterButtons(new RelayParameterizedCommand(p => LetterClick((char)p)));
         }
 
         private void ShowHint()
@@ -70,23 +77,6 @@ namespace Hangman.ViewModels
             else
             {
                 HintVisibility = Visibility.Hidden;
-            }
-        }
-
-        private void CreateLetterButtons(bool isQwerty = true)
-        {
-            foreach (var c in isQwerty ? _lettersQWERTY : _lettersABC)
-            {
-                var b = new Button
-                {
-                    Content = c,
-                    Command = new RelayParameterizedCommand(p => LetterClick((char)p)),
-                    CommandParameter = c,
-                    Style = Application.Current.FindResource("KeyButton") as Style
-                };
-
-                _keyboardButtons.Add(c, b);
-                Keyboard.Children.Add(b);
             }
         }
 
@@ -134,7 +124,7 @@ namespace Hangman.ViewModels
                     tb.Text = letter.ToString();
                 }
 
-                MarkLetterCorrect(_keyboardButtons[letter]);
+                keyboardVM.MarkLetterCorrect(letter);
 
                 if (_wordTextBlocks.All(o => o.Value.All(u => u.Text != _letterPlaceHolder)))
                 {
@@ -143,8 +133,10 @@ namespace Hangman.ViewModels
             }
             else
             {
-                MarkLetterIncorrect(_keyboardButtons[letter]);
+                keyboardVM.MarkLetterIncorrect(letter);
                 numberOfIncorrectGuesses++;
+
+                GameStateImage = $@"..\..\..\Assets\Images\hänggubbe{numberOfIncorrectGuesses}.png";
 
                 if (numberOfIncorrectGuesses >= _incorrectGuessLimit)
                 {
@@ -162,39 +154,27 @@ namespace Hangman.ViewModels
             //TODO
         }
 
-        private void MarkLetterCorrect(Button b)
-        {
-            b.Opacity = 0.3;
-            b.Foreground = Brushes.Green;
-            b.FontWeight = FontWeights.Bold;
-        }
-
-        private void MarkLetterIncorrect(Button b)
-        {
-            b.Opacity = 0.3;
-            b.Foreground = Brushes.Red;
-            b.FontWeight = FontWeights.Bold;
-        }
-
         private void GameOver(bool isWin)
         {
             //TODO
+            var game = new Game
+            {
+                NumberOfIncorrectTries = numberOfIncorrectGuesses,
+                StartTime = currentGameStartTime,
+                EndTime = DateTime.Now,
+                PlayerId = ActivePlayer?.Id ?? 0,
+                WordId = currentWord.Id,
+                IsWon = isWin
+            };
 
             stopWatchVM.StopStopWatch();
 
             if (ActivePlayer != null)
             {
-                var game = new Game
-                {
-                    NumberOfIncorrectTries = numberOfIncorrectGuesses,
-                    StartTime = currentGameStartTime,
-                    EndTime = DateTime.Now,
-                    PlayerId = ActivePlayer.Id,
-                    WordId = currentWord.Id
-                };
-
-                gameRepository.AddGame(game);
+                game.Id = gameRepository.AddGame(game);
             }
+
+            GameEndOverlay = new GameEndUC(new GameEndViewModel(game));
         }
     }
 }

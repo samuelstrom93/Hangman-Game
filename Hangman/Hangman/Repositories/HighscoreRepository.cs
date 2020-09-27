@@ -169,14 +169,10 @@ namespace Hangman.Repositories
 
             using (var conn = new NpgsqlConnection(_connectionString))
             {
-                using (var command = new NpgsqlCommand())
+                using (var command = new NpgsqlCommand(stmt, conn))
                 {
-                    int rank;
                     conn.Open();
-                    command.Connection = conn;
-                    command.CommandText = stmt;
-                    rank = (int)command.ExecuteScalar();
-                    return rank;
+                    return (int)command.ExecuteScalar();
                 }
             }
         }
