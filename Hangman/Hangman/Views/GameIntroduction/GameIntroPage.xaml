@@ -34,7 +34,7 @@
             <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
                 <Label Style="{StaticResource StandardHeader}" FontSize="20">Information</Label>
             </Grid>
-            <Border Grid.Row="2" Grid.Column="0" BorderThickness="2" BorderBrush="Black" Height="490"  Width="420">
+            <Border Grid.Row="2" Grid.Column="0" BorderThickness="2" Style="{StaticResource StandardBorder}"  BorderBrush="Black" Height="490"  Width="420">
                 <Border.Background>
                     <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
                 </Border.Background>
