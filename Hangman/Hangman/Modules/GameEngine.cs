@@ -169,10 +169,9 @@ namespace Hangman.Modules
             BreakHearts(); //Lägga hjärtan här
         } 
 
-        public int numberOfLives;   // 0 =GAME OVER
+        private int numberOfLives;   // 0 =GAME OVER
         private int numberOfTries;
         private int numberOfIncorrectTries;
-        private int numberOfCorrectTries;
 
         internal void RefreshGame()
         {
