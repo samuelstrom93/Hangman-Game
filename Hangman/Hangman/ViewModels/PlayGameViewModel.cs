@@ -80,42 +80,7 @@ namespace Hangman.ViewModels
             keyboardVM.CreateLetterButtons(new RelayParameterizedCommand(p => LetterClick((char)p)), IsQWERTYChecked);
         }
 
-        private void GuessDirectly()
-        {
-            if (!isGameInProgress)
-            {
-                StartGame();
-            }
-
-            if (GuessBox != null && GuessBox.Equals(currentWord.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                GameOver(true);
-            }
-            else
-            {
-                IncorrectGuess();
-            }
-
-            GuessBox = null;
-        }
-
-        private void ShowHint()
-        {
-            if (!isGameInProgress)
-            {
-                StartGame();
-            }
-
-            if (HintVisibility == Visibility.Hidden)
-            {
-                HintVisibility = Visibility.Visible;
-            }
-            else
-            {
-                HintVisibility = Visibility.Hidden;
-            }
-        }
-
+        #region UIComponents
         private void CreateLifeDisplay()
         {
             Grid grid = new Grid();
@@ -170,7 +135,44 @@ namespace Hangman.ViewModels
 
             WordDisplay = grid;
         }
+        #endregion
 
+        #region GameLogic
+        private void GuessDirectly()
+        {
+            if (!isGameInProgress)
+            {
+                StartGame();
+            }
+
+            if (GuessBox != null && GuessBox.Equals(currentWord.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                GameOver(true);
+            }
+            else
+            {
+                IncorrectGuess();
+            }
+
+            GuessBox = null;
+        }
+
+        private void ShowHint()
+        {
+            if (!isGameInProgress)
+            {
+                StartGame();
+            }
+
+            if (HintVisibility == Visibility.Hidden)
+            {
+                HintVisibility = Visibility.Visible;
+            }
+            else
+            {
+                HintVisibility = Visibility.Hidden;
+            }
+        }
         private void LetterClick(char letter)
         {
             if (!isGameInProgress)
@@ -240,7 +242,8 @@ namespace Hangman.ViewModels
                 game.Id = gameRepository.AddGame(game);
             }
 
-            GameEndOverlay = new GameEndUC(new GameEndViewModel(game));
+            GameEndOverlay = new GameEndUC(new GameEndViewModel(game, currentWord.Name));
         }
+        #endregion
     }
 }

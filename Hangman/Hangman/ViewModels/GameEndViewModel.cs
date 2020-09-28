@@ -20,11 +20,12 @@ namespace Hangman.ViewModels
         public string GameRankDisplay { get; set; }
         public string IncorrectGuesses { get; set; }
         public string TotalTime { get; set; }
+        public string Word { get; set; }
         public PlayerStatsUC PlayerStats { get; set; }
 
         private readonly IHighscoreRepository _highscoreRepository;
 
-        public GameEndViewModel(Game game)
+        public GameEndViewModel(Game game, string word)
         {
             _highscoreRepository = new HighscoreRepository();
 
@@ -33,6 +34,7 @@ namespace Hangman.ViewModels
 
             IncorrectGuesses = $"Antal felgissningar: {game.NumberOfIncorrectTries}";
             TotalTime = "Tid: " + (game.EndTime - game.StartTime).ToString(@"mm\:ss\.fff");
+            Word = word.ToUpper();
 
             if (game.Id != 0)
             {
