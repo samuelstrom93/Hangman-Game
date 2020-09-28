@@ -230,7 +230,6 @@ namespace Hangman.Modules
                 numberOfTries++;
                 numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
                 ShowGameStage();
@@ -287,7 +286,6 @@ namespace Hangman.Modules
                 numberOfTries++;
                 numberOfCorrectTries++;
                 NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
-
                 IsWon = true;
                 EndGame();
             }
@@ -297,7 +295,6 @@ namespace Hangman.Modules
                 numberOfTries++;
                 numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
                 ShowGameStage();
