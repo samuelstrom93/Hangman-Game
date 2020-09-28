@@ -29,8 +29,6 @@ namespace Hangman.Modules
 
         public bool IsStartBtnClickable { get; set; }   //Binding i GamePage.xml
         public string AnswerForPlayer { get; set; }     //Binding i GamePage.xml
-        public string NumberOfCorrectTries_text { get; set; }   //Binding i GamePage.xml
-        public string NumberOfIncorrectTries_text { get; set; } //Binding i GamePage.xml
 
         private WordRepository wordRepository;
 
