@@ -11,21 +11,27 @@ using Hangman.Repositories;
 using Hangman.Moduls;
 using System.Windows.Controls;
 using Hangman.Views;
+using Hangman.Views.UCsForGamePage;
 
 namespace Hangman.ViewModels
 {
     class GameEndPageViewModel : BaseViewModel
     {
-        public ICommand PlayAgainCommand { get; set; }  //Binding i GameEnd_Page
-        public ICommand DeleteGameScoreCommand { get; set; } //Binding i GameEnd_Page
-        public ICommand LogOutCommand { get; set; } //Binding i GameEnd_Page
+        #region Binding i GameEndPage
+        public ICommand PlayAgainCommand { get; set; }  
+        public ICommand DeleteGameScoreCommand { get; set; }
+        public ICommand LogOutCommand { get; set; } 
+        public string Timer { get; set; }
+        #endregion
 
         public GameEndEngine GameEndEngine { get; set; }
 
         private PlayerRepository playerRepository { get; set; }
 
-        public GameEndPageViewModel(Game game, Word word)
+        public GameEndPageViewModel(Game game, Word word, string stopWatchTimer)
         {
+            Timer = stopWatchTimer;
+
             GameEndEngine = new GameEndEngine(game, word);
 
             PlayAgainCommand = new RelayCommand(PlayAgain);
