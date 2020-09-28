@@ -51,8 +51,8 @@
                 </Grid>
 
                 <!-- Spelbilden-->
-                <Grid Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 45, 0, 0" Height="200">
-                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="250" Width="300">
+                <Grid Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 45, 35, 0" Height="250">
+                    <Border Style="{StaticResource StandardBorder}" BorderThickness="0" Height="250" Width="250">
                         <Border.Background>
                             <ImageBrush ImageSource="{Binding GameEngine.ImageForGameStage}"/>
                         </Border.Background>
