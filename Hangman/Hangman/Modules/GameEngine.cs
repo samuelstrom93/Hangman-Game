@@ -177,8 +177,6 @@ namespace Hangman.Modules
             numberOfLives = 10;
             numberOfTries = 0;
             numberOfIncorrectTries = 0;
-            NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();    //Binding GamePage.xml
-
             gameStage = 0;
             IsWon = false;
         }
