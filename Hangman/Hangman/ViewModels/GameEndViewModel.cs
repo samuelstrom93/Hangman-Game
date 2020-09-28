@@ -38,8 +38,11 @@ namespace Hangman.ViewModels
             {
                 PlayerStats = new PlayerStatsUC();
 
-                var gameRanking = _highscoreRepository.GetRankOnHighScore(game.Id);
-                GameRankDisplay = $"Du kom på plats: {gameRanking}";
+                if (game.IsWon)
+                {
+                    var gameRanking = _highscoreRepository.GetRankOnHighScore(game.Id);
+                    GameRankDisplay = $"Du kom på plats: {gameRanking}";
+                }
             }
         }
 

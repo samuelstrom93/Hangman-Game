@@ -25,18 +25,19 @@ namespace Hangman.ViewModels
         private LetterKeyboardViewModel keyboardVM;
         public LetterKeyboardUC Keyboard { get; set; }
 
-
         private StopWatchUCViewModel stopWatchVM;
         public StopWatchUC StopWatch { get; set; }
 
-        private GameEndViewModel gameEndVM;
         public GameEndUC GameEndOverlay { get; set; }
 
         public Grid WordDisplay { get; set; }
-
+        public string GuessBox { get; set; }
         public string GameStateImage { get; set; } = @"..\..\..\Assets\Images\hänggubbe0.png";
+        public bool IsQWERTYChecked { get; set; } = true;
         public Visibility HintVisibility { get; set; } = Visibility.Hidden;
         public ICommand ShowHintCommand { get; set; }
+        public ICommand GuessDirectlyCommand { get; set; }
+        public ICommand KeyboardLayoutCommand { get; set; }
 
         private Word currentWord;
         public char[] CurrentWordArray { get => currentWord?.Name.ToUpper().ToCharArray(); }
@@ -60,6 +61,8 @@ namespace Hangman.ViewModels
             CreateWordTextBlocks();
 
             ShowHintCommand = new RelayCommand(ShowHint);
+            GuessDirectlyCommand = new RelayCommand(GuessDirectly);
+            KeyboardLayoutCommand = new RelayCommand(ChangeKeyboardLayout);
             stopWatchVM = new StopWatchUCViewModel();
             StopWatch = new StopWatchUC(stopWatchVM);
 
@@ -68,8 +71,37 @@ namespace Hangman.ViewModels
             keyboardVM.CreateLetterButtons(new RelayParameterizedCommand(p => LetterClick((char)p)));
         }
 
+        private void ChangeKeyboardLayout()
+        {
+            keyboardVM.CreateLetterButtons(new RelayParameterizedCommand(p => LetterClick((char)p)), IsQWERTYChecked);
+        }
+
+        private void GuessDirectly()
+        {
+            if (!isGameInProgress)
+            {
+                StartGame();
+            }
+
+            if (GuessBox != null && GuessBox.Equals(currentWord.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                GameOver(true);
+            }
+            else
+            {
+                IncorrectGuess();
+            }
+
+            GuessBox = null;
+        }
+
         private void ShowHint()
         {
+            if (!isGameInProgress)
+            {
+                StartGame();
+            }
+
             if (HintVisibility == Visibility.Hidden)
             {
                 HintVisibility = Visibility.Visible;
@@ -134,14 +166,18 @@ namespace Hangman.ViewModels
             else
             {
                 keyboardVM.MarkLetterIncorrect(letter);
-                numberOfIncorrectGuesses++;
+                IncorrectGuess();
+            }
+        }
 
-                GameStateImage = $@"..\..\..\Assets\Images\hänggubbe{numberOfIncorrectGuesses}.png";
+        private void IncorrectGuess()
+        {
+            numberOfIncorrectGuesses++;
+            GameStateImage = $@"..\..\..\Assets\Images\hänggubbe{numberOfIncorrectGuesses}.png";
 
-                if (numberOfIncorrectGuesses >= _incorrectGuessLimit)
-                {
-                    GameOver(false);
-                }
+            if (numberOfIncorrectGuesses >= _incorrectGuessLimit)
+            {
+                GameOver(false);
             }
         }
 
@@ -151,12 +187,12 @@ namespace Hangman.ViewModels
             numberOfIncorrectGuesses = 0;
             currentGameStartTime = DateTime.Now;
             stopWatchVM.StartStopWatch();
-            //TODO
         }
 
         private void GameOver(bool isWin)
         {
-            //TODO
+            stopWatchVM.StopStopWatch();
+
             var game = new Game
             {
                 NumberOfIncorrectTries = numberOfIncorrectGuesses,
@@ -166,8 +202,6 @@ namespace Hangman.ViewModels
                 WordId = currentWord.Id,
                 IsWon = isWin
             };
-
-            stopWatchVM.StopStopWatch();
 
             if (ActivePlayer != null)
             {

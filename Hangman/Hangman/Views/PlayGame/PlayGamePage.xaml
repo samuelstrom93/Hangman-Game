@@ -25,12 +25,12 @@
                 <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StandardBorder}">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1.6*"/>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition Height="4*"/>
-                            <RowDefinition Height="0.5*"/>
                         </Grid.RowDefinitions>
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
                                 <RowDefinition Height="2.5*"/>
                                 <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
@@ -39,9 +39,9 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <ContentControl Content="{Binding StopWatch}"/>
-                            <ContentControl Grid.Column="1" Content="{Binding WordDisplay}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
-                            <Grid Grid.Column="1" Grid.Row="1">
+                            <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding StopWatch}"/>
+                            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding WordDisplay}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
+                            <Grid Grid.Column="1" Grid.Row="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="5*"/>
@@ -84,7 +84,32 @@
                                     <RowDefinition Height="4*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2.5*"/>
+                                        <RowDefinition Height="3*"/>
+                                        <RowDefinition Height="0.5*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="0.01*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource UserInputTxtBox}" Text="{Binding GuessBox}" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                                    <Button Grid.Row="1" Grid.Column="3" Content="Gissa direkt" Command="{Binding GuessDirectlyCommand}" Style="{StaticResource StandardButton}" />
+                                </Grid>
                                 <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Keyboard}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                <Grid Grid.Row="1" Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <CheckBox Grid.Row="3" Content="QWERTY" IsChecked="{Binding IsQWERTYChecked}" HorizontalAlignment="Left" Command="{Binding KeyboardLayoutCommand}"/>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>

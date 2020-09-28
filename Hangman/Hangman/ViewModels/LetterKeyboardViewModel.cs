@@ -15,7 +15,7 @@ namespace Hangman.ViewModels
         private static readonly char[] _lettersABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ".ToCharArray();
         private static readonly char[] _lettersQWERTY = "QWERTYUIOPÅASDFGHJKLÖÄZXCVBNM".ToCharArray();
 
-        public StackPanel Keyboard { get; set; } = new StackPanel();
+        public StackPanel Keyboard { get; set; }
 
         private readonly Dictionary<char, Button> _keyboardButtons = new Dictionary<char, Button>();
 
@@ -25,6 +25,9 @@ namespace Hangman.ViewModels
 
         public void CreateLetterButtons(ICommand keyCommand, bool isQwerty = true)
         {
+            _keyboardButtons.Clear();
+            Keyboard = new StackPanel();
+
             var letters = isQwerty ? _lettersQWERTY : _lettersABC;
             var row1 = letters.Take(11);
             var row2 = letters.Skip(11).Take(11);
@@ -43,7 +46,7 @@ namespace Hangman.ViewModels
                 var b = new Button
                 {
                     Content = c,
-                    Command = keyCommand, //new RelayParameterizedCommand(p => LetterClick((char)p)),
+                    Command = keyCommand,
                     CommandParameter = c,
                     Style = Application.Current.FindResource("KeyButton") as Style
                 };
