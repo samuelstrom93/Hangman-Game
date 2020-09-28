@@ -46,7 +46,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" Width="270" Height="220">
+            <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" Width="280" Height="210">
                 <Grid>
                     <Border BorderBrush="Black" BorderThickness="2">
                         <Border.Background>

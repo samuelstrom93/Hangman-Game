@@ -220,7 +220,7 @@
     </Style>
 
     <Style x:Key="StandardFontTextBlock" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="Calibri Light"/>
+        <Setter Property="FontFamily" Value="Bahnschrift Light Condensed"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 

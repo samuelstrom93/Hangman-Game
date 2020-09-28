@@ -11,6 +11,7 @@ using Hangman.Models;
 using Npgsql;
 using System.Windows;
 using System.Windows.Data;
+using System.Linq;
 
 namespace Hangman.ViewModels
 {
@@ -26,6 +27,7 @@ namespace Hangman.ViewModels
         public string PlayerStatus { get; set; }
         public BitmapImage MemeForWinRate { get; set; }        
         public string LabelColor { get; set; }
+
         #endregion
 
         #region Properties: Delete User
@@ -52,11 +54,13 @@ namespace Hangman.ViewModels
         private PlayerRepository playerRepository;
         private PlayerStatsRepository playerStatsRepository;
         private MessageRepository messageRepository;
+
         #endregion
 
-        #region Properties: Send Message
+        #region Properties: Message
         public ICommand SendMessageCommand { get; set; }
 
+        public List<Message> myMessages { get; set; }
         public string Topic { get; set; }
         public string Message { get; set; }
 
@@ -70,11 +74,13 @@ namespace Hangman.ViewModels
             playerStatsRepository = new PlayerStatsRepository();
             messageRepository = new MessageRepository();
 
-            UpdatePlayerStats();
-
             DeleteUserCommand = new RelayCommand(TryDeleteUser);
             UpdateUserCommand = new RelayCommand(UpdateUser);
             SendMessageCommand = new RelayCommand(SendMessage);
+
+            GetMessages();
+            UpdatePlayerStats();
+
         }
 
         #region Methods: Delete User
@@ -209,8 +215,11 @@ namespace Hangman.ViewModels
                     var module = new PlayerModule();
                     module.TryLogInPlayer(NewName);
                     SetActivePlayer(NewName);
+                    ActivePlayerName = NewName;
                     TextColor = "green";
+                    BackGroundColorUpdateBox = "white";
                     UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
+                    NewName = "";
                 }
 
                 catch (PostgresException ex)
@@ -219,12 +228,16 @@ namespace Hangman.ViewModels
                     if (ex.SqlState.Contains("23505"))
                     {
                         TextColor = "red";
+                        NewName = "";
+                        BackGroundColorUpdateBox = "white";
                         UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
                     }
 
                     else
                     {
                         TextColor = "red";
+                        NewName = "";
+                        BackGroundColorUpdateBox = "white";
                         UpdateMessage = "Något gick fel - försök igen";
                     }
                 }
@@ -262,14 +275,20 @@ namespace Hangman.ViewModels
         }
         #endregion
 
-        #region Methods: Send Message
+        #region Methods: Messages
 
         private void SendMessage()
         {
-            messageRepository.TryAddMessage(Title, Message, ActivePlayer.Id, 64, out Message message);
+            messageRepository.TryAddMessage(Topic, Message, ActivePlayer.Id, 64, out Message message);
+            GetMessages();
             Message = "";
             Topic = "";
             Confirmation = "Ditt meddelande är skickat";
+        }
+
+        private void GetMessages()
+        {
+            myMessages = messageRepository.GetMessages(null, ActivePlayer.Id).ToList();
         }
         #endregion
 

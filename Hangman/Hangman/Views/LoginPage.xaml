@@ -45,7 +45,7 @@
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" >
                     <Label Style="{StaticResource PageTitleLabel}" Content="Användarnamn:" FontWeight="Bold"></Label>
-                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName}"  />
+                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName, Mode=TwoWay}"  />
                     <Button Width="100" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command ="{Binding TryLogIn}"/>
                 </StackPanel>
             </Border>

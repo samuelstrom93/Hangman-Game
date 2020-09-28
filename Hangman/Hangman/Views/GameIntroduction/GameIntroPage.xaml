@@ -9,7 +9,7 @@
       Title="GameIntroPage">
 
    
-        <Grid MinHeight="900" MinWidth="850" Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid MinHeight="500" MinWidth="850" Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

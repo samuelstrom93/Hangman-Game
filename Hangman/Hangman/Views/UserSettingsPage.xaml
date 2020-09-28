@@ -31,7 +31,9 @@
            
             <!--Header-->
             <Grid Grid.Row="0" Grid.ColumnSpan="3" >
-                <Label  Style="{StaticResource StandardHeader}"> DIN ANVÄNDARE</Label>
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Style="{StaticResource StandardHeader}">DIN ANVÄNDARE:</Label>
+                </StackPanel>
             </Grid>
 
             <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" Style="{StaticResource StandardBorder}"></Border>
@@ -72,30 +74,57 @@
             
             <!--Send message to Admin-->
             <Border Grid.Row="1" Grid.RowSpan="6" Grid.Column="2" Style="{StaticResource StandardBorder}">
-                
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        
-                        <StackPanel>
-                        <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.8*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
+                    <!-- SEND MESSAGE -->
+                    <StackPanel>
+                        <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5">
                             <Label  Style="{StaticResource StandardHeader}" FontSize="25">SKICKA MEDDELANDE TILL ADMIN</Label>
                         </Border>
+
                         <Label Style="{StaticResource StandardLabel}">TITEL</Label>
-                        <TextBox Text="{Binding Topic}" Style="{StaticResource UserInputTxtBox}"></TextBox>
+                        <TextBox Text="{Binding Topic}" Style="{StaticResource UserInputTxtBox}" Width="200"></TextBox>
                         <Label Style="{StaticResource StandardLabel}">MEDDELANDE</Label>
-                        <TextBox Text="{Binding Message}" Style="{StaticResource UserInputTxtBox}" Height="80" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
-                        <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200">Skicka meddelande till Admin</Button>
+                        <TextBox Text="{Binding Message}" Style="{StaticResource UserInputTxtBox}" Height="80" Width="200" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
+                        <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200">SKICKA</Button>
                         <Label Style ="{StaticResource StandardLabel}" Content="{Binding Confirmation}"></Label>
+                    </StackPanel>
+                    <!--Listbox för meddelandehistorik-->
 
-              </StackPanel>
-                        
-                  
-                   </Grid>
+                    <StackPanel  Grid.Row="1" >
+                        <Label>DIN MEDDELANDEHISTORIK</Label>
+                        <ListBox ItemsSource="{Binding myMessages}" Height="120" Width="240">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="10" Margin="2" Style="{StaticResource ClickableBorder}" BorderThickness="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
 
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel>
+                                                <TextBlock  Width="150" HorizontalAlignment="Center" Text="{Binding Path=SentAt, StringFormat=g, ConverterCulture=sv-SE}" />
+                                                <TextBlock Width="150" HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=RecieverName}"/>
+                                                <TextBlock Width="150" HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Topic}"/>
+                                                <TextBlock Width="150" HorizontalAlignment="Center" TextWrapping="Wrap" Grid.Column="3" Text="{Binding Path=Content}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+
+
+
+                </Grid>
             </Border>
 
             <!--Delete user-->

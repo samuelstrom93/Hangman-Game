@@ -59,6 +59,7 @@
                     </Border>
                 </Grid>
             </Border>
+            
             <Border Grid.Column="3" Grid.Row="1" Style="{StaticResource BackgroundBorder}">
                 <Frame x:Name="MessageView"></Frame>
             </Border>
