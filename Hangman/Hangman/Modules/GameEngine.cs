@@ -223,8 +223,6 @@ namespace Hangman.Modules
             if (upperWord.Contains(selectedKey))    //Gissade rätt
             {
                 numberOfTries++;
-                numberOfCorrectTries++;
-                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
                 IsGuessCorrect = true;
             }
             else //Gissade fel
@@ -313,12 +311,12 @@ namespace Hangman.Modules
         {
             game.EndTime = DateTime.Now;
             StopWatchEngine.StopStopWatch();
-            SaveGameScore();
+            SetGameScore();
             IsGameStart = false;
             IsGameEnd = true;
         }
 
-        private void SaveGameScore()
+        private void SetGameScore()
         {
             game.NumberOfIncorrectTries = numberOfIncorrectTries;
             game.NumberOfTries = numberOfTries;
