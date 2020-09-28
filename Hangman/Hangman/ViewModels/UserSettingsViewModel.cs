@@ -47,19 +47,32 @@ namespace Hangman.ViewModels
         public string BackGroundColorUpdateBox { get; set; }
 
         #endregion
-
+        
+        #region Repositores
         private PlayerRepository playerRepository;
         private PlayerStatsRepository playerStatsRepository;
+        private MessageRepository messageRepository;
+        #endregion
+
+        #region Properties: Send Message
+        public ICommand SendMessageCommand { get; set; }
+
+        public string Topic { get; set; }
+        public string Message { get; set; }
+
+        #endregion
 
         public UserSettingsViewModel()
         {
             playerRepository = new PlayerRepository();
             playerStatsRepository = new PlayerStatsRepository();
+            messageRepository = new MessageRepository();
 
             UpdatePlayerStats();
 
             DeleteUserCommand = new RelayCommand(TryDeleteUser);
             UpdateUserCommand = new RelayCommand(UpdateUser);
+            SendMessageCommand = new RelayCommand(SendMessage);
         }
 
         #region Methods: Delete User
@@ -182,7 +195,6 @@ namespace Hangman.ViewModels
         }
 
         #endregion
-
         #region Methods: Update User
 
         public void UpdateUser()
@@ -245,6 +257,14 @@ namespace Hangman.ViewModels
                 TextColor = "red";
                 UpdateMessage = "Något gick fel";
             }
+        }
+        #endregion
+
+        #region Methods: Send Message
+
+        private void SendMessage()
+        {
+            messageRepository.TryAddMessage(Title, Message, ActivePlayer.Id, 64, out Message message);
         }
         #endregion
 
