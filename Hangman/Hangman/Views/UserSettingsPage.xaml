@@ -19,7 +19,7 @@
                 <RowDefinition Height="40" />
                 <RowDefinition Height="140"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="70" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             
             <Grid.ColumnDefinitions>
@@ -34,16 +34,16 @@
                 <Label  Style="{StaticResource StandardHeader}"> DIN ANVÄNDARE</Label>
             </Grid>
 
-            <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Style="{StaticResource StandardBorder}"></Border>
+            <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" Style="{StaticResource StandardBorder}"></Border>
             
             <!--Title1-->
             <Grid Grid.Row="1" Grid.Column="0">
-                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}" >ÄNDRA NAMN</Label>
+                <Label VerticalAlignment="Bottom" Style="{StaticResource StandardHeader}" FontSize="25" >ÄNDRA NAMN</Label>
             </Grid>
 
             <!--Title2-->
             <Grid Grid.Row="3" Grid.Column="0">
-                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}">TA BORT DIN ANVÄNDARE</Label>
+                <Label VerticalAlignment="Bottom"  Style="{StaticResource StandardHeader}" FontSize="25">TA BORT DIN ANVÄNDARE</Label>
             </Grid>
 
             <!-- New Name-->
@@ -64,24 +64,38 @@
             </Grid>
 
             <!--UC for stats-->
-            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Margin="10, 0, 10, 0">
+            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Margin="10, 0, 10, 0">
                 <Border>
                 </Border>
                 <Frame x:Name="UserStatsFrame" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
             </Grid>
             
             <!--Send message to Admin-->
-            <Border Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource StandardBorder}">
-                <StackPanel>
-                    <Label Style="{StaticResource PageTitleLabel}">SKICKA MEDDELANDE TILL ADMIN</Label>
-                    <Label Style="{StaticResource StandardLabel}">TITEL</Label>
-                    <TextBox Text="{Binding Topic}" Style="{StaticResource UserInputTxtBox}"></TextBox>
-                    <Label Style="{StaticResource StandardLabel}">MEDDELANDE</Label>
-                    <TextBox Text="{Binding Message}" Style="{StaticResource UserInputTxtBox}" Height="80" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
-                    <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200">Skicka meddelande till Admin</Button>
-                    <Label Style ="{StaticResource StandardLabel}" Content="{Binding Confirmation}"></Label>
+            <Border Grid.Row="1" Grid.RowSpan="6" Grid.Column="2" Style="{StaticResource StandardBorder}">
+                
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <StackPanel>
+                        <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5">
 
-                </StackPanel>
+                            <Label  Style="{StaticResource StandardHeader}" FontSize="25">SKICKA MEDDELANDE TILL ADMIN</Label>
+                        </Border>
+                        <Label Style="{StaticResource StandardLabel}">TITEL</Label>
+                        <TextBox Text="{Binding Topic}" Style="{StaticResource UserInputTxtBox}"></TextBox>
+                        <Label Style="{StaticResource StandardLabel}">MEDDELANDE</Label>
+                        <TextBox Text="{Binding Message}" Style="{StaticResource UserInputTxtBox}" Height="80" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
+                        <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200">Skicka meddelande till Admin</Button>
+                        <Label Style ="{StaticResource StandardLabel}" Content="{Binding Confirmation}"></Label>
+
+              </StackPanel>
+                        
+                  
+                   </Grid>
+
             </Border>
 
             <!--Delete user-->
