@@ -14,6 +14,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using WpfAnimatedGif;
 
 namespace Hangman.ViewModels
 {
@@ -30,6 +32,7 @@ namespace Hangman.ViewModels
 
         public GameEndUC GameEndOverlay { get; set; }
 
+        public Grid LifeDisplay { get; set; }
         public Grid WordDisplay { get; set; }
         public string GuessBox { get; set; }
         public string GameStateImage { get; set; } = @"..\..\..\Assets\Images\hänggubbe0.png";
@@ -59,6 +62,7 @@ namespace Hangman.ViewModels
 
             currentWord = wordRepository.GetRandomWord();
             CreateWordTextBlocks();
+            CreateLifeDisplay();
 
             ShowHintCommand = new RelayCommand(ShowHint);
             GuessDirectlyCommand = new RelayCommand(GuessDirectly);
@@ -110,6 +114,31 @@ namespace Hangman.ViewModels
             {
                 HintVisibility = Visibility.Hidden;
             }
+        }
+
+        private void CreateLifeDisplay()
+        {
+            Grid grid = new Grid();
+
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri("../../../Views/Gifs/HeartBreak0.gif", UriKind.Relative);
+            image.EndInit();
+
+            for (int i = 0; i < 10; i++)
+            {
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+
+                var img = new Image();
+                ImageBehavior.SetAnimatedSource(img, image);
+                ImageBehavior.SetAnimationDuration(img, new Duration(TimeSpan.FromMilliseconds(300)));
+                ImageBehavior.SetAutoStart(img, false);
+                Grid.SetColumn(img, i);
+
+                grid.Children.Add(img);
+            }
+
+            LifeDisplay = grid;
         }
 
         private void CreateWordTextBlocks()
@@ -172,6 +201,9 @@ namespace Hangman.ViewModels
 
         private void IncorrectGuess()
         {
+            var controller = ImageBehavior.GetAnimationController((Image)LifeDisplay.Children[numberOfIncorrectGuesses]);
+            controller.Play();
+
             numberOfIncorrectGuesses++;
             GameStateImage = $@"..\..\..\Assets\Images\hänggubbe{numberOfIncorrectGuesses}.png";
 
