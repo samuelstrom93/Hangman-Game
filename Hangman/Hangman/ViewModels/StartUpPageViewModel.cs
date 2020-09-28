@@ -10,18 +10,37 @@ namespace Hangman.ViewModels
 {
     class StartUpPageViewModel : BaseViewModel
     {
-        public ICommand LogOutCommand { get; set; } //Binding i StartUpPage.xaml
+        public ICommand LoginOrLogOutCommand { get; set; } //Binding i StartUpPage.xaml
+        public string LogBtnContent { get; set; }
 
         public StartUpPageViewModel()
         {
-            LogOutCommand = new RelayCommand(LogOut);
-
+            LoginOrLogOutCommand = new RelayCommand(LogInOrLogOut);
+            SetButton();
         }
 
-        private void LogOut()
+        private void LogInOrLogOut()
         {
-            SetActivePlayer(null);
-            GoToPage(ApplicationPage.Login);
+            if(ActivePlayer == null)
+            {
+                
+                GoToPage(ApplicationPage.Login);
+            }
+
+            else
+            {
+                SetActivePlayer(null);
+                GoToPage(ApplicationPage.Login);
+            }
+        }
+
+        private void SetButton()
+        {
+            if (ActivePlayer == null)
+                LogBtnContent = "LOGGA IN";
+            else
+                LogBtnContent = "LOGGA UT";
+
         }
     }
 }
