@@ -60,6 +60,8 @@ namespace Hangman.ViewModels
         public string Topic { get; set; }
         public string Message { get; set; }
 
+        public string Confirmation { get; set; }
+
         #endregion
 
         public UserSettingsViewModel()
@@ -265,6 +267,9 @@ namespace Hangman.ViewModels
         private void SendMessage()
         {
             messageRepository.TryAddMessage(Title, Message, ActivePlayer.Id, 64, out Message message);
+            Message = "";
+            Topic = "";
+            Confirmation = "Ditt meddelande är skickat";
         }
         #endregion
 
