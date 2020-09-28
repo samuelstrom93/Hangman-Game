@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Hangman.Repositories;
 using System.Windows.Controls;
+using Hangman.Views.UCsForGamePage;
 
 namespace Hangman.Moduls
 {
@@ -17,7 +18,7 @@ namespace Hangman.Moduls
 
         public Button Button { get; set; }
 
-        public int NumberOfCorrectTries { get; set; }
+       // public int NumberOfCorrectTries { get; set; }
         public int Ranking { get; set; }
 
         public string GameStatus { get; set; } 
@@ -39,7 +40,6 @@ namespace Hangman.Moduls
             SetIGame(game);
             SetGame(game);
             SetIWord(word);
-            SetNumberOfCorrectTries();
             SetGameStatus();
             SetBtn();
             
@@ -80,11 +80,6 @@ namespace Hangman.Moduls
         private void SetIWord(Word word)
         {
             IWord = word;
-        }
-
-        private void SetNumberOfCorrectTries()
-        {
-            NumberOfCorrectTries = IGame.NumberOfTries - IGame.NumberOfIncorrectTries;
         }
 
         private void SetGameStatus()

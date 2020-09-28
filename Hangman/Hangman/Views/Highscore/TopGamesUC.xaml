@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="2" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock FontSize="22pt" FontWeight="Bold" Text="{Binding Title}" HorizontalAlignment="Center"></TextBlock>
@@ -22,13 +22,14 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Center" Grid.Column="0">Rank</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="1">Namn</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="2">Ord</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="3">Antal fel</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="4">Tid</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="0">Rank</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Namn</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="2">Ord</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="3">Antal fel</Label>
+            <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="4">Tid
+                <LineBreak></LineBreak>(min/sek/ms)</TextBlock>
         </Grid>
-        <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopHighscores}">
+        <ListBox Grid.Row="3" FontSize="14" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopHighscores}">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
@@ -51,7 +52,7 @@
                                 <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=PlayerName}" />
                                 <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Word}" />
                                 <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{Binding Path=NumberOfIncorrectTries}" />
-                                <TextBlock HorizontalAlignment="Right" Grid.Column="4" Text="{Binding Path=GameTime, StringFormat=hh\\:mm\\:ss\\:ff}" />
+                                <TextBlock HorizontalAlignment="Right" Grid.Column="4" Text="{Binding Path=GameTime, StringFormat=mm\\:ss\\:ff}" />
                             </Grid>
                         </ListBoxItem>
                     </Border>
