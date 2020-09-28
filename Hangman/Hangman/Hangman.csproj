@@ -35,7 +35,6 @@
     <None Remove="Assets\Sounds\PunchSFX.wav" />
     <None Remove="Views\Gifs\ChatBubbleGif.gif" />
     <None Remove="Views\Gifs\GameOn.gif" />
-    <None Remove="Views\Gifs\heart.png" />
     <None Remove="Views\Gifs\HeartBreak0.gif" />
     <None Remove="Views\Menu\Gifs\ChatBubbleGif.gif" />
     <None Remove="Views\Menu\Gifs\GameOn.gif" />
@@ -98,7 +97,6 @@
     <Content Include="Assets\Sounds\PunchSFX.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Views\Gifs\heart.png" />
     <Resource Include="Views\Gifs\ChatBubbleGif.gif" />
     <Resource Include="Views\Gifs\GameOn.gif" />
     <Resource Include="Views\Gifs\HeartBreak0.gif">
