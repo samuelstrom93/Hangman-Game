@@ -42,9 +42,9 @@
                     
                     <!--knappar för navigering-->
                     <StackPanel Orientation="Horizontal">
-                        <Button Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">LOGGA IN</Button>
                         <Button Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SPELA</Button>
                         <Button Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.HighscorePage}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SE TOPPLISTOR</Button>
+                        <Button Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">LOGGA IN</Button>
                     </StackPanel>
                 </StackPanel>
             </Grid>
