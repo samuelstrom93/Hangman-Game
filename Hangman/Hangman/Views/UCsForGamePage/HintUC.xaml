@@ -10,12 +10,8 @@
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
             <TextBlock Margin="10, 5, 5, 5" FontWeight="Bold" Text="{Binding Hint}" Visibility="{Binding IsHintShown, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-            <Button  Style="{StaticResource StandardButton}" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" BorderBrush="{x:Null}" FontWeight="Bold" Width="100" Height="25" Cursor="Hand">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources> Ledtråd
+            <Button  Style="{StaticResource StandardButton}" Padding="20,0,20,0" Margin="2,7,0,7" HorizontalAlignment="Left" Command="{Binding ShowHintCommand}" Width="100" Height="25" Cursor="Hand">
+            Ledtråd
             </Button>
         </WrapPanel>
     </Grid>
