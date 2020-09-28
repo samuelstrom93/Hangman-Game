@@ -9,6 +9,9 @@ using static Hangman.Repositories.WordRepository;
 using static Hangman.Repositories.GameRepository;
 using Hangman.Moduls;
 using Hangman.Repositories;
+using System.Drawing;
+using System.IO;
+using System.Diagnostics;
 
 namespace Hangman.Modules
 {
@@ -26,10 +29,12 @@ namespace Hangman.Modules
 
         public bool IsStartBtnClickable { get; set; }   //Binding i GamePage.xml
         public string AnswerForPlayer { get; set; }     //Binding i GamePage.xml
-        public string NumberOfCorrectTries_text { get; set; }   //Binding i GamePage.xml
-        public string NumberOfIncorrectTries_text { get; set; } //Binding i GamePage.xml
 
         private WordRepository wordRepository;
+
+
+
+
 
         public GameEngine()
         {
@@ -146,19 +151,25 @@ namespace Hangman.Modules
 
         private int gameStage;
         public BitmapImage ImageForGameStage { get; set; }  //Binding i GamePage.xml
+
+        public BitmapImage heartImage { get; set; }
+        public BitmapImage heartImage2 { get; set; }
+
+
         internal void ShowGameStage()
         {
             string imageAdress;
             imageAdress = $"../../../Assets/Images/hänggubbe{gameStage}.png";
-
             string currentPath = Environment.CurrentDirectory;
+
             ImageForGameStage = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
-        }
+
+            BreakHearts(); //Lägga hjärtan här
+        } 
 
         private int numberOfLives;   // 0 =GAME OVER
         private int numberOfTries;
         private int numberOfIncorrectTries;
-        private int numberOfCorrectTries;
 
         internal void RefreshGame()
         {
@@ -166,20 +177,16 @@ namespace Hangman.Modules
             numberOfLives = 10;
             numberOfTries = 0;
             numberOfIncorrectTries = 0;
-            numberOfCorrectTries = 0;
-
-            NumberOfCorrectTries_text = numberOfCorrectTries.ToString();    //Binding GamePage.xml
-            NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();    //Binding GamePage.xml
-
             gameStage = 0;
             IsWon = false;
         }
+
+
 
         #endregion
 
         #region GameJudge
         private string selectedKey { get; set; }
-
         public void JudgeGame(string selectedkey)
         {
             selectedKey = selectedkey;
@@ -209,8 +216,6 @@ namespace Hangman.Modules
             if (upperWord.Contains(selectedKey))    //Gissade rätt
             {
                 numberOfTries++;
-                numberOfCorrectTries++;
-                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
                 IsGuessCorrect = true;
             }
             else //Gissade fel
@@ -218,7 +223,6 @@ namespace Hangman.Modules
                 numberOfTries++;
                 numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
                 ShowGameStage();
@@ -273,9 +277,6 @@ namespace Hangman.Modules
             if (playersGuessingAnswer == upperWord) //Spelaren vann
             {
                 numberOfTries++;
-                numberOfCorrectTries++;
-                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
-
                 IsWon = true;
                 EndGame();
             }
@@ -285,7 +286,6 @@ namespace Hangman.Modules
                 numberOfTries++;
                 numberOfLives = numberOfLives - 1;
                 numberOfIncorrectTries++;
-                NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();
                 IsGuessCorrect = false;
                 gameStage++;
                 ShowGameStage();
@@ -299,12 +299,12 @@ namespace Hangman.Modules
         {
             game.EndTime = DateTime.Now;
             StopWatchEngine.StopStopWatch();
-            SaveGameScore();
+            SetGameScore();
             IsGameStart = false;
             IsGameEnd = true;
         }
 
-        private void SaveGameScore()
+        private void SetGameScore()
         {
             game.NumberOfIncorrectTries = numberOfIncorrectTries;
             game.NumberOfTries = numberOfTries;
@@ -312,5 +312,59 @@ namespace Hangman.Modules
         }
         #endregion
 
+
+        #region LIVES
+
+        //IZA FÖR EXTRALIV
+        public string extraliv1 { get; set; } = "10";
+        public string extraliv2 { get; set; } = "10";
+        public string extraliv3 { get; set; } = "10";
+        public string extraliv4 { get; set; } = "10";
+        public string extraliv5 { get; set; } = "10";
+        public string extraliv6 { get; set; } = "10";
+        public string extraliv7 { get; set; } = "10";
+        public string extraliv8 { get; set; } = "10";
+        public string extraliv9 { get; set; } = "10";
+        public string extraliv10 { get; set; } = "10";
+
+
+        public void BreakHearts()
+        {
+
+            switch (gameStage)
+            {
+                case 1:
+                    extraliv1 = "0:0:1";
+                    break;
+                case 2:
+                    extraliv2 = "0:0:1";
+                    break;
+                case 3:
+                    extraliv3 = "0:0:1";
+                    break;
+                case 4:
+                    extraliv4 = "0:0:1";
+                    break;
+                case 5:
+                    extraliv5 = "0:0:1";
+                    break;
+                case 6:
+                    extraliv6 = "0:0:1";
+                    break;
+                case 7:
+                    extraliv7 = "0:0:1";
+                    break;
+                case 8:
+                    extraliv8 = "0:0:1";
+                    break;
+                case 9:
+                    extraliv9 = "0:0:1";
+                    break;
+                case 10:
+                    extraliv10 = "0:0:1";
+                    break;
+            }
+        }
+        #endregion
     }
 }

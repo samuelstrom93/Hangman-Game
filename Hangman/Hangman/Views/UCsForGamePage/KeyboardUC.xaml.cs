@@ -67,7 +67,7 @@ namespace Hangman.Views.UCsForGamePage
         {
             if (KeyboardViewModel.GameEngine.IsGameEnd)
             {
-                KeyboardViewModel.GameEndPage = new GameEndPage(KeyboardViewModel.GameEngine.GetGame(), KeyboardViewModel.GameEngine.GetWord());
+                KeyboardViewModel.GameEndPage = new GameEndPage(KeyboardViewModel.GameEngine.GetGame(), KeyboardViewModel.GameEngine.GetWord(), KeyboardViewModel.GameEngine.StopWatchEngine.Timer);
             }
         }
     }

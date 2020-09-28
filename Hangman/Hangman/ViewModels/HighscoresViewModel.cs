@@ -11,6 +11,7 @@ namespace Hangman.ViewModels
 {
     public class HighscoresViewModel : BaseViewModel
     {
+        // Gör om till ObservableCollection?
         public List<HighscoreGame> TopHighscores { get; set; }
         public List<HighscoreGame> TopCurrentPlayerHighscores { get; set; }
 
@@ -19,13 +20,6 @@ namespace Hangman.ViewModels
         public string Title { get; set; }
 
         public HighscoreRepository HighscoreRepository { get; set; }
-
-        //public ObservableCollection<HighscoreGame> TopCurrentPlayerHighscores { get; set; }
-        //public List<HighscoreGame> TopCurrentPlayerHighscoresList { get; set; }
-
-        //public ObservableCollection<HighscoreGame> Leaderboard { get; set; }
-
-        //public IDictionary<string, long> TopDiligentPlayers { get; set; }
 
 
         public HighscoresViewModel()

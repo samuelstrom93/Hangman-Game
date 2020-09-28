@@ -5,13 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1200"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="HighScore_Page">
 
-    <Grid Background="AliceBlue">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10" />
-            <RowDefinition Height="500" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="515" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -22,27 +23,28 @@
             <ColumnDefinition Width="450" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="2" Grid.Column="2" Height="30" Width="150" Content="Gå tillbaka" Command="{Binding NavigateBackParameterCommand}" Style="{StaticResource StandardButton}" ></Button>
-        <Grid Margin="10" Grid.Row="1" Grid.Column="1">
+        <TextBlock Grid.Row="3" FontWeight="DemiBold" FontStyle="Italic" Grid.Column="2" HorizontalAlignment="Center">Bästa spel ordnas efter minst antal fel och kortaste speltiden.</TextBlock>
+        <Button Grid.Row="3" VerticalAlignment="Center" Grid.Column="2" Height="30" Width="150" Content="Gå tillbaka" Command="{Binding NavigateBackParameterCommand}" Style="{StaticResource StandardButton}" ></Button>
+        <Grid Margin="10" Grid.Row="2" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame Content="{Binding TopPlayers}" Grid.Row="1"></Frame>
+            <Frame Content="{Binding TopPlayers}" Grid.Row="2"></Frame>
         </Grid>
-        <Grid Margin="10" Grid.Row="1" Grid.Column="2">
+        <Grid Margin="10" Grid.Row="2" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame x:Name="TopPlayerHighScores" Content="{Binding TopGames}" Grid.Row="1"></Frame>
+            <Frame x:Name="TopPlayerHighScores" Content="{Binding TopGames}" Grid.Row="2"></Frame>
         </Grid>
-        <Grid Margin="10" Grid.Row="1" Grid.Column="3">
+        <Grid Margin="10" Grid.Row="2" Grid.Column="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame Content="{Binding TopGamesCurrentPlayer}" Grid.Row="1"></Frame>
+            <Frame Content="{Binding TopGamesCurrentPlayer}" Grid.Row="2"></Frame>
         </Grid>
     </Grid>
 </Page>

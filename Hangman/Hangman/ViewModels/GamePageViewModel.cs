@@ -25,6 +25,8 @@ namespace Hangman.ViewModels
 {
     class GamePageViewModel : BaseViewModel
     {
+        public bool extraliv = false;
+
         public GameStartPage GameStartPage { get; set; }    //Binding i GamePage.xml
         public ICommand GameStartCommand { get; set; }  //Binding i GamePage.xml
         public HintUC HintUC { get; set; }  //Binding i GamePage.xml
@@ -35,7 +37,7 @@ namespace Hangman.ViewModels
 
         public GamePageViewModel(bool isPlayAgain)  
         {
-            ViewGameStartPageAsOverray(isPlayAgain);
+            /*ViewGameStartPageAsOverray(isPlayAgain);*/
 
             var player = ActivePlayer;
             PlayerName = player == null ? "Spela utan användare" : player.Name;
@@ -48,13 +50,14 @@ namespace Hangman.ViewModels
             HintUC = new HintUC();
         }
 
+        /*
         private void ViewGameStartPageAsOverray(bool isPlayAgain)
         {
             if (isPlayAgain == false)
             {
                 GameStartPage = new GameStartPage();
             }
-        }
+        }*/
 
         private void MakeStopWatchUC()
         {
@@ -90,6 +93,7 @@ namespace Hangman.ViewModels
             IWord = GameEngine.IWord;
             HintUC.SetDataContext(IWord.Hint);
         }
+
 
         #region Keyboard
 

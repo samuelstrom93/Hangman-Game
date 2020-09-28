@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="2" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock FontSize="22pt" FontWeight="Bold" Text="{Binding Title}" HorizontalAlignment="Center"></TextBlock>
@@ -19,10 +19,11 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Center" Grid.Column="0">Namn</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="1">Antal spel</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="0">Namn</Label>
+            <TextBlock HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Antal spel
+            </TextBlock>
         </Grid>
-        <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopDiligentPlayers}">
+        <ListBox Grid.Row="3" FontSize="14" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopDiligentPlayers}">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />

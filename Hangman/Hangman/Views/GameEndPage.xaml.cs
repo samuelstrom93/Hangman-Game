@@ -24,10 +24,10 @@ namespace Hangman.Views
     {
         private GameEndPageViewModel gameEndPageViewModel;
 
-        public GameEndPage(Game game, Word word)
+        public GameEndPage(Game game, Word word, string stopWatchTime)
         {
             InitializeComponent();
-            gameEndPageViewModel = new GameEndPageViewModel(game, word);
+            gameEndPageViewModel = new GameEndPageViewModel(game, word, stopWatchTime);
             UserStatsFrame.Content = new PlayerStatsUC();
             DataContext = gameEndPageViewModel;
         }

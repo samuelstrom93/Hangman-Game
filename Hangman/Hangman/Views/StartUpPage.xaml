@@ -25,23 +25,30 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Image Height="1000" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
+            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Image Height="1000" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif"/>
             </Grid>
 
-
-            <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0, 0, 0, 30">
+            <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0, 0, 0, 30">
                 <Button Height="200"  Style="{StaticResource HelpButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"/>
             </Grid>
 
-            <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <Label BorderBrush="Black" BorderThickness="0, 0,0,2" FontSize="30" FontWeight="Bold" Foreground="Black" FontFamily="Bahnschrift Light Condensed">HJÄLP OSS ATT RÄDDA VÄRLDEN</Label>
+                        <Label BorderBrush="Black" BorderThickness="0, 0,0,2" FontSize="30" FontWeight="Bold" Foreground="Black" FontFamily="Bahnschrift Light Condensed">VÄLKOMMEN</Label>
                     </WrapPanel>
-                    <Button Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}"  Cursor="Hand" FontSize="25" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="200" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">ENTER</Button>
+                    
+                    <!--knappar för navigering-->
+                    <StackPanel Orientation="Horizontal">
+                        <Button  Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SPELA</Button>
+                        <Button  Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.HighscorePage}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SE TOPPLISTOR</Button>
+                        <Button Style="{StaticResource StandardButton}" Command="{Binding LoginOrLogOutCommand}" Content="{Binding LogBtnContent}" Cursor="Hand" FontSize="18" Height="60" Width="150" Margin="10, 10, 10,10" />
+                    </StackPanel>
                 </StackPanel>
             </Grid>
+
 
         </Grid>
     </Border>

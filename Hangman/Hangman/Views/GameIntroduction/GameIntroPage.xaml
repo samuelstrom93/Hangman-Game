@@ -8,8 +8,8 @@
       d:DesignHeight="1000" d:DesignWidth="1500"
       Title="GameIntroPage">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid MinHeight="950" MinWidth="850" Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
+   
+        <Grid MinHeight="900" MinWidth="850" Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -17,23 +17,14 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="500"/>
-                <RowDefinition Height="65"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
                 <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">Spelintroduktion - Hänga Hen</Label>
-
-                <Border Style="{StaticResource StandardBorder}">
-                    <TextBlock Grid.Column="1" Style="{StaticResource StandardFontTextBlock}" Padding="10" TextWrapping="Wrap" Width="780">
-                <Bold>Spelidé:</Bold><LineBreak></LineBreak>
-                Spelet baseras på det klassiska spelet <Italic>Hänga Gubbe</Italic> där spelaren ställs inför utmaningen att gissa vilket ord som slumpats fram och rädda vår huvudkaraktär genom att på gissa på bokstäver i ordet. 
-                   Om spelaren avslöjer alla bokstäver räddar du Hen ifrån att tappa greppet. Om spelaren kommer upp i tio felaktiga gissningar innan alla bokstäver har avslöjats tappar Hen greppet och spelaren har förlorat spelet.
-                    </TextBlock>
-                </Border>
             </StackPanel>
 
             <Grid Grid.Row="1" >
@@ -43,53 +34,29 @@
             <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
                 <Label Style="{StaticResource StandardHeader}" FontSize="20">Information</Label>
             </Grid>
-
-            <Border  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Height="155" Width="250">
-                <Border.Background>
-                    <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/hänggubbe1.png"/>
-                </Border.Background>
-            </Border>
-
-            <Border  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource StandardBorder}">
-                <TextBlock  Padding="10" TextWrapping="Wrap" Width="350" Style="{StaticResource StandardFontTextBlock}">
-                <Bold>Regler:</Bold> <LineBreak></LineBreak>
-                    I detta spel hänger Hen ifrån en stång och för varje fel gissning så tappar Hen greppet med ett finger i taget och ett hjärta. Hjärtana representerar hur många liv som Hen har kvar. Hen har totalt 10 liv. 
-                    På så sätt har du koll på när spelet tar slut. <LineBreak></LineBreak>
-                    Spelet startas genom att klicka på Starta-knappen under bokstäverna.
-                </TextBlock>
-            </Border>
-
-            <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" Height="490"  Width="360">
+            <Border Grid.Row="2" Grid.Column="0" BorderThickness="2" Style="{StaticResource StandardBorder}"  BorderBrush="Black" Height="490"  Width="420">
                 <Border.Background>
                     <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
                 </Border.Background>
             </Border>
 
-            <Border HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Style="{StaticResource StandardBorder}">
-                <TextBlock Padding="10" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="350">
-                <Bold>Tid:</Bold><LineBreak></LineBreak> När du startar ett spel startas ett tidtagarur som visar det nuvarande spelets tidsåtgång. Tidtagaruret håller koll på din tid så att du kan ta dig in på topplistan. 
-                    Det finns ingen tidsbegränsning utan du kan spela hur länge du vill. På exempelbilden kan du se att det gått 27,41 sekunder.
-                    <LineBreak></LineBreak><LineBreak></LineBreak>
-                    <Bold>Välj bokstav:</Bold><LineBreak></LineBreak>
-                    Du väljer vilken bokstav du vill gissa på genom att klicka på knappen för respektive bokstav. På exempelbilden ser du att användaren gissat på bland annat 'A','G' och 'L' eftersom knapparna har tonats ut. 
-                    Om bokstaven inte fanns i ordet och ökar spelarens <Italic>Antal fel</Italic>. Skulle användaren ha valt en bokstav som finns i ordet ökar <Italic>Antal rätt</Italic> och bokstaven skrivs ut över de streckade linjerna under gubben på exempelbilden.
+            <Border HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Style="{StaticResource StandardBorder}">
+                <TextBlock Padding="10" FontSize="14" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="350">
+                    <Bold>Regler:</Bold> <LineBreak></LineBreak>
+                    I detta spel hänger Hen ifrån en stång och för varje fel gissning så tappar Hen greppet med ett finger i taget och ett hjärta. Hjärtana representerar Hens tio liv. 
+                    Spelet startas genom att klicka på Starta-knappen som syns på bilden till vänster under bokstäverna. 
+                    Då sätter ett tidtagarur igång som håller koll på hur länge du spelat. Det finns ingen tidsbegränsning.
+                    Du väljer vilken bokstav du vill gissa på genom att klicka på respektive bokstavs-knapp.
                     <LineBreak></LineBreak><LineBreak></LineBreak>
                     <Bold>Ledtråd:</Bold><LineBreak></LineBreak>
-                    Längst nere kan man genom att klicka på knappen "Ledtråd" få en beskrivning över det gömda ordet. Vid start av spelet är ledtråden gömd men vill du visa den klickar du på knappen.
-                    Klickar du på "Ledtråd"-knappen igen så döljs beskrivningen.<LineBreak></LineBreak><LineBreak></LineBreak>
+                    Längst nere kan man genom att klicka på knappen "Ledtråd" få en beskrivning över det gömda ordet.<LineBreak></LineBreak><LineBreak></LineBreak>
                     <Bold>Gissa direkt:</Bold><LineBreak></LineBreak>
-                    Funktionen gör att du direkt kan gissa på ordet om du hunnit lista ut det i inmatningsfältet brevid <Italic>Gissa direkt</Italic> 
-                    . Vid rätt svar har du vunnit spelet medan om du gissar fel förbrukas en gissning och antal fel ökas med ett.
+                    Funktionen möjliggör att du kan gissa på ordet om du hunnit lista ut det genom att fylla i inmatningsfältet brevid Gissa direkt. 
+                    Vid rätt svar har du vunnit spelet medan om du gissar fel förbrukas en gissning och antal fel ökas med ett.
                 </TextBlock>
             </Border>
             <Grid Grid.Row="4" Grid.ColumnSpan="2">
                 <Button  Style="{StaticResource StandardButton}" Command="{Binding NavigateBackParameterCommand}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150"/>
-
             </Grid>
-
-
-
-
         </Grid>
-    </ScrollViewer>
 </Page>

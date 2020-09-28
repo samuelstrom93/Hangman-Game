@@ -9,7 +9,7 @@
 
 
     <Grid>
-        <WrapPanel Margin="5,5,5,15" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <WrapPanel Margin="5,5,5,5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" Cursor="Hand" >A</Button>
             <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >B</Button>
             <Button  Style="{StaticResource KeyButton}" Click="Letter_Click" >C</Button>
