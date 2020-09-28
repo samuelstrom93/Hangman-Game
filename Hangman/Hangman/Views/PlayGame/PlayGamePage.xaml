@@ -41,22 +41,33 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding StopWatch}"/>
-                            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding WordDisplay}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
-                            <Grid Grid.Column="1" Grid.Row="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="2*"/>
-                                </Grid.RowDefinitions>
-                                <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource StandardButton}" Command="{Binding ShowHintCommand}" Content="Visa ledtråd" />
-                                <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentWordHint}" Visibility="{Binding HintVisibility}" Style="{StaticResource StandardFontTextBlock}" FontSize="14pt" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            </Grid>
+                            <TextBlock Grid.Column="1" Style="{StaticResource StandardFontTextBlock}" FontSize="38pt" Text="Ditt ord" />
+                            <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource StandardBorder}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.5*"/>
+                                        <RowDefinition Height="0.1*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <ContentControl Content="{Binding WordDisplay}" Margin="40, 0 , 0, 0" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="4*"/>
+                                        </Grid.RowDefinitions>
+                                        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource StandardButton}" Command="{Binding ShowHintCommand}" Content="Visa ledtråd" />
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentWordHint}" Visibility="{Binding HintVisibility}" Style="{StaticResource StandardFontTextBlock}" FontSize="14pt" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -67,7 +78,7 @@
                                 <ColumnDefinition Width="0.5*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="0*"/>
+                                <RowDefinition Height="0.5*"/>
                                 <RowDefinition Height="8*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
