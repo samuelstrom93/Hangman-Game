@@ -179,8 +179,6 @@ namespace Hangman.Modules
             numberOfLives = 10;
             numberOfTries = 0;
             numberOfIncorrectTries = 0;
-            numberOfCorrectTries = 0;
-            NumberOfCorrectTries_text = numberOfCorrectTries.ToString();    //Binding GamePage.xml
             NumberOfIncorrectTries_text = numberOfIncorrectTries.ToString();    //Binding GamePage.xml
 
             gameStage = 0;
@@ -283,8 +281,6 @@ namespace Hangman.Modules
             if (playersGuessingAnswer == upperWord) //Spelaren vann
             {
                 numberOfTries++;
-                numberOfCorrectTries++;
-                NumberOfCorrectTries_text = numberOfCorrectTries.ToString();
                 IsWon = true;
                 EndGame();
             }
