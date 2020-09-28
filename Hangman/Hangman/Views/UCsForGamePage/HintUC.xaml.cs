@@ -19,15 +19,12 @@ namespace Hangman.Views.UCsForGamePage
     /// </summary>
     public partial class HintUC : UserControl
     {
+        public HintUCViewModel HintUCViewModel { get; set; }
         public HintUC()
         {
             InitializeComponent();
             
         }
 
-        public void SetDataContext(string hint)
-        {
-            DataContext = new HintUCViewModel(hint);
-        }
     }
 }
