@@ -8,40 +8,40 @@
       d:DesignHeight="1000" d:DesignWidth="1500"
       Title="GameIntroPage">
 
-   
-        <Grid MinHeight="900" MinWidth="850" Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="500"/>
-                <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">Spelintroduktion - Hänga Hen</Label>
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
 
-            <Grid Grid.Row="1" >
-                <Label Style="{StaticResource StandardHeader}" HorizontalAlignment="Center"  FontSize="20">Exempelbild</Label>
-            </Grid>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">Spelintroduktion - Hänga Hen</Label>
+        </StackPanel>
 
-            <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
-                <Label Style="{StaticResource StandardHeader}" FontSize="20">Information</Label>
-            </Grid>
-            <Border Grid.Row="2" Grid.Column="0" BorderThickness="2" Style="{StaticResource StandardBorder}"  BorderBrush="Black" Height="490"  Width="420">
-                <Border.Background>
-                    <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
-                </Border.Background>
-            </Border>
+        <Grid Grid.Row="1" >
+            <Label Style="{StaticResource StandardHeader}" HorizontalAlignment="Center"  FontSize="20">Exempelbild</Label>
+        </Grid>
 
-            <Border HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Style="{StaticResource StandardBorder}">
-                <TextBlock Padding="10" FontSize="14" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="350">
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
+            <Label Style="{StaticResource StandardHeader}" FontSize="20">Information</Label>
+        </Grid>
+        <Border Grid.Row="2" Grid.Column="0" Margin="2.5,0,0,0" BorderThickness="2" Style="{StaticResource StandardBorder}"  BorderBrush="Black" Height="490"  Width="420">
+            <Border.Background>
+                <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="/Assets/Images/GameIntroPicture_2.png"/>
+            </Border.Background>
+        </Border>
+
+        <Border HorizontalAlignment="Center" Margin="2.5,5,0,0" Grid.Row="2" Grid.Column="1" Style="{StaticResource StandardBorder}">
+            <TextBlock Padding="10" FontSize="14" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="350">
                     <Bold>Regler:</Bold> <LineBreak></LineBreak>
                     I detta spel hänger Hen ifrån en stång och för varje fel gissning så tappar Hen greppet med ett finger i taget och ett hjärta. Hjärtana representerar Hens tio liv. 
                     Spelet startas genom att klicka på Starta-knappen som syns på bilden till vänster under bokstäverna. 
@@ -53,10 +53,10 @@
                     <Bold>Gissa direkt:</Bold><LineBreak></LineBreak>
                     Funktionen möjliggör att du kan gissa på ordet om du hunnit lista ut det genom att fylla i inmatningsfältet brevid Gissa direkt. 
                     Vid rätt svar har du vunnit spelet medan om du gissar fel förbrukas en gissning och antal fel ökas med ett.
-                </TextBlock>
-            </Border>
-            <Grid Grid.Row="4" Grid.ColumnSpan="2">
-                <Button  Style="{StaticResource StandardButton}" Command="{Binding NavigateBackParameterCommand}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150"/>
-            </Grid>
+            </TextBlock>
+        </Border>
+        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+            <Button  Style="{StaticResource StandardButton}" Command="{Binding NavigateBackParameterCommand}" Content="Gå tillbaka" FontWeight="Bold" FontSize="15" Height="30" Width="150"/>
         </Grid>
+    </Grid>
 </Page>
