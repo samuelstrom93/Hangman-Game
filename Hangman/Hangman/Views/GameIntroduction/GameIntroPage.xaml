@@ -9,7 +9,7 @@
       Title="GameIntroPage">
 
    
-        <Grid MinHeight="500" MinWidth="850" Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Background="Transparent"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -19,8 +19,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="500"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="490"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
