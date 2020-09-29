@@ -1,16 +1,13 @@
 ﻿using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Media.Imaging;
 using Hangman.Repositories;
 using Hangman.Modules;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Hangman.Models;
 using Npgsql;
 using System.Windows;
-using System.Windows.Data;
 using System.Linq;
 
 namespace Hangman.ViewModels
@@ -28,6 +25,7 @@ namespace Hangman.ViewModels
         public BitmapImage MemeForWinRate { get; set; }        
         public string LabelColor { get; set; }
 
+        public ICommand ViewImage { get; set; }
         #endregion
 
         #region Properties: Delete User
@@ -53,32 +51,16 @@ namespace Hangman.ViewModels
         #region Repositores
         private PlayerRepository playerRepository;
         private PlayerStatsRepository playerStatsRepository;
-        private MessageRepository messageRepository;
 
         #endregion
 
-        #region Properties: Message
-        public ICommand SendMessageCommand { get; set; }
-
-        public List<Message> myMessages { get; set; }
-        public string Topic { get; set; }
-        public string Message { get; set; }
-
-        public string Confirmation { get; set; }
-
-        #endregion
 
         public UserSettingsViewModel()
         {
             playerRepository = new PlayerRepository();
             playerStatsRepository = new PlayerStatsRepository();
-            messageRepository = new MessageRepository();
-
             DeleteUserCommand = new RelayCommand(TryDeleteUser);
             UpdateUserCommand = new RelayCommand(UpdateUser);
-            SendMessageCommand = new RelayCommand(SendMessage);
-
-            GetMessages();
             UpdatePlayerStats();
 
         }
@@ -90,7 +72,7 @@ namespace Hangman.ViewModels
             if (CheckIfDeletable(NameCheck))
             {
                 DeleteUser();
-                MessageBox.Show("Din användare är nu radarad, du loggas nu ut.");
+                MessageBox.Show("Din användare är nu raderad, du loggas nu ut.");
 
                 SetActivePlayer(null);
                 GoToPage(ApplicationPage.Login);
@@ -274,24 +256,6 @@ namespace Hangman.ViewModels
             }
         }
         #endregion
-
-        #region Methods: Messages
-
-        private void SendMessage()
-        {
-            messageRepository.TryAddMessage(Topic, Message, ActivePlayer.Id, 64, out Message message);
-            GetMessages();
-            Message = "";
-            Topic = "";
-            Confirmation = "Ditt meddelande är skickat";
-        }
-
-        private void GetMessages()
-        {
-            myMessages = messageRepository.GetMessages(null, ActivePlayer.Id).ToList();
-        }
-        #endregion
-
     }
 
 

@@ -71,8 +71,11 @@
                 </Border>
                 <Frame x:Name="UserStatsFrame" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
             </Grid>
-            
-            <!--Send message to Admin-->
+
+            <Grid  Grid.Row="1" Grid.RowSpan="6" Grid.Column="2">
+                <Frame x:Name="MessageFrame"></Frame>
+            </Grid>
+            <!--Send message to Admin
             <Border Grid.Row="1" Grid.RowSpan="6" Grid.Column="2" Style="{StaticResource StandardBorder}">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -80,7 +83,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- SEND MESSAGE -->
+                    
                     <StackPanel>
                         <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5">
                             <Label  Style="{StaticResource StandardHeader}" FontSize="25">SKICKA MEDDELANDE TILL ADMIN</Label>
@@ -93,7 +96,7 @@
                         <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200">SKICKA</Button>
                         <Label Style ="{StaticResource StandardLabel}" Content="{Binding Confirmation}"></Label>
                     </StackPanel>
-                    <!--Listbox för meddelandehistorik-->
+                    
 
                     <StackPanel  Grid.Row="1" >
                         <Label>DIN MEDDELANDEHISTORIK</Label>
@@ -121,13 +124,10 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </StackPanel>
-
-
-
                 </Grid>
-            </Border>
+    </Border> -->
 
-            <!--Delete user-->
+    <!--Delete user-->
             <Border Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"
                     Style="{DynamicResource  BackgroundBorder}"
                     Height="120"
