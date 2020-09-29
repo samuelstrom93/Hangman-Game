@@ -17,8 +17,6 @@ namespace Hangman.Modules
         {
             playerRepository = new PlayerRepository();
         }
-
-        #region methods
         private bool IsNameUsed(string name)
         {
             Player player = playerRepository.GetPlayer(name);
@@ -53,7 +51,6 @@ namespace Hangman.Modules
 
             return false;
         }
-        #endregion
     }
 
 }

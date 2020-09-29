@@ -1,6 +1,7 @@
 ﻿using Hangman.Modules;
 using Hangman.Views;
 using Hangman.Views.Menu;
+using Hangman.Views.PlayGame;
 using System.Windows;
 
 namespace Hangman
