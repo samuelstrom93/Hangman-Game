@@ -19,8 +19,8 @@ namespace Hangman.ViewModels
         #region Properties: Message
         public ICommand SendMessageCommand { get; set; }
         public List<Message> myMessages { get; set; }
-        private string Topic { get; set; }
-        private string Message { get; set; }
+        public string Topic { get; set; }
+        public string Message { get; set; }
         public string Confirmation { get; set; }
         #endregion
 
