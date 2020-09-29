@@ -28,7 +28,7 @@ namespace Hangman.Views.Highscore
 
             HighscoreUCViewModel highscoreUCViewModel = new HighscoreUCViewModel(new HighscoreRepository())
             {
-                Title = highscoreRepository.GetLeaderboard(playerId).ToList().Count == 0 ? "Du har inga spel registrerade" : "Dina bästa spel",
+                Title = highscoreRepository.GetLeaderboard(playerId).ToList().Count == 0 ? "Inga spel registrerade" : "Dina bästa spel",
             };
             DataContext = highscoreUCViewModel;
         }
