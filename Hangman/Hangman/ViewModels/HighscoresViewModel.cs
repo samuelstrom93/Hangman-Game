@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Hangman.Database;
 
 namespace Hangman.ViewModels
 {
@@ -19,7 +20,7 @@ namespace Hangman.ViewModels
 
         public string Title { get; set; }
 
-        public HighscoreRepository HighscoreRepository { get; set; }
+        public IHighscoreRepository HighscoreRepository { get; set; }
 
 
         public HighscoresViewModel()

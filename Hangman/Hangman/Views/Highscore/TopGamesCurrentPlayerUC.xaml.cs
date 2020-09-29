@@ -30,7 +30,7 @@ namespace Hangman.Views.Highscore
                 HighscoreRepository = new HighscoreRepository(),
                 Title = playerId.HasValue ? "Dina 10 bästa spel" : " ",
             };
-            vm.TopCurrentPlayerHighscores = vm.HighscoreRepository.GetLeaderboard(playerId).ToList();
+            vm.TopCurrentPlayerHighscores = vm.HighscoreRepository.GetLeaderboard(playerId,20).ToList();
             
             if (vm.TopCurrentPlayerHighscores.Count == 0)
             {

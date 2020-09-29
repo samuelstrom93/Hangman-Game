@@ -28,7 +28,7 @@
                     <TextBox Text="{Binding Topic}" Style="{StaticResource UserInputTxtBox}" Width="200"></TextBox>
                     <Label Style="{StaticResource StandardLabel}">MEDDELANDE</Label>
                     <TextBox Text="{Binding Message}" Style="{StaticResource UserInputTxtBox}" Height="80" Width="200" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
-                    <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200">SKICKA</Button>
+                    <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200" Cursor="Hand">SKICKA</Button>
                     <Label Style ="{StaticResource StandardLabel}" Content="{Binding Confirmation}"></Label>
                 </StackPanel>
                 

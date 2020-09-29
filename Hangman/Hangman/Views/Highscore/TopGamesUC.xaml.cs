@@ -20,7 +20,7 @@ namespace Hangman.Views
                 HighscoreRepository = new HighscoreRepository(),
                 Title = playerId.HasValue ? "Dina 10 bästa spel" : "Topp 10 bästa spel",
             };
-            vm.TopHighscores = vm.HighscoreRepository.GetLeaderboard(playerId).ToList();
+            vm.TopHighscores = vm.HighscoreRepository.GetLeaderboard(playerId,20).ToList();
             if (vm.TopHighscores.Count == 0)
             {
                 vm.Title = "Du har inga spel registrerade.";

@@ -5,6 +5,7 @@ using System.Windows.Media.Imaging;
 using Hangman.ViewModels.Base;
 using System.Windows.Input;
 using Hangman.Views;
+using Hangman.Database;
 
 namespace Hangman.ViewModels
 {
@@ -24,7 +25,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Repositores
-        private PlayerStatsRepository playerStatsRepository;
+        private IPlayerStatsRepository playerStatsRepository;
         #endregion
 
         public PlayerStatsUCViewModel()

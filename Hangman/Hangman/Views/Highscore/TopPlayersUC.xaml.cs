@@ -19,7 +19,7 @@ namespace Hangman.Views
                 HighscoreRepository = new HighscoreRepository(),
                 Title = "Topp flitigaste spelarna",
             };
-            vm.TopDiligentPlayers = vm.HighscoreRepository.GetTopDiligentPlayers() as Dictionary<string, long>;
+            vm.TopDiligentPlayers = vm.HighscoreRepository.GetTopDiligentPlayers(10) as Dictionary<string, long>;
             DataContext = vm;
         }
     }

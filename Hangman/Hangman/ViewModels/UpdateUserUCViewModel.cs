@@ -6,6 +6,7 @@ using Hangman.Repositories;
 using Hangman.Modules;
 using System.Windows.Input;
 using Npgsql;
+using Hangman.Database;
 
 namespace Hangman.ViewModels
 {
@@ -21,7 +22,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Repos
-        public PlayerRepository playerRepository;
+        public IPlayerRepository playerRepository;
         #endregion
 
         public UpdateUserUCViewModel()
