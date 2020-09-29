@@ -16,8 +16,8 @@
             <Grid>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
-                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NameCheck}" />
-                    <Button Style="{StaticResource StandardButton}" Width="100" Content="Ta bort mig" Command="{Binding DeleteUserCommand}"/>
+                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NameCheck}"/>
+                    <Button  IsDefault="True" Style="{StaticResource StandardButton}" Width="100" Content="Ta bort mig" Command="{Binding DeleteUserCommand}"/>
                     <TextBlock Margin="0, 4 ,0 ,0 " Padding="2" x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}" Background="{Binding BackGroundColorDeleteBox}"/>
                 </StackPanel>
             </Grid>

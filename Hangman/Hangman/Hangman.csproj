@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\PlayerStats\**" />
+    <EmbeddedResource Remove="Views\PlayerStats\**" />
+    <None Remove="Views\PlayerStats\**" />
+    <Page Remove="Views\PlayerStats\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Gifs\ChatBubbleGif.gif" />
     <None Remove="Assets\Gifs\GameOn.gif" />
     <None Remove="Assets\Gifs\HeartBreak0.gif" />
@@ -107,10 +114,6 @@
     </Resource>
     <Resource Include="Views\Menu\Gifs\ChatBubbleGif.gif" />
     <Resource Include="Views\Menu\Gifs\GameOn.gif" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\PlayerStats\" />
   </ItemGroup>
 
 </Project>
