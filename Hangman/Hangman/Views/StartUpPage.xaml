@@ -125,7 +125,7 @@
                                                Foreground="#FF0941FF"
                                                BorderBrush="Blue"
                                                FontStyle="Italic"
-                                               Content="Skapa en användare här." BorderThickness="0,0,0,1"
+                                               Content="Skapa en användare här." BorderThickness="0,0,0,0.3"
                                      />
                                 </Button.Content>
                             </Button>

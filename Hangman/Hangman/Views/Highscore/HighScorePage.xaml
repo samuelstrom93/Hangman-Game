@@ -18,8 +18,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="350" />
-            <ColumnDefinition Width="450" />
-            <ColumnDefinition Width="450" />
+            <ColumnDefinition Width="350" />
+            <ColumnDefinition Width="350" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="3" FontWeight="DemiBold" FontStyle="Italic" Grid.Column="2" HorizontalAlignment="Center">Bästa spel ordnas efter minst antal fel och kortast speltid.</TextBlock>
