@@ -5,90 +5,152 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="UserSettingsPage">
-    
-    <Border Style="{StaticResource BackgroundBorder}">
+
+    <Border >
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             
+            <!--Definitions for grid-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
                 <RowDefinition Height="40" />
                 <RowDefinition Height="140" />
                 <RowDefinition Height="40" />
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-
+            
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400" />
-                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="400*" />
+                <ColumnDefinition Width="400*" />
+                <ColumnDefinition Width="400*" />
             </Grid.ColumnDefinitions>
             
-            
-            <Border Grid.RowSpan="5"
-                    Grid.ColumnSpan="2"
-                    Style="{StaticResource ListItemBorder}"
-                    CornerRadius="10">
-            </Border>
-
-            <Grid Grid.Row="0" Grid.ColumnSpan="2" >
-                <Label  Style="{StaticResource StandardHeader}"> DIN ANVÄNDARE</Label>
+           
+            <!--Header-->
+            <Grid Grid.Row="0" Grid.ColumnSpan="3" >
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Style="{StaticResource StandardHeader}">DIN ANVÄNDARE:</Label>
+                </StackPanel>
             </Grid>
+
+            <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" Style="{StaticResource StandardBorder}"></Border>
             
+            <!--Title1-->
             <Grid Grid.Row="1" Grid.Column="0">
-                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}" >ÄNDRA NAMN</Label>
+                <Label VerticalAlignment="Bottom" Style="{StaticResource StandardHeader}" FontSize="25" >ÄNDRA NAMN</Label>
             </Grid>
 
+            <!--Title2-->
             <Grid Grid.Row="3" Grid.Column="0">
-                <Label VerticalAlignment="Bottom" Style="{StaticResource PageTitleLabel}">TA BORT DIN ANVÄNDARE</Label>
+                <Label VerticalAlignment="Bottom"  Style="{StaticResource StandardHeader}" FontSize="25">TA BORT DIN ANVÄNDARE</Label>
             </Grid>
-
 
             <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
-                <Border
-            Style="{DynamicResource BackgroundBorder}"
-            Height="100"
-            Width="300"
-            CornerRadius="10">
-
-            <Grid
-            Height="100"
-            Width="300">
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Style="{StaticResource StandardFontTextBlock}">Skriv in önskat nytt namn</TextBlock>
-                            <TextBox  TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NewName}"/>
-                            <Button Style="{DynamicResource StandardButton}"  Width="100" Content="Byt namn" Command="{Binding UpdateUserCommand}"/>
-                            <TextBlock Text="{Binding UpdateMessage}" HorizontalAlignment="Center" Margin="0, 4 ,0 ,0 " Padding="2" Foreground="{Binding TextColor, FallbackValue=black}" Background="{Binding BackGroundColorUpdateBox}"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                <Frame x:Name="ChangeUserFrame" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
+                <Frame x:Name="UpdateUserFrame">
+                    
+                </Frame>
             </Grid>
+            <!-- New Name
+            <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
+                <Border
+                    Style="{DynamicResource BackgroundBorder}"
+                    Height="100"
+                    Width="300"
+                    CornerRadius="10">
 
-            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Margin="10, 10, 10, 10">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Style="{StaticResource StandardFontTextBlock}">Skriv in önskat nytt namn</TextBlock>
+                        <TextBox  TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NewName}"/>
+                        <Button Style="{DynamicResource StandardButton}"  Width="100" Content="Byt namn" Command="{Binding UpdateUserCommand}"/>
+                        <TextBlock Text="{Binding UpdateMessage}" HorizontalAlignment="Center" Margin="0, 4 ,0 ,0 " Padding="2" Foreground="{Binding TextColor, FallbackValue=black}" Background="{Binding BackGroundColorUpdateBox}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>-->
+
+            <!--UC for stats-->
+            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Margin="10, 0, 10, 0">
                 <Border>
                 </Border>
                 <Frame x:Name="UserStatsFrame" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"></Frame>
             </Grid>
 
+            <Grid  Grid.Row="1" Grid.RowSpan="6" Grid.Column="2">
+                <Frame x:Name="MessageFrame"></Frame>
+            </Grid>
+            <!--Send message to Admin
+            <Border Grid.Row="1" Grid.RowSpan="6" Grid.Column="2" Style="{StaticResource StandardBorder}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.8*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    
+                    <StackPanel>
+                        <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5">
+                            <Label  Style="{StaticResource StandardHeader}" FontSize="25">SKICKA MEDDELANDE TILL ADMIN</Label>
+                        </Border>
+
+                        <Label Style="{StaticResource StandardLabel}">TITEL</Label>
+                        <TextBox Text="{Binding Topic}" Style="{StaticResource UserInputTxtBox}" Width="200"></TextBox>
+                        <Label Style="{StaticResource StandardLabel}">MEDDELANDE</Label>
+                        <TextBox Text="{Binding Message}" Style="{StaticResource UserInputTxtBox}" Height="80" Width="200" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
+                        <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200">SKICKA</Button>
+                        <Label Style ="{StaticResource StandardLabel}" Content="{Binding Confirmation}"></Label>
+                    </StackPanel>
+                    
+
+                    <StackPanel  Grid.Row="1" >
+                        <Label>DIN MEDDELANDEHISTORIK</Label>
+                        <ListBox ItemsSource="{Binding myMessages}" Height="120" Width="240">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="10" Margin="2" Style="{StaticResource ClickableBorder}" BorderThickness="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel>
+                                                <TextBlock  Width="150" HorizontalAlignment="Center" Text="{Binding Path=SentAt, StringFormat=g, ConverterCulture=sv-SE}" />
+                                                <TextBlock Width="150" HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=RecieverName}"/>
+                                                <TextBlock Width="150" HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Topic}"/>
+                                                <TextBlock Width="150" HorizontalAlignment="Center" TextWrapping="Wrap" Grid.Column="3" Text="{Binding Path=Content}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+    </Border> -->
+
             <Grid Grid.Row="4" Grid.Column="0" VerticalAlignment="Top">
-                <Border
+                <Frame x:Name="DeleteUserFrame"></Frame>
+            </Grid>
+    <!--Delete user
+            <Border Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"
                     Style="{DynamicResource  BackgroundBorder}"
                     Height="120"
                     Width="300"
                     CornerRadius="10">
-                    <Grid>
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                <Grid>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
                             >
-                            <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
-                            <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NameCheck}" />
-                            <Button Style="{StaticResource StandardButton}" Width="100" Content="Ta bort mig" Command="{Binding DeleteUserCommand}"/>
-                            <TextBlock Margin="0, 4 ,0 ,0 " Padding="2" x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}" Background="{Binding BackGroundColorDeleteBox}"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                
-            </Grid>
+                        <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
+                        <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NameCheck}" />
+                        <Button Style="{StaticResource StandardButton}" Width="100" Content="Ta bort mig" Command="{Binding DeleteUserCommand}"/>
+                        <TextBlock Margin="0, 4 ,0 ,0 " Padding="2" x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}" Background="{Binding BackGroundColorDeleteBox}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>-->
         </Grid>
     </Border>
 </Page>

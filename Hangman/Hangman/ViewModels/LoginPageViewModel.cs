@@ -43,12 +43,12 @@ namespace Hangman.ViewModels
                 return;
             }
 
-            if (PlayerName.Equals("admin", StringComparison.OrdinalIgnoreCase))
+            if (PlayerName.Equals("Admin", StringComparison.OrdinalIgnoreCase))
             {
                 GoToPage(ApplicationPage.Admin);
             }
 
-            if (!_module.TryLogInPlayer(PlayerName))
+            else if (!_module.TryLogInPlayer(PlayerName))
             {
                 MessageBackground = "white";
                 ErrorMessage = "Din användare finns inte!";

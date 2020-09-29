@@ -21,7 +21,7 @@ namespace Hangman.Repositories
                 "\ninner join player reciever on reciever.id=reciever_id" +
                 $"{(senderId.HasValue ? $"\nwhere sender_id=@senderid" : recieverId.HasValue ? $"\nwhere reciever_id=@recieverid" : string.Empty)}" +
                 $"{(senderId.HasValue && recieverId.HasValue ? $"\nand reciever_id=@recieverid" : string.Empty)}" +
-                "\norder by sent_at";
+                "\norder by sent_at DESC";
 
             List<Message> result = new List<Message>();
 

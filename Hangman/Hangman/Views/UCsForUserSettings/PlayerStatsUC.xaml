@@ -5,19 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="370" d:DesignWidth="220">
+             d:DesignHeight="500" d:DesignWidth="420">
 
     <Border 
         Style="{StaticResource StandardBorder}" 
-        Margin="0,0,0,0" 
-        CornerRadius="10"
-        Width="200"
-        Height="350">
+        Width="300"
+        Height="450">
 
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="150" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -40,7 +38,7 @@
                         <TextBlock  Style="{StaticResource StandardFontTextBlock}" TextAlignment="Center" Width="120" Name="txtBlockGamesWon" Text="{Binding GamesWon}"></TextBlock>
 
                         <Label Style="{StaticResource StandardLabel}">Vinstprocent:</Label>
-                        <Border Background="Black">
+                        <Border Background="{Binding BackgroundColorWinRate}" >
                             <Label Style="{StaticResource StandardLabel}"  Foreground="{Binding LabelColor}" HorizontalAlignment="Center" FontSize="20"  Content="{Binding WinRateString}"/>
                         </Border>
                     </StackPanel>
@@ -48,12 +46,12 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" Margin="10, 10, 10, 10" Width="150" Height="120">
+            <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" Width="280" Height="210">
                 <Grid>
-                    <Border BorderBrush="Black" BorderThickness="2">
-                        <Border.Background>
-                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding MemeForWinRate}"/>
-                        </Border.Background>
+                    <Border BorderBrush="Black" BorderThickness="2" >
+                            <Border.Background>
+                                <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding MemeForWinRate}"/>
+                            </Border.Background>
                     </Border>
                 </Grid>
             </Grid>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangman.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -10,26 +11,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hangman.Modules;
-using Hangman.Repositories;
-using Hangman;
-using Hangman.ViewModels;
 
-namespace Hangman.Views
+namespace Hangman.Views.UCsForUserSettings
 {
     /// <summary>
-    /// Interaction logic for PlayerStatsUC.xaml
+    /// Interaction logic for SendMessageUC.xaml
     /// </summary>
-    public partial class PlayerStatsUC : UserControl
+    public partial class SendMessageUC : UserControl
     {
-
-        private UserSettingsViewModel model;
-
-        public PlayerStatsUC()
+        public SendMessageUCViewModel sendMessageVM;
+        public SendMessageUC()
         {
             InitializeComponent();
-            model = new UserSettingsViewModel();
-            DataContext = model;             
+            sendMessageVM = new SendMessageUCViewModel();
+            DataContext = sendMessageVM;
         }
     }
 }
