@@ -12,35 +12,57 @@
 
     <Border>
         <Grid Background="#FFEFC7F1">
+            
+            <!--Grid Definitions-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <!-- GIF -->
             <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Image Height="1000" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif"/>
             </Grid>
-
-            <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0, 0, 0, 30">
-                <Button Height="200"  Style="{StaticResource HelpButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"/>
+            
+            <!-- Help button -->
+            <Grid 
+                Grid.Row="0" 
+                Grid.Column="2"
+                Grid.RowSpan="3"  
+                VerticalAlignment="Center"  
+                HorizontalAlignment="Center" 
+                Margin="0, 0, 0, 30">
+                
+                <Button Height="200"  
+                        Style="{StaticResource HelpButton}" 
+                        Command="{Binding NavigateToPageByParameterCommand}" 
+                        CommandParameter="{x:Static local:ApplicationPage.GameIntro}"/>
             </Grid>
 
-            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+            <Grid Grid.Row="1" 
+                  Grid.Column="0" 
+                  Grid.ColumnSpan="3" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center">
+                
+                <!-- Stackpanel for title + buttons -->
                 <StackPanel>
-                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <Label BorderBrush="Black" BorderThickness="0, 0,0,2" FontSize="30" FontWeight="Bold" Foreground="Black" FontFamily="Bahnschrift Light Condensed">VÄLKOMMEN</Label>
-                    </WrapPanel>
                     
-                    <!--knappar för navigering-->
-                    <StackPanel Orientation="Horizontal">
+                    <!--Title-->
+                    <Label 
+                        Style="{StaticResource StandardHeader}"
+                        Content="VÄLKOMMEN"/> 
+
+                    <!-- Stackpanel for Buttons-->
+                    <StackPanel 
+                        Orientation="Horizontal">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200"/>
@@ -50,45 +72,63 @@
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>
-                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
                             
-                            <!--#region  Buttons-->
+                           
+                            <!-- PLAY button -->
                             <Button
                                 Grid.Column="0"
-                                Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}"  FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SPELA</Button>
+                                Style="{StaticResource StandardButton}" 
+                                Command="{Binding NavigateToPageByParameterCommand}" 
+                                CommandParameter="{x:Static local:ApplicationPage.GamePage}"  
+                                FontSize="18" FontFamily="Bahnschrift" Height="60"  
+                                Width="150"
+                                Content="SPELA"/>
+                            
+                            <!-- Highscores Button -->
                             <Button  
                                 Grid.Column="1"
-                                Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.HighscorePage}" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SE TOPPLISTOR</Button>
+                                Style="{StaticResource StandardButton}" 
+                                Command="{Binding NavigateToPageByParameterCommand}" 
+                                CommandParameter="{x:Static local:ApplicationPage.HighscorePage}" 
+                                FontSize="18" 
+                                Height="60" 
+                                Width="150"
+                                Content="SE TOPPLISTOR"/>
+                            
+                            <!-- Login/Logout button -->
                             <Button 
                                 Grid.Column="2"
-                                Style="{StaticResource StandardButton}" Command="{Binding LoginOrLogOutCommand}" Content="{Binding LogBtnContent}" FontSize="18" Height="60" Width="150" Margin="10, 10, 10,10" />
-                            <Border 
+                                Style="{StaticResource StandardButton}" 
+                                Command="{Binding LoginOrLogOutCommand}" 
+                                Content="{Binding LogBtnContent}" 
+                                FontSize="18" Height="60" 
+                                Width="150"/>
+                            
+                            <!--Create User Button-->
+                            <Button  
                                 Grid.Column="2"
                                 Grid.Row="1"
-                                BorderBrush="Blue"
-                                BorderThickness="0, 0, 0, 1"
-                                Height="20"
-                                Width="144"
->
-                                <Button                                                                                           
-                                VerticalAlignment="Top"
-                                Height="20"
-                                Cursor="Hand"
-                                FontFamily="Arial"
-                                FontSize="12"
-                                BorderBrush="Transparent"
-                                Content="Skapa en användare här."
-                                HorizontalAlignment="Center"
-                                Foreground="#FF0941FF"
-                                Background="Transparent"
-                                FontStyle="Oblique"
+                                Command="{Binding CreateUserCommand}" 
                                 Visibility="{Binding IsCreateVisible}"
                                 IsEnabled="{Binding IsCreateUserEnabled}"
-                                Command="{Binding CreateUserCommand}" FontWeight="SemiBold"                               
-                                />
-                                <!--#endregion-->
-                            </Border>
+                                VerticalAlignment="Top"
+                                Height="40"
+                                Cursor="Hand"
+                                BorderBrush="Transparent"                                   
+                                Background="Transparent">
+
+                                <Button.Content>
+                                    <Label FontFamily="Arial"
+                                               FontSize="12"
+                                               Foreground="#FF0941FF"
+                                               BorderBrush="Blue"
+                                               FontStyle="Italic"
+                                               Content="Skapa en användare här." BorderThickness="0,0,0,1"
+                                     />
+                                </Button.Content>
+                            </Button>
                         </Grid>
                    </StackPanel>
                 </StackPanel>
