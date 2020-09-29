@@ -48,7 +48,12 @@
                 <Label VerticalAlignment="Bottom"  Style="{StaticResource StandardHeader}" FontSize="25">TA BORT DIN ANVÄNDARE</Label>
             </Grid>
 
-            <!-- New Name-->
+            <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
+                <Frame x:Name="UpdateUserFrame">
+                    
+                </Frame>
+            </Grid>
+            <!-- New Name
             <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
                 <Border
                     Style="{DynamicResource BackgroundBorder}"
@@ -63,7 +68,7 @@
                         <TextBlock Text="{Binding UpdateMessage}" HorizontalAlignment="Center" Margin="0, 4 ,0 ,0 " Padding="2" Foreground="{Binding TextColor, FallbackValue=black}" Background="{Binding BackGroundColorUpdateBox}"/>
                     </StackPanel>
                 </Border>
-            </Grid>
+            </Grid>-->
 
             <!--UC for stats-->
             <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Margin="10, 0, 10, 0">
@@ -127,7 +132,10 @@
                 </Grid>
     </Border> -->
 
-    <!--Delete user-->
+            <Grid Grid.Row="4" Grid.Column="0" VerticalAlignment="Top">
+                <Frame x:Name="DeleteUserFrame"></Frame>
+            </Grid>
+    <!--Delete user
             <Border Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"
                     Style="{DynamicResource  BackgroundBorder}"
                     Height="120"
@@ -142,7 +150,7 @@
                         <TextBlock Margin="0, 4 ,0 ,0 " Padding="2" x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}" Background="{Binding BackGroundColorDeleteBox}"/>
                     </StackPanel>
                 </Grid>
-            </Border>
+            </Border>-->
         </Grid>
     </Border>
 </Page>

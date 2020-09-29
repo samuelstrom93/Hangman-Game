@@ -1,14 +1,10 @@
 ﻿using Hangman.ViewModels.Base;
 using System;
-using System.Collections.Generic;
 using System.Windows.Media.Imaging;
 using Hangman.Repositories;
 using Hangman.Modules;
 using System.Windows.Input;
-using Hangman.Models;
 using Npgsql;
-using System.Windows;
-using System.Linq;
 
 namespace Hangman.ViewModels
 {
@@ -28,79 +24,19 @@ namespace Hangman.ViewModels
         public ICommand ViewImage { get; set; }
         #endregion
 
-        #region Properties: Delete User
-        public string NameCheck { get; set; }
-        public bool IsDeletable { get; set; }
-        public string DeleteMessage { get; set; }
-        public ICommand DeleteUserCommand { get; set; }
-        public string BackGroundColorDeleteBox { get; set; }
 
-        #endregion
-
-        #region Properties: Update User
-        public string NewName { get; set; }
-        public string UpdateMessage { get; set; }
-        public ICommand UpdateUserCommand { get; set; }
-        public IPlayer Player { get; set; }
-        public string TextColor { get; set; }
-
-        public string BackGroundColorUpdateBox { get; set; }
-
-        #endregion
-        
         #region Repositores
-        private PlayerRepository playerRepository;
         private PlayerStatsRepository playerStatsRepository;
-
         #endregion
-
 
         public UserSettingsViewModel()
         {
             playerRepository = new PlayerRepository();
             playerStatsRepository = new PlayerStatsRepository();
-            DeleteUserCommand = new RelayCommand(TryDeleteUser);
-            UpdateUserCommand = new RelayCommand(UpdateUser);
             UpdatePlayerStats();
 
         }
 
-        #region Methods: Delete User
-
-        private void TryDeleteUser()
-        {
-            if (CheckIfDeletable(NameCheck))
-            {
-                DeleteUser();
-                MessageBox.Show("Din användare är nu raderad, du loggas nu ut.");
-
-                SetActivePlayer(null);
-                GoToPage(ApplicationPage.Login);
-            }
-        }
-        public bool CheckIfDeletable(string name)
-        {
-            if (name == ActivePlayer.Name)
-            {
-                BackGroundColorDeleteBox = "white";
-                return true;
-            }
-
-            else
-            {
-                BackGroundColorDeleteBox = "white";
-                DeleteMessage = "Du har skrivit in fel användarnamn.";
-                return false;
-            }
-
-        }
-
-        public void DeleteUser()
-        {
-            playerRepository.DeletePlayer(ActivePlayer.Id);
-        }
-
-        #endregion
         #region Methods: PlayerStatsUC
         private void ChangeMemeWithWinRate()
         {
@@ -185,77 +121,7 @@ namespace Hangman.ViewModels
         }
 
         #endregion
-        #region Methods: Update User
 
-        public void UpdateUser()
-        { 
-            if (!string.IsNullOrWhiteSpace(NewName) && NewName != ActivePlayerName && !NewName.Contains(" "))
-            {
-                try
-                {
-                    playerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
-                    var module = new PlayerModule();
-                    module.TryLogInPlayer(NewName);
-                    SetActivePlayer(NewName);
-                    ActivePlayerName = NewName;
-                    TextColor = "green";
-                    BackGroundColorUpdateBox = "white";
-                    UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
-                    NewName = "";
-                }
-
-                catch (PostgresException ex)
-                {
-                    //ta fram koden om användaren inte existerar
-                    if (ex.SqlState.Contains("23505"))
-                    {
-                        TextColor = "red";
-                        NewName = "";
-                        BackGroundColorUpdateBox = "white";
-                        UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
-                    }
-
-                    else
-                    {
-                        TextColor = "red";
-                        NewName = "";
-                        BackGroundColorUpdateBox = "white";
-                        UpdateMessage = "Något gick fel - försök igen";
-                    }
-                }
-            }
-
-            else if (NewName == ActivePlayerName)
-            {
-                BackGroundColorUpdateBox = "white";
-                TextColor = "red";
-                UpdateMessage = "Du måste ange ett nytt namn";
-            }
-
-            else if (NewName == null)
-            {
-                BackGroundColorUpdateBox = "white";
-                TextColor = "red";
-                UpdateMessage = "Du måste ange ett namn";
-            }
-
-
-            else if (NewName.Contains(" "))
-            {
-                BackGroundColorUpdateBox = "white";
-                TextColor = "red";
-                UpdateMessage = "Du får inte ha mellanslag i ditt namn";
-            }
-
-
-            else
-            {
-                BackGroundColorUpdateBox = "white";
-                TextColor = "red";
-                UpdateMessage = "Något gick fel";
-            }
-        }
-        #endregion
     }
 
 

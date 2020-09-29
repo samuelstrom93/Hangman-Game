@@ -19,9 +19,8 @@ namespace Hangman.ViewModels
         #region Properties: Message
         public ICommand SendMessageCommand { get; set; }
         public List<Message> myMessages { get; set; }
-        public string Topic { get; set; }
-        public string Message { get; set; }
-
+        private string Topic { get; set; }
+        private string Message { get; set; }
         public string Confirmation { get; set; }
         #endregion
 
@@ -39,11 +38,24 @@ namespace Hangman.ViewModels
         #region Methods: Messages
         private void SendMessage()
         {
-            messageRepository.TryAddMessage(Topic, Message, ActivePlayer.Id, 64, out Message message);
-            GetMessages();
-            Message = "";
-            Topic = "";
-            Confirmation = "Ditt meddelande är skickat";
+            if (IsContentNotNull())
+            {
+                messageRepository.TryAddMessage(Topic, Message, ActivePlayer.Id, 64, out Message message);
+                GetMessages();
+                Message = "";
+                Topic = "";
+                Confirmation = "Ditt meddelande är skickat";
+            }
+            else
+                Confirmation = "Du har inte fyllt i alla fält";
+        }
+
+        public bool IsContentNotNull()
+        {
+            if (Message == null || Topic == null)
+                return false;
+            else
+                return true;
         }
 
         private void GetMessages()
