@@ -145,6 +145,7 @@
             <!--Frame för GameStart-->
             <Frame Content="{Binding GameStartPage}"/>
             <Frame Content="{Binding KeyboardViewModel.GameEndPage}"></Frame>
+            <Frame Content="{Binding HintUCViewModel.GameEndPage}"></Frame>
             
         </Grid>
     </Border>
