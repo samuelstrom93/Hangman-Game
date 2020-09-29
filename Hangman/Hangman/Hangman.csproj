@@ -28,6 +28,7 @@
     <None Remove="Assets\Images\hänggubbe8.png" />
     <None Remove="Assets\Images\hänggubbe9.png" />
     <None Remove="Assets\Images\timer.png" />
+    <None Remove="Assets\Images\You1337.jpg" />
     <None Remove="Assets\Images\YouRock.jpg" />
     <None Remove="Assets\Images\YouSuck.jpg" />
     <None Remove="Assets\Sounds\PunchesFX.wav" />
@@ -76,6 +77,7 @@
     <Resource Include="Assets\Images\hänggubbe7.png" />
     <Resource Include="Assets\Images\hänggubbe8.png" />
     <Resource Include="Assets\Images\hänggubbe9.png" />
+    <Resource Include="Assets\Images\You1337.jpg" />
     <Resource Include="Assets\Images\YouRock.jpg" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe0.png" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe1.png" />
@@ -103,6 +105,10 @@
     </Resource>
     <Resource Include="Views\Menu\Gifs\ChatBubbleGif.gif" />
     <Resource Include="Views\Menu\Gifs\GameOn.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\PlayerStats\" />
   </ItemGroup>
 
 </Project>

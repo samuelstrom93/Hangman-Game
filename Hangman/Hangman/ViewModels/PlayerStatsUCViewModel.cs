@@ -1,41 +1,38 @@
-﻿using Hangman.ViewModels.Base;
+﻿using Hangman.Models;
 using System;
-using System.Windows.Media.Imaging;
 using Hangman.Repositories;
-using Hangman.Modules;
+using System.Windows.Media.Imaging;
+using Hangman.ViewModels.Base;
 using System.Windows.Input;
-using Npgsql;
+using Hangman.Views;
 
 namespace Hangman.ViewModels
 {
-    class UserSettingsViewModel : BaseViewModel
+    class PlayerStatsUCViewModel : BaseViewModel
     {
-        /*
         #region Properties: PlayerStatsUC
         public string GamesPlayed { get; set; }
         public string GamesWon { get; set; }
-        public double WinRate { get; set; }
+        private double WinRate { get; set; }
         public string WinRateString { get; set; }
         public string Title { get; set; }
-        public string PlayerStatus { get; set; }
-        public BitmapImage MemeForWinRate { get; set; }        
+        private string PlayerStatus { get; set; }
+        public BitmapImage MemeForWinRate { get; set; }
         public string LabelColor { get; set; }
-
+        public string BackgroundColorWinRate { get; set; } = "Transparent";
         public ICommand ViewImage { get; set; }
-        #endregion*/
+        #endregion
 
         #region Repositores
-
         private PlayerStatsRepository playerStatsRepository;
         #endregion
 
-        public UserSettingsViewModel()
+        public PlayerStatsUCViewModel()
         {
             playerStatsRepository = new PlayerStatsRepository();
-        //    UpdatePlayerStats();
-
+            UpdatePlayerStats();
         }
-/*
+
         #region Methods: PlayerStatsUC
         private void ChangeMemeWithWinRate()
         {
@@ -58,7 +55,6 @@ namespace Hangman.ViewModels
 
         public void CalculateWinRate()
         {
-
             double gamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer);
             double gamesWon = playerStatsRepository.GetGamesWon(ActivePlayer);
 
@@ -81,25 +77,35 @@ namespace Hangman.ViewModels
         {
             if (WinRate >= 50)
             {
-                //NAMNGE MEMES
+                BackgroundColorWinRate = "black";
                 PlayerStatus = "YouRock";
-                LabelColor = "green";
+                LabelColor = "#FFD3F5C4";
             }
 
-            else if (WinRate < 50 && WinRate >30)
+            if (WinRate == 13.37)
             {
+                BackgroundColorWinRate = "black";
+                PlayerStatus = "You1337";
+                LabelColor = "yellow";
+            }
+
+            else if (WinRate < 50 && WinRate > 30)
+            {
+                BackgroundColorWinRate = "black";
                 PlayerStatus = "YouAverage";
                 LabelColor = "yellow";
             }
 
             else if (WinRate <= 30)
             {
+                BackgroundColorWinRate = "black";
                 PlayerStatus = "YouSuck";
                 LabelColor = "red";
             }
 
             if (WinRate == 0)
             {
+                BackgroundColorWinRate = "white";
                 PlayerStatus = "YouEmpty";
                 LabelColor = "black";
             }
@@ -107,7 +113,7 @@ namespace Hangman.ViewModels
 
         public void UpdatePlayerStats()
         {
-            if(ActivePlayer!= null)
+            if (ActivePlayer != null)
             {
                 GetGamesPlayed();
                 GetGamesWon();
@@ -119,9 +125,7 @@ namespace Hangman.ViewModels
 
         }
 
-        #endregion*/
+        #endregion
 
     }
-
-
 }

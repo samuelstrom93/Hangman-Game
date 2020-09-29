@@ -23,12 +23,12 @@ namespace Hangman.Views
     public partial class PlayerStatsUC : UserControl
     {
 
-        private UserSettingsViewModel model;
+        private PlayerStatsUCViewModel model;
 
         public PlayerStatsUC()
         {
             InitializeComponent();
-            model = new UserSettingsViewModel();
+            model = new PlayerStatsUCViewModel();
             DataContext = model;             
         }
     }

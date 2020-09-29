@@ -38,7 +38,7 @@
                         <TextBlock  Style="{StaticResource StandardFontTextBlock}" TextAlignment="Center" Width="120" Name="txtBlockGamesWon" Text="{Binding GamesWon}"></TextBlock>
 
                         <Label Style="{StaticResource StandardLabel}">Vinstprocent:</Label>
-                        <Border Background="Black">
+                        <Border Background="{Binding BackgroundColorWinRate}" >
                             <Label Style="{StaticResource StandardLabel}"  Foreground="{Binding LabelColor}" HorizontalAlignment="Center" FontSize="20"  Content="{Binding WinRateString}"/>
                         </Border>
                     </StackPanel>

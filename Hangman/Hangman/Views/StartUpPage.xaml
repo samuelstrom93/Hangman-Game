@@ -42,10 +42,47 @@
                     
                     <!--knappar för navigering-->
                     <StackPanel Orientation="Horizontal">
-                        <Button  Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SPELA</Button>
-                        <Button  Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.HighscorePage}"  Cursor="Hand" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SE TOPPLISTOR</Button>
-                        <Button Style="{StaticResource StandardButton}" Command="{Binding LoginOrLogOutCommand}" Content="{Binding LogBtnContent}" Cursor="Hand" FontSize="18" Height="60" Width="150" Margin="10, 10, 10,10" />
-                    </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <Button
+                                Grid.Column="0"
+                                Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}"  FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SPELA</Button>
+                            <Button  
+                                Grid.Column="1"
+                                Style="{StaticResource StandardButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.HighscorePage}" FontSize="18" FontFamily="Bahnschrift" Height="60" BorderThickness="2" BorderBrush="WHite" Width="150" Margin="10, 10, 10,10" Background="#FF080E1E" Foreground="White">SE TOPPLISTOR</Button>
+                            <Button 
+                                Grid.Column="2"
+                                Style="{StaticResource StandardButton}" Command="{Binding LoginOrLogOutCommand}" Content="{Binding LogBtnContent}" FontSize="18" Height="60" Width="150" Margin="10, 10, 10,10" />
+                            <Button
+                                VerticalAlignment="Top"
+                                Height="20"
+                                Grid.Row="1"
+                                Cursor="Hand"
+                                Grid.Column="2"
+                                FontFamily="Bahnschrift"
+                                FontSize="14"
+                                BorderBrush="Transparent"
+                                Content="Skapa en användare här."
+                                HorizontalAlignment="Center"
+                                Foreground="#FF0941FF"
+                                Background="Transparent"
+                                FontStyle="Italic"
+                                Visibility="{Binding IsCreateVisible}"
+                                IsEnabled="{Binding IsCreateUserEnabled}"
+                                Command="{Binding CreateUserCommand}"
+                                
+                                />
+                        </Grid>
+                   </StackPanel>
                 </StackPanel>
             </Grid>
 
