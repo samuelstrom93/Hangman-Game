@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman"
+      xmlns:uc="clr-namespace:Hangman.Views.PlayGame"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PlayGamePage"
@@ -115,16 +116,7 @@
                                     <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource UserInputTxtBox}" Text="{Binding GuessBox}" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right"/>
                                     <Button Grid.Row="1" Grid.Column="3" Content="Gissa direkt" IsDefault="True" Command="{Binding GuessDirectlyCommand}" Style="{StaticResource StandardButton}" />
                                 </Grid>
-                                <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Keyboard}" Padding="0, 20, 0, 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                <Grid Grid.Row="1" Grid.Column="2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <CheckBox Grid.Row="3" Content="QWERTY" IsChecked="{Binding IsQWERTYChecked}" Margin="-60, 0, 0, 0" HorizontalAlignment="Left" Command="{Binding KeyboardLayoutCommand}"/>
-                                </Grid>
+                                <uc:LetterKeyboardUC Grid.Row="1" Grid.Column="1" DataContext="{Binding KeyboardViewModel}"/>
                             </Grid>
                         </Grid>
                     </Grid>

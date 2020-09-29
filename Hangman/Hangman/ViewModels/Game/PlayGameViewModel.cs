@@ -24,23 +24,19 @@ namespace Hangman.ViewModels
         private static readonly int _incorrectGuessLimit = 10;
         private static readonly string _letterPlaceHolder = "_";
 
-        private LetterKeyboardViewModel keyboardVM;
-        public LetterKeyboardUC Keyboard { get; set; }
-
         private StopWatchUCViewModel stopWatchVM;
         public StopWatchUC StopWatch { get; set; }
 
         public GameEndUC GameEndOverlay { get; set; }
+        public LetterKeyboardViewModel KeyboardViewModel { get; set; }
 
         public Grid LifeDisplay { get; set; }
         public Grid WordDisplay { get; set; }
         public string GuessBox { get; set; }
         public string GameStateImage { get; set; } = @"..\..\..\Assets\Images\hänggubbe0.png";
-        public bool IsQWERTYChecked { get; set; } = true;
         public Visibility HintVisibility { get; set; } = Visibility.Hidden;
         public ICommand ShowHintCommand { get; set; }
         public ICommand GuessDirectlyCommand { get; set; }
-        public ICommand KeyboardLayoutCommand { get; set; }
 
         private Word currentWord;
         public char[] CurrentWordArray { get => currentWord?.Name.ToUpper().ToCharArray(); }
@@ -55,10 +51,12 @@ namespace Hangman.ViewModels
 
         private readonly IWordRepository wordRepository;
         private readonly IGameRepository gameRepository;
+
         public PlayGameViewModel()
         {
             wordRepository = new WordRepository();
             gameRepository = new GameRepository();
+            KeyboardViewModel = new LetterKeyboardViewModel(new RelayParameterizedCommand(p => LetterClick((char)p)));
 
             currentWord = wordRepository.GetRandomWord();
             CreateWordTextBlocks();
@@ -66,18 +64,8 @@ namespace Hangman.ViewModels
 
             ShowHintCommand = new RelayCommand(ShowHint);
             GuessDirectlyCommand = new RelayCommand(GuessDirectly);
-            KeyboardLayoutCommand = new RelayCommand(ChangeKeyboardLayout);
             stopWatchVM = new StopWatchUCViewModel();
             StopWatch = new StopWatchUC(stopWatchVM);
-
-            keyboardVM = new LetterKeyboardViewModel();
-            Keyboard = new LetterKeyboardUC(keyboardVM);
-            keyboardVM.CreateLetterButtons(new RelayParameterizedCommand(p => LetterClick((char)p)));
-        }
-
-        private void ChangeKeyboardLayout()
-        {
-            keyboardVM.CreateLetterButtons(new RelayParameterizedCommand(p => LetterClick((char)p)), IsQWERTYChecked);
         }
 
         #region UIComponents
@@ -187,7 +175,7 @@ namespace Hangman.ViewModels
                     tb.Text = letter.ToString();
                 }
 
-                keyboardVM.MarkLetterCorrect(letter);
+                KeyboardViewModel.MarkLetterCorrect(letter);
 
                 if (_wordTextBlocks.All(o => o.Value.All(u => u.Text != _letterPlaceHolder)))
                 {
@@ -196,7 +184,7 @@ namespace Hangman.ViewModels
             }
             else
             {
-                keyboardVM.MarkLetterIncorrect(letter);
+                KeyboardViewModel.MarkLetterIncorrect(letter);
                 IncorrectGuess();
             }
         }
