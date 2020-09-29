@@ -167,6 +167,7 @@ namespace Hangman.ViewModels
             if (HintVisibility == Visibility.Hidden)
             {
                 HintVisibility = Visibility.Visible;
+                //TODO: Spelarens liv minskas
             }
             else
             {
