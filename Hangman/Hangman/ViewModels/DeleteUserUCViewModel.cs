@@ -2,6 +2,8 @@
 using Hangman.Repositories;
 using System.Windows.Input;
 using System.Windows;
+using Hangman.Database;
+
 namespace Hangman.ViewModels
 {
     public class DeleteUserUCViewModel : BaseViewModel
@@ -16,7 +18,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Repos
-        public PlayerRepository playerRepository;
+        public IPlayerRepository playerRepository;
         #endregion
 
         public DeleteUserUCViewModel()

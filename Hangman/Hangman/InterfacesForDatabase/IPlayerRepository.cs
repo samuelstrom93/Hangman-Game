@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hangman.Database
 {
-    interface IPlayerRepository
+    public interface IPlayerRepository
     {
         IPlayer CreatePlayer(string name);
         List<Player> GetPlayers();

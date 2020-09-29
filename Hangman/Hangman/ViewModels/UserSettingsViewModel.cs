@@ -5,6 +5,7 @@ using Hangman.Repositories;
 using Hangman.Modules;
 using System.Windows.Input;
 using Npgsql;
+using Hangman.Database;
 
 namespace Hangman.ViewModels
 {
@@ -26,7 +27,7 @@ namespace Hangman.ViewModels
 
         #region Repositores
 
-        private PlayerStatsRepository playerStatsRepository;
+        private IPlayerStatsRepository playerStatsRepository;
         #endregion
 
         public UserSettingsViewModel()

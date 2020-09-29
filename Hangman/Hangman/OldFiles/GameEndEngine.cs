@@ -6,6 +6,8 @@ using System.Text;
 using Hangman.Repositories;
 using System.Windows.Controls;
 using Hangman.Views.UCsForGamePage;
+using Hangman.Moduls.InterfacesForDatabase;
+using Hangman.Database;
 
 namespace Hangman.Moduls
 {
@@ -29,8 +31,8 @@ namespace Hangman.Moduls
 
         #endregion
 
-        private GameRepository gameRepository;
-        private HighscoreRepository highscoreRepository;
+        private IGameRepository gameRepository;
+        private IHighscoreRepository highscoreRepository;
 
         public GameEndEngine(Game game, Word word)
         {

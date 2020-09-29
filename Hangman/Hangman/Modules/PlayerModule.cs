@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Hangman.Database;
 using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.Views.Menu;
@@ -12,7 +13,7 @@ namespace Hangman.Modules
     /// </summary>
     public class PlayerModule : IPlayerModule
     {
-        private PlayerRepository playerRepository;
+        private IPlayerRepository playerRepository;
         public PlayerModule()
         {
             playerRepository = new PlayerRepository();

@@ -1,4 +1,5 @@
-﻿using Hangman.Helper;
+﻿using Hangman.Database;
+using Hangman.Helper;
 using Hangman.Models;
 using Hangman.Repositories;
 using System;
@@ -34,7 +35,7 @@ namespace Hangman.ViewModels.Base
 
         protected void SetActivePlayer(string name)
         {
-            PlayerRepository playerRepository = new PlayerRepository();
+            IPlayerRepository playerRepository = new PlayerRepository();
             ActivePlayer = string.IsNullOrWhiteSpace(name) ? null : playerRepository.GetPlayer(name);
             ActivePlayerName = name;
         }

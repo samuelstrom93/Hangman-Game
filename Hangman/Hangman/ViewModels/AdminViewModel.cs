@@ -1,4 +1,5 @@
 ﻿using Hangman.Models;
+using Hangman.Moduls.InterfacesForDatabase;
 using Hangman.Repositories;
 using Hangman.ViewModels.Base;
 using System;
@@ -17,7 +18,7 @@ namespace Hangman.ViewModels
         public string Description { get; set; }
         public ICommand TryAddWordCommand { get; set; }
 
-        private WordRepository wordRepository;
+        private IWordRepository wordRepository;
 
         public AdminViewModel()
         {
