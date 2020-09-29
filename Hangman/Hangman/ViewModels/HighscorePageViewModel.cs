@@ -1,4 +1,5 @@
 ﻿using Hangman.Models;
+using Hangman.Repositories;
 using Hangman.ViewModels.Base;
 using Hangman.Views;
 using Hangman.Views.Highscore;
@@ -18,7 +19,8 @@ namespace Hangman.ViewModels
         public HighscorePageViewModel()
         {
             var playerId = ActivePlayer?.Id;
-            HighscoresViewModel vm = new HighscoresViewModel();
+            HighscoreUCViewModel vm = new HighscoreUCViewModel(new HighscoreRepository());
+            HighscoreRepository highscoreRepository = new HighscoreRepository();
 
             if (playerId != null)
             {
