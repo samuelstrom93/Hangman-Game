@@ -159,25 +159,15 @@ namespace Hangman.Repositories
         }
 
 
-
-
-
-
         public int GetRankOnHighScore(int gameId)
         {
             string stmt = $"WITH leaderboard as (SELECT*, RANK () OVER(ORDER BY number_of_incorrect_tries, game_time) FROM (SELECT id, number_of_incorrect_tries, (SELECT end_time - start_time AS game_time) FROM game WHERE is_won IS true) AS rows) SELECT CAST(rank as integer), number_of_incorrect_tries, game_time FROM leaderboard WHERE id = {gameId}";
 
             using (var conn = new NpgsqlConnection(_connectionString))
+            using (var command = new NpgsqlCommand(stmt, conn))
             {
-                using (var command = new NpgsqlCommand())
-                {
-                    int rank;
-                    conn.Open();
-                    command.Connection = conn;
-                    command.CommandText = stmt;
-                    rank = (int)command.ExecuteScalar();
-                    return rank;
-                }
+                conn.Open();
+                return (int)command.ExecuteScalar();
             }
         }
     }
