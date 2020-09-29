@@ -20,6 +20,7 @@ using System.Drawing;
 using System.Reflection;
 using Hangman.Views.UCsForGamePage;
 using Hangman.Moduls;
+using Hangman.Views.PlayGame;
 
 namespace Hangman.ViewModels
 {
@@ -67,7 +68,7 @@ namespace Hangman.ViewModels
         private void MakeStopWatchUC()
         {
             StopWatchEngine = new StopWatchUCViewModel();
-            StopWatchUC = new StopWatchUC(StopWatchEngine);
+            StopWatchUC = new StopWatchUC();
         }
 
         private void MakeKeyboardUC()

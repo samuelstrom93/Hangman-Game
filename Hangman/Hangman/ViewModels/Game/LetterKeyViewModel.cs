@@ -15,6 +15,7 @@ namespace Hangman.ViewModels
         public double Opacity { get; set; } = 1;
         public string Foreground { get; set; } = "White";
         public string FontWeight { get; set; } = "Normal";
+        public bool IsEnabled { get; set; } = true;
 
         public readonly int QwertyOrder;
 

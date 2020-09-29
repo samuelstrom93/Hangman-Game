@@ -17,13 +17,14 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button
-                    Content="{Binding Content}"
-                    Command="{Binding LetterKeyCommand}"
-                    CommandParameter="{Binding CommandParameter}"
-                    Style="{StaticResource KeyButton}"
-                    Opacity="{Binding Opacity}"
-                    Foreground="{Binding Foreground}"
-                    FontWeight="{Binding FontWeight}"
+                        Content="{Binding Content}"
+                        Command="{Binding LetterKeyCommand}"
+                        CommandParameter="{Binding CommandParameter}"
+                        Style="{StaticResource KeyButton}"
+                        Opacity="{Binding Opacity}"
+                        Foreground="{Binding Foreground}"
+                        FontWeight="{Binding FontWeight}"
+                        IsEnabled="{Binding IsEnabled}"
                 />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

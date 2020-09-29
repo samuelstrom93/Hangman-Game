@@ -41,22 +41,14 @@ namespace Hangman.ViewModels
             Keys = new ObservableCollection<LetterKeyViewModel>(Keys.OrderBy(o => IsQWERTYChecked ? o.QwertyOrder : o.Content));
         }
 
-        public void MarkLetterCorrect(char letter)
+        public void MarkLetterUsed(char letter, bool isCorrect)
         {
             var key = Keys.SingleOrDefault(o => o.Content == letter);
 
             key.Opacity = 0.3;
-            key.Foreground = "Green";
+            key.Foreground = isCorrect ? "Green" : "Red";
             key.FontWeight = "Bold";
-        }
-
-        public void MarkLetterIncorrect(char letter)
-        {
-            var key = Keys.SingleOrDefault(o => o.Content == letter);
-
-            key.Opacity = 0.3;
-            key.Foreground = "Red";
-            key.FontWeight = "Bold";
+            key.IsEnabled = false;
         }
     }
 }

@@ -19,10 +19,9 @@ namespace Hangman.Views.PlayGame
     /// </summary>
     public partial class GameEndUC : UserControl
     {
-        public GameEndUC(GameEndViewModel vm)
+        public GameEndUC()
         {
             InitializeComponent();
-            DataContext = vm;
         }
     }
 }
