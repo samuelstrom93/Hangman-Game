@@ -1,4 +1,5 @@
-﻿using Hangman.Moduls;
+﻿using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,19 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hangman.Views.UCsForGamePage
+namespace Hangman.Views.PlayGame
 {
     /// <summary>
-    /// HintUC.xaml の相互作用ロジック
+    /// Interaction logic for PlayGamePage.xaml
     /// </summary>
-    public partial class HintUC : UserControl
+    public partial class PlayGamePage : Page
     {
-        public HintUCViewModel HintUCViewModel { get; set; }
-        public HintUC()
+        public PlayGamePage(BaseViewModel model = null)
         {
             InitializeComponent();
-            
+            DataContext = model ?? new PlayGameViewModel();
         }
-
     }
 }

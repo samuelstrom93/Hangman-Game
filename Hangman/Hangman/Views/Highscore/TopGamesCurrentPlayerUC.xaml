@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="0">Rank</Label>
-            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Namn</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Spelare</Label>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="2">Ord</Label>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="3">Antal fel</Label>
             <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="4">Tid

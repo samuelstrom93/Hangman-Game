@@ -29,7 +29,6 @@ namespace Hangman.ViewModels
 
         public GameStartPage GameStartPage { get; set; }    //Binding i GamePage.xml
         public ICommand GameStartCommand { get; set; }  //Binding i GamePage.xml
-        public HintUC HintUC { get; set; }  //Binding i GamePage.xml
 
         public GameEngine GameEngine { get; set; }
 
@@ -43,11 +42,12 @@ namespace Hangman.ViewModels
             PlayerName = player == null ? "Spela utan användare" : player.Name;
 
             SetCommands();
+            MakeHint();
             MakeStopWatchUC();
             MakeKeyboardUC();
             MakeGameEngine();
             if (player != null) GameEngine.SetPlayer(player);
-            HintUC = new HintUC();
+
         }
 
         /*
@@ -59,6 +59,11 @@ namespace Hangman.ViewModels
             }
         }*/
 
+        private void MakeHint()
+        {
+            HintUC = new HintUC();
+
+        }
         private void MakeStopWatchUC()
         {
             StopWatchEngine = new StopWatchUCViewModel();
@@ -91,7 +96,16 @@ namespace Hangman.ViewModels
             GameEngine.StartGame();
             StopWatchEngine.StartStopWatch();
             IWord = GameEngine.IWord;
-            HintUC.SetDataContext(IWord.Hint);
+
+            SetHintUCViewModel();
+
+        }
+
+        private void SetHintUCViewModel()
+        {
+            HintUCViewModel = new HintUCViewModel(IWord.Hint);
+            HintUC.DataContext = HintUCViewModel;
+            HintUCViewModel.GameEngine = GameEngine;
         }
 
 
@@ -106,6 +120,11 @@ namespace Hangman.ViewModels
         public StopWatchUC StopWatchUC { get; set; } //Binding i GamePage.xml
         public StopWatchUCViewModel StopWatchEngine { get; set; }
 
+        #endregion
+
+        #region Hint
+        public HintUC HintUC { get; set; }  //Binding i GamePage.xml
+        public HintUCViewModel HintUCViewModel { get; set; }
         #endregion
     }
 }

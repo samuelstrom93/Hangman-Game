@@ -19,7 +19,7 @@ namespace Hangman.Repositories
             string stmt = $"SELECT id, name, hint FROM word ORDER BY RANDOM() LIMIT 1";
             using (var conn = new NpgsqlConnection(connectionString))
             {
-                Word word;
+                Word word = null;
                 conn.Open();
 
                 using (var command = new NpgsqlCommand(stmt, conn))

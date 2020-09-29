@@ -283,13 +283,19 @@ namespace Hangman.Modules
 
             else //Gissade fel
             {
-                numberOfTries++;
-                numberOfLives = numberOfLives - 1;
-                numberOfIncorrectTries++;
-                IsGuessCorrect = false;
-                gameStage++;
-                ShowGameStage();
+                ProceedGameStage();
+
             }
+        }
+
+        public void ProceedGameStage()
+        {
+            numberOfTries++;
+            numberOfLives = numberOfLives - 1;
+            numberOfIncorrectTries++;
+            IsGuessCorrect = false;
+            gameStage++;
+            ShowGameStage();
         }
 
         #endregion

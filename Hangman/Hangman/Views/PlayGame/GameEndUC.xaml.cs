@@ -1,4 +1,4 @@
-﻿using Hangman.Moduls;
+﻿using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,19 +12,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hangman.Views.UCsForGamePage
+namespace Hangman.Views.PlayGame
 {
     /// <summary>
-    /// HintUC.xaml の相互作用ロジック
+    /// Interaction logic for GameEndUC.xaml
     /// </summary>
-    public partial class HintUC : UserControl
+    public partial class GameEndUC : UserControl
     {
-        public HintUCViewModel HintUCViewModel { get; set; }
-        public HintUC()
+        public GameEndUC(GameEndViewModel vm)
         {
             InitializeComponent();
-            
+            DataContext = vm;
         }
-
     }
 }

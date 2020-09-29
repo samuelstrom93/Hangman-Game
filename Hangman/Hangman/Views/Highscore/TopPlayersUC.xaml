@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="0">Namn</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="0">Spelare</Label>
             <TextBlock HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Antal spel
             </TextBlock>
         </Grid>
