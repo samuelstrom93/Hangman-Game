@@ -122,8 +122,8 @@
                                 <Button.Content>
                                     <Label FontFamily="Arial"
                                                FontSize="12"
-                                               Foreground="#FF0941FF"
-                                               BorderBrush="Blue"
+                                               Foreground="#FF25519E"
+                                               BorderBrush="#FF25519E"
                                                FontStyle="Italic"
                                                Content="Skapa en användare här." BorderThickness="0,0,0,0.3"
                                      />
