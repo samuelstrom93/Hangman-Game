@@ -8,11 +8,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <!--Delete user-->
-        <Border Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"
-                    Style="{DynamicResource  BackgroundBorder}"
-                    Height="120"
-                    Width="300"
-                    CornerRadius="10">
+        <Border
+                VerticalAlignment="Top"                  
+                Style="{DynamicResource StandardBorder}"                    
+                CornerRadius="10"
+                Margin="10, 10,10,10">
+            
             <Grid>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
@@ -21,6 +22,7 @@
                     <TextBlock Margin="0, 4 ,0 ,0 " Padding="2" x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}" Background="{Binding BackGroundColorDeleteBox}"/>
                 </StackPanel>
             </Grid>
+            
         </Border>
     </Grid>
 </UserControl>
