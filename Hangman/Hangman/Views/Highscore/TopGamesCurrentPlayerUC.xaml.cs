@@ -24,19 +24,13 @@ namespace Hangman.Views.Highscore
         public TopGamesCurrentPlayerUC(int? playerId = null)
         {
             InitializeComponent();
+            HighscoreRepository highscoreRepository = new HighscoreRepository();
 
-            HighscoresViewModel vm = new HighscoresViewModel()
+            HighscoreUCViewModel highscoreUCViewModel = new HighscoreUCViewModel(new HighscoreRepository())
             {
-                HighscoreRepository = new HighscoreRepository(),
-                Title = playerId.HasValue ? "Dina 10 bästa spel" : " ",
+                Title = highscoreRepository.GetLeaderboard(playerId).ToList().Count == 0 ? "Inga spel registrerade" : "Dina bästa spel",
             };
-            vm.TopCurrentPlayerHighscores = vm.HighscoreRepository.GetLeaderboard(playerId,20).ToList();
-            
-            if (vm.TopCurrentPlayerHighscores.Count == 0)
-            {
-                vm.Title = "Du har inga spel registrerade.";
-            }
-            DataContext = vm;
+            DataContext = highscoreUCViewModel;
         }
     }
 }

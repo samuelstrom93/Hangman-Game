@@ -1,4 +1,5 @@
 ﻿using Hangman.Modules;
+using Hangman.Repositories;
 using Hangman.ViewModels;
 using Hangman.ViewModels.Base;
 using System;
@@ -24,7 +25,7 @@ namespace Hangman.Views
         public GameStartPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
-            DataContext = new HighscoresViewModel();
+            DataContext = new HighscoreUCViewModel(new HighscoreRepository());
 
             DataContext = specificModel ?? new GameStartViewModel();
         }
