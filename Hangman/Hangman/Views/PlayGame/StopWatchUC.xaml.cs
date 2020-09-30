@@ -12,17 +12,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hangman.Views.UCsForGamePage
+namespace Hangman.Views.PlayGame
 {
     /// <summary>
     /// StopWatchUC.xaml の相互作用ロジック
     /// </summary>
     public partial class StopWatchUC : UserControl
     {
-        public StopWatchUC(StopWatchUCViewModel stopWatchEngine)
+        public StopWatchUC()
         {
             InitializeComponent();
-            DataContext = stopWatchEngine;
         }
     }
 }

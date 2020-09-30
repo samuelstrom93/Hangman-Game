@@ -1,6 +1,9 @@
 ﻿using Hangman.ViewModels;
+using Hangman.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,11 +22,9 @@ namespace Hangman.Views.PlayGame
     /// </summary>
     public partial class LetterKeyboardUC : UserControl
     {
-        public LetterKeyboardUC(LetterKeyboardViewModel vm)
+        public LetterKeyboardUC()
         {
             InitializeComponent();
-
-            DataContext = vm;
         }
     }
 }

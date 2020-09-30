@@ -4,14 +4,17 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman"
+      xmlns:uc="clr-namespace:Hangman.Views.PlayGame"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PlayGamePage"
       xmlns:gif ="http://wpfanimatedgif.codeplex.com">
 
     <Grid>
-        <ContentControl Panel.ZIndex="10000" Content="{Binding GameEndOverlay}" />
-        <Border Style="{StaticResource BackgroundBorder}">
+        <Border Panel.ZIndex="1000" Grid.Row="1" Grid.Column="1" Visibility="{Binding GameEndVisibility, Converter={StaticResource BoolToVisibility}}">
+            <uc:GameEndUC Panel.ZIndex="1000" Grid.Row="1" Grid.Column="1" DataContext="{Binding GameEndViewModel}" />
+        </Border>
+        <Border Style="{StaticResource BackgroundBorder}" Padding="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -40,7 +43,7 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding StopWatch}"/>
+                            <uc:StopWatchUC Panel.ZIndex="1000" DataContext="{Binding StopWatchViewModel}" />
                             <TextBlock Grid.Column="1" Style="{StaticResource StandardFontTextBlock}" FontSize="38pt" Text="Ditt ord" />
                             <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource StandardBorder}">
                                 <Grid>
@@ -49,8 +52,18 @@
                                         <RowDefinition Height="0.1*"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <ContentControl Content="{Binding WordDisplay}" Margin="40, 0 , 0, 0" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
-
+                                    <ItemsControl ItemsSource="{Binding WordDisplay}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <UniformGrid Columns="{Binding CurrentWordLength}"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" FontSize="58" Style="{StaticResource StandardFontTextBlock}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                     <Grid Grid.Row="2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -63,8 +76,8 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="4*"/>
                                         </Grid.RowDefinitions>
-                                        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource StandardButton}" Command="{Binding ShowHintCommand}" Content="Visa ledtråd" />
-                                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentWordHint}" Visibility="{Binding HintVisibility}" Style="{StaticResource StandardFontTextBlock}" FontSize="14pt" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource StandardButton}" Command="{Binding ShowHintCommand}" IsEnabled="{Binding HintButtonIsEnabled}" Content="Visa ledtråd" />
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding CurrentWordHint}" Visibility="{Binding HintVisibility, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource StandardFontTextBlock}" FontSize="14pt" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     </Grid>
                                 </Grid>
                             </Border>
@@ -83,7 +96,18 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="1" Grid.Column="1">
-                                <ContentControl Margin="0,10,0,5" Content="{Binding LifeDisplay}" />
+                                <ItemsControl ItemsSource="{Binding LivesDisplay}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="10"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Image gif:ImageBehavior.AnimatedSource="../Gifs/HeartBreak0.gif" gif:ImageBehavior.AnimationDuration="{Binding AnimationDuration}"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                                 <Border>
                                     <Image Source="{Binding GameStateImage}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform"  Margin="0"/>
                                 </Border>
@@ -115,16 +139,7 @@
                                     <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource UserInputTxtBox}" Text="{Binding GuessBox}" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right"/>
                                     <Button Grid.Row="1" Grid.Column="3" Content="Gissa direkt" IsDefault="True" Command="{Binding GuessDirectlyCommand}" Style="{StaticResource StandardButton}" />
                                 </Grid>
-                                <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Keyboard}" Padding="0, 20, 0, 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                <Grid Grid.Row="1" Grid.Column="2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <CheckBox Grid.Row="3" Content="QWERTY" IsChecked="{Binding IsQWERTYChecked}" Margin="-60, 0, 0, 0" HorizontalAlignment="Left" Command="{Binding KeyboardLayoutCommand}"/>
-                                </Grid>
+                                <uc:LetterKeyboardUC Grid.Row="1" Grid.Column="1" DataContext="{Binding KeyboardViewModel}"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -142,7 +157,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Panel.ZIndex="1" Style="{StaticResource HelpButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"/>
+                    <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Panel.ZIndex="1" Margin="-20, 0, 0, 0" MinWidth="160" Style="{StaticResource HelpButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}"/>
                     <Image Grid.Column="0" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="3"  HorizontalAlignment="Left" Stretch="UniformToFill" Margin="-90, 0, 0, 0" gif:ImageBehavior.AnimatedSource="../Gifs/GameOn.gif" />
                 </Grid>
             </Grid>
