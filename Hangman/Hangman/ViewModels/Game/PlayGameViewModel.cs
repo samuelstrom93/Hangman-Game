@@ -8,6 +8,7 @@ using Hangman.Views.PlayGame;
 using Hangman.Views.UCsForGamePage;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -29,8 +30,9 @@ namespace Hangman.ViewModels
         public LetterKeyboardViewModel KeyboardViewModel { get; set; }
         public StopWatchUCViewModel StopWatchViewModel { get; set; }
 
-        public Grid LifeDisplay { get; set; }
-        public Grid WordDisplay { get; set; }
+        public ObservableCollection<HeartDisplayViewModel> LivesDisplay { get; set; }
+        public ObservableCollection<char> WordDisplay { get; set; }
+
         public string GuessBox { get; set; }
         public string GameStateImage { get; set; } = @"..\..\..\Assets\Images\hänggubbe0.png";
         public bool HintVisibility { get; set; } = false;
@@ -41,9 +43,7 @@ namespace Hangman.ViewModels
         private Word currentWord;
         public char[] CurrentWordArray { get => currentWord?.Name.ToUpper().ToCharArray(); }
         public string CurrentWordHint { get => currentWord?.Hint; }
-
-        private readonly Dictionary<char, List<TextBlock>> _wordTextBlocks = new Dictionary<char, List<TextBlock>>();
-
+        public int CurrentWordLength { get => currentWord?.Name.Length ?? 0; }
 
         private bool isGameInProgress;
         private int numberOfIncorrectGuesses;
@@ -57,6 +57,8 @@ namespace Hangman.ViewModels
             wordRepository = new WordRepository();
             gameRepository = new GameRepository();
             KeyboardViewModel = new LetterKeyboardViewModel(new RelayParameterizedCommand(p => LetterClick((char)p)));
+            LivesDisplay = new ObservableCollection<HeartDisplayViewModel>();
+            WordDisplay = new ObservableCollection<char>();
 
             currentWord = wordRepository.GetRandomWord();
             CreateWordTextBlocks();
@@ -70,69 +72,36 @@ namespace Hangman.ViewModels
         #region UIComponents
         private void CreateLifeDisplay()
         {
-            Grid grid = new Grid();
-
-            var image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri("../../../Views/Gifs/HeartBreak0.gif", UriKind.Relative);
-            image.EndInit();
-
+            LivesDisplay.Clear();
             for (int i = 0; i < 10; i++)
             {
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-
-                var img = new Image();
-                ImageBehavior.SetAnimatedSource(img, image);
-                ImageBehavior.SetAnimationDuration(img, new Duration(TimeSpan.FromMilliseconds(300)));
-                ImageBehavior.SetAutoStart(img, false);
-                Grid.SetColumn(img, i);
-
-                grid.Children.Add(img);
+                LivesDisplay.Add(new HeartDisplayViewModel());
             }
-
-            LifeDisplay = grid;
         }
 
         private void CreateWordTextBlocks()
         {
-            var grid = new Grid();
-
-            int currentGridColumn = 0;
-            foreach (var c in CurrentWordArray)
+            foreach (var _ in CurrentWordArray)
             {
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-
-                var tb = new TextBlock();
-                tb.Text = _letterPlaceHolder;
-                tb.FontSize = 58;
-                Grid.SetColumn(tb, currentGridColumn);
-
-                if (_wordTextBlocks.TryGetValue(c, out List<TextBlock> items))
-                {
-                    items.Add(tb);
-                }
-                else
-                {
-                    _wordTextBlocks.Add(c, new List<TextBlock> { tb });
-                }
-
-                grid.Children.Add(tb);
-                currentGridColumn++;
+                WordDisplay.Add(char.Parse(_letterPlaceHolder));
             }
-
-            WordDisplay = grid;
         }
         #endregion
 
         #region GameLogic
         private void GuessDirectly()
         {
+            if (string.IsNullOrEmpty(GuessBox))
+            {
+                return;
+            }
+
             if (!isGameInProgress)
             {
                 StartGame();
             }
 
-            if (GuessBox != null && GuessBox.Equals(currentWord.Name, StringComparison.OrdinalIgnoreCase))
+            if (GuessBox.Equals(currentWord.Name, StringComparison.OrdinalIgnoreCase))
             {
                 GameOver(true);
             }
@@ -164,14 +133,14 @@ namespace Hangman.ViewModels
 
             if (CurrentWordArray.Contains(letter))
             {
-                foreach (var tb in _wordTextBlocks[letter])
+                foreach (var indexOfLetter in CurrentWordArray.Select((c, i) => c == letter ? i : -1).Where(i => i != -1))
                 {
-                    tb.Text = letter.ToString();
+                    WordDisplay[indexOfLetter] = letter;
                 }
 
                 KeyboardViewModel.MarkLetterUsed(letter, true);
 
-                if (_wordTextBlocks.All(o => o.Value.All(u => u.Text != _letterPlaceHolder)))
+                if (!WordDisplay.Any(c => c == char.Parse(_letterPlaceHolder)))
                 {
                     GameOver(true);
                 }
@@ -185,8 +154,7 @@ namespace Hangman.ViewModels
 
         private void IncorrectGuess()
         {
-            var controller = ImageBehavior.GetAnimationController((Image)LifeDisplay.Children[numberOfIncorrectGuesses]);
-            controller.Play();
+            LivesDisplay[numberOfIncorrectGuesses].AnimationDuration = TimeSpan.FromMilliseconds(400).ToString(@"hh\:mm\:ss\.ff");
 
             numberOfIncorrectGuesses++;
             GameStateImage = $@"..\..\..\Assets\Images\hänggubbe{numberOfIncorrectGuesses}.png";
