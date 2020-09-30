@@ -8,24 +8,25 @@ using Hangman.ViewModels.Base;
 using System.Windows.Input;
 using Hangman.Modules;
 using Hangman.ViewModels;
+using System.Windows;
 
 namespace Hangman.ViewModels
 {
     class CreateUserViewModel : BaseViewModel
     {
+
+        #region Properties
         public string PlayerName { get; set; }
         public string Message { get; set; }
-
         public ICommand TryRegister { get; set; }
 
         private readonly IPlayerModule _module;
-
         public string TextBoxBackground { get; set; }
+        #endregion
 
         public CreateUserViewModel()
         {
             _module = new PlayerModule();
-
             TryRegister = new RelayCommand(TryAddPlayer);
         }
 
@@ -47,13 +48,13 @@ namespace Hangman.ViewModels
 
             if (_module.TryAddPlayer(PlayerName, out _))
             {
-                TextBoxBackground = "white";
-                Message = $"Grattis {PlayerName}! Du är nu medlem!";
                 SetActivePlayer(PlayerName);
+                MessageBox.Show($"Välkommen {ActivePlayerName}! Du är nu en medlem!");
                 GoToPage(ApplicationPage.GamePage);
                 return;
             }
 
+            
             TextBoxBackground = "white";
             Message = "Du har valt ett namn som är upptaget - försök igen";
         }

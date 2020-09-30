@@ -36,7 +36,7 @@ namespace Hangman.ViewModels
                 DeleteUser();
                 MessageBox.Show("Din användare är nu raderad, du loggas nu ut.");
                 SetActivePlayer(null);
-                GoToPage(ApplicationPage.Login);
+                GoToPage(ApplicationPage.StartUpPage);
             }
         }
         public bool CheckIfDeletable(string name)
