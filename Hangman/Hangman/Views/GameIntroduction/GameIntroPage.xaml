@@ -55,7 +55,7 @@
                     Vid rätt svar har du vunnit spelet medan om du gissar fel förbrukas en gissning och antal fel ökas med ett. 
                 <LineBreak></LineBreak><LineBreak></LineBreak>
                 <Bold>Layout:</Bold><LineBreak></LineBreak>
-                Längst nere till höger kan du skräddarsy hur du vill att bokstävernas layout ska se ut. Bockar du ur QWERTY lägger sig bokstavs-knapparna i alfabetisk ordning. Annars följer bokstavsknapparna QWERTY-standarden likt ett tangentbord.
+                 Bockar du ur QWERTY lägger sig bokstavs-knapparna i alfabetisk ordning. Annars följer bokstavsknapparna QWERTY-standarden likt ett tangentbord.
 
             </TextBlock>
         </Border>
