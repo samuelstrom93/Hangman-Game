@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\PlayerStats\**" />
+    <EmbeddedResource Remove="Views\PlayerStats\**" />
+    <None Remove="Views\PlayerStats\**" />
+    <Page Remove="Views\PlayerStats\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Gifs\ChatBubbleGif.gif" />
     <None Remove="Assets\Gifs\GameOn.gif" />
     <None Remove="Assets\Gifs\HeartBreak0.gif" />
@@ -29,6 +36,7 @@
     <None Remove="Assets\Images\hänggubbe8.png" />
     <None Remove="Assets\Images\hänggubbe9.png" />
     <None Remove="Assets\Images\timer.png" />
+    <None Remove="Assets\Images\You1337.jpg" />
     <None Remove="Assets\Images\YouRock.jpg" />
     <None Remove="Assets\Images\YouSuck.jpg" />
     <None Remove="Assets\Sounds\PunchesFX.wav" />
@@ -57,7 +65,6 @@
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
     <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
-    <PackageReference Include="XamlAnimatedGif" Version="1.2.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +86,7 @@
     <Resource Include="Assets\Images\hänggubbe7.png" />
     <Resource Include="Assets\Images\hänggubbe8.png" />
     <Resource Include="Assets\Images\hänggubbe9.png" />
+    <Resource Include="Assets\Images\You1337.jpg" />
     <Resource Include="Assets\Images\YouRock.jpg" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe0.png" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe1.png" />

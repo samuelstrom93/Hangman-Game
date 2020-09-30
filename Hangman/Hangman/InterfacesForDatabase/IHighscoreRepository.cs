@@ -6,10 +6,9 @@ using System.Text;
 
 namespace Hangman.Database
 {
-    interface IHighscoreRepository
+    public interface IHighscoreRepository
     {
-        IEnumerable<HighscoreGame> GetTopGames(int? playerID, int numHighscore);
-        ObservableCollection<HighscoreGame> GetLeaderboard(int? playerID, int numHighscores);
+        ObservableCollection<HighscoreGame> GetLeaderboard(int? playerID = null, int numHighscores = 20);
         IDictionary<string, long> GetTopDiligentPlayers(int numPlayers);
         int GetRankOnHighScore(int gameID);
     }

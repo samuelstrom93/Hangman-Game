@@ -11,11 +11,15 @@ namespace Hangman.ViewModels
     class StartUpPageViewModel : BaseViewModel
     {
         public ICommand LoginOrLogOutCommand { get; set; } //Binding i StartUpPage.xaml
+        public ICommand CreateUserCommand { get; set; }
         public string LogBtnContent { get; set; }
+        public bool IsCreateUserEnabled { get; set; } = true;
+        public string IsCreateVisible { get; set; }
 
         public StartUpPageViewModel()
         {
             LoginOrLogOutCommand = new RelayCommand(LogInOrLogOut);
+            CreateUserCommand = new RelayCommand(CreateUser);
             SetButton();
         }
 
@@ -34,12 +38,24 @@ namespace Hangman.ViewModels
             }
         }
 
+        private void CreateUser()
+        {
+            GoToPage(ApplicationPage.CreateUser);
+        }
+
         private void SetButton()
         {
             if (ActivePlayer == null)
+            {
                 LogBtnContent = "LOGGA IN";
+            }
+
             else
+            {
                 LogBtnContent = "LOGGA UT";
+                IsCreateUserEnabled = false;
+                IsCreateVisible = "hidden";
+            }
 
         }
     }

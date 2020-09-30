@@ -1,6 +1,4 @@
-﻿using Hangman.Modules;
-using Hangman.ViewModels;
-using Hangman.ViewModels.Base;
+﻿using Hangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,19 +12,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hangman.Views
+namespace Hangman.Views.UCsForUserSettings
 {
     /// <summary>
-    /// Interaction logic for GameStartPage.xaml
+    /// Interaction logic for UpdateUserUC.xaml
     /// </summary>
-    public partial class GameStartPage : Page
+    public partial class UpdateUserUC : UserControl
     {
-        public GameStartPage(BaseViewModel specificModel = null)
+        public UpdateUserUCViewModel updateVM;
+        public UpdateUserUC()
         {
             InitializeComponent();
-            DataContext = new HighscoresViewModel();
-
-            DataContext = specificModel ?? new GameStartViewModel();
+            updateVM = new UpdateUserUCViewModel();
+            DataContext = updateVM;
         }
     }
 }

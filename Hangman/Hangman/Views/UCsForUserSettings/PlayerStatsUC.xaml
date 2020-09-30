@@ -5,32 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="370" d:DesignWidth="220">
+             d:DesignHeight="500" d:DesignWidth="420">
 
     <Border 
         Style="{StaticResource StandardBorder}" 
-        Margin="0,0,0,0" 
-        CornerRadius="10"
-        Width="200"
-        Height="350">
+        MinWidth="300"
+        MinHeight="450">
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="0.3*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1.4*" />
             </Grid.RowDefinitions>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" >
+            <Grid Grid.Row="0" Height="40" VerticalAlignment="Top">
                 <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5">
                     <Label Style="{StaticResource StandardHeader}" Content="SPELARSTATISTIK" FontSize="25" HorizontalAlignment="Center"></Label>
                 </Border>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="0">
-
-
                 <Grid HorizontalAlignment="Center">
                     <StackPanel Grid.RowSpan="2">
                         <Label Style="{StaticResource StandardLabel}">Totalt antal spel:</Label>
@@ -40,19 +39,18 @@
                         <TextBlock  Style="{StaticResource StandardFontTextBlock}" TextAlignment="Center" Width="120" Name="txtBlockGamesWon" Text="{Binding GamesWon}"></TextBlock>
 
                         <Label Style="{StaticResource StandardLabel}">Vinstprocent:</Label>
-                        <Border Background="Black">
+                        <Border Background="{Binding BackgroundColorWinRate}" >
                             <Label Style="{StaticResource StandardLabel}"  Foreground="{Binding LabelColor}" HorizontalAlignment="Center" FontSize="20"  Content="{Binding WinRateString}"/>
                         </Border>
                     </StackPanel>
-                    <Frame Name ="PlayerStats" Grid.RowSpan="2"/>
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" Margin="10, 10, 10, 10" Width="150" Height="120">
+            <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" >
                 <Grid>
-                    <Border BorderBrush="Black" BorderThickness="2">
+                    <Border BorderBrush="Black" BorderThickness="2" Height="200">
                         <Border.Background>
-                            <ImageBrush Viewport="0 0 1 1" ViewportUnits="RelativeToBoundingBox" ImageSource="{Binding MemeForWinRate}"/>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="{Binding MemeForWinRate}"/>
                         </Border.Background>
                     </Border>
                 </Grid>

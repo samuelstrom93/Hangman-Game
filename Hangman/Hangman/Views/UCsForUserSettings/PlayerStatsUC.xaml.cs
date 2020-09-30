@@ -11,24 +11,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Hangman.Modules;
-using Hangman.Models;
 using Hangman.Repositories;
+using Hangman;
 using Hangman.ViewModels;
-using Hangman.ViewModels.Base;
 
 namespace Hangman.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for PlayerStatsUC.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class PlayerStatsUC : UserControl
     {
-        public LoginPage(BaseViewModel specificModel = null)
+
+        private PlayerStatsUCViewModel model;
+
+        public PlayerStatsUC()
         {
             InitializeComponent();
-            DataContext = specificModel ?? new LoginPageViewModel();
-          
+            model = new PlayerStatsUCViewModel();
+            DataContext = model;             
         }
-
     }
 }

@@ -7,6 +7,7 @@ using Npgsql;
 using Hangman.ViewModels.Base;
 using System.Windows.Input;
 using Hangman.Modules;
+using Hangman.ViewModels;
 
 namespace Hangman.ViewModels
 {

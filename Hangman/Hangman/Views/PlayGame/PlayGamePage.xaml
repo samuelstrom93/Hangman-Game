@@ -52,8 +52,6 @@
                                         <RowDefinition Height="0.1*"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <!--<ContentControl Content="{Binding WordDisplay}" Margin="40, 0 , 0, 0" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>-->
-
                                     <ItemsControl ItemsSource="{Binding WordDisplay}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>

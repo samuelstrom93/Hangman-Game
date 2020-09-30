@@ -15,17 +15,11 @@ namespace Hangman.Views
         {
             InitializeComponent();
 
-            HighscoresViewModel vm = new HighscoresViewModel()
+            HighscoreUCViewModel highscoreUCViewModel = new HighscoreUCViewModel(new HighscoreRepository())
             {
-                HighscoreRepository = new HighscoreRepository(),
-                Title = playerId.HasValue ? "Dina 10 bästa spel" : "Topp 10 bästa spel",
+                Title = "Topp tio bästa spel"
             };
-            vm.TopHighscores = vm.HighscoreRepository.GetLeaderboard(playerId).ToList();
-            if (vm.TopHighscores.Count == 0)
-            {
-                vm.Title = "Du har inga spel registrerade.";
-            }
-            DataContext = vm;
+            DataContext = highscoreUCViewModel;
         }
     }
 }

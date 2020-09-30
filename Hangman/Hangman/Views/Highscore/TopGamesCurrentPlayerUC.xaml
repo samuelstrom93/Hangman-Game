@@ -26,10 +26,13 @@
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Spelare</Label>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="2">Ord</Label>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="3">Antal fel</Label>
-            <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="4">Tid
-                <LineBreak></LineBreak> (min/sek/ms)
-                </TextBlock>
+
+            <StackPanel Grid.Column="4" VerticalAlignment="Top">
+                <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="4" Content="Tid"/>
+                <Label HorizontalAlignment="Center" FontSize="8" FontWeight="DemiBold" Grid.Column="4" Content="(min/sek/ms)" Margin="0, -10, 0, 0"/>
+            </StackPanel>
         </Grid>
+        
         <ListBox Grid.Row="3" FontSize="14" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopCurrentPlayerHighscores}">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />

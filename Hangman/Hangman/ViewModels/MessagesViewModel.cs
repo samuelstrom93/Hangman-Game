@@ -14,6 +14,7 @@ namespace Hangman.ViewModels
         public List<Message> Messages { get; set; }
         public MessageRepository MessageRepository { get; set; }
 
+
         public MessagesViewModel(int playerId)
         {
             MessageRepository = new MessageRepository();

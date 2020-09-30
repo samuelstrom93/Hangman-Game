@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangman.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -10,25 +11,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hangman.Modules;
-using Hangman.Models;
-using Hangman.Repositories;
-using Hangman.ViewModels;
-using Hangman.ViewModels.Base;
 
-namespace Hangman.Views
+namespace Hangman.Views.UCsForUserSettings
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for DeleteUserUC.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class DeleteUserUC : UserControl
     {
-        public LoginPage(BaseViewModel specificModel = null)
+        public DeleteUserUCViewModel deleteVM;
+        public DeleteUserUC()
         {
             InitializeComponent();
-            DataContext = specificModel ?? new LoginPageViewModel();
-          
+            deleteVM = new DeleteUserUCViewModel();
+            DataContext = deleteVM;
         }
-
     }
 }
