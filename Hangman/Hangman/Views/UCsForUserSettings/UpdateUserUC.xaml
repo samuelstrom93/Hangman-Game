@@ -8,11 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <!-- New Name-->
-        <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
+        <Grid 
+            Margin="10, 10, 10, 10" 
+            VerticalAlignment="Top">
             <Border
-                    Style="{DynamicResource BackgroundBorder}"
-                    Height="100"
-                    Width="300"
+                    Style="{DynamicResource StandardBorder}"
                     CornerRadius="10">
 
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
