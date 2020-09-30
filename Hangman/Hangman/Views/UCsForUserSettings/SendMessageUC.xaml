@@ -7,32 +7,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
     <Grid>
-        <!--Send message to Admin-->
+        
+        <!--Send message to Admin UC-->
         <Border 
             Style="{StaticResource StandardBorder}"
             MinHeight="450"
             Width="300">
             <Grid>
+                <!--Grid definitions-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.8*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <!-- SEND MESSAGE -->
+                <!-- StackPanel: Send message -->
                 <StackPanel>
+                    <!--Label: Header-->
                     <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5">
                         <Label  Style="{StaticResource StandardHeader}" FontSize="25">SKICKA MEDDELANDE TILL ADMIN</Label>
                     </Border>
-
+                    
+                    <!--MessageTitle-->
                     <Label Style="{StaticResource StandardLabel}">TITEL</Label>
                     <TextBox Text="{Binding Topic}" Style="{StaticResource UserInputTxtBox}" Width="200"></TextBox>
+                    <!--Message-->
                     <Label Style="{StaticResource StandardLabel}">MEDDELANDE</Label>
                     <TextBox Text="{Binding Message}" Style="{StaticResource UserInputTxtBox}" Height="80" Width="200" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" ></TextBox>
+                    <!--Send-button-->
                     <Button Style="{StaticResource StandardButton}" Command="{Binding SendMessageCommand}" Height="40" Width="200" Cursor="Hand">SKICKA</Button>
+                    <!--Label: Confirmation-->
                     <Label Style ="{StaticResource StandardLabel}" Content="{Binding Confirmation}"></Label>
                 </StackPanel>
                 
-                <!--Listbox för meddelandehistorik-->
+                <!--Listbox: History, messages-->
                 <StackPanel  Grid.Row="1" >
                     <Label HorizontalAlignment="Center">DIN MEDDELANDEHISTORIK</Label>
                     <ListBox ItemsSource="{Binding myMessages}" Height="120" Width="240">

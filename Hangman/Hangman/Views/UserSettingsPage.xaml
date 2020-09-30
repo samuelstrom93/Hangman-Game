@@ -30,27 +30,46 @@
             
            
             <!--Header-->
-            <Grid Grid.Row="0" Grid.ColumnSpan="3" >
-                <StackPanel HorizontalAlignment="Center">
-                    <Label Style="{StaticResource StandardHeader}" Margin="0, 0,0,10">DIN ANVÄNDARE:</Label>
-                </StackPanel>
-            </Grid>
+            <Label 
+                Content="DIN ANVÄNDARE:"
+                HorizontalAlignment="Center" 
+                Grid.Row="0" 
+                Grid.ColumnSpan="3" 
+                Style="{StaticResource StandardHeader}" 
+                Margin="0, 0,0,10"/>
 
+            <!--Border-->
             <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" Style="{StaticResource StandardBorder}"></Border>
             
             <!--Title1-->
-            <Grid Grid.Row="1" Grid.Column="0">
-                <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5" Margin="5" VerticalAlignment="Top">
-                    <Label VerticalAlignment="Bottom" Style="{StaticResource StandardHeader}" FontSize="25" >ÄNDRA NAMN</Label>
-                </Border>
-            </Grid>
-
+            <Border 
+                Grid.Row="1" 
+                Grid.Column="0"
+                Style="{StaticResource BackgroundBorder}" 
+                CornerRadius="5" 
+                Margin="5" 
+                VerticalAlignment="Top">
+                <Label 
+                    Content="ÄNDRA NAMN"
+                    VerticalAlignment="Bottom" 
+                    Style="{StaticResource StandardHeader}" 
+                    FontSize="25" />
+            </Border>
+            
             <!--Title2-->
-            <Grid Grid.Row="3" Grid.Column="0">
-                <Border Style="{StaticResource BackgroundBorder}" CornerRadius="5" Margin="5" VerticalAlignment="Top">
-                    <Label VerticalAlignment="Bottom"  Style="{StaticResource StandardHeader}" FontSize="25">TA BORT DIN ANVÄNDARE</Label>
-                </Border>
-            </Grid>
+            <Border                     
+                Grid.Row="3" 
+                Grid.Column="0" 
+                Style="{StaticResource BackgroundBorder}" 
+                CornerRadius="5"
+                Margin="5"
+                VerticalAlignment="Top">
+                <Label 
+                    Content="TA BORT DIN ANVÄNDARE"
+                    VerticalAlignment="Bottom"  
+                    Style="{StaticResource StandardHeader}"
+                    FontSize="25"/>
+            </Border>
 
             <!--Grid for UpdateUSer-->
             <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
@@ -70,26 +89,10 @@
                 <Frame x:Name="MessageFrame"></Frame>
             </Grid>
 
-
+            <!--Frame: Delete User-->
             <Grid Grid.Row="4" Grid.Column="0" VerticalAlignment="Top">
                 <Frame x:Name="DeleteUserFrame"></Frame>
             </Grid>
-    <!--Delete user
-            <Border Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"
-                    Style="{DynamicResource  BackgroundBorder}"
-                    Height="120"
-                    Width="300"
-                    CornerRadius="10">
-                <Grid>
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
-                            >
-                        <TextBlock Style="{StaticResource StandardFontTextBlock}"><Run Text="Skriv in ditt användarnamn för "/><LineBreak/><Run Text="att ta bort din användare:"/></TextBlock>
-                        <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding NameCheck}" />
-                        <Button Style="{StaticResource StandardButton}" Width="100" Content="Ta bort mig" Command="{Binding DeleteUserCommand}"/>
-                        <TextBlock Margin="0, 4 ,0 ,0 " Padding="2" x:Name="txtBlockDeleteMessage" Foreground="Red" Text="{Binding DeleteMessage}" Background="{Binding BackGroundColorDeleteBox}"/>
-                    </StackPanel>
-                </Grid>
-            </Border>-->
         </Grid>
     </Border>
 </Page>

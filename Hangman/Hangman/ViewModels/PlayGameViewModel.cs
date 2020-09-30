@@ -204,11 +204,14 @@ namespace Hangman.ViewModels
 
         private void IncorrectGuess()
         {
-            var controller = ImageBehavior.GetAnimationController((Image)LifeDisplay.Children[numberOfIncorrectGuesses]);
-            controller.Play();
+            if (numberOfIncorrectGuesses <= 10)
+            {
+                var controller = ImageBehavior.GetAnimationController((Image)LifeDisplay.Children[numberOfIncorrectGuesses]);
+                controller.Play();
+                numberOfIncorrectGuesses++;
+                GameStateImage = $@"..\..\..\Assets\Images\hänggubbe{numberOfIncorrectGuesses}.png";
+            }
 
-            numberOfIncorrectGuesses++;
-            GameStateImage = $@"..\..\..\Assets\Images\hänggubbe{numberOfIncorrectGuesses}.png";
 
             if (numberOfIncorrectGuesses >= _incorrectGuessLimit)
             {
