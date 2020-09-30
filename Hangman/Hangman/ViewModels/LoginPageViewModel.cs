@@ -36,8 +36,8 @@ namespace Hangman.ViewModels
 
                 else
                 {
-                    ErrorMessage = "Du får inte använda mellanslag";
                     MessageBackground = "white";
+                    ErrorMessage = "Du får inte använda mellanslag";
                 }
 
                 return;

@@ -28,8 +28,6 @@ namespace Hangman.Views
         {
             InitializeComponent(); 
             DataContext = specificModel ?? new StartUpPageViewModel();
-            //  sounds.SoundLocation = "Assets/Sounds/PunchesFX.wav";
-            //  sounds.Play();
         }
 
 

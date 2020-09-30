@@ -34,7 +34,7 @@ namespace Hangman.ViewModels
             else
             {
                 SetActivePlayer(null);
-                GoToPage(ApplicationPage.Login);
+                GoToPage(ApplicationPage.StartUpPage);
             }
         }
 
