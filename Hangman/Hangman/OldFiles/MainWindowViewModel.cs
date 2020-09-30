@@ -11,16 +11,16 @@ namespace Hangman.Views
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public ICommand NavigateToPageCommand { get; set; }
+       // public ICommand NavigateToPageCommand { get; set; }
         public MainWindowViewModel()
         {
-            NavigateToPageCommand = new RelayCommand(GoToPage);
+          //  NavigateToPageCommand = new RelayCommand(GoToPage);
         }
 
-        private void GoToPage()
+       /* private void GoToPage()
         {
             Page page = new LoginPage();
             NavigationService.Navigate(page);
-        }
+        }*/
     }
 }
