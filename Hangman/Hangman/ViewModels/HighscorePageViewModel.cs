@@ -19,9 +19,6 @@ namespace Hangman.ViewModels
         public HighscorePageViewModel()
         {
             var playerId = ActivePlayer?.Id;
-            HighscoreUCViewModel vm = new HighscoreUCViewModel(new HighscoreRepository());
-            HighscoreRepository highscoreRepository = new HighscoreRepository();
-
             if (playerId != null)
             {
                 TopGamesCurrentPlayer = new TopGamesCurrentPlayerUC(playerId);
