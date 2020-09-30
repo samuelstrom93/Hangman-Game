@@ -22,7 +22,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Repos
-        public IPlayerRepository playerRepository;
+        private readonly IPlayerRepository playerRepository;
         #endregion
 
         public UpdateUserUCViewModel()
