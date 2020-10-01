@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Hangman.ViewModels.Base;
+using Hangman.Views.UCsForUserSettings;
 
 namespace Hangman.Views
 {

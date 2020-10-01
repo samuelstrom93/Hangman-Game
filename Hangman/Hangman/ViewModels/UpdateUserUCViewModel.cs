@@ -52,7 +52,7 @@ namespace Hangman.ViewModels
                 else
                 {
                     SetErrorMessageBox();
-                    UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
+                    UpdateMessage = "Du har valt ett namn som är \nupptaget - försök igen";
                 }
             }
 

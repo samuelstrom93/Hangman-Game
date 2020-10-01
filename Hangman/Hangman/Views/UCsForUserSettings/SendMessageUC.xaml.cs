@@ -19,12 +19,9 @@ namespace Hangman.Views.UCsForUserSettings
     /// </summary>
     public partial class SendMessageUC : UserControl
     {
-        public SendMessageUCViewModel sendMessageVM;
         public SendMessageUC()
         {
             InitializeComponent();
-            sendMessageVM = new SendMessageUCViewModel();
-            DataContext = sendMessageVM;
         }
     }
 }

@@ -11,9 +11,17 @@ namespace Hangman.ViewModels
 {
     class UserSettingsViewModel : BaseViewModel
     {
+        public UpdateUserUCViewModel UpdateUserUCViewModel { get; set; }
+        public DeleteUserUCViewModel DeleteUserUCViewModel { get; set; }
+        public SendMessageUCViewModel SendMessageUCViewModel { get; set; }
 
+        public PlayerStatsUCViewModel PlayerStatsUCViewModel { get; set; }
         public UserSettingsViewModel()
         {
+            UpdateUserUCViewModel = new UpdateUserUCViewModel();
+            DeleteUserUCViewModel = new DeleteUserUCViewModel();
+            SendMessageUCViewModel = new SendMessageUCViewModel();
+            PlayerStatsUCViewModel = new PlayerStatsUCViewModel();
         }
     }
 }

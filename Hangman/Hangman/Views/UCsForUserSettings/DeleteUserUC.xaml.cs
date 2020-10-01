@@ -19,12 +19,9 @@ namespace Hangman.Views.UCsForUserSettings
     /// </summary>
     public partial class DeleteUserUC : UserControl
     {
-        public DeleteUserUCViewModel deleteVM;
         public DeleteUserUC()
         {
             InitializeComponent();
-            deleteVM = new DeleteUserUCViewModel();
-            DataContext = deleteVM;
         }
     }
 }

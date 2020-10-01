@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
+      xmlns:uc="clr-namespace:Hangman.Views.UCsForUserSettings"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="UserSettingsPage">
@@ -78,26 +79,24 @@
 
             <!--Grid for UpdateUSer-->
             <Grid Grid.Row="2" Grid.Column="0" Margin="10, 10, 10, 10" VerticalAlignment="Top">
-                <Frame x:Name="UpdateUserFrame">
-                </Frame>
+                <uc:UpdateUserUC DataContext="{Binding UpdateUserUCViewModel}" />
             </Grid>
 
             <!--UC for stats-->
             <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Margin="10, 0, 10, 0">
-                <Border>
-                </Border>
-                <Frame x:Name="UserStatsFrame" HorizontalAlignment="Center"></Frame>
+                <uc:PlayerStatsUC DataContext="{Binding PlayerStatsUCViewModel}" />
             </Grid>
 
             <!-- MessageFrame-->
             <Grid  Grid.Row="1" Grid.RowSpan="6" Grid.Column="2">
-                <Frame x:Name="MessageFrame"></Frame>
+                <uc:SendMessageUC DataContext="{Binding SendMessageUCViewModel}" />
             </Grid>
 
             <!--Frame: Delete User-->
             <Grid Grid.Row="4" Grid.Column="0" VerticalAlignment="Top">
-                <Frame x:Name="DeleteUserFrame"></Frame>
+                <uc:DeleteUserUC DataContext="{Binding DeleteUserUCViewModel}" />
             </Grid>
+            
         </Grid>
     </Border>
 </Page>

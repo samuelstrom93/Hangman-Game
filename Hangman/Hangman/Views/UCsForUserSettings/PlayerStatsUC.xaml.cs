@@ -15,7 +15,7 @@ using Hangman.Repositories;
 using Hangman;
 using Hangman.ViewModels;
 
-namespace Hangman.Views
+namespace Hangman.Views.UCsForUserSettings
 {
     /// <summary>
     /// Interaction logic for PlayerStatsUC.xaml
@@ -23,13 +23,10 @@ namespace Hangman.Views
     public partial class PlayerStatsUC : UserControl
     {
 
-        private PlayerStatsUCViewModel model;
 
         public PlayerStatsUC()
         {
-            InitializeComponent();
-            model = new PlayerStatsUCViewModel();
-            DataContext = model;             
+            InitializeComponent();             
         }
     }
 }
