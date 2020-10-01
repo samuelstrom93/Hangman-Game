@@ -16,7 +16,7 @@ namespace Hangman.ViewModels
         private static readonly char[] _lettersQWERTY = "QWERTYUIOPÅASDFGHJKLÖÄZXCVBNM".ToCharArray();
 
         public ObservableCollection<LetterKeyViewModel> Keys { get; set; }
-        public bool IsQWERTYChecked { get; set; } = true;
+        public bool IsABCChecked { get; set; } = false;
         public ICommand KeyboardLayoutCommand { get; set; }
 
         private readonly ICommand _keyCommand;
@@ -38,7 +38,7 @@ namespace Hangman.ViewModels
 
         public void OrderKeys()
         {
-            Keys = new ObservableCollection<LetterKeyViewModel>(Keys.OrderBy(o => IsQWERTYChecked ? o.QwertyOrder : o.Content));
+            Keys = new ObservableCollection<LetterKeyViewModel>(Keys.OrderBy(o => !IsABCChecked ? o.QwertyOrder : o.Content));
         }
 
         public void MarkLetterUsed(char letter, bool isCorrect)

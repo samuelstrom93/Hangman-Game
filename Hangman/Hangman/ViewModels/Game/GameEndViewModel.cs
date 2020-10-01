@@ -33,7 +33,7 @@ namespace Hangman.ViewModels
             TitleColor = game.IsWon ? "Green" : "Red";
 
             IncorrectGuesses = $"Antal felgissningar: {game.NumberOfIncorrectTries}";
-            TotalTime = "Tid: " + (game.EndTime - game.StartTime).ToString(@"mm\:ss\.fff");
+            TotalTime = "Tid: " + (game.EndTime - game.StartTime).ToString(@"mm\:ss\.ff");
             Word = word.ToUpper();
 
             if (game.Id != 0)
