@@ -70,7 +70,7 @@ namespace Hangman.ViewModels
             {
                 WinRate = 0;
             }
-            else if (gamesWon>1)
+            else if (gamesWon>=1)
             {
                 double dec = (gamesWon / gamesPlayed) * 100;
                 WinRate = Math.Round(dec, 2);
