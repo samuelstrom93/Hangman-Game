@@ -22,6 +22,7 @@ namespace Hangman.ViewModels
         public string TotalTime { get; set; }
         public string Word { get; set; }
         public bool PlayerStatsBoolToVis { get; set; } = false;
+        public PlayerStatsUCViewModel PlayerStatsViewModel { get; set; }
 
         private readonly IHighscoreRepository _highscoreRepository;
 
@@ -39,7 +40,8 @@ namespace Hangman.ViewModels
             if (game.Id != 0)
             {
                 PlayerStatsBoolToVis = true;
-                
+                PlayerStatsViewModel = new PlayerStatsUCViewModel();
+
                 if (game.IsWon)
                 {
                     var gameRanking = _highscoreRepository.GetRankOnHighScore(game.Id);
