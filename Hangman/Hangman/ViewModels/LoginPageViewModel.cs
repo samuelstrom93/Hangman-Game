@@ -65,6 +65,7 @@ namespace Hangman.ViewModels
 
         private void SetErrorMessageDesign()
         {
+            PlayerName = null;
             MessageBackground = "white";
 
         }

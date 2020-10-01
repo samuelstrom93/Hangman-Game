@@ -21,12 +21,13 @@ namespace Hangman.ViewModels
         public string IncorrectGuesses { get; set; }
         public string TotalTime { get; set; }
         public string Word { get; set; }
-        public PlayerStatsUC PlayerStats { get; set; }
+        public PlayerStatsUCViewModel PlayerStatsUCViewModel { get; set; }
 
         private readonly IHighscoreRepository _highscoreRepository;
 
         public GameEndViewModel(Game game, string word)
         {
+            PlayerStatsUCViewModel = new PlayerStatsUCViewModel();
             _highscoreRepository = new HighscoreRepository();
 
             Title = game.IsWon ? _winTitle : _lossTitle;
@@ -38,8 +39,7 @@ namespace Hangman.ViewModels
 
             if (game.Id != 0)
             {
-                PlayerStats = new PlayerStatsUC();
-
+                
                 if (game.IsWon)
                 {
                     var gameRanking = _highscoreRepository.GetRankOnHighScore(game.Id);

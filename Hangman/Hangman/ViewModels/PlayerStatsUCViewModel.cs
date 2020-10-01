@@ -9,7 +9,7 @@ using Hangman.Database;
 
 namespace Hangman.ViewModels
 {
-    class PlayerStatsUCViewModel : BaseViewModel
+    public class PlayerStatsUCViewModel : BaseViewModel
     {
         #region Properties: PlayerStatsUC
         public string GamesPlayed { get; set; }
