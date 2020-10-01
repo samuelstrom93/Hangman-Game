@@ -45,7 +45,7 @@ namespace Hangman.ViewModels
                 if (_module.TryUpdatePlayerName(ActivePlayer, NewName))
                 {
                     SetNewName();                   
-                    UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
+                    UpdateMessage = "Ditt användarnamn är nu bytt till \n" + NewName;
                     SetSuccessMessageBox();
                 }
 

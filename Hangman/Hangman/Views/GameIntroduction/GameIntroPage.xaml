@@ -20,10 +20,10 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="500"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">Spelintroduktion</Label>
         </StackPanel>
 

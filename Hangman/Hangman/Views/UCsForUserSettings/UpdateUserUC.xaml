@@ -11,12 +11,13 @@
         Margin="10, 10, 10, 10"            
         VerticalAlignment="Top">
         
-        <Border           
+        <Border      
+            MinHeight="130"
             Style="{DynamicResource StandardBorder}"
             CornerRadius="10">
 
             <StackPanel 
-                VerticalAlignment="Center" 
+                VerticalAlignment="Top" 
                 HorizontalAlignment="Center">
                 <TextBlock 
                     Text="Skriv in önskat nytt namn"

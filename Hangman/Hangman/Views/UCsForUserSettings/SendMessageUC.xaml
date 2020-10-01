@@ -56,7 +56,6 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel>
                                             <TextBlock  Width="150" HorizontalAlignment="Center" Text="{Binding Path=SentAt, StringFormat=g, ConverterCulture=sv-SE}" />
-                                            <TextBlock Width="150" HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=RecieverName}"/>
                                             <TextBlock Width="150" HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=Topic}"/>
                                             <TextBlock Width="150" HorizontalAlignment="Center" TextWrapping="Wrap" Grid.Column="3" Text="{Binding Path=Content}"/>
                                         </StackPanel>
