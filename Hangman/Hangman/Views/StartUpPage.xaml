@@ -115,11 +115,11 @@
                                 BorderBrush="Transparent"                                   
                                 Background="Transparent">
                                 <Button.Content>
-                                    <Label FontFamily="Arial"
-                                               FontSize="12"
+                                    <Label FontFamily="Bahnschrift SemiBold"
+                                               FontSize="15"
                                                Foreground="#FF25519E"
                                                BorderBrush="#FF25519E"
-                                               FontStyle="Italic"
+            
                                                Content="Skapa en användare här." BorderThickness="0,0,0,0.3"/>
                                 </Button.Content>
                             </Button>

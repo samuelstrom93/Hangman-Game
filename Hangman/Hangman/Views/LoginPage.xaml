@@ -6,12 +6,16 @@
       xmlns:local="clr-namespace:Hangman"
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
+      d:DesignHeight="450" 
+      d:DesignWidth="800" 
+      MinHeight="450"
       Title="LoginPage">
 
     <Border >
-
+        
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+            <!--Grid Definitions-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"/>
                 <RowDefinition Height="150"/>
@@ -19,20 +23,25 @@
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
-
             </Grid.RowDefinitions>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="170"/>
             </Grid.ColumnDefinitions>
-
-            <Grid Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Label Style="{StaticResource StandardHeader}" Content="HÄNGA HEN "/>
-            </Grid>
-
+  
+            <!-- Header -->
+            <Label 
+                Content="HÄNGA HEN "
+                Grid.Row="0" 
+                Grid.ColumnSpan="4" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Style="{StaticResource StandardHeader}" 
+                />
+            
+            <!-- Border for username-->
             <Border 
                 Width="250"
                 Height="120" 
@@ -43,37 +52,99 @@
                 CornerRadius="10" 
                 Margin="10, 10, 10, 10">
 
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" >
-                    <Label Style="{StaticResource PageTitleLabel}" Content="Användarnamn:" FontWeight="Bold"></Label>
-                    <TextBox TextAlignment="Center" Style="{StaticResource UserInputTxtBox}" Text="{Binding PlayerName, Mode=TwoWay}"  />
-                    <Button Width="100" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command ="{Binding TryLogIn}"/>
+                <StackPanel 
+                    HorizontalAlignment="Center" 
+                    Orientation="Vertical"
+                    VerticalAlignment="Center" >
+                    <Label 
+                        Style="{StaticResource PageTitleLabel}" 
+                        Content="Användarnamn:" 
+                        FontWeight="Bold"/>
+                    <TextBox 
+                        TextAlignment="Center" 
+                        Style="{StaticResource UserInputTxtBox}" 
+                        Text="{Binding PlayerName, Mode=TwoWay}"/>
+                    <Button 
+                        Width="100" 
+                        Height="30" 
+                        Style="{StaticResource StandardButton}" 
+                        Content="Logga in" 
+                        Command ="{Binding TryLogIn}"/>
                 </StackPanel>
             </Border>
+            
+            <!-- Textblock: Error message-->        
+            <TextBlock                    
+                Grid.Row="2" 
+                Grid.Column="1"                    
+                Grid.ColumnSpan="2" 
+                HorizontalAlignment="Center"                   
+                Height="20" 
+                Width="250"                   
+                Background="{Binding MessageBackground}"              
+                TextAlignment="Center"           
+                Foreground="Red"       
+                Text="{Binding ErrorMessage}"></TextBlock>
+            <!--Border: Play w/o user/Create user-->
+            <Border           
+                Grid.Row="1" 
+                Grid.Column="0"  
+                Grid.RowSpan="3"   
+                VerticalAlignment="Top" 
+                Margin="0, 15, 0, 0">
 
-            <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" Width="250" Background="Transparent">
-                <TextBlock Background="{Binding MessageBackground}" TextAlignment="Center" Foreground="Red" Text="{Binding ErrorMessage}"></TextBlock>
-            </Border>
-
-
-            <Border   Grid.Row="1" Grid.Column="0"  Grid.RowSpan="3"   VerticalAlignment="Top" Margin="0, 15, 0, 0">
                 <StackPanel>
-                    <Label FontSize="12" Style="{StaticResource StandardLabel}"  Content="Vill du spela utan användare?"></Label>
-                    <Button  Width="125" Height="35"  Style="{StaticResource StandardButton}" Foreground="White" Content="Spela direkt" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GamePage}"></Button>
-                    <Label FontSize="12"  Style="{StaticResource StandardLabel}" Content="Är du en ny spelare?" ></Label>
-                    <Button Width="125" Height="35" Foreground="White" Style="{StaticResource StandardButton}" Content="Skapa en användare" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.CreateUser}" />
+                    <!--Play w/o user navigation-->
+                    <Label 
+                        Content="Vill du spela utan användare?"
+                        FontSize="12" 
+                        Style="{StaticResource StandardLabel}"/>
+                    <Button 
+                        Content="Spela direkt" 
+                        Width="125" 
+                        Height="35"  
+                        Style="{StaticResource StandardButton}"                         
+                        Command="{Binding NavigateToPageByParameterCommand}" 
+                        CommandParameter="{x:Static local:ApplicationPage.GamePage}"/>
+
+                    <!--Create user navigation-->
+                    <Label 
+                        Content="Är du en ny spelare?"
+                        FontSize="12"  
+                        Style="{StaticResource StandardLabel}"/>
+                    <Button 
+                        Content="Skapa en användare"
+                        Width="125" 
+                        Height="35" 
+                        Style="{StaticResource StandardButton}"                          
+                        Command="{Binding NavigateToPageByParameterCommand}" 
+                        CommandParameter="{x:Static local:ApplicationPage.CreateUser}" />
                 </StackPanel>
             </Border>
 
+            <!--GIF-->
+            <Image 
+                Grid.Row="2" 
+                Grid.Column="3" 
+                Grid.ColumnSpan="2" 
+                Grid.RowSpan="4" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top" 
+                Height="1000" 
+                gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif"/>
 
-            <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="4" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <Image Height="1000" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
-            </Grid>
-
-            <Border Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" VerticalAlignment="Center">
-                <StackPanel>
-                    <Button Width="178" Height="155" Style="{StaticResource HelpButton}" HorizontalAlignment="Center" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" />
-                </StackPanel>
-            </Border>
+            <!--Button: Help-->
+            <Button 
+                Grid.Row="1" 
+                Grid.Column="4" 
+                Grid.RowSpan="3" 
+                VerticalAlignment="Center" 
+                Width="178" 
+                Height="155" 
+                Style="{StaticResource HelpButton}" 
+                HorizontalAlignment="Center" 
+                Command="{Binding NavigateToPageByParameterCommand}" 
+                CommandParameter="{x:Static local:ApplicationPage.GameIntro}" />
 
         </Grid>
     </Border>

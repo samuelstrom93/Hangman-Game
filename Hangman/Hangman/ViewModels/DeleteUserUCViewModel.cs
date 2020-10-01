@@ -11,9 +11,11 @@ namespace Hangman.ViewModels
         public string NameCheck { get; set; }
         public bool IsDeletable { get; set; }
         public string DeleteMessage { get; set; }
-        public ICommand DeleteUserCommand { get; set; }
         public string BackGroundColorDeleteBox { get; set; }
+        #endregion
 
+        #region Commands
+        public ICommand DeleteUserCommand { get; set; }
         #endregion
 
         #region Repos
@@ -32,12 +34,16 @@ namespace Hangman.ViewModels
         {
             if (CheckIfDeletable(NameCheck))
             {
-                DeleteUser();
-                MessageBox.Show("Din användare är nu raderad, du loggas nu ut.");
-                SetActivePlayer(null);
+                DeleteUser();               
                 GoToPage(ApplicationPage.StartUpPage);
             }
+
+            else
+            {
+                UpdateDeleteMessage();
+            }
         }
+
         public bool CheckIfDeletable(string name)
         {
             if (name == ActivePlayer.Name)
@@ -47,16 +53,22 @@ namespace Hangman.ViewModels
 
             else
             {
-                BackGroundColorDeleteBox = "white";
-                DeleteMessage = "Du har skrivit in fel användarnamn.";
                 return false;
             }
 
         }
 
+        public void UpdateDeleteMessage()
+        {
+            BackGroundColorDeleteBox = "white";
+            DeleteMessage = "Du har skrivit in fel användarnamn.";
+        }
+
         public void DeleteUser()
         {
             playerRepository.DeletePlayer(ActivePlayer.Id);
+            MessageBox.Show("Din användare är nu raderad, du loggas nu ut.");
+            SetActivePlayer(null);
         }
 
         #endregion

@@ -12,59 +12,47 @@ namespace Hangman.ViewModels
 {
     public class UpdateUserUCViewModel : BaseViewModel
     {
-        #region Properties: Update User
+        #region Properties
         public string NewName { get; set; }
         public string UpdateMessage { get; set; }
-        public ICommand UpdateUserCommand { get; set; }
         public IPlayer Player { get; set; }
         public string TextColor { get; set; }
         public string BackGroundColorUpdateBox { get; set; }
         #endregion
 
+        #region Commands
+        public ICommand UpdateUserCommand { get; set; }
+        #endregion
+
         #region Repos
         private readonly IPlayerRepository playerRepository;
+        public IPlayerModule _module;
         #endregion
 
         public UpdateUserUCViewModel()
         {
             playerRepository = new PlayerRepository();
             UpdateUserCommand = new RelayCommand(UpdateUser);
+            _module = new PlayerModule();
 
         }
         #region Methods: Update User
-
         public void UpdateUser()
         {
             if (!string.IsNullOrWhiteSpace(NewName) && NewName != ActivePlayerName && !NewName.Contains(" "))
             {
-                try
+
+                if (_module.TryUpdatePlayerName(ActivePlayer, NewName))
                 {
-                    playerRepository.UpdateNameOnPlayer(NewName, ActivePlayer.Id);
-                    var module = new PlayerModule();
-
-                    module.TryLogInPlayer(NewName);
-                    SetActivePlayer(NewName);
-                    ActivePlayerName = NewName;
-
-                    UpdateMessage = "Ditt användarnamn är nu bytt till " + NewName;
+                    SetNewName();                   
+                    UpdateMessage = "Ditt användarnamn är nu bytt till \n" + NewName;
                     SetSuccessMessageBox();
-                                     
                 }
 
-                catch (PostgresException ex)
+                else
                 {
-                    
-                    if (ex.SqlState.Contains("23505"))
-                    {
-                        SetErrorMessageBox();
-                        UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
-                    }
-
-                    else
-                    {
-                        SetErrorMessageBox();
-                        UpdateMessage = "Något gick fel - försök igen";
-                    }
+                    SetErrorMessageBox();
+                    UpdateMessage = "Du har valt ett namn som är upptaget - försök igen";
                 }
             }
 
@@ -80,13 +68,11 @@ namespace Hangman.ViewModels
                 UpdateMessage = "Du måste ange ett namn";
             }
 
-
             else if (NewName.Contains(" "))
             {
                 SetErrorMessageBox();
                 UpdateMessage = "Du får inte ha mellanslag i ditt namn";
             }
-
 
             else
             {
@@ -94,20 +80,32 @@ namespace Hangman.ViewModels
                 UpdateMessage = "Något gick fel";
             }
         }
+        public void SetNewName()
+        {
+            var module = new PlayerModule();
+            module.TryLogInPlayer(NewName);
+            SetActivePlayer(NewName);
+            ActivePlayerName = NewName;
+        }
+        #endregion
 
+        #region Methods: Design
         private void SetErrorMessageBox()
         {
             TextColor = "red";
-            NewName = "";
+            NewName = null;
             BackGroundColorUpdateBox = "white";
         }
 
         private void SetSuccessMessageBox()
         {
-            NewName = "";
+            NewName = null;
             TextColor = "green";
             BackGroundColorUpdateBox = "white";
         }
+
         #endregion
+
+        
     }
 }

@@ -35,15 +35,20 @@ namespace Hangman.ViewModels
         }
 
         #region Methods: PlayerStatsUC
-        private void ChangeMemeWithWinRate()
+        public void UpdatePlayerStats()
         {
-            string imageAdress;
-            imageAdress = $"../../../Assets/Images/{PlayerStatus}.jpg";
-
-            string currentPath = Environment.CurrentDirectory;
-            MemeForWinRate = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
+            if (ActivePlayer != null)
+            {
+                GetGamesPlayed();
+                GetGamesWon();
+                CalculateWinRate();
+                SetPlayerStatus();
+                SetWinRate();
+                ChangeMemeWithWinRate();
+            }
         }
-
+     
+        #region Methods: Get games
         public void GetGamesPlayed()
         {
             GamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer).ToString();
@@ -54,6 +59,8 @@ namespace Hangman.ViewModels
             GamesWon = playerStatsRepository.GetGamesWon(ActivePlayer).ToString();
         }
 
+        #endregion
+        #region Methods: Calculations
         public void CalculateWinRate()
         {
             double gamesPlayed = playerStatsRepository.GetGamesPlayed(ActivePlayer);
@@ -63,16 +70,32 @@ namespace Hangman.ViewModels
             {
                 WinRate = 0;
             }
-            else
+            else if (gamesWon>1)
             {
                 double dec = (gamesWon / gamesPlayed) * 100;
                 WinRate = Math.Round(dec, 2);
             }
-        }
+            else if (gamesWon < 1)
+            {
+                double gamesLost = gamesPlayed;
+                double dec = (-gamesLost / gamesPlayed) * 100;
+                WinRate = Math.Round(dec, 2);
 
+            }
+        }
+        #endregion
+        #region Methods: Update Design
         public void SetWinRate()
         {
             WinRateString = $"{WinRate} %";
+        }
+        private void ChangeMemeWithWinRate()
+        {
+            string imageAdress;
+            imageAdress = $"../../../Assets/Images/{PlayerStatus}.jpg";
+
+            string currentPath = Environment.CurrentDirectory;
+            MemeForWinRate = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
         }
         public void SetPlayerStatus()
         {
@@ -111,20 +134,7 @@ namespace Hangman.ViewModels
                 LabelColor = "black";
             }
         }
-
-        public void UpdatePlayerStats()
-        {
-            if (ActivePlayer != null)
-            {
-                GetGamesPlayed();
-                GetGamesWon();
-                CalculateWinRate();
-                SetPlayerStatus();
-                SetWinRate();
-                ChangeMemeWithWinRate();
-            }
-
-        }
+        #endregion
 
         #endregion
 

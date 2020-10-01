@@ -29,6 +29,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <CheckBox Grid.Row="3" Content="QWERTY" IsChecked="{Binding IsQWERTYChecked}" HorizontalAlignment="Right" Command="{Binding KeyboardLayoutCommand}"/>
+        <CheckBox Grid.Row="3" Content="Alfabetisk ordning" IsChecked="{Binding IsABCChecked}" HorizontalAlignment="Right" Command="{Binding KeyboardLayoutCommand}"/>
     </StackPanel>
 </UserControl>

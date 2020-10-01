@@ -9,34 +9,37 @@ using System.Windows.Input;
 namespace Hangman.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
-    {        
+    {
+        #region Properties
         public string ErrorMessage { get; set; }
         public string PlayerName { get; set; }
-        public ICommand TryLogIn { get; set; }
-
         public string MessageBackground { get; set; }
-
         private readonly IPlayerModule _module = new PlayerModule();
+        #endregion
 
+        #region Commands
+        public ICommand TryLogIn { get; set; }
+        #endregion
 
         public LoginPageViewModel()
         {
             TryLogIn = new RelayCommand(TryLogInPlayer);
         }
 
+        #region Methods
         private void TryLogInPlayer()
         {
             if (string.IsNullOrWhiteSpace(PlayerName))
             {
                 if (string.IsNullOrEmpty(PlayerName))
                 {
-                     MessageBackground = "white";
+                    SetErrorMessageDesign();
                      ErrorMessage = "Du måste skriva något";
                 }
 
                 else
                 {
-                    MessageBackground = "white";
+                    SetErrorMessageDesign();
                     ErrorMessage = "Du får inte använda mellanslag";
                 }
 
@@ -50,7 +53,7 @@ namespace Hangman.ViewModels
 
             else if (!_module.TryLogInPlayer(PlayerName))
             {
-                MessageBackground = "white";
+                SetErrorMessageDesign();
                 ErrorMessage = "Din användare finns inte!";
             }
             else
@@ -59,5 +62,12 @@ namespace Hangman.ViewModels
                 GoToPage(ApplicationPage.GamePage);
             }
         }
+
+        private void SetErrorMessageDesign()
+        {
+            MessageBackground = "white";
+
+        }
+        #endregion
     }
 }

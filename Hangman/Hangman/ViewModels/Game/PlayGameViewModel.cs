@@ -178,6 +178,8 @@ namespace Hangman.ViewModels
                 IsWon = isWin
             };
 
+            StopWatchViewModel.Timer = (game.EndTime - game.StartTime).ToString(@"mm\:ss\.ff");
+
             if (ActivePlayer != null)
             {
                 game.Id = gameRepository.AddGame(game);
