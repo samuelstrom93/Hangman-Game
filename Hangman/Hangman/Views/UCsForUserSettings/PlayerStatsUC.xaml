@@ -49,9 +49,7 @@
             <Grid Grid.Row="2" Grid.Column="0" Visibility="Visible" >
                 <Grid>
                     <Border BorderBrush="Black" BorderThickness="2" Height="200">
-                        <Border.Background>
-                            <ImageBrush Stretch="UniformToFill" ImageSource="{Binding MemeForWinRate}"/>
-                        </Border.Background>
+                        <Image Stretch="Uniform" Source="{Binding MemeForWinRate}"/>
                     </Border>
                 </Grid>
             </Grid>

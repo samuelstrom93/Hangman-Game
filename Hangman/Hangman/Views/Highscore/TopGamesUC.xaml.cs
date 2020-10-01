@@ -11,7 +11,7 @@ namespace Hangman.Views
     /// </summary>
     public partial class TopGamesUC : UserControl
     {
-        public TopGamesUC(int? playerId = null)
+        public TopGamesUC()
         {
             InitializeComponent();
 

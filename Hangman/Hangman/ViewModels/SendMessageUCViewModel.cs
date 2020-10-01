@@ -10,7 +10,7 @@ using Hangman.Models;
 using Npgsql;
 using System.Windows;
 using System.Linq;
-
+using Hangman.Database;
 
 namespace Hangman.ViewModels
 {
@@ -25,7 +25,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Repos
-        public MessageRepository messageRepository;
+        private readonly IMessageRepository messageRepository;
         #endregion
 
         public SendMessageUCViewModel()

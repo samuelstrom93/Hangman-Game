@@ -18,14 +18,14 @@ namespace Hangman.ViewModels
         public string WinRateString { get; set; }
         public string Title { get; set; }
         private string PlayerStatus { get; set; }
-        public BitmapImage MemeForWinRate { get; set; }
+        public string MemeForWinRate { get; set; }
         public string LabelColor { get; set; }
         public string BackgroundColorWinRate { get; set; } = "Transparent";
         public ICommand ViewImage { get; set; }
         #endregion
 
         #region Repositores
-        private IPlayerStatsRepository playerStatsRepository;
+        private readonly IPlayerStatsRepository playerStatsRepository;
         #endregion
 
         public PlayerStatsUCViewModel()
@@ -37,11 +37,7 @@ namespace Hangman.ViewModels
         #region Methods: PlayerStatsUC
         private void ChangeMemeWithWinRate()
         {
-            string imageAdress;
-            imageAdress = $"../../../Assets/Images/{PlayerStatus}.jpg";
-
-            string currentPath = Environment.CurrentDirectory;
-            MemeForWinRate = new BitmapImage(new Uri(System.IO.Path.Combine(currentPath, imageAdress)));
+            MemeForWinRate = $"../../../Assets/Images/{PlayerStatus}.jpg";
         }
 
         public void GetGamesPlayed()

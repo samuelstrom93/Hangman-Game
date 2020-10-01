@@ -45,6 +45,7 @@ namespace Hangman.ViewModels
 
             if (PlayerName.Equals("Admin", StringComparison.OrdinalIgnoreCase))
             {
+                SetActivePlayer("Admin");
                 GoToPage(ApplicationPage.Admin);
             }
 

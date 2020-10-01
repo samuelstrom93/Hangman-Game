@@ -21,15 +21,15 @@ namespace Hangman.Views.Highscore
     /// </summary>
     public partial class TopGamesCurrentPlayerUC : UserControl
     {
-        public TopGamesCurrentPlayerUC(int? playerId = null)
+        public TopGamesCurrentPlayerUC()
         {
             InitializeComponent();
-            HighscoreRepository highscoreRepository = new HighscoreRepository();
 
-            HighscoreUCViewModel highscoreUCViewModel = new HighscoreUCViewModel(new HighscoreRepository())
-            {
-                Title = highscoreRepository.GetLeaderboard(playerId).ToList().Count == 0 ? "Inga spel registrerade" : "Dina bästa spel",
-            };
+            HighscoreUCViewModel highscoreUCViewModel = new HighscoreUCViewModel(new HighscoreRepository());
+            highscoreUCViewModel.Title = highscoreUCViewModel.TopCurrentPlayerHighscores == null 
+                || highscoreUCViewModel.TopCurrentPlayerHighscores.Count() == 0
+                ? "Inga spel registrerade" : "Dina bästa spel";
+            
             DataContext = highscoreUCViewModel;
         }
     }

@@ -24,7 +24,7 @@ namespace Hangman.Views
         {
             InitializeComponent();
 
-            DataContext = new MessagesViewModel(64);
+            DataContext = new MessagesViewModel();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Hangman.ViewModels
             TopDiligentPlayers = HighscoreRepository.GetTopDiligentPlayers(10) as Dictionary<string, long>;
             TopHighscores = HighscoreRepository.GetLeaderboard(null);
 
-            if (ActivePlayer != null && HighscoreRepository.GetLeaderboard(ActivePlayer.Id).ToList().Count != 0)
+            if (ActivePlayer != null)
             {
                 TopCurrentPlayerHighscores = HighscoreRepository.GetLeaderboard(ActivePlayer.Id);
             }

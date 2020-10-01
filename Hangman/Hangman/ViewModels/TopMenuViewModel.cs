@@ -13,9 +13,9 @@ namespace Hangman.ViewModels
     public class TopMenuViewModel : BaseViewModel
     {
         public string PlayerName { get; set; } = "MENY";
-        public ObservableCollection<object> ItemsToShow { get; set; } = new ObservableCollection<object>();
+        public ObservableCollection<MenuItemViewModel> MenuItems { get; set; } = new ObservableCollection<MenuItemViewModel>();
 
-        private readonly List<MenuItem> _menuItems = new List<MenuItem>();
+        private readonly List<MenuItemViewModel> _menuItems = new List<MenuItemViewModel>();
 
         public TopMenuViewModel()
         {
@@ -31,105 +31,101 @@ namespace Hangman.ViewModels
 
                 if (!string.IsNullOrWhiteSpace(ActivePlayerName))
                 {
-                    ItemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
-                    ItemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
-                    ItemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
-
+                    MenuItems.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
+                    MenuItems.Add(_menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
+                    MenuItems.Add(_menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
                 }
                 else
                 {
-                    ItemsToShow.Insert(0, _menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
-                    ItemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
-                    ItemsToShow.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
-;
+                    MenuItems.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LogoutItem")));
+                    MenuItems.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
+                    MenuItems.Add(_menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
                 }
             }
         }
 
         private void CreateMenuItems()
         {
-            var loginItem = new MenuItem
+            var loginItem = new MenuItemViewModel
             {
                 Name = "LoginItem",
-                Header = "Logga in"
+                Header = "Logga in",
+                Command = new RelayCommand(MnuLogin)
             };
-            loginItem.Click += mnuLogin;
             _menuItems.Add(loginItem);
 
-            var logoutItem = new MenuItem
+            var logoutItem = new MenuItemViewModel
             {
                 Name = "LogoutItem",
-                Header = "Logga ut"
+                Header = "Logga ut",
+                Command = new RelayCommand(MnuLogOut)
             };
-            logoutItem.Click += mnuLogOut;
             _menuItems.Add(logoutItem);
 
-            var userSettingsPage = new MenuItem
+            var userSettingsPage = new MenuItemViewModel
             {
                 Name = "UserSettingsItem",
-                Header = "Användarinställningar"
+                Header = "Användarinställningar",
+                Command = new RelayCommand(MnuUserSettings)
             };
-            userSettingsPage.Click += mnuUserSettings;
             _menuItems.Add(userSettingsPage);
 
-            var playItem = new MenuItem
+            var playItem = new MenuItemViewModel
             {
                 Name = "PlayItem",
-                Header = "Spela"
+                Header = "Spela",
+                Command = new RelayCommand(MnuPlay)
             };
-
-            playItem.Click += mnuPlay;
             _menuItems.Add(playItem);
 
-            var highScoreItem = new MenuItem
+            var highScoreItem = new MenuItemViewModel
             {
                 Name = "HighScoresItem",
-                Header = "Topplistor"
+                Header = "Topplistor",
+                Command = new RelayCommand(MnuHighScores)
             };
-            highScoreItem.Click += mnuHighScores;
             _menuItems.Add(highScoreItem);
 
-            var startUpItem = new MenuItem
+            var startUpItem = new MenuItemViewModel
             {
                 Name = "StartUpItem",
-                Header = "Startsida"
+                Header = "Startsida",
+                Command = new RelayCommand(MnuStartUp)
             };
-            startUpItem.Click += mnuStartUp;
             _menuItems.Add(startUpItem);
 
 
-            ItemsToShow.Add(loginItem);
-            ItemsToShow.Add(highScoreItem);
-            ItemsToShow.Add(playItem);
-            ItemsToShow.Add(new Separator());
-            ItemsToShow.Add(startUpItem);
+            MenuItems.Add(playItem);
+            MenuItems.Add(startUpItem);
+            MenuItems.Add(highScoreItem);
+            MenuItems.Add(loginItem);
         }
 
-        private void mnuLogOut(object sender, RoutedEventArgs e)
+        private void MnuLogOut()
         {
             SetActivePlayer(null);
             GoToPage(ApplicationPage.StartUpPage);
         }
 
-        private void mnuUserSettings(object sender, RoutedEventArgs e)
+        private void MnuUserSettings()
         {
             GoToPage(ApplicationPage.UserSettings);
         }
-        private void mnuPlay(object sender, RoutedEventArgs e)
+        private void MnuPlay()
         {
             GoToPage(ApplicationPage.GamePage);
         }
-        private void mnuLogin(object sender, RoutedEventArgs e)
+        private void MnuLogin()
         {
             GoToPage(ApplicationPage.Login);
         }
 
-        private void mnuHighScores(object sender, RoutedEventArgs e)
+        private void MnuHighScores()
         {
             GoToPage(ApplicationPage.HighscorePage);
         }
 
-        private void mnuStartUp(object sender, RoutedEventArgs e)
+        private void MnuStartUp()
         {
             GoToPage(ApplicationPage.StartUpPage);
         }
