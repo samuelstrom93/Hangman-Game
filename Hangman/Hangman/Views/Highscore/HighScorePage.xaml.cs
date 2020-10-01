@@ -12,7 +12,7 @@ namespace Hangman.Views
         public HighScore_Page(BaseViewModel specificModel)
         {
             InitializeComponent();
-            DataContext = specificModel;
+            DataContext = specificModel ?? new PlayGameViewModel();
         }
     }
 }

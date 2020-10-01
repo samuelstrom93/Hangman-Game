@@ -32,7 +32,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Border Visibility="{Binding PlayerStatsBoolToVis, Converter={StaticResource BoolToVisibility}}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3">
-                        <uc:PlayerStatsUC />
+                        <uc:PlayerStatsUC DataContext="{Binding PlayerStatsViewModel}" />
                     </Border>
                 </Grid>
                 <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StandardBorder}">
