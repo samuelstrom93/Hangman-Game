@@ -108,7 +108,7 @@ namespace Hangman.ViewModels
         private void mnuLogOut(object sender, RoutedEventArgs e)
         {
             SetActivePlayer(null);
-            GoToPage(ApplicationPage.Login);
+            GoToPage(ApplicationPage.StartUpPage);
         }
 
         private void mnuUserSettings(object sender, RoutedEventArgs e)

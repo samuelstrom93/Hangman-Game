@@ -3,7 +3,6 @@ using Hangman.Repositories;
 using System.Windows.Input;
 using System.Windows;
 using Hangman.Database;
-
 namespace Hangman.ViewModels
 {
     public class DeleteUserUCViewModel : BaseViewModel
@@ -18,7 +17,7 @@ namespace Hangman.ViewModels
         #endregion
 
         #region Repos
-        public IPlayerRepository playerRepository;
+        private readonly IPlayerRepository playerRepository;
         #endregion
 
         public DeleteUserUCViewModel()
@@ -36,7 +35,7 @@ namespace Hangman.ViewModels
                 DeleteUser();
                 MessageBox.Show("Din användare är nu raderad, du loggas nu ut.");
                 SetActivePlayer(null);
-                GoToPage(ApplicationPage.Login);
+                GoToPage(ApplicationPage.StartUpPage);
             }
         }
         public bool CheckIfDeletable(string name)

@@ -17,7 +17,6 @@ namespace Hangman
             TopMenu.Content = new TopMenuUC();
 
             Main.Content = new StartUpPage();
-            DataContext = new MainWindowViewModel();
         }
     }
 }

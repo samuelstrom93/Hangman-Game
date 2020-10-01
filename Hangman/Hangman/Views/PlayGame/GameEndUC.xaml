@@ -30,7 +30,7 @@
                         <RowDefinition Height="12*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <ContentControl Grid.Column="1" Grid.Row="1" Content="{Binding PlayerStats}"/>
+                    <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Content="{Binding PlayerStats}"/>
                 </Grid>
                 <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StandardBorder}">
                     <Grid>

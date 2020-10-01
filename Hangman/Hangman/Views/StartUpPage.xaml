@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:Hangman"     
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
-      d:DesignHeight="920" d:DesignWidth="1800"
-      
+      d:DesignHeight="920" d:DesignWidth="1800"    
       Title="StartUpPage">
 
     <Border>
@@ -45,21 +44,19 @@
                         CommandParameter="{x:Static local:ApplicationPage.GameIntro}"/>
             </Grid>
 
-            
+            <!--Grid containing menu-->
             <Grid Grid.Row="1" 
                   Grid.Column="0" 
                   Grid.ColumnSpan="3" 
                   HorizontalAlignment="Center" 
                   VerticalAlignment="Center">
-                
+
                 <!-- Stackpanel for title + buttons -->
                 <StackPanel>
-                    
                     <!--Title-->
                     <Label 
                         Style="{StaticResource StandardHeader}"
-                        Content="VÄLKOMMEN"/> 
-
+                        Content="VÄLKOMMEN"/>
                     <!-- Stackpanel for Buttons-->
                     <StackPanel 
                         Orientation="Horizontal">
@@ -74,8 +71,7 @@
                                 <RowDefinition Height="80"/>
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
-                            
-                           
+
                             <!-- PLAY button -->
                             <Button
                                 Grid.Column="0"
@@ -85,7 +81,7 @@
                                 FontSize="18" FontFamily="Bahnschrift" Height="60"  
                                 Width="150"
                                 Content="SPELA"/>
-                            
+
                             <!-- Highscores Button -->
                             <Button  
                                 Grid.Column="1"
@@ -96,7 +92,7 @@
                                 Height="60" 
                                 Width="150"
                                 Content="SE TOPPLISTOR"/>
-                            
+
                             <!-- Login/Logout button -->
                             <Button 
                                 Grid.Column="2"
@@ -105,35 +101,32 @@
                                 Content="{Binding LogBtnContent}" 
                                 FontSize="18" Height="60" 
                                 Width="150"/>
-                            
+
                             <!--Create User Button-->
                             <Button  
                                 Width="150"
                                 Grid.Column="2"
                                 Grid.Row="1"
                                 Command="{Binding CreateUserCommand}" 
-                                Visibility="{Binding IsCreateVisible}"
-                                IsEnabled="{Binding IsCreateUserEnabled}"
+                                Visibility="{Binding IsCreateUserButtonVisible}"
+                                IsEnabled="{Binding IsCreateUserButtonEnabled}"
                                 VerticalAlignment="Top"                                
                                 Cursor="Hand"
                                 BorderBrush="Transparent"                                   
                                 Background="Transparent">
-
                                 <Button.Content>
                                     <Label FontFamily="Arial"
                                                FontSize="12"
                                                Foreground="#FF25519E"
                                                BorderBrush="#FF25519E"
                                                FontStyle="Italic"
-                                               Content="Skapa en användare här." BorderThickness="0,0,0,0.3"
-                                     />
+                                               Content="Skapa en användare här." BorderThickness="0,0,0,0.3"/>
                                 </Button.Content>
                             </Button>
                         </Grid>
-                   </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
-
 
         </Grid>
     </Border>
