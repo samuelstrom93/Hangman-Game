@@ -13,7 +13,8 @@ namespace Hangman.Views.UCsForUserSettings
 
         public PlayerStatsUC()
         {
-            InitializeComponent();             
+            InitializeComponent();
+            DataContext = new PlayerStatsUCViewModel();
         }
     }
 }
