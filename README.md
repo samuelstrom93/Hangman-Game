@@ -8,5 +8,5 @@ I vårt spel har vi däremot valt att göra en politisk korrekt version av Häng
 Vi har utvecklat spelet så att användarna har möjlighet att skapa en användare och logga in för att kunna spara sina spel och få en plats på topplistorna.
 Topplistorna hoppas vi ska sporra användarna till spela mer och ha roligt genom att kunna utmana sina kompisar.
 
-På spelintroduktions-sidan finner du reglerna för spelet. Hoppas du har kul!
+I spelintroduktion finner du reglerna för spelet. Hoppas du har kul!
 
