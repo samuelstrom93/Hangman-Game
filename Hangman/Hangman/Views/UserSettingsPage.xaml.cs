@@ -14,12 +14,6 @@ namespace Hangman.Views
         {
             InitializeComponent();
             DataContext = specificModel ?? new UserSettingsViewModel();
-
-            //UC:s
-            UpdateUserFrame.Content = new UpdateUserUC();
-            DeleteUserFrame.Content = new DeleteUserUC();
-            MessageFrame.Content = new SendMessageUC();
-            UserStatsFrame.Content = new PlayerStatsUC();
         }
     }
 }

@@ -20,10 +20,10 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="500"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Label Style="{StaticResource StandardHeader}" FontWeight="Bold" FontSize="30">Spelintroduktion</Label>
         </StackPanel>
 
@@ -41,22 +41,19 @@
         </Border>
 
         <Border HorizontalAlignment="Center" Margin="2.5,5,0,0" Grid.Row="2" Grid.Column="1" Style="{StaticResource StandardBorder}">
-            <TextBlock Padding="10" FontSize="14" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="400">
+            <TextBlock Padding="10" FontSize="16" VerticalAlignment="Top" TextWrapping="Wrap" Style="{StaticResource StandardFontTextBlock}" Width="400">
                     <Bold>Regler:</Bold> <LineBreak></LineBreak>
-                    I detta spel hänger Hen ifrån en stång och för varje fel gissning så tappar Hen greppet med ett finger i taget och ett hjärta. Hjärtana representerar Hens tio liv. 
-                    Spelet startas genom att välja en bokstav, använda dig av en ledtråd eller gissa direkt-funktionen. Vid startat spel sätter tidtagaruret igång som syns högst uppe till vänster på exempelbilden.
-                Spelet har ingen tidsbegränsning.
+                    I detta spel hänger Hen ifrån en stång och för varje fel gissning så förlorar Hen ett hjärta och tappar greppet med ett finger. Vid tio fel gissningar faller Hen och du förlorar.
+                <LineBreak></LineBreak>    
+                Tidtagaruret och spelet sätts igång genom att välja en bokstav, använda dig av en ledtråd eller gissa direkt-funktionen. Spelet har ingen tidsbegränsning.
                     <LineBreak></LineBreak><LineBreak></LineBreak>
                     <Bold>Ledtråd:</Bold><LineBreak></LineBreak>
-                Genom att klicka på knappen ledtråd får du en beskrivning av det gömda ordet men förbrukar en gissning.
+                Genom att klicka på knappen ledtråd får du en beskrivning av det gömda ordet. Dock tappar du en gissning.
                 <LineBreak></LineBreak><LineBreak></LineBreak>
                     <Bold>Gissa direkt:</Bold><LineBreak></LineBreak>
                     Funktionen möjliggör att du kan gissa på ordet i inmatningsfältet brevid knappen. 
-                    Vid rätt svar har du vunnit spelet medan om du gissar fel förbrukas en gissning och antal fel ökas med ett. 
+                    Vid rätt svar har du vunnit spelet medan om du gissar fel tappar du en gissning. 
                 <LineBreak></LineBreak><LineBreak></LineBreak>
-                <Bold>Layout:</Bold><LineBreak></LineBreak>
-                 Bockar du ur QWERTY lägger sig bokstavs-knapparna i alfabetisk ordning. Annars följer bokstavsknapparna QWERTY-standarden likt ett tangentbord.
-
             </TextBlock>
         </Border>
         <Grid Grid.Row="4" Grid.ColumnSpan="2">

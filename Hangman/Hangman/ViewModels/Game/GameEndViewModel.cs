@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media;
-
+using Hangman.Views.UCsForUserSettings;
 namespace Hangman.ViewModels
 {
     public class GameEndViewModel : BaseViewModel
@@ -39,7 +39,7 @@ namespace Hangman.ViewModels
             if (game.Id != 0)
             {
                 PlayerStatsBoolToVis = true;
-
+                
                 if (game.IsWon)
                 {
                     var gameRanking = _highscoreRepository.GetRankOnHighScore(game.Id);

@@ -6,6 +6,6 @@ namespace Hangman.Modules
     {
         bool TryLogInPlayer(string name);
         bool TryAddPlayer(string name, out IPlayer added);
-
+        bool TryUpdatePlayerName(IPlayer player, string newName);
     }
 }

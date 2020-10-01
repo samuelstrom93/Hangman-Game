@@ -30,18 +30,19 @@ namespace Hangman.ViewModels
             TryRegister = new RelayCommand(TryAddPlayer);
         }
 
+        #region Methods
         private void TryAddPlayer()
         {
             if (string.IsNullOrWhiteSpace(PlayerName) )
             {
-                TextBoxBackground = "white";
+                SetTextBoxDesign();
                 Message = "Du måste skriva något.";
                 return;
             }
 
             else if (PlayerName.Contains(" "))
             {
-                TextBoxBackground = "white";
+                SetTextBoxDesign();
                 Message = "Ditt namn får inte innehålla mellanslag";
                 return;
             }
@@ -54,10 +55,20 @@ namespace Hangman.ViewModels
                 return;
             }
 
-            
-            TextBoxBackground = "white";
-            Message = "Du har valt ett namn som är upptaget - försök igen";
+            else
+            {
+                SetTextBoxDesign();
+                Message = "Du har valt ett namn som är upptaget - försök igen";
+            }
+
         }
+
+        private void SetTextBoxDesign()
+        {
+            TextBoxBackground = "white";
+        }
+
+        #endregion
     }
 }
 

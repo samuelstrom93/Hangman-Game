@@ -6,13 +6,15 @@
       xmlns:local="clr-namespace:Hangman"
 	  xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" MinHeight="450"
+      d:DesignHeight="450" 
+      d:DesignWidth="800" 
+      MinHeight="450"
       Title="CreateUser_Page">
 
     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-
-
+            
+            <!--Grid Definitions-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"/>
                 <RowDefinition Height="150"/>
@@ -20,25 +22,38 @@
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
-
             </Grid.RowDefinitions>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="170"/>
             </Grid.ColumnDefinitions>
+            
+            <!--Header-->
+            <Label 
+                Grid.Row="0" 
+                Grid.ColumnSpan="4" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Style="{StaticResource StandardHeader}" 
+                Content="HÄNGA HEN"/>
+            
+            <!--TextBlock: Error message-->
+            <TextBlock 
+                TextAlignment="Center" 
+                Grid.Row="2" 
+                Grid.Column="1" 
+                Grid.ColumnSpan="2" 
+                HorizontalAlignment="Center" 
+                Height="20" 
+                MinWidth="200" 
+                MaxWidth="300" 
+                Background="{Binding TextBoxBackground}" 
+                Foreground="Red" 
+                Text="{Binding Message}"/>
 
-            <Grid Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Label Style="{StaticResource StandardHeader}" Content="HÄNGA HEN"/>
-            </Grid>
-
-            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" MinWidth="200" MaxWidth="300" Background="Transparent">
-                <TextBlock TextAlignment="Center" Background="{Binding TextBoxBackground}" Foreground="Red" Text="{Binding Message}"></TextBlock>
-            </Grid>
-
-
+            <!--Border for CreateUser-->
             <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10, 10, 10, 10" Style="{StaticResource StandardBorder}" CornerRadius="10" VerticalAlignment="Top">
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top" Height="Auto">
                     <Label Style="{StaticResource PageTitleLabel}" FontWeight="Bold" Content="Skapa en användare"/>
@@ -48,22 +63,51 @@
                 </StackPanel>
             </Border>
 
-            <Grid Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
-                <StackPanel>
-                    <Label Style="{StaticResource StandardLabel}" HorizontalAlignment="Left">Har du en användare?</Label>
-                    <Button Width="120" Height="30" Style="{StaticResource StandardButton}" Content="Logga in" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.Login}"  Grid.ColumnSpan="3" />
-                </StackPanel>
-            </Grid>
+            <!--Stackpanel: Navigate to Login-->
+            <StackPanel 
+                Grid.Row="3" 
+                Grid.RowSpan="2" 
+                Grid.Column="1" 
+                Grid.ColumnSpan="2" 
+                HorizontalAlignment="Center">
+                
+                <Label 
+                    Style="{StaticResource StandardLabel}" 
+                    HorizontalAlignment="Left"
+                    Content="Har du en användare?"/>
+                <Button 
+                    Width="120" 
+                    Height="30" 
+                    Style="{StaticResource StandardButton}" 
+                    Content="Logga in" 
+                    Command="{Binding NavigateToPageByParameterCommand}" 
+                    CommandParameter="{x:Static local:ApplicationPage.Login}"  
+                    Grid.ColumnSpan="3"/>
+             </StackPanel>
 
-            <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="4" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <Image Height="1000" gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif" />
-            </Grid>
-            <Border Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" VerticalAlignment="Center">
-                <StackPanel>
-                    <Button Height="155" Style="{StaticResource HelpButton}" Command="{Binding NavigateToPageByParameterCommand}" CommandParameter="{x:Static local:ApplicationPage.GameIntro}" HorizontalAlignment="Center" Width="178"  />
-                </StackPanel>
-            </Border>
+            <!--GIF-->
+            <Image  
+                Grid.Row="2" 
+                Grid.Column="3" 
+                Grid.ColumnSpan="2" 
+                Grid.RowSpan="4" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top" 
+                Height="1000" 
+                gif:ImageBehavior.AnimatedSource="Gifs/GameOn.gif"/>
 
+            <!--Button: Help-->
+            <Button 
+                Grid.Row="1" 
+                Grid.Column="4" 
+                Grid.RowSpan="3" 
+                VerticalAlignment="Center" 
+                Height="155" 
+                Width="178" 
+                Style="{StaticResource HelpButton}" 
+                Command="{Binding NavigateToPageByParameterCommand}" 
+                CommandParameter="{x:Static local:ApplicationPage.GameIntro}" 
+                HorizontalAlignment="Center"/>
         </Grid>
     </Border>
 </Page>

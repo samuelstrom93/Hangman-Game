@@ -65,7 +65,7 @@ namespace Hangman.ViewModels
             var userSettingsPage = new MenuItemViewModel
             {
                 Name = "UserSettingsItem",
-                Header = "Användarinställningar",
+                Header = "Din användare",
                 Command = new RelayCommand(MnuUserSettings)
             };
             _menuItems.Add(userSettingsPage);

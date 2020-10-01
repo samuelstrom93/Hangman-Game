@@ -19,12 +19,9 @@ namespace Hangman.Views.UCsForUserSettings
     /// </summary>
     public partial class UpdateUserUC : UserControl
     {
-        public UpdateUserUCViewModel updateVM;
         public UpdateUserUC()
         {
             InitializeComponent();
-            updateVM = new UpdateUserUCViewModel();
-            DataContext = updateVM;
         }
     }
 }

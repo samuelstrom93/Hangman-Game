@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media.Imaging;
 using Hangman.Repositories;
-using Hangman.Modules;
 using System.Windows.Input;
 using Hangman.Models;
-using Npgsql;
-using System.Windows;
 using System.Linq;
+using Hangman.Database;
 using Hangman.Database;
 
 namespace Hangman.ViewModels
@@ -42,8 +40,8 @@ namespace Hangman.ViewModels
             {
                 messageRepository.TryAddMessage(Topic, Message, ActivePlayer.Id, 64, out Message message);
                 GetMessages();
-                Message = "";
-                Topic = "";
+                Message = null;
+                Topic = null;
                 Confirmation = "Ditt meddelande är skickat";
             }
             else

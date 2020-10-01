@@ -52,6 +52,17 @@ namespace Hangman.Modules
 
             return false;
         }
+
+        public bool TryUpdatePlayerName(IPlayer player, string newname)
+        {
+            if (!IsNameUsed(newname) && newname != player.Name)
+            {
+                playerRepository.UpdateNameOnPlayer(newname, player.Id);
+                return true;
+            }
+            else
+                return false;
+        }
     }
 
 }
