@@ -20,8 +20,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="0">Spelare</Label>
-            <TextBlock HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Antal spel
-            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" FontSize="14" FontWeight="DemiBold" Grid.Column="1">Antal spel</TextBlock>
         </Grid>
         <ListBox Grid.Row="3" FontSize="14" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="Transparent" ItemsSource="{Binding TopDiligentPlayers}">
             <ListBox.Resources>
@@ -40,7 +39,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock HorizontalAlignment="Center" Grid.Column="0" Text="{Binding Path=Key}"></TextBlock>
-                                <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=Value}" />
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Path=Value}"></TextBlock>
                             </Grid>
                         </ListBoxItem>
                     </Border>
