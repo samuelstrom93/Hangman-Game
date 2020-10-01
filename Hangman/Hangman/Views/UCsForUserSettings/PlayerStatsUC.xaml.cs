@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-
+using Hangman.Views.UCsForUserSettings;
 using Hangman.ViewModels;
 
 namespace Hangman.Views.UCsForUserSettings
