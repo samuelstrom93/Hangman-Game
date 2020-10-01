@@ -84,7 +84,6 @@ namespace Hangman.ViewModels
             var module = new PlayerModule();
             module.TryLogInPlayer(NewName);
             SetActivePlayer(NewName);
-            ActivePlayerName = NewName;
         }
         #endregion
 

@@ -29,7 +29,12 @@ namespace Hangman.ViewModels
             {
                 PlayerName = ActivePlayerName ?? "Meny";
 
-                if (!string.IsNullOrWhiteSpace(ActivePlayerName))
+
+                if (!string.IsNullOrWhiteSpace(ActivePlayerName) && MenuItems.Any(o => o.Name.Equals("UserSettingsItem")))
+                {
+                    return;
+                }
+                else if (!string.IsNullOrWhiteSpace(ActivePlayerName))
                 {
                     MenuItems.Remove(_menuItems.SingleOrDefault(o => o.Name.Equals("LoginItem")));
                     MenuItems.Add(_menuItems.SingleOrDefault(o => o.Name.Equals("UserSettingsItem")));
