@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hangman.Views"
+      xmlns:uc="clr-namespace:Hangman.Views.Highscore"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1200"
       Title="HighScore_Page">
@@ -29,21 +30,21 @@
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame Content="{Binding TopGames}" Grid.Row="2"></Frame>
+            <local:TopGamesUC  Grid.Row="2"/>
         </Grid>
         <Grid Margin="10" Grid.Row="2" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame x:Name="TopPlayerHighScores" Content="{Binding TopPlayers}" Grid.Row="2"></Frame>
+            <local:TopPlayersUC Grid.Row="2"/>
         </Grid>
         <Grid Margin="10" Grid.Row="2" Grid.Column="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame Content="{Binding TopGamesCurrentPlayer}" Grid.Row="2"></Frame>
+            <uc:TopGamesCurrentPlayerUC Grid.Row="2"/>
         </Grid>
     </Grid>
 </Page>

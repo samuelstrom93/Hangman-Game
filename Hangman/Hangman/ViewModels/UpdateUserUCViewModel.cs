@@ -15,7 +15,6 @@ namespace Hangman.ViewModels
         #region Properties
         public string NewName { get; set; }
         public string UpdateMessage { get; set; }
-        public IPlayer Player { get; set; }
         public string TextColor { get; set; }
         public string BackGroundColorUpdateBox { get; set; }
         #endregion

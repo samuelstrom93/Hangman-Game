@@ -31,8 +31,9 @@
                         <RowDefinition Height="12*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-
-                    <uc:PlayerStatsUC Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" DataContext="{Binding PlayerStatsUCViewModel}" />
+                    <Border Visibility="{Binding PlayerStatsBoolToVis, Converter={StaticResource BoolToVisibility}}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3">
+                        <uc:PlayerStatsUC />
+                    </Border>
                 </Grid>
                 <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StandardBorder}">
                     <Grid>

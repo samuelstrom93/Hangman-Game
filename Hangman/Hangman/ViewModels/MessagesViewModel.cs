@@ -1,4 +1,5 @@
-﻿using Hangman.Models;
+﻿using Hangman.Database;
+using Hangman.Models;
 using Hangman.Repositories;
 using Hangman.ViewModels.Base;
 using System;
@@ -12,13 +13,12 @@ namespace Hangman.ViewModels
     {
         public int PlayerId { get; set; }
         public List<Message> Messages { get; set; }
-        public MessageRepository MessageRepository { get; set; }
 
-
-        public MessagesViewModel(int playerId)
+        private readonly IMessageRepository _messageRepository;
+        public MessagesViewModel()
         {
-            MessageRepository = new MessageRepository();
-            Messages = MessageRepository.GetMessages(playerId).ToList();
+            _messageRepository = new MessageRepository();
+            Messages = _messageRepository.GetMessages(ActivePlayer.Id).ToList();
         }
     }
 }

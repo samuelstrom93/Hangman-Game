@@ -74,17 +74,8 @@
             </StackPanel>
 
             <!--Image: MEME-->
-            <Border 
-                Grid.Row="2" 
-                Grid.Column="0" 
-                Visibility="Visible"  
-                BorderBrush="Black" 
-                BorderThickness="2" 
-                MaxWidth="350" 
-                MaxHeight="220">
-                <Border.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="{Binding MemeForWinRate}"/>
-                </Border.Background>
+            <Border Grid.Row="2" >
+                <Image Stretch="Uniform" Source="{Binding MemeForWinRate}"/>
             </Border>
             
         </Grid>

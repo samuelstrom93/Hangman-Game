@@ -7,7 +7,7 @@ using Hangman.Repositories;
 using System.Windows.Input;
 using Hangman.Models;
 using System.Linq;
-using Hangman;
+using Hangman.Database;
 using Hangman.Database;
 
 namespace Hangman.ViewModels

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hangman"
+             xmlns:vm="clr-namespace:Hangman.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800"
              xmlns:gif="http://wpfanimatedgif.codeplex.com" >
     
@@ -50,7 +51,15 @@
             <Border Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent" Width="200"  Height="40">
                 <DockPanel>
                     <Menu Background="Transparent" DockPanel.Dock="Top"  FontFamily="Bahnschrift Light" Width="200" Cursor="Hand">
-                        <MenuItem FontSize="14" HorizontalContentAlignment="Center" x:Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=MENY}" ItemsSource="{Binding ItemsToShow}" Width="200" Height="40"/>
+                        <MenuItem FontSize="14" HorizontalContentAlignment="Center" x:Name="MenuShowName" Header="{Binding PlayerName, FallbackValue=MENY}" ItemsSource="{Binding MenuItems}" Width="200" Height="40">
+
+                            <MenuItem.ItemContainerStyle>
+                                <Style TargetType="{x:Type MenuItem}">
+                                    <Setter Property="Command" Value="{Binding Command}" />
+                                    <Setter Property="Header" Value="{Binding Header}"/>
+                                </Style>
+                            </MenuItem.ItemContainerStyle>
+                        </MenuItem>
                     </Menu>
                 </DockPanel>
             </Border>
