@@ -29,16 +29,17 @@ namespace Hangman.ViewModels
             Keys = new ObservableCollection<LetterKeyViewModel>();
 
             int qwertyIndex = 0;
-            foreach (var c in _lettersQWERTY)
+            foreach (var letter in _lettersQWERTY)
             {
-                Keys.Add(new LetterKeyViewModel(qwertyIndex, c, _keyCommand));
+                Keys.Add(new LetterKeyViewModel(qwertyIndex, letter, _keyCommand));
                 qwertyIndex++;
             }
         }
 
         public void OrderKeys()
         {
-            Keys = new ObservableCollection<LetterKeyViewModel>(Keys.OrderBy(o => !IsABCChecked ? o.QwertyOrder : o.Content));
+            Keys = new ObservableCollection<LetterKeyViewModel>(
+                Keys.OrderBy(o => !IsABCChecked ? o.QwertyOrder : o.Content));
         }
 
         public void MarkLetterUsed(char letter, bool isCorrect)

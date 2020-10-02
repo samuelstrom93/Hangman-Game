@@ -14,7 +14,7 @@ namespace Hangman.ViewModels
     public class PlayGameViewModel : BaseViewModel
     {
         private static readonly int _incorrectGuessLimit = 10;
-        private static readonly string _letterPlaceHolder = "_";
+        private static readonly char _letterPlaceHolder = char.Parse("_");
 
         public bool GameEndVisibility { get; set; } = false;
         public GameEndViewModel GameEndViewModel { get; set; }
@@ -31,10 +31,10 @@ namespace Hangman.ViewModels
         public ICommand ShowHintCommand { get; set; }
         public ICommand GuessDirectlyCommand { get; set; }
 
-        private Word currentWord;
-        public char[] CurrentWordArray { get => currentWord?.Name.ToUpper().ToCharArray(); }
-        public string CurrentWordHint { get => currentWord?.Hint; }
-        public int CurrentWordLength { get => currentWord?.Name.Length ?? 0; }
+        private Word CurrentWord;
+        public char[] CurrentWordArray { get => CurrentWord?.Name.ToUpper().ToCharArray(); }
+        public string CurrentWordHint { get => CurrentWord?.Hint; }
+        public int CurrentWordLength { get => CurrentWord?.Name.Length ?? 0; }
 
         private bool isGameInProgress;
         private int numberOfIncorrectGuesses;
@@ -51,7 +51,7 @@ namespace Hangman.ViewModels
             LivesDisplay = new ObservableCollection<HeartDisplayViewModel>();
             WordDisplay = new ObservableCollection<char>();
 
-            currentWord = wordRepository.GetRandomWord();
+            CurrentWord = wordRepository.GetRandomWord();
             CreateWordTextBlocks();
             CreateLifeDisplay();
 
@@ -74,7 +74,7 @@ namespace Hangman.ViewModels
         {
             foreach (var _ in CurrentWordArray)
             {
-                WordDisplay.Add(char.Parse(_letterPlaceHolder));
+                WordDisplay.Add(_letterPlaceHolder);
             }
         }
         #endregion
@@ -92,7 +92,7 @@ namespace Hangman.ViewModels
                 StartGame();
             }
 
-            if (GuessBox.Equals(currentWord.Name, StringComparison.OrdinalIgnoreCase))
+            if (GuessBox.Equals(CurrentWord.Name, StringComparison.OrdinalIgnoreCase))
             {
                 GameOver(true);
             }
@@ -131,7 +131,7 @@ namespace Hangman.ViewModels
 
                 KeyboardViewModel.MarkLetterUsed(letter, true);
 
-                if (!WordDisplay.Any(c => c == char.Parse(_letterPlaceHolder)))
+                if (!WordDisplay.Any(c => c == _letterPlaceHolder))
                 {
                     GameOver(true);
                 }
@@ -174,7 +174,7 @@ namespace Hangman.ViewModels
                 StartTime = currentGameStartTime,
                 EndTime = DateTime.Now,
                 PlayerId = ActivePlayer?.Id ?? 0,
-                WordId = currentWord.Id,
+                WordId = CurrentWord.Id,
                 IsWon = isWin
             };
 
@@ -185,7 +185,7 @@ namespace Hangman.ViewModels
                 game.Id = gameRepository.AddGame(game);
             }
 
-            GameEndViewModel = new GameEndViewModel(game, currentWord.Name);
+            GameEndViewModel = new GameEndViewModel(game, CurrentWord.Name);
             GameEndVisibility = true;
         }
         #endregion
