@@ -37,6 +37,8 @@
     <None Remove="Assets\Images\hänggubbe9.png" />
     <None Remove="Assets\Images\timer.png" />
     <None Remove="Assets\Images\You1337.jpg" />
+    <None Remove="Assets\Images\YouAverage.jpg" />
+    <None Remove="Assets\Images\YouEmpty.jpg" />
     <None Remove="Assets\Images\YouRock.jpg" />
     <None Remove="Assets\Images\YouSuck.jpg" />
     <None Remove="Assets\Sounds\PunchesFX.wav" />
@@ -47,6 +49,10 @@
     <None Remove="Views\Gifs\HeartBreak0.gif" />
     <None Remove="Views\Menu\Gifs\ChatBubbleGif.gif" />
     <None Remove="Views\Menu\Gifs\GameOn.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\YouAverage.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -87,6 +93,7 @@
     <Resource Include="Assets\Images\hänggubbe8.png" />
     <Resource Include="Assets\Images\hänggubbe9.png" />
     <Resource Include="Assets\Images\You1337.jpg" />
+    <Resource Include="Assets\Images\YouEmpty.jpg" />
     <Resource Include="Assets\Images\YouRock.jpg" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe0.png" />
     <Resource Include="Assets\Images\Arkiv\hänggubbe1.png" />

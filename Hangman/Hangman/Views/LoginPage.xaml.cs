@@ -26,8 +26,7 @@ namespace Hangman.Views
         public LoginPage(BaseViewModel specificModel = null)
         {
             InitializeComponent();
-            DataContext = specificModel ?? new LoginPageViewModel();
-          
+            DataContext = specificModel ?? new LoginPageViewModel();          
         }
 
     }

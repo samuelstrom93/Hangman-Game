@@ -34,7 +34,7 @@ namespace Hangman.ViewModels
         {
             if (CheckIfDeletable(NameCheck))
             {
-                DeleteUser();               
+                DeleteUser();                  
                 GoToPage(ApplicationPage.StartUpPage);
             }
 
