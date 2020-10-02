@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 
 namespace Hangman.ViewModels.Base
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         protected static NavigationService NavigationService { get; } = (Application.Current.MainWindow as MainWindow).Main.NavigationService;
         public ICommand NavigateToPageByParameterCommand { get; set; }
