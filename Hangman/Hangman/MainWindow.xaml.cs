@@ -15,7 +15,6 @@ namespace Hangman
         {
             InitializeComponent();
             TopMenu.Content = new TopMenuUC();
-
             Main.Content = new StartUpPage();
         }
     }
