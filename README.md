@@ -1,3 +1,6 @@
+
+## Projekt som jag tillsammans med tre kursare utvecklat under en fem veckors lång period. Vi har jobbat enligt ett agilt arbetssätt och kontinuerligt utfört testning för att säkerställa spelets resultat. Projektet är gjort enligt MVVM-mönstret som underlättar samspelet mellan logiken och användargränssnittet så att de inte är alltför beroende av varandra.
+
 # Spelet Hänga Hen
 
 Spelet baseras på det klassiska spelet *Hänga Gubbe* där användaren ställs inför utmaningen att gissa vilket ord som gömmer sig genom att 
@@ -9,4 +12,5 @@ Vi har utvecklat spelet så att användarna har möjlighet att skapa en använda
 Topplistorna hoppas vi ska sporra användarna till spela mer och ha roligt genom att kunna utmana sina kompisar.
 
 I spelintroduktion finner du reglerna för spelet. Hoppas du har kul!
+
 
