@@ -1,5 +1,5 @@
 
-## Projekt som jag tillsammans med tre kursare utvecklat under en fem veckors lång period. Vi har jobbat enligt ett agilt arbetssätt och kontinuerligt utfört testning för att säkerställa spelets resultat. Projektet är gjort enligt MVVM-mönstret som underlättar samspelet mellan logiken och användargränssnittet så att de inte är alltför beroende av varandra.
+## Projekt som jag tillsammans med tre kursare utvecklat under en fem veckors lång period. Vi har jobbat enligt ett agilt arbetssätt och kontinuerligt utfört testning för att säkerställa spelets resultat. Projektet är gjort i WPF enligt MVVM-mönstret som underlättar samspelet mellan logiken och användargränssnittet och minskar beroendet mellan varandra.
 
 # Spelet Hänga Hen
 
